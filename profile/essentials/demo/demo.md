@@ -1,6 +1,6 @@
 # Demonstration
 
-Before we start digging into creating web servers and talking about protocols let's give you a taste of what web programming technologies can do. In this example we display a card with a rotating border. When you click on the card the text changes.
+Before we start digging into creating web servers and talking about protocols let's give you a taste of what web programming technologies can do. In this example we display a card with a rotating border. When you click on the card, the text changes.
 
 ![Demonstration](essentialsDemo.gif)
 
@@ -14,7 +14,7 @@ The HTML looks like the following and basically has a simple card with text in i
 </body>
 ```
 
-The JavaScript handles when you click on the card and changes the text.
+The JavaScript handles it when you click on the card, and the JavaScript changes the text.
 
 ```js
 function titleClick() {
