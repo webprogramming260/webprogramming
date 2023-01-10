@@ -8,9 +8,9 @@ Use the following invite to join our discussion server:
 
 > [https://discord.gg/x2WMN8y5XQ](https://discord.gg/x2WMN8y5XQ)
 
-From a desktop computer you can use Discord from your browser. From your phone you will need to install the application from the app store.
+From a desktop computer, you can use Discord from your browser. From your phone you will need to install the application from the app store.
 
-If you have never used Discord before you will need to create a free account. Take a minute to also set up your avatar.
+If you have never used Discord before, you will need to create a free account. Take a minute to also set up your avatar.
 
 ## A brief tour
 
@@ -33,6 +33,8 @@ Our server contains the following channels for asking and answering questions.
 - general
 
 You should use the channel that is most appropriate for your discussion. Do not ask questions in multiple channels. Only use `general` if it really is not specific to another channel.
+
+If you are replying to someone, reply in a thread and not in the channel.
 
 ⚠ Make sure you review the instruction on [asking questions](../askingQuestions/askingQuestions.md) before you start asking questions.
 
