@@ -74,8 +74,8 @@ The other primary purpose of the console is to execute commands. You already did
 You can also chain the input and output of commands using special characters
 
 - `|` - Take the output from the command on the left and _pipe_, or pass, it to the command on the right
-- `>` - Redirect output to a file. Appends if the file exists
-- `>>` - Redirect output to a file. Overwrites the file if it exists
+- `>` - Redirect output to a file. Overwrites the file if it exists
+- `>>` - Redirect output to a file. Appends if the file exists
 
 For example, you can list the files in a directory, pipe it into `grep` to search for files created in Nov, and then pipe that into `wc` to count the number of files found with a date of Nov.
 
