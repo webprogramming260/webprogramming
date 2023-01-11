@@ -38,7 +38,7 @@ Once you have an AWS account it is time to create your web server.
 
    ![AWS Instance name](webServerAWSName.jpg)
 
-1. We have created an Amazon Machine Image (AMI) for you to use as the base for your server. It has Ubuntu, Node.js, NVM, Caddy Server, and PM2 built right in so that you do not have to install them. Paste this AMI ID (`ami-0b41d83057f814e3a`) into the search box and press enter. Then select the `Community AMIs` tab. If no matches are found, make sure that your region is set to `US East (Ohio) - us-east-2`.
+1. We have created an Amazon Machine Image (AMI) for you to use as the base for your server. It has Ubuntu, Node.js, NVM, Caddy Server, and PM2 built right in so that you do not have to install them. Paste this AMI ID (`ami-0b41d83057f814e3a`) into the search box and press enter. Then select the `Community AMIs` tab. If no matches are found, make sure that your region is set to `US East (Ohio) - us-east-2` (You can check this by looking in the top right corner of the page).
 
    ![AWS Instance name](webServerAWSAmi.jpg)
 
@@ -50,17 +50,19 @@ Once you have an AWS account it is time to create your web server.
 
    ![AWS Instance name](webServerAWSType.jpg)
 
-1. Create a new key pair. Make sure you save the key pair to your development environment. This needs to be safe in a place that is not publicly accessible and that you won't accidentally delete or commit to a GitHub repository. You will need this every time you secure shell (ssh) into this server (production environment). Note that you don't have to create a new key pair every time you launch an instance. You can use one that you created previously so that all of the servers you create can be accessed with the same key file.
+1. Create a new key pair. **Make sure you save the key pair** to your development environment. This needs to be safe in a place that is not publicly accessible and that you won't accidentally delete or commit to a GitHub repository. You will need this every time you secure shell (ssh) into this server (production environment). Note that you don't have to create a new key pair every time you launch an instance. You can use one that you created previously so that all of the servers you create can be accessed with the same key file.
 
    ![AWS Instance name](webServerAWSkeyPair.jpg)
 
-1. For the network settings, make sure the `auto-assign public IP` address is enabled. For the `Firewall (security group)` select the option to `Create security group` if this is the first server that you are creating. Allow SSH, HTTP, and HTTPS traffic from anywhere. If you have created a server before then you already have a security group that you can use and you should not clutter up your account with additional ones. In that case use the option to `Select existing security group` and select the name of the exiting security group.
+1. For the network settings, make sure the `auto-assign public IP` address is enabled. For the `Firewall (security group)` select the option to `Create security group` if this is the first server that you are creating. Allow SSH, HTTP, and HTTPS traffic from anywhere. 
+
+   If you have created a server before, then you already have a security group that you can use, and you should not clutter up your account with additional ones. In that case, use the option to `Select existing security group` and select the name of the exiting security group.
 
    A security group represents the rules for allowing access to your servers. Security group rules specify both the port that is accessible on your server, and the source IP address that requests are allowed from. For example, you could allow only port 443 (the secure HTTPS port) from your development environment's IP address. However, doing so would mean that your web application would not be available from any other computer. You can learn more about security groups from the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
 
    ![AWS Instance name](webServerAWSNetwork.jpg)
 
-1. In the `Advanced details` change the `Credit specification` to `Unlimited`. This allows your `T class` (throttled class) server to keep using CPU even though it has exceeded its current credit limit. You do incur a minimal charge for when this happens, but the alternative is to always spend more for a larger instance, or to have your server lock up when it hits the limit. For the minimal use that your server will see, you should not normally exceed your limit, but it is nice to not have your server die if you do. Even if you do temporarily exceed the limit the charges will be mere pennies per hour.
+1. In the `Advanced details`, change the `Credit specification` to `Unlimited`. This allows your `T class` (throttled class) server to keep using CPU even though it has exceeded its current credit limit. You do incur a minimal charge for when this happens, but the alternative is to always spend more for a larger instance, or to have your server lock up when it hits the limit. For the minimal use that your server will see, you should not normally exceed your limit, but it is nice to not have your server die if you do. Even if you do temporarily exceed the limit, the charges will be mere pennies per hour.
 
    ![Web Server](webServerAWSUnlimited.jpg)
 
@@ -74,15 +76,15 @@ Open your browser and paste the public IP address for your server in the locatio
 http://3.22.63.37
 ```
 
-If the server has started up then you should see the following. Otherwise wait a little bit and refresh your browser again. If the server is marked as running and it has been longer than 5 minutes then there is a problem.
+If the server has started up, then you should see the following. Otherwise, wait a little bit and refresh your browser again. If the server is marked as running and it has been longer than 5 minutes, then there is a problem.
 
 ![Web Server](webServerAWSBrowserResult.png)
 
-If that is what you see then congratulations. You are now running your very own web server that the whole world can see! Time to celebrate with cookies.
+If that is what you see, then congratulations! You are now running your very own web server that the whole world can see! Time to celebrate with cookies.
 
 ## SSH into your server
 
-New let's remote shell into your server and see what is under the hood. Go to your console window and use SSH to shell into the server. You will need to supply the public IP address (copied from the EC2 instance details) and the location of your key pair file that you created/used when you launched your instance. Hopefully you saved that off to a safe location in your development environment, otherwise you will need to terminate your instance and create a new one, with a new key.
+Now, let's remote shell into your server and see what is under the hood. Go to your console window and use SSH to shell into the server. You will need to supply the public IP address (copied from the EC2 instance details) and the location of your key pair file that you created/used when you launched your instance. Hopefully, you saved that off to a safe location in your development environment, otherwise you will need to terminate your instance and create a new one, with a new key.
 
 ```sh
 ➜  ssh -i [key pair file] ubuntu@[ip address]
@@ -102,7 +104,7 @@ For example,
 
 ⚠ As it connects to the server it might will warn you that it hasn't seen this server before. You can confidently say yes since you are sure of the identity of this server.
 
-Once it has connected you are now looking at a console window for the web server that you just launched and you should be in the ubuntu user's home directory. If you run `ls -l` you should see the following.
+Once it has connected, you are now looking at a console window for the web server that you just launched and you should be in the ubuntu user's home directory. If you run `ls -l`, you should see the following.
 
 ```sh
 ➜  ls -l
@@ -115,20 +117,20 @@ drwxrwxr-x 6 ubuntu ubuntu 4096 Nov 30 22:42 services
 
 The `Caddyfile` is the configuration file for your web service gateway. The `public_html` directory contains all of the static files that your are serving up directly through Caddy when using it as a web service. We will cover Caddy configuration in a later instruction. The `services` directory is the place where you are going to install all of your web services once you build them.
 
-Once you are done poking around on your server you can exit the remote shell by running the `exit` command. That is everything. You will only change a few configuration settings on your server in the future. Usually changes to the server are always done using an automated continuous integration process.
+Once you are done poking around on your server, you can exit the remote shell by running the `exit` command. That is everything. You will only change a few configuration settings on your server in the future. Usually, changes to the server are always done using an automated continuous integration process.
 
 ## Keeping the same public IP address
 
-You can stop your server at any time. Don't confuse this with terminating your server which completely destroys it. Stopping your server just powers down the device. This is nice because you don't have to pay for it while it is stopped. However, every time you stop and start your server it we will be assigned a new public IP address. It is important to keep the same public IP address so that you, and others, can always browse to the same place, and more importantly so that when you create your domain name you can assign it to an address that never changes.
+You can stop your server at any time. Don't confuse this with terminating your server which completely destroys it. Stopping your server just powers down the device. This is nice because you don't have to pay for it while it is stopped. However, every time you stop and start your server, it will be assigned a new public IP address. It is important to keep the same public IP address so that you, and others, can always browse to the same place. More importantly, when you create your domain name, you can assign it to an address that never changes.
 
-You have two choices in order to keep the same public IP address.
+You have two choices in order to keep the same public IP address:
 
 1. Never stop your server.
 2. Assign an elastic IP address to your server so that it keeps the same address even if you stop it.
 
 Your first elastic IP address is free. However, the catch is that it is only free while the server instance it is assigned to is running. While your server is not running you are charged $0.005/hr. This is the same cost for running a t3.nano server instance. So if you assign an elastic IP address, you don't save any money unless you running a more powerful instance, and are stopping your instance when you, or the TAs, don't need it.
 
-We would suggest that you do both options. Keep your server running and associate an elastic IP. That way if you do need to reboot it for some reason, you will still keep the same IP address and it doesn't cost you anything more either way.
+We would suggest that you do both options. Keep your server running and associate an elastic IP. That way if you do need to reboot it for some reason, you will still keep the same IP address, and it doesn't cost you anything more either way.
 
 Here is how you [assign an elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html0) to your server instance.
 
