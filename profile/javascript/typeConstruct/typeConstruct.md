@@ -86,6 +86,12 @@ null === undefined;
 
 Because strict equality is considered more intuitive, it is almost always preferred and should be used in your code.
 
+Here is a fun example of JavaScript's type conversion. Execute the following in the browser's debugger console.
+
+```js
+('b' + 'a' + +'a' + 'a').toLowerCase();
+```
+
 ## Conditionals
 
 JavaScript support many common programming language conditional constructs. This includes `if`, `else`, and `if else`. Here are some examples.

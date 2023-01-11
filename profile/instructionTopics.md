@@ -104,7 +104,7 @@ It is expected that you will start at the top of the list and work your way down
   - ☑ [Simon DB](https://github.com/webprogramming260/simon-db#readme)
 - [Authorization services](webServices/authorizationServices/authorizationServices.md)
   - ☑ [Account creation and login](webServices/login/login.md)
-  - 🚧 ☑ [Simon Login](https://github.com/webprogramming260/simon-login#readme)
+  - ☑ [Simon Login](https://github.com/webprogramming260/simon-login#readme)
 - [WebSocket](webServices/webSocket/webSocket.md)
   - [Debugging WebSocket](webServices/webSocket/debugging.md)
   - ☑ [WebSocket chat](webServices/webSocket/chat.md)
