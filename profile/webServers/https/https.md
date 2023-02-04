@@ -68,7 +68,7 @@ If you are interested, you can learn about how the Let's Encrypt generates certi
 
 Modern browsers now expect web servers to exclusively use HTTPS for all communication. In fact, the next version of HTTP (v3) only supports secure connections. For this reason, you should always support HTTPS for any web application that you build.
 
-You can obtain, and renew, a web certificate by enabling the ACME protocol for your web server and communicating with Let's Encrypt to generate the needed certificates. This is not difficult to do and may languages such as Rust, Node.js, or Go support this functionality by simply including an additional library.
+You can obtain, and renew, a web certificate by enabling the ACME protocol for your web server and communicating with Let's Encrypt to generate the needed certificates. This is not difficult to do and many languages such as Rust, Node.js, or Go support this functionality by simply including an additional library.
 
 ### Caddy
 
