@@ -289,7 +289,7 @@ There is an NPM package called [React Bootstrap](https://react-bootstrap.github.
 To use the React version of Bootstrap remove the CDN links from `index.html` and import the NPM package.
 
 ```sh
-npm import bootstrap react-bootstrap
+npm install bootstrap react-bootstrap
 ```
 
 In components where you still want to refer to the Bootstrap styles you can import the css from the
