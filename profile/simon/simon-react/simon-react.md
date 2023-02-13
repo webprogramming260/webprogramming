@@ -351,7 +351,6 @@ Get familiar with what the example code teaches.
   git clone https://github.com/webprogramming260/simon-react.git
   ```
 
-````
 
 - Review the code and get comfortable with everything it represents.
 - View the code in your browser by hosting it from a VS Code debug session.
@@ -389,4 +388,4 @@ Get familiar with what the example code teaches.
 - 20% - Successfully implemented the React router
 - 10% - At least four Git commits for the project (Initial, milestone, ..., milestone, final)
 - 10% - Notes in your start up repository README.md about what you have learned
-````
+
