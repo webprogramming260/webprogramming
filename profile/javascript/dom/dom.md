@@ -96,7 +96,7 @@ However, directly injecting HTML as a block of text is a common attack vector fo
 <img src="bogus.png" onerror="console.log('All your base are belong to us')" />
 ```
 
-Make sure that if you are injected HTML that it cannot be manipulated by a user. Common injection paths include HTML input controls, URL parameters, and HTTP headers. Either sanitize any HTML that contains variables, or simply use DOM manipulation functions instead of using `innerHTML`.
+Make sure that if you are injecting HTML that it cannot be manipulated by a user. Common injection paths include HTML input controls, URL parameters, and HTTP headers. Either sanitize any HTML that contains variables, or simply use DOM manipulation functions instead of using `innerHTML`.
 
 ## Event Listeners
 
