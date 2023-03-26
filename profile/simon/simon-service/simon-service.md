@@ -148,7 +148,7 @@ Get familiar with what the example code teaches.
 
 ## Deploy to production
 
-- Deploy to your production environment using a copy of the `deployService.sh` script found in the [example class application](https://github.com/webprogramming260/simon-javascript/blob/main/deployService.sh). Take some time to understand how it works.
+- Deploy to your production environment using a copy of the `deployService.sh` script found in the [example class application](https://github.com/webprogramming260/simon-service/blob/main/deployService.sh). Take some time to understand how it works.
 
   ```sh
   ./deployService.sh -k <yourpemkey> -h <yourdomain> -s simon
