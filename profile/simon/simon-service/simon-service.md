@@ -67,7 +67,7 @@ function displayQuote(data) {
 
 Converting Simon to a service involved the following steps.
 
-1. Move all the previous deliverable code files (_.html, _.js, \*.css, favicon.ico, and asserts) into a sub-directory named `public`. We will use the HTTP Node.js based service to host the front-end application files. This is done with the static file middleware that we will add our service `index.js`.
+1. Move all the previous deliverable code files (_.html, _.js, \*.css, favicon.ico, and assets) into a sub-directory named `public`. We will use the HTTP Node.js based service to host the front-end application files. This is done with the static file middleware that we will add our service `index.js`.
 
    ```js
    app.use(express.static('public'));
