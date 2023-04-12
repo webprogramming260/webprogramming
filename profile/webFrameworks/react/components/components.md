@@ -61,7 +61,7 @@ function Demo(props) {
 
 ## State
 
-In addition to properties, a component can have internal state. Component state is created by calling the `React.useState` hook function. The useState function returns a variable that contains the current state and a function to update the state. The following example creates a state variable called `clicked` toggles the click state in the `updateClicked` function that gets called when the paragraph text is clicked.
+In addition to properties, a component can have internal state. Component state is created by calling the `React.useState` hook function. The useState function returns a variable that contains the current state and a function to update the state. The following example creates a state variable called `clicked` and toggles the click state in the `updateClicked` function that gets called when the paragraph text is clicked.
 
 ```jsx
 const Clicker = () => {
