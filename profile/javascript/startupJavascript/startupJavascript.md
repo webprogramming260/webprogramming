@@ -21,13 +21,13 @@ Remember to use the `VS Code Live Server` extension to see what your code looks 
 Once you have developed your application to where you want it, you need to release it to your production environment. Use the deployment `deployFiles.sh` script from the [Simon JavaScript repository](https://github.com/webprogramming260/simon-javascript/blob/main/deployFiles.sh) to deploy your application. Make sure you specify `startup` for the service parameter (`-s`).
 
 ```sh
-./deployService.sh -k <yourpemkey> -h <yourdomain> -s startup
+./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s startup
 ```
 
 For example,
 
 ```sh
-./deployService.sh -k ~/keys/production.pem -h yourdomain.click -s startup
+./deployFiles.sh -k ~/keys/production.pem -h yourdomain.click -s startup
 ```
 
 Doing this will make this deliverable of your startup available from `https://startup.yourdomainname`.
