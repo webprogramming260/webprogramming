@@ -6,13 +6,13 @@
 
 Before you start work on this deliverable make sure you have read all of the proceeding instruction topics and have completed all of the dependant exercises (topics marked with a ☑). This includes:
 
-- ☑ [Course Introduction](essentials/introduction/introduction.md)
-- ☑ [AWS account](essentials/awsAccount/awsAccount.md)
-- [Startup application](essentials/startup/startup.md)
-- ☑ [Demo day submission](webFrameworks/demoDay/demoDay.md)
-- [Let's play Simon](essentials/simon/simon.md)
-- [Git](essentials/git/git.md)
-- ☑ [GitHub](essentials/gitHub/gitHub.md)
+- ☑ [Course Introduction](/profile/essentials/introduction/introduction.md)
+- ☑ [AWS account](/profile/essentials/awsAccount/awsAccount.md)
+- [Startup application](/profile/essentials/startup/startup.md)
+- ☑ [Demo day submission](/profile/webFrameworks/demoDay/demoDay.md)
+- [Let's play Simon](/profile/essentials/simon/simon.md)
+- [Git](/profile/essentials/git/git.md)
+- ☑ [GitHub](/profile/essentials/gitHub/gitHub.md)
 
 Failing to do this will likely slow you down as you will not have the required knowledge to complete the deliverable.
 
