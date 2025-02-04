@@ -61,7 +61,7 @@ You can enhance the simple [Hello World React](../introduction/introduction.md#r
 npm install react-router-dom
 ```
 
-Now you can replace the JSX for the application found in `index.jsx` with the router code given above. You will need to add the reference to the route dom import as well as the CSS that is used for making things look pretty.
+Now you can replace the JSX for the application found in `index.jsx` with the router code given below. You will need to add the reference to the route dom import as well as the CSS that is used for making things look pretty.
 
 ```jsx
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
