@@ -443,6 +443,7 @@ The basic steps for converting the component include the following.
 
 - Copy the `main` element HTML over and put it in the return value of the component. Don't copy the header and footer HTML since they are now represented in `app.jsx`.
 - Rename the `class` to `className` so that it doesn't conflict with the JavaScript keyword `class`.
+- Make sure any `<input>` elements end with a / like `<input type='password'/>`. (This is not an issue with html but jsx requires it.)
 - Move the CSS over to the component directory and use an `import` statement to bring it into the component's `jsx` file.
 
 In order for you to have a feel for how this is done we will demonstrate how this is done with the `Scores` component.
