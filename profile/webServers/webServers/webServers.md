@@ -8,7 +8,7 @@ In the early days of web programming, you would buy a massive, complex, expensiv
 
 ## Combining web and application services
 
-Today, most modern programming languages include libraries that make it easy to serve up web content. This removed the requirement to have a separate program for _hosting_ you application. Instead, your application is also the web service. For example, here is a simple HTTP service written in JavaScript can load up HTML content from a **public** directory.
+Today, most modern programming languages include libraries that make it easy to serve up web content. This removed the requirement to have a separate program for _hosting_ your application. Instead, your application is also the web service. For example, here is a simple HTTP service written in JavaScript can load up HTML content from a **public** directory.
 
 ```go
 const express = require('express');
