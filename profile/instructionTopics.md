@@ -166,8 +166,5 @@ The course covers a full stack of technologies including HTML, CSS, JavaScript, 
 
 | Icon | Meaning                                             |
 | :--: | --------------------------------------------------- |
-|  ⚠   | Important concepts, or pitfalls, to note            |
 |  ☑   | Assignments                                         |
 |  🚀  | Startup deliverable                                 |
-|  🔑  | Required reading                                    |
-|  📖  | Deeper dive reading for when you want to learn more |
