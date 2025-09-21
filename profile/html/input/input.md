@@ -95,6 +95,6 @@ This [CodePen](https://codepen.io/leesjensen/pen/dyVdNej) demonstrates all of th
 1. Add an additional optgroup.
 1. Add an additional checkbox.
 1. Add an additional radio button.
-1. Change the color input to default to red.
+1. Change the color input to default to red. Colors are encoded as a string containing a pound sign followed by two hex digits for red, two for green, and two for blue (e.g. "#ffffff" for white, "#008000" for dark green).
 
 _If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
