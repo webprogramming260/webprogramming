@@ -77,7 +77,7 @@ Create a fork of this [CodePen](https://codepen.io/leesjensen/pen/GRGBqbw) do th
 
 1. Replace the navigation div elements with anchor elements that have hyperlinks to BYU and FamilySearch.
 1. Change the section `ul` element text to be "apples", "bananas", and "oranges".
-1. Add an img element to the `aside` element. Use the URL of an image on some other website. Use the width attribute to size it properly.
+1. Add an img element to the `aside` element. Use the URL of an image on some other website as the `src` attribute. Use the width attribute to size it properly.
 1. Add another row to the table with the text HTML, CSS, and JavaScript.
 1. Add your name in a h1 element to the `header` element.
 1. Add a hyperlink to the `footer` element to your GitHub repository.
