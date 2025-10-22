@@ -61,7 +61,7 @@ console.log(a, b, c);
 
 ## Destructuring in React
 
-React makes extensive use of destructuring when you pass parameters to components and create state. In the example below, React passes all the parameters to the component as an object, but it destructures the object to just the `initialCount` parameter. Likewise the return value from `React.useState` destructures the array to just the variable and the update function.
+React makes extensive use of destructuring when you pass parameters to components and create state. In the example below, React passes all the parameters to the component as an object, but the object is destructured to just the `initialCount` parameter. Likewise, the return value from `React.useState` destructures the array to just the variable and the update function.
 
 ```jsx
 function Clicker({ initialCount }) {
