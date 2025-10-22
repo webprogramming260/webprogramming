@@ -14,7 +14,7 @@ To use the example you must already have Node.js installed.
    1. Open the project in VS Code
    1. Open the `service/service.js` file.
    1. Press `F5` to start debugging. Choose Node.js as the debugging target.
-1. Start the backend running from a console window
+1. Start the frontend running from a console window
    1. Change directory into the project root.
    1. Run `npm run dev`.
 1. Use websocket chat
