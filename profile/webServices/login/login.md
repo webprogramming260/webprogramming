@@ -593,7 +593,7 @@ You can find this complete example [here](exampleCode/login). To run it yourself
 1. Run `npm install` from a console window in the `exampleCode/login` directory.
 1. Run `npm install` from a console window in the `exampleCode/login/service` subdirectory.
 1. Open up the login application in VS Code and review what it is doing.
-1. Run and debug the example by pressing `F5` for the file `exampleCode/login/service/index.js`. You may need to select node.js as the debugger the first time you run.
+1. Run and debug the example by pressing `F5` for the file `exampleCode/login/service/service.js`. You may need to select node.js as the debugger the first time you run.
 1. Start the frontend by running `npm run dev` from a console window.
 1. Open a browser window and point it to http://localhost:5137.
 1. Register, login, logout, and access the protected endpoint to get your user information.
