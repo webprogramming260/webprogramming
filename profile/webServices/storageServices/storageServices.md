@@ -56,7 +56,7 @@ npm install @aws-sdk/client-s3 @aws-sdk/credential-providers
 
 #### Getting credentials
 
-Next you need to obtain your AWS credentials that allow you to access S3. When you are running in your production environment, you can change the role that your S3 server is running under to allow S3 access. When you are running from your development, you need to obtains AWS access keys and store them in the `~/.aws/credentials` file. You can write values to the credential file using the AWS CLI with the following command:
+Next you need to obtain your AWS credentials that allow you to access S3. When you are running in your production environment, you can change the role that your S3 server is running under to allow S3 access. When you are running from your development environment, you need to obtain AWS access keys and store them in the `~/.aws/credentials` file. You can write values to the credential file using the AWS CLI with the following command:
 
 ```sh
 aws configure
