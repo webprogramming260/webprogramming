@@ -57,7 +57,7 @@ Multer handles reading the file from the HTTP request, enforcing the size limit 
 
 - Handles requests for static files so that we can serve up our frontend code.
 - Handles errors such as when the 64k file limit is violated.
-- Generates a filename that prevent the user from altering the servers file system based upon an uploaded filename.
+- Generates a filename that prevents the user from altering the servers file system based upon an uploaded filename.
 - Provides access to the uploads using the `express.static` middleware.
 
 ```js
