@@ -6,7 +6,7 @@ Web applications often need to upload one or more files from the frontend applic
 
 ## Frontend Code
 
-The following frontend code registers and event handler for when the selected file changes and only accepts files of type `.png, .jpeg, or .jpg`. We also create an `img` placeholder element that will display the uploaded image once it has been stored on the server.
+The following frontend code registers an event handler for when the selected file changes and only accepts files of type `.png, .jpeg, or .jpg`. We also create an `img` placeholder element that will display the uploaded image once it has been stored on the server.
 
 ```html
 <html lang="en">
