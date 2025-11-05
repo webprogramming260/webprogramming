@@ -33,7 +33,7 @@ module.exports = app;
 **index.js**
 
 ```js
-const app = require('./server');
+const app = require('./service');
 
 const port = 3000;
 app.listen(port, function () {
@@ -140,7 +140,7 @@ To make an HTTP request, you pass the service `app` to the supertest `request` f
 
 ```js
 const request = require('supertest');
-const app = require('./server');
+const app = require('./service');
 
 test('register simple', async () => {
   const email = 'test@email.com';
