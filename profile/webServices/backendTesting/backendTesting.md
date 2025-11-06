@@ -227,7 +227,7 @@ test('login', async () => {
 
 ## Testing with cookies
 
-Our register test is missing once critical validation. It doesn't assert that the endpoint returned a cookie that contains the authentication token. We can fix that by creating a `validateAuth` utility function and calling it from the test.
+Our register test is missing one critical validation. It doesn't assert that the endpoint returned a cookie that contains the authentication token. We can fix that by creating a `validateAuth` utility function and calling it from the test.
 
 ```js
 function validateAuth(response) {
