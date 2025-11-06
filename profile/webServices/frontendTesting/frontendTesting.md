@@ -149,7 +149,7 @@ Running 1 test using 1 worker
 
 ## Complete test
 
-Now that we are confident that we can use Playwright to run a test, let's write a more complex one that goes through the whole register/logout/login flow.
+Now that we are confident that we can use Playwright to run a test, let's write a more complex one that goes through the whole register/logout/login flow.  ***Important: don't forget to start your backend running (by running `node service.js` in the `service` directory) so that the endpoint calls from the frontend will work; otherwise, your tests will fail, even if your frontend is perfect.
 
 ```js
 import { test, expect } from '@playwright/test';
