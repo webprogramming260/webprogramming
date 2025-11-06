@@ -136,7 +136,7 @@ test('has title', async ({ page }) => {
 });
 ```
 
-This test navigates to the Login website and checks to make sure the resulting page has the title `Login???`. You can run the tests from your project directory with the following console command.
+This test navigates to the Login website and checks to make sure the resulting page has the title `Login`. You can run the tests from your project directory with the following console command.
 
 ```sh
 npm test
