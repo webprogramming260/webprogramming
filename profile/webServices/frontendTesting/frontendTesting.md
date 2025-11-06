@@ -136,7 +136,7 @@ test('has title', async ({ page }) => {
 });
 ```
 
-This test navigates to the Login website and checks to make sure the resulting page has the title `Playwright`. You can run the tests from your project directory with the following console command.
+This test navigates to the Login website and checks to make sure the resulting page has the title `Login???`. You can run the tests from your project directory with the following console command.
 
 ```sh
 npm test
@@ -145,7 +145,7 @@ Running 1 test using 1 worker
   1 passed (1.4s)
 ```
 
-**Congratulations!** You have just ran your first Playwright test. You can validate that the test is working by changing the expected text to 'Bad' instead of 'Login' and then running the test again. This time it should fail.
+**Congratulations!** You have just run your first Playwright test. You can validate that the test is working by changing the expected text to 'Bad' instead of 'Login' and then running the test again. This time it should fail.
 
 ## Complete test
 
