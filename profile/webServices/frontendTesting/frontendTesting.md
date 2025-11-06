@@ -125,7 +125,7 @@ The easiest way to run your first Playwright test is to start with the examples 
 
 Playwright will run any test found in the testing directory as defined by the `testDir` property in the `playwright.config.ts` file. You chose `tests` to be the testing directory during the installation. Playwright follows the common convention of including `.spec.` in test names. You can also use `.test.` if you want to be consistent with your Jest tests.
 
-After review the provided tests, replace the tests found in `tests/example.spec.ts` with the following:
+After reviewing the provided tests, replace the tests found in `tests/example.spec.ts` with the following:
 
 ```js
 import { test, expect } from '@playwright/test';
