@@ -74,7 +74,7 @@ Here are a few examples where companies failed to properly prevent attacks to th
 
 There are a few common exploitation techniques that you should be aware of. These include the following.
 
-- **Injection**: When an application interacts with a database on the backend, a programmer will often take user input and concatenate it directly into a search query. This allows a hacker can use a specially crafted query to make the database reveal hidden information or even delete the database.
+- **Injection**: When an application interacts with a database on the backend, a programmer will often take user input and concatenate it directly into a search query. This allows a hacker to use a specially crafted query to make the database reveal hidden information or even delete the database.
 
 - **Cross-Site Scripting (XSS)**: A category of attacks where an attacker can make malicious code execute on a different user's browser. If successful, an attacker can turn a website that a user trusts, into one that can steal passwords and hijack a user's account.
 
