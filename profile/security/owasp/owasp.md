@@ -122,7 +122,7 @@ To address all issues (including breaking changes), run:
 Run `npm audit` for details.
 ```
 
-The application developer is warned that the components are vulnerable, but when faced choice of taking the time to update packages, and potentially break the application, or meeting deliverable deadlines, the developer is tempted to ignore the warning and continue without addressing the possible problem.
+The application developer is warned that the components are vulnerable, but when faced with the choice of taking the time to update packages, and potentially break the application, or meeting deliverable deadlines, the developer is tempted to ignore the warning and continue without addressing the possible problem.
 
 Mitigations include:
 
