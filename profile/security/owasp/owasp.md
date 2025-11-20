@@ -178,7 +178,7 @@ Mitigations include:
 
 📖 **Deeper dive reading**: [Snyk Learn SSRF](https://learn.snyk.io/lessons/ssrf-server-side-request-forgery/javascript/)
 
-This category of attack causes the application service to make unintended internal requests, that utilized the service's elevated privileges, in order to expose internal data or services.
+This category of attack causes the application service to make unintended internal requests that utilize the service's elevated privileges in order to expose internal data or services.
 
 For example, if your service exposed an endpoint that let a user retrieve an external profile image based upon a supplied URL, an attacker could change the URL to point to a location that is normally only available to the service internally.
 
