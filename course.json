@@ -1,7 +1,6 @@
 {
   "title": "Web Programming",
   "schedule": "731197a80f934bfa9584b1db89093b76",
-  "syllabus": "177b7fd474ce43e1afe6bb52a7b0de21",
   "modules": [
     {
       "title": "Course info",
@@ -12,13 +11,8 @@
           "id": "4289c819752944a59ac3792a58f2b0a2"
         },
         {
-          "title": "Syllabus",
-          "path": "https://raw.githubusercontent.com/webprogramming260/.github/main/syllabus/syllabus.md",
-          "id": "177b7fd474ce43e1afe6bb52a7b0de21"
-        },
-        {
           "title": "Schedule",
-          "path": "https://raw.githubusercontent.com/webprogramming260/.github/main/schedule/schedule.md",
+          "path": "https://raw.githubusercontent.com/webprogramming260/.github/main/profile/schedule/schedule.md",
           "id": "731197a80f934bfa9584b1db89093b76"
         }
       ]
