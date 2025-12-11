@@ -15,7 +15,7 @@ Welcome to Web Programming 260. By the end of this instruction you will:
 The course hosts all the repositories for the instruction and assignments. This includes interacting with [CodePen](https://codepen.io) assignments, building a demonstration application, and creating and hosting your own startup web application.
 
 - 📅 [Schedule](instruction/schedule/schedule.md)
-- 📘 [Instruction](instruction/instructionTopics.md)
+- 📘 [Instruction](instruction/modules.md)
 - 📱 [Simon](instruction/essentials/simon/simon.md)
 - 🚀 [Startup](instruction/essentials/startup/startup.md)
 - 💯 Assignments, quizzes, and tests are submitted through Canvas
