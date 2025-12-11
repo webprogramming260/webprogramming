@@ -163,7 +163,7 @@ The course covers a full stack of technologies including HTML, CSS, JavaScript, 
 - [Simon PWA](simon/simonPwa/simonPwa.md)
 - ☑ [Wrap up](webFrameworks/wrapUp/wrapUp.md)
 
-## Legend
+### Legend
 
 | Icon | Meaning                                             |
 | :--: | --------------------------------------------------- |
