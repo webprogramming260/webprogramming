@@ -56,6 +56,7 @@ The course covers a full stack of technologies including HTML, CSS, JavaScript, 
 - [Grid](css/grid/grid.md)
 - ☑ [Flex](css/flexbox/flexbox.md)
 - ☑ [CSS frameworks](css/frameworks/frameworks.md)
+- [Tailwind](css/tailwind/tailwind.md)
 - [Simon CSS](simon/simonCss/simonCss.md)
 - 🚀 [Startup CSS](css/startupCss/startupCss.md)
 
