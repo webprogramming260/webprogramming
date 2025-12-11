@@ -489,8 +489,8 @@ function App() {
     <BrowserRouter>
       <main>
         <Routes>
-          <Route path='/' element={<Login />} exact />
-          <Route path='/profile' element={<Profile />} />
+          <Route path="/" element={<Login />} exact />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
     </BrowserRouter>
@@ -533,16 +533,16 @@ function Login() {
       <h1>Login</h1>
       <div>
         <label>Email:</label>
-        <input type='text' onChange={(e) => setEmail(e.target.value)} required />
+        <input type="text" onChange={(e) => setEmail(e.target.value)} required />
       </div>
       <div>
         <label>Password:</label>
-        <input type='password' onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" onChange={(e) => setPassword(e.target.value)} required />
       </div>
-      <button type='submit' disabled={!(email && password)} onClick={handleLogin}>
+      <button type="submit" disabled={!(email && password)} onClick={handleLogin}>
         Login
       </button>
-      <button type='button' disabled={!(email && password)} onClick={handleRegister}>
+      <button type="button" disabled={!(email && password)} onClick={handleRegister}>
         Register
       </button>
     </div>
@@ -576,7 +576,7 @@ function Profile() {
     <div>
       <h1>Profile</h1>
       <div>Logged in as: {userInfo.email}</div>
-      <button type='button' onClick={handleLogout}>
+      <button type="button" onClick={handleLogout}>
         Logout
       </button>
     </div>
@@ -589,7 +589,7 @@ function Profile() {
 You can find this complete example [here](exampleCode/login). To run it yourself, take the following steps:
 
 1. Clone the [course instruction repository](https://github.com/webprogramming260/.github) if you haven't already.
-1. Navigate to the `profile/webServices/login/exampleCode/login` directory in your your command console window.
+1. Navigate to the `instruction/webServices/login/exampleCode/login` directory in your your command console window.
 1. Run `npm install` from a console window in the `exampleCode/login` directory.
 1. Run `npm install` from a console window in the `exampleCode/login/service` subdirectory.
 1. Open up the login application in VS Code and review what it is doing.

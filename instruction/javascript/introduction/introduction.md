@@ -83,4 +83,4 @@ Before we go any further we need a way for you to write and run JavaScript yours
 
 ## Examples
 
-You can see examples of all the JavaScript we will talk about by using this [HTML page](https://htmlpreview.github.io/?https://github.com/webprogramming260/.github/blob/main/profile/javascript/introduction/jsDemo.html).
+You can see examples of all the JavaScript we will talk about by using this [HTML page](https://htmlpreview.github.io/?https://github.com/webprogramming260/webprogramming/blob/main/instruction/javascript/introduction/jsDemo.html).

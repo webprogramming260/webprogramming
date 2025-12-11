@@ -1,6 +1,8 @@
+![byu](byuLogo.png)
+
 # BYU **Web Programming** `cs260`
 
-![cover](profile/webprogrammingcover.jpg)
+![cover](instruction/webprogrammingcover.jpg)
 
 Welcome to Web Programming 260. By the end of this instruction you will:
 
@@ -12,17 +14,17 @@ Welcome to Web Programming 260. By the end of this instruction you will:
 
 The course hosts all the repositories for the instruction and assignments. This includes interacting with [CodePen](https://codepen.io) assignments, building a demonstration application, and creating and hosting your own startup web application.
 
-- 📅 [Schedule](profile/schedule/schedule.md)
-- 📘 [Instruction](profile/instructionTopics.md)
-- 📱 [Simon](profile/essentials/simon/simon.md)
-- 🚀 [Startup](profile/essentials/startup/startup.md)
+- 📅 [Schedule](instruction/schedule/schedule.md)
+- 📘 [Instruction](instruction/instructionTopics.md)
+- 📱 [Simon](instruction/essentials/simon/simon.md)
+- 🚀 [Startup](instruction/essentials/startup/startup.md)
 - 💯 Assignments, quizzes, and tests are submitted through Canvas
 
 # Technologies
 
 The course covers a full stack of web programming technologies and topics.
 
-![Technologies](profile/technologies.png)
+![Technologies](instruction/technologies.png)
 
 - Command console
 - HTML
