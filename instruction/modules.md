@@ -2,7 +2,11 @@
 
 The course covers a full stack of technologies including HTML, CSS, JavaScript, HTTP, DNS, web servers, services, security, and web frameworks. It is expected that you will start at the top of the list and work your way down. Not taking the time to fully grok the content will significantly decrease your mastery of the course and increase the time it takes for you to build your startup deliverables.
 
-[📅 Course schedule](schedule/schedule.md)
+## Course info
+
+- [📅 Schedule](schedule/schedule.md)
+- [Syllabus](/syllabus/syllabus.md)
+- [Instruction topics](modules.md)
 
 ## Development essentials
 
