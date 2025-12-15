@@ -7,6 +7,7 @@ The course covers a full stack of technologies including HTML, CSS, JavaScript, 
 - [📅 Schedule](../schedule/schedule.md)
 - [Syllabus](syllabus/syllabus.md)
 - [Instruction topics](modules.md)
+- [Late policy](essentials/latePolicy/latePolicy.md)
 
 ## Development essentials
 
