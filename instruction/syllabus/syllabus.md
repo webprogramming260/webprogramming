@@ -50,6 +50,8 @@ You are given 2 late days at the start of the course. You can gain as many as 2 
 
 Any assignments not submitted by the last day of class will receive zero points.
 
+See the [late policy](../essentials/latePolicy/latePolicy.md) instruction for a full description of the policy.
+
 ## Commit Policy
 
 It is critical that you develop good software engineering practices. Your GitHub commit history should demonstrate every step of your work in this class. If your history does not prove your ownership of the work you may be given a failing grade for the class.
