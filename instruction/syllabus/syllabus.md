@@ -30,19 +30,19 @@ This course covers Web Programming at an introductory level. You must complete C
 1. Infrastructure: Deploy applications and manage code.
 1. Security and Design: Utilize production web application design and security practices.
 
-## Computing Environment
-
-You will need a laptop computer to complete the work for this course. If your laptop is very old, you should either buy a new one or rent one from BYU.
-
 ## Course Materials
 
 You do not need to purchase any textbooks for this class. All instruction materials are accessible from the course GitHub accountLinks to an external site..
 
 To host your web applications, you are required to rent a web server and purchase a domain name from Amazon Web Services (AWS). The cost for this is estimated to be between $20 and $60 depending on your use of AWS and how often you have your services running.
 
-##  Assignments, Grading and Course Policies
+##  Technology Needs
 
-### **Late Policies**
+You will need a reasonably current computer to complete the programming projects for this course. A minimum of 8 gigabytes of RAM is recommended, as well several gigabytes of free disk space.
+
+If you do not have a computer of your own, you can rent one from the [BYU Office of Information Technology (OIT)](https://itsurplus.byu.edu/rentals).
+
+## Late Policy
 
 Your success in this course is primarily based upon timely execution. Staying on track results in an enjoyable, positive experience. Once you get behind in the course it is extremely difficult to catch up.
 
@@ -50,21 +50,30 @@ You are given 2 late days at the start of the course. You can gain as many as 2 
 
 Any assignments not submitted by the last day of class will receive zero points.
 
-### **Grade Appeals**
+## Commit Policy
 
-The TA's and the instructor are imperfect and may make a mistake when grading assignments and exams. We want you to receive the grade you deserve, but some of this responsibility lies with you. You are welcome to appeal any grades you receive, but grade appeals for any assignments or exams must be requested within seven calendar days of the time the score for the item being appealed is posted. You may not receive an email or an in-class announcement about when scores are posted, so you should check regularly.
+It is critical that you develop good software engineering practices. Your GitHub commit history should demonstrate every step of your work in this class. If your history does not prove your ownership of the work you may be given a failing grade for the class.
 
-We have found that some students are satisfied with their grades until they find at the end of the semester that a few more points would make a difference in the grade they receive. Then a "fishing for points" expedition begins. We are unable to accommodate this, so if you are unsatisfied with a grade, appeal it early. Grade appeals made at the end of the semester on items that were graded more than a week previously will not be considered.
+## TAs
 
-If appealing a grade, start by discussing the item(s) in question with a TA during office hours (preferably the TA who did the original grading). Be prepared to give a detailed explanation of why you think the grade is incorrect. If you are not able to come to a satisfactory conclusion with the TA, contact the instructor. Keep in mind that although rare, re-grades can, and sometimes do, result in a lower score.
+TAs are here to help you complete the projects and answer your questions. However, we are often given tasks by your instructor that may be time-sensitive. If you come into the TA lab, do not be shy in interrupting us to ask for help. However, please understand if we ask you to wait for a moment if we are trying to complete another task.
 
-### **Doing Your Own Work**
+Also, please understand that even though the TAs have taken the class and passed with very high marks they do not know everything, nor can they explain every bug. We will try to help you, but if we do not understand the bug, we might refer you to another TA or the instructor. We might even offer suggestions (guesses) on what we would do if we ran into that bug.
 
-This class is about individual competence, not team work. Therefore, all assignments you turn in must be your own work. You are encouraged to study with other students, and you may discuss concepts, ideas, and general approaches with others (e.g. at a whiteboard), but when it comes time to create your actual design documentation or source code, you must work alone. You may not share electronic files or hard-copy printouts containing designs or source code with other students, either as giver or receiver. You may not work in close synchronization with other students in a side-by-side fashion. **Violations of this policy will result in all involved students failing the course and the possibility of further action at the university level.**
+In summary, TAs are here to help but not to hold your hand and take away the learning experience of programming and debugging. But when you are stuck, do not hesitate to come in and ask for help.
 
-Be aware that we use plagiarism detection software to ensure that the source code you submit was not derived from code written by other current or past CS 240 students. Specifically, it is not appropriate to search the Web for solutions published by other students, or to otherwise obtain source code from other students. If you do this, you are likely to get caught, which will result in (at least) failing the class. Of course, we know that most of you would not do this, but sometimes people make mistakes when the pressure is high.
+## **Doing Your Own Work**
 
-You may not use AI systems such as ChatGPT to write your code. Such systems merely repeat content they found on the Web, and, in effect, are just an indirect way of copying other students' solutions from the Web. This is not acceptable. **If you use AI to write your code, it is highly likely that your code will be flagged by our plagiarism detection system**. The code it writes for you will be very similar to code it writes for other students, and that code will be similar to student solutions found on the Web.
+All deliverables must be your own work. You are encouraged to study with other students, discuss concepts, ideas, and general approaches. However, you may not submit someone else's solution as your deliverable or provide your solution to other students. You may use generative AI as an assistant when developing your deliverables.
+
+In order to demonstrate original authorship, you must:
+
+1. Have a clear and detailed Git commit history that demonstrates the creative progression of the deliverable
+1. Be able to demonstrate a complete understanding of everything that you submit
+1. Be able to reproduce the submission without external assistance in the presence of a TA or instructor
+1. If you cannot do this then it will be considered as if you had submitted someone else's work.
+
+**Violations of this policy will result in all involved students failing the course and the possibility of further action at the university level.**
 
 ##   Grade Scheme
 
