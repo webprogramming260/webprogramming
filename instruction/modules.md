@@ -8,6 +8,7 @@ The course covers a full stack of technologies including HTML, CSS, JavaScript, 
 - [Syllabus](syllabus/syllabus.md)
 - [Instruction topics](modules.md)
 - [Late policy](essentials/latePolicy/latePolicy.md)
+- [Asking questions](essentials/askingQuestions/askingQuestions.md)
 
 ## Development essentials
 
@@ -20,7 +21,6 @@ The course covers a full stack of technologies including HTML, CSS, JavaScript, 
 - [Git](essentials/git/git.md)
 - ☑ [GitHub](essentials/gitHub/gitHub.md)
 - 🚀 [Startup Specification](essentials/startupSpec/startupSpec.md)
-- [Asking questions](essentials/askingQuestions/askingQuestions.md)
 - ☑ [Discord](essentials/discord/discord.md)
 - ☑ [The Console](essentials/console/console.md)
 - [Editors](essentials/editors/editors.md)
