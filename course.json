@@ -1,0 +1,696 @@
+{
+  "title": "Web Programming",
+  "modules": [
+    {
+      "title": "Course info",
+      "id": "e612e38a-e4f0-4ffb-806b-7a4e729d6c2f",
+      "topics": [
+        {
+          "title": "Home",
+          "path": "README.md",
+          "id": "6d489420-b320-4bc9-b43d-5c041a08b6bf"
+        },
+        {
+          "title": "📅 Schedule",
+          "path": "schedule/schedule.md",
+          "id": "2680f434-f121-46bd-a858-5fb6d656a3df"
+        },
+        {
+          "title": "Syllabus",
+          "path": "instruction/syllabus/syllabus.md",
+          "id": "869b2c88-d937-43af-8beb-6c06751270ae"
+        },
+        {
+          "title": "Instruction topics",
+          "path": "instruction/modules.md",
+          "id": "73e1af7c-4c2d-4d01-a03c-74dcf2d771bb"
+        }
+      ]
+    },
+    {
+      "title": "Development essentials",
+      "id": "a4ad7d85-6c44-43a7-8914-d3a3b3998a74",
+      "topics": [
+        {
+          "title": "☑ Course Introduction",
+          "path": "instruction/essentials/introduction/introduction.md",
+          "id": "bdfd6d6e-9f39-4dc2-8494-4678a931a804"
+        },
+        {
+          "title": "Why am I here?",
+          "path": "instruction/essentials/whyAmIHere/whyAmIHere.md",
+          "id": "4fb4310e-9abc-4187-a816-084e3f03ce71"
+        },
+        {
+          "title": "☑ AWS account",
+          "path": "instruction/essentials/awsAccount/awsAccount.md",
+          "id": "9443b922-92cc-4ca4-8204-c732ee196f98"
+        },
+        {
+          "title": "Startup application",
+          "path": "instruction/essentials/startup/startup.md",
+          "id": "2f4948ae-f7b2-4823-956c-cc486de7621a"
+        },
+        {
+          "title": "☑ Demo day submission",
+          "path": "instruction/webFrameworks/demoDay/demoDay.md",
+          "id": "0477a3ad-5fc1-4fa4-947e-1c7b5af53d01"
+        },
+        {
+          "title": "Let's play Simon",
+          "path": "instruction/essentials/simon/simon.md",
+          "id": "af09ce7e-d234-422c-97ab-4a92d7508045"
+        },
+        {
+          "title": "Git",
+          "path": "instruction/essentials/git/git.md",
+          "id": "c43e9ec4-00fa-4242-ad51-e46fc4ba1a8a"
+        },
+        {
+          "title": "☑ GitHub",
+          "path": "instruction/essentials/gitHub/gitHub.md",
+          "id": "b2748609-0b17-44f4-8ae5-d2bea903e14f"
+        },
+        {
+          "title": "🚀 Startup Specification",
+          "path": "instruction/essentials/startupSpec/startupSpec.md",
+          "id": "a5ec7378-0c85-4f13-9b78-4e6506b2b508"
+        },
+        {
+          "title": "Asking questions",
+          "path": "instruction/essentials/askingQuestions/askingQuestions.md",
+          "id": "0a6bc3dd-3b3c-4459-b092-f121bb06fef8"
+        },
+        {
+          "title": "☑ Discord",
+          "path": "instruction/essentials/discord/discord.md",
+          "id": "01d74dc2-806d-47a6-84f3-55ad19535964"
+        },
+        {
+          "title": "☑ The Console",
+          "path": "instruction/essentials/console/console.md",
+          "id": "990a0df4-77da-44ec-b7e8-667b6dac0ab0"
+        },
+        {
+          "title": "Editors",
+          "path": "instruction/essentials/editors/editors.md",
+          "id": "2265975f-c072-41dd-80c4-16e2f959a812"
+        },
+        {
+          "title": "History of the web",
+          "path": "instruction/essentials/history/history.md",
+          "id": "77578030-bbcf-4267-a3fb-437e115585c9"
+        },
+        {
+          "title": "Demonstration",
+          "path": "instruction/essentials/demo/demo.md",
+          "id": "66dd3ef0-9271-4385-8214-0452d25aee56"
+        }
+      ]
+    },
+    {
+      "title": "Web server setup",
+      "id": "2473b800-5bc0-49aa-ba1a-e6887e433de4",
+      "topics": [
+        {
+          "title": "Technology stack",
+          "path": "instruction/essentials/techStack/techStack.md",
+          "id": "61d3e99a-03f5-4365-9713-fb170d7b1db7"
+        },
+        {
+          "title": "The internet",
+          "path": "instruction/webServers/internet/internet.md",
+          "id": "d8f549bd-423b-40e8-b503-f0c50f93579e"
+        },
+        {
+          "title": "☑ Amazon Web Services - EC2",
+          "path": "instruction/webServers/amazonWebServicesEc2/amazonWebServicesEc2.md",
+          "id": "bf3c5698-c3e7-4978-89c1-e590e642987b"
+        },
+        {
+          "title": "Domain names",
+          "path": "instruction/webServers/domainNames/domainNames.md",
+          "id": "364262ab-5fab-46df-ae7e-331ce8a85bd3"
+        },
+        {
+          "title": "☑ Amazon Web Services - Route 53",
+          "path": "instruction/webServers/amazonWebServicesRoute53/amazonWebServicesRoute53.md",
+          "id": "3a1230ce-833a-4c23-94a4-faaf2b20c70d"
+        },
+        {
+          "title": "Caddy",
+          "path": "instruction/webServers/caddy/caddy.md",
+          "id": "2923c003-340a-4a6f-ae97-01cb3f10cc87"
+        },
+        {
+          "title": "☑ HTTPS, TLS, and certificates",
+          "path": "instruction/webServers/https/https.md",
+          "id": "6cb78336-c521-4daa-99e1-85355a419bad"
+        },
+        {
+          "title": "🚀 Startup AWS",
+          "path": "instruction/webServers/startupAWS/startupAWS.md",
+          "id": "14d20891-6b0a-4f4a-827f-6a88cdaa5174"
+        }
+      ]
+    },
+    {
+      "title": "HTML",
+      "id": "069f271f-71bd-4c5a-a64a-6736582d2dab",
+      "topics": [
+        {
+          "title": "☑ CodePen",
+          "path": "instruction/essentials/codePen/codepen.md",
+          "id": "c32515df-9013-46d9-8b82-3bbff0d0d63c"
+        },
+        {
+          "title": "HTML introduction",
+          "path": "instruction/html/introduction/introduction.md",
+          "id": "e1e417d3-f7c9-400a-8934-4b26cb9fed13"
+        },
+        {
+          "title": "☑ Structure",
+          "path": "instruction/html/structure/structure.md",
+          "id": "f4e4893b-6287-490d-ae10-70522e597b1c"
+        },
+        {
+          "title": "☑ Input",
+          "path": "instruction/html/input/input.md",
+          "id": "f082e590-2e2d-4b6d-a27e-9059848f29fb"
+        },
+        {
+          "title": "☑ Media",
+          "path": "instruction/html/media/media.md",
+          "id": "dfc0ccfe-c784-44b3-8bbc-454d612791dc"
+        },
+        {
+          "title": "Simon HTML",
+          "path": "instruction/simon/simonHtml/simonHtml.md",
+          "id": "91fa6f53-d63a-43b9-81c3-eedd55ffb658"
+        },
+        {
+          "title": "🚀 Startup HTML",
+          "path": "instruction/html/startupHtml/startupHtml.md",
+          "id": "4eaeec05-3dfc-4f9d-9c76-e2f64e1c4660"
+        }
+      ]
+    },
+    {
+      "title": "CSS",
+      "id": "76fa2f3b-2313-4a7a-80c1-bcff604a4f30",
+      "topics": [
+        {
+          "title": "CSS introduction",
+          "path": "instruction/css/introduction/introduction.md",
+          "id": "5af1172c-868c-404b-957f-5f6331d866f8"
+        },
+        {
+          "title": "Selectors",
+          "path": "instruction/css/selectors/selectors.md",
+          "id": "761f4a02-59b6-4d0f-b451-3e90ef9b81a7"
+        },
+        {
+          "title": "Declarations",
+          "path": "instruction/css/declarations/declarations.md",
+          "id": "84b312bf-92b1-484b-ae15-42f089a0a830"
+        },
+        {
+          "title": "Fonts",
+          "path": "instruction/css/fonts/fonts.md",
+          "id": "e9172db0-bc35-4d00-8110-6c2472c8474e"
+        },
+        {
+          "title": "Animation",
+          "path": "instruction/css/animation/animation.md",
+          "id": "4b8771bd-5a8e-427c-8f03-7f0c885a4949"
+        },
+        {
+          "title": "Debugging CSS",
+          "path": "instruction/css/debuggingCss/debuggingCss.md",
+          "id": "c6c5523b-4c18-4b8b-9546-3d1fafffd30b"
+        },
+        {
+          "title": "☑ CSS practice",
+          "path": "instruction/css/practice/practice.md",
+          "id": "46e34117-8cc4-4d7a-a9c3-8c68d094d548"
+        },
+        {
+          "title": "Responsive design",
+          "path": "instruction/css/responsive/responsive.md",
+          "id": "64d70146-7bf5-408b-9894-ac4ba8d5a086"
+        },
+        {
+          "title": "Grid",
+          "path": "instruction/css/grid/grid.md",
+          "id": "c841365f-6e97-473c-8129-f01299bd360f"
+        },
+        {
+          "title": "☑ Flex",
+          "path": "instruction/css/flexbox/flexbox.md",
+          "id": "e1c16ce4-84a5-4063-b55a-343a7bd87c55"
+        },
+        {
+          "title": "☑ CSS frameworks",
+          "path": "instruction/css/frameworks/frameworks.md",
+          "id": "475720b5-b11b-4f35-9167-568ab3573f3b"
+        },
+        {
+          "title": "Tailwind",
+          "path": "instruction/css/tailwind/tailwind.md",
+          "id": "ed787296-29dc-4b7e-accd-5a1f37a3c00d"
+        },
+        {
+          "title": "Simon CSS",
+          "path": "instruction/simon/simonCss/simonCss.md",
+          "id": "ddff42e2-8451-4467-b5b4-b05621dc92fb"
+        },
+        {
+          "title": "🚀 Startup CSS",
+          "path": "instruction/css/startupCss/startupCss.md",
+          "id": "78a0fce4-b3b7-47a4-8911-0623981967ce"
+        }
+      ]
+    },
+    {
+      "title": "JavaScript & Web frameworks",
+      "id": "1755aea3-f136-44d9-9fe1-541add9a7347",
+      "topics": [
+        {
+          "title": "JavaScript introduction",
+          "path": "instruction/javascript/introduction/introduction.md",
+          "id": "7111012f-1970-4d89-b2ec-36e652546367"
+        },
+        {
+          "title": "Adding JavaScript to HTML",
+          "path": "instruction/javascript/addingToHtml/addingToHtml.md",
+          "id": "3e64f91b-b12b-4d4a-a17e-8de4c435d5ca"
+        },
+        {
+          "title": "Node.js",
+          "path": "instruction/javascript/node/node.md",
+          "id": "2c8a5bb4-8b6e-424b-8bb0-9ddcef83b584"
+        },
+        {
+          "title": "Debugging JavaScript",
+          "path": "instruction/javascript/debuggingJavascript/debuggingJavascript.md",
+          "id": "ff7ff901-d07a-45b5-a579-079d0fd057fb"
+        },
+        {
+          "title": "Debugging Node.js",
+          "path": "instruction/javascript/debuggingNode/debuggingNode.md",
+          "id": "e52ce4e4-bb8b-4531-bceb-e89a3acafa07"
+        },
+        {
+          "title": "Web frameworks",
+          "path": "instruction/webFrameworks/introduction/introduction.md",
+          "id": "c63d9ddc-7c73-4a54-98e5-16060bd75222"
+        },
+        {
+          "title": "Toolchains",
+          "path": "instruction/webFrameworks/react/toolChains/toolChains.md",
+          "id": "06676ee0-c926-4c83-bca0-c44635fe9a0e"
+        },
+        {
+          "title": "☑ Vite",
+          "path": "instruction/webFrameworks/react/vite/vite.md",
+          "id": "d23372d6-12ae-45ec-83b9-1b3880b8592a"
+        },
+        {
+          "title": "React",
+          "path": "instruction/webFrameworks/react/introduction/introduction.md",
+          "id": "cbbecdb5-1311-4407-b4f0-16e3e319d4e2"
+        },
+        {
+          "title": "☑ Components",
+          "path": "instruction/webFrameworks/react/components/components.md",
+          "id": "0f370b75-bbc4-4411-bc49-5d386f3ec602"
+        },
+        {
+          "title": "☑ Router",
+          "path": "instruction/webFrameworks/react/router/router.md",
+          "id": "16e16d6f-e80f-4a7e-9aa9-1f31bca3a85c"
+        },
+        {
+          "title": "☑ Simon React P1: Routing",
+          "path": "instruction/simon/simonReact/simonReactP1.md",
+          "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91"
+        },
+        {
+          "title": "🚀 Startup React P1: Routing",
+          "path": "instruction/webFrameworks/startupReact/startupReactP1.md",
+          "id": "9960b760-57e3-4291-9b39-0649e08749bc"
+        },
+        {
+          "title": "JavaScript Console",
+          "path": "instruction/javascript/console/console.md",
+          "id": "80c286a7-e37b-4b44-a150-b1735321e167"
+        },
+        {
+          "title": "Functions",
+          "path": "instruction/javascript/functions/functions.md",
+          "id": "571279c9-040d-4160-a5ab-fa1065289fa5"
+        },
+        {
+          "title": "Arrow functions",
+          "path": "instruction/javascript/arrow/arrow.md",
+          "id": "ce5aad0c-106c-4a4a-8d5a-65b422960a57"
+        },
+        {
+          "title": "☑ Arrays",
+          "path": "instruction/javascript/array/array.md",
+          "id": "a91555b0-d483-4e8e-a471-863454ad1c71"
+        },
+        {
+          "title": "Objects and classes",
+          "path": "instruction/javascript/objectClasses/objectClasses.md",
+          "id": "c0e6f41d-fea1-4aed-874c-8ad9feb252a7"
+        },
+        {
+          "title": "Destructuring",
+          "path": "instruction/javascript/destructuring/destructuring.md",
+          "id": "10a69d01-5357-47bc-8cc6-81cffd775e32"
+        },
+        {
+          "title": "Time and interval",
+          "path": "instruction/javascript/timeoutAndInterval/timeoutAndInterval.md",
+          "id": "6e41aac2-2b85-41e2-834a-09b997a7f716"
+        },
+        {
+          "title": "Hooks",
+          "path": "instruction/webFrameworks/react/hooks/hooks.md",
+          "id": "e4a6edb4-89b3-4b7e-b1b2-f30d04a6225f"
+        },
+        {
+          "title": "☑ Reactivity",
+          "path": "instruction/webFrameworks/react/reactivity/reactivity.md",
+          "id": "6978f44c-02d4-46e0-a404-bb4a59ee09de"
+        },
+        {
+          "title": "JSON",
+          "path": "instruction/javascript/json/json.md",
+          "id": "41d6fdb8-9bbd-4c95-a121-8c0b2d21390b"
+        },
+        {
+          "title": "LocalStorage",
+          "path": "instruction/javascript/localStorage/localStorage.md",
+          "id": "8505567a-1e32-42f9-90ab-9480a6ea15e1"
+        },
+        {
+          "title": "Simon React P2: Reactivity",
+          "path": "instruction/simon/simonReact/simonReactP2.md",
+          "id": "740eb26d-0189-4077-88fe-b43b7043fe5e"
+        },
+        {
+          "title": "🚀 Startup React P2: Reactivity",
+          "path": "instruction/webFrameworks/startupReact/startupReactP2.md",
+          "id": "65816624-6bfe-4324-80f4-4b3c8042caae"
+        },
+        {
+          "title": "☑ Promises",
+          "path": "instruction/javascript/promises/promises.md",
+          "id": "bdbe34c8-d2bf-44dd-aedb-ffd512fe3f56"
+        },
+        {
+          "title": "☑ Async/await",
+          "path": "instruction/javascript/asyncAwait/asyncAwait.md",
+          "id": "6843c07d-eb3c-413d-9454-e233ca257d06"
+        },
+        {
+          "title": "String",
+          "path": "instruction/javascript/string/string.md",
+          "id": "2e2e41b0-4846-49cf-b60d-47a17b120cb0"
+        },
+        {
+          "title": "Types, operators, conditionals, and loops",
+          "path": "instruction/javascript/typeConstruct/typeConstruct.md",
+          "id": "7b7cf670-07ab-417b-a95d-182d8f75ae91"
+        },
+        {
+          "title": "☑ Document object model (DOM)",
+          "path": "instruction/javascript/dom/dom.md",
+          "id": "6cc1ede2-3f8e-477d-95da-ad301c57ea0e"
+        },
+        {
+          "title": "Regular expressions",
+          "path": "instruction/javascript/regularExpressions/regularExpressions.md",
+          "id": "807979e6-2b06-459c-b37c-435a8d45332b"
+        },
+        {
+          "title": "Rest and spread",
+          "path": "instruction/javascript/restSpread/restSpread.md",
+          "id": "9dee7c6b-b573-45e0-968f-4fa05e45e184"
+        },
+        {
+          "title": "Exceptions",
+          "path": "instruction/javascript/exceptions/exceptions.md",
+          "id": "11bf9a98-e9a3-4f6d-bd0a-64041573579f"
+        },
+        {
+          "title": "Scope",
+          "path": "instruction/javascript/scope/scope.md",
+          "id": "490670ff-c7d1-4ecd-9b12-80005faeca85"
+        },
+        {
+          "title": "☑ Tic-tac-toe tutorial",
+          "path": "instruction/webFrameworks/react/ticTacToe/ticTacToe.md",
+          "id": "9c37f8f7-1089-4a35-be59-ec1952e6dd01"
+        }
+      ]
+    },
+    {
+      "title": "HTTP service",
+      "id": "704e9a12-811a-4043-b685-7986ee089846",
+      "topics": [
+        {
+          "title": "Web servers",
+          "path": "instruction/webServers/webServers/webServers.md",
+          "id": "6c296f2f-b2cc-4f7c-a1b9-0eb651e79a6a"
+        },
+        {
+          "title": "Web Services Introduction",
+          "path": "instruction/webServices/introduction/introduction.md",
+          "id": "47bb3426-96d8-4aad-a7f4-327e38fe817a"
+        },
+        {
+          "title": "URL",
+          "path": "instruction/webServices/url/url.md",
+          "id": "1f896156-ffc2-42a0-9ee4-327e5bc47734"
+        },
+        {
+          "title": "Ports",
+          "path": "instruction/webServices/ports/ports.md",
+          "id": "606f0e47-ffdb-4b14-8613-e7bf8d409036"
+        },
+        {
+          "title": "HTTP",
+          "path": "instruction/webServices/http/http.md",
+          "id": "0a8ac682-219d-424a-b4ce-9bf8fa848614"
+        },
+        {
+          "title": "☑ Fetch",
+          "path": "instruction/webServices/fetch/fetch.md",
+          "id": "f0f35755-df2a-46e9-9bb3-17b1e419ef6a"
+        },
+        {
+          "title": "Service design",
+          "path": "instruction/webServices/design/design.md",
+          "id": "09b5987b-27f6-4a51-a906-9cf71fa0085c"
+        },
+        {
+          "title": "Node web service",
+          "path": "instruction/webServices/nodeWebService/nodeWebService.md",
+          "id": "3c8e0f2b-b3a1-448e-9969-57b27d0b1839"
+        },
+        {
+          "title": "☑ Express",
+          "path": "instruction/webServices/express/express.md",
+          "id": "736b1203-4b6d-4053-a6da-578ee6f54598"
+        },
+        {
+          "title": "Modules",
+          "path": "instruction/javascript/modules/modules.md",
+          "id": "d61d28ac-e970-4ea2-a2bd-3a07a12b539f"
+        },
+        {
+          "title": "Service daemons - PM2",
+          "path": "instruction/webServices/pm2/pm2.md",
+          "id": "b8823c62-825f-4302-b468-de5ec7b454bb"
+        },
+        {
+          "title": "Troubleshoot 502",
+          "path": "instruction/webServices/troubleshoot502/troubleshoot502.md",
+          "id": "4a791104-02b9-484b-a599-c97b466d352e"
+        },
+        {
+          "title": "SOP and CORS",
+          "path": "instruction/webServices/cors/cors.md",
+          "id": "735d935d-2217-4097-9f07-7f989002c794"
+        },
+        {
+          "title": "Authorization services",
+          "path": "instruction/webServices/authorizationServices/authorizationServices.md",
+          "id": "ea403856-8bc0-402f-9f53-c982a86a4163"
+        },
+        {
+          "title": "Account creation and login",
+          "path": "instruction/webServices/login/login.md",
+          "id": "39a40701-dabc-4a51-ad0f-c539ae22ffe5"
+        },
+        {
+          "title": "Simon service",
+          "path": "instruction/simon/simonService/simonService.md",
+          "id": "6b51e9ad-0bde-47b4-9c1d-61d5f88492d1"
+        },
+        {
+          "title": "🚀 Startup Service",
+          "path": "instruction/webServices/startupService/startupService.md",
+          "id": "b0ddeea9-629d-402f-a1cb-f8b02a1622e5"
+        }
+      ]
+    },
+    {
+      "title": "Data and authentication services",
+      "id": "94f7a160-0232-4f4b-bad9-af995c7e153a",
+      "topics": [
+        {
+          "title": "Deployment",
+          "path": "instruction/essentials/deployment/deployment.md",
+          "id": "1bbf412f-f1c1-4e96-915a-c0200ad3a146"
+        },
+        {
+          "title": "Storage services",
+          "path": "instruction/webServices/storageServices/storageServices.md",
+          "id": "c7087398-83b3-4790-8adf-91358621afbd"
+        },
+        {
+          "title": "Uploading files",
+          "path": "instruction/webServices/uploadingFiles/uploadingFiles.md",
+          "id": "141794e6-63c9-4110-affe-f37c560115c3"
+        },
+        {
+          "title": "☑ Data services",
+          "path": "instruction/webServices/dataServices/dataServices.md",
+          "id": "c9ba6df5-c222-40c6-90c2-288ae6d93a7f"
+        },
+        {
+          "title": "Simon DB",
+          "path": "instruction/simon/simonDb/simonDb.md",
+          "id": "f93cb773-ebab-4a47-8529-145767730d1d"
+        },
+        {
+          "title": "🚀 Startup DB",
+          "path": "instruction/webServices/startupDb/startupDb.md",
+          "id": "d7ee0985-d8a8-49b7-adbc-509c4d49ca16"
+        },
+        {
+          "title": "Backend testing",
+          "path": "instruction/webServices/backendTesting/backendTesting.md",
+          "id": "77b50f35-b134-4490-8867-f6dd6473688d"
+        },
+        {
+          "title": "Frontend testing",
+          "path": "instruction/webServices/frontendTesting/frontendTesting.md",
+          "id": "efc7dfb0-31a5-45cf-890e-03c985cf5986"
+        }
+      ]
+    },
+    {
+      "title": "WebSocket",
+      "id": "7ceecc2b-be23-4d1e-90a6-d697a8e0482f",
+      "topics": [
+        {
+          "title": "WebSocket",
+          "path": "instruction/webServices/webSocket/webSocket/webSocket.md",
+          "id": "c65955b8-1b9d-4f65-9f94-095c98aea6d9"
+        },
+        {
+          "title": "Debugging WebSocket",
+          "path": "instruction/webServices/webSocket/debugging/debugging.md",
+          "id": "12a6f7f0-978d-404a-bb91-02334146d441"
+        },
+        {
+          "title": "WebSocket chat",
+          "path": "instruction/webServices/webSocket/chat/chat.md",
+          "id": "b5b8b0aa-4a28-465b-8c37-55a48f8af456"
+        },
+        {
+          "title": "Simon WebSocket",
+          "path": "instruction/simon/simonWebSocket/simonWebSocket.md",
+          "id": "498a6c7c-fbd2-41e7-a184-cd1378a6d148"
+        },
+        {
+          "title": "🚀 Startup WebSocket",
+          "path": "instruction/webServices/startupWebSocket/startupWebSocket.md",
+          "id": "d643d1bf-8e94-4d28-88ae-720025a955db"
+        }
+      ]
+    },
+    {
+      "title": "Security",
+      "id": "a315130d-7d38-488c-a765-e02477fcc8a4",
+      "topics": [
+        {
+          "title": "Security",
+          "path": "instruction/security/overview/overview.md",
+          "id": "d23d70ff-e5d7-4275-8d9b-6088cfcaded3"
+        },
+        {
+          "title": "OWASP top 10",
+          "path": "instruction/security/owasp/owasp.md",
+          "id": "14dbf355-95cc-4ea8-aad9-36a6e4fc5d6a"
+        },
+        {
+          "title": "Security practice",
+          "path": "instruction/security/practice/practice.md",
+          "id": "309ee255-e217-4630-81b1-625ed8de9e67"
+        }
+      ]
+    },
+    {
+      "title": "Assorted topics",
+      "id": "26d22cc0-7588-48e1-9590-c2889abf56c5",
+      "topics": [
+        {
+          "title": "TypeScript",
+          "path": "instruction/webFrameworks/typeScript/typeScript.md",
+          "id": "858daf3b-9c04-4eea-9e92-7e4d9f2c1db1"
+        },
+        {
+          "title": "Performance monitoring",
+          "path": "instruction/webFrameworks/performanceMonitoring/performanceMonditoring.md",
+          "id": "ef66652f-5fe5-4f17-9385-b457418a56e9"
+        },
+        {
+          "title": "UX design",
+          "path": "instruction/uxdesign/uxdesign.md",
+          "id": "eab7deb6-14c4-4173-bfb8-2b3833a3c6bd"
+        },
+        {
+          "title": "Search Engine Optimization",
+          "path": "instruction/webFrameworks/seo/seo.md",
+          "id": "40622462-d284-4c1a-91d2-4b0224fabeba"
+        },
+        {
+          "title": "Device APIs",
+          "path": "instruction/webFrameworks/device/device.md",
+          "id": "1ae99e06-660c-4a67-a4b3-1c640bf265bb"
+        },
+        {
+          "title": "Progressive web applications",
+          "path": "instruction/webFrameworks/pwa/pwa.md",
+          "id": "f4a4638a-1f62-497f-b566-0ea3629ead96"
+        },
+        {
+          "title": "Simon PWA",
+          "path": "instruction/simon/simonPwa/simonPwa.md",
+          "id": "cd0cffae-c592-46b3-8701-bc6f27a6f306"
+        },
+        {
+          "title": "☑ Wrap up",
+          "path": "instruction/webFrameworks/wrapUp/wrapUp.md",
+          "id": "a6d8d499-7c81-431a-8dca-19b22f10dc79"
+        }
+      ]
+    }
+  ]
+}
