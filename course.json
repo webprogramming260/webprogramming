@@ -47,6 +47,11 @@
           "id": "9443b922-92cc-4ca4-8204-c732ee196f98"
         },
         {
+          "title": "Late policy",
+          "path": "instruction/essentials/latePolicy/latePolicy.md",
+          "id": "9dce60c0-267d-4397-8ad3-2a5aca3f1d98"
+        },
+        {
           "title": "Startup application",
           "path": "instruction/essentials/startup/startup.md",
           "id": "2f4948ae-f7b2-4823-956c-cc486de7621a"
