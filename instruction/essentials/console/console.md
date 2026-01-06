@@ -6,7 +6,7 @@ Before the creation of graphical user interfaces, all computing systems were sim
 
 Also known as the command line, shell, or terminal, the console window is an essential web development tool. The console provides access to the file system and allows for the execution of command line applications.
 
-There are many console applications that you can chose from. All operating systems come with a default console, but you will probably want to install one in order to get the best experience. Here is an example of [Warp](https://app.warp.dev/referral/28JW4E) running on a Mac.
+There are many console applications that you can choose from. All operating systems come with a default console, but you will probably want to install one in order to get the best experience. Here is an example of [Warp](https://app.warp.dev/referral/28JW4E) running on a Mac.
 
 ![Warp](warp.png)
 
@@ -18,7 +18,7 @@ In order for you to successfully use the console for web programming it must be 
 
 If you are using Microsoft Windows you can get a reasonable approximation of a POSIX compliant console by installing [Git Bash](https://git-scm.com/download/win). When installing, use all the default settings.
 
-Once it is installed, hit the Windows button on your keyboard, and type `Git Bash`. This should open a console window that looks something like the following. Make sure you look for the `Git Bash` icon so that you don't accidentally use an non-POSIX compatible console application.
+Once it is installed, hit the Windows button on your keyboard, and type `Git-Bash`. This should open a console window that looks something like the following. Make sure you look for the `Git Bash` icon so that you don't accidentally use an non-POSIX compatible console application.
 
 ![Git Bash](gitBash.jpg)
 
