@@ -67,12 +67,12 @@ Doing this will make this deliverable of your startup available from `https://st
 - **Prerequisite**: Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
 - **Prerequisite**: Enough Git commits to fully prove your ownership of your code. This usually means dozens of commits spread across multiple days of the deliverable development period. Failure to do this may result in the rejection of your submission.
 - Properly styled CSS
-  - 30% Header, footer, and main content body
-  - 20% Navigation elements
-  - 10% Responsive to window resizing
-  - 20% Application elements
-  - 10% Application text content
-  - 10% Application images
+  - 10% Visually appealing colors and layout. No overflowing elements.
+  - 20% Use of a CSS framework
+  - 20% All visual elements styled using CSS
+  - 30% Responsive to window resizing using flexbox and/or grid display
+  - 10% Use of a imported font
+  - 10% Use of different types of selectors including element, class, ID, and pseudo selectors
 
 ## Go celebrate
 
