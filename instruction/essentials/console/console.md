@@ -18,7 +18,7 @@ In order for you to successfully use the console for web programming it must be 
 
 If you are using Microsoft Windows you can get a reasonable approximation of a POSIX compliant console by installing [Git Bash](https://git-scm.com/download/win). When installing, use all the default settings.
 
-Once it is installed, hit the Windows button on your keyboard, and type `Git Bash`. This should open a console window that looks something like the following. Make sure you look for the `Git Bash` icon so that you don't accidentally use an non-POSIX compatible console application.
+Once it is installed, hit the Windows button on your keyboard, and type `Git-Bash`. This should open a console window that looks something like the following. Make sure you look for the `Git Bash` icon so that you don't accidentally use an non-POSIX compatible console application.
 
 ![Git Bash](gitBash.jpg)
 
