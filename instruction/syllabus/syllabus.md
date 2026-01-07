@@ -52,6 +52,10 @@ Any assignments not submitted by the last day of class will receive zero points.
 
 See the [late policy](../essentials/latePolicy/latePolicy.md) instruction for a full description of the policy.
 
+## Accommodations
+
+In order to receive accommodations beyond the existing late policy you must complete a [Request for Accommodation](https://forms.gle/8RsmDmUntnUC9tZW7) before the due date of the deliverable or exam. This applies for those who have university approved accommodations and for those who experience difficulties that are outside their control such as sickness, injury, or disaster.
+
 ## Commit Policy
 
 It is critical that you develop good software engineering practices. Your GitHub commit history should demonstrate every step of your work in this class. If your history does not prove your ownership of the work you may be given a failing grade for the class.
