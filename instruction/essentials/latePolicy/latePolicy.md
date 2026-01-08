@@ -30,4 +30,6 @@ You can view your available grace days on the `Grace Days` assignment in Canvas.
 
 ## Extenuating Circumstances and Accommodations
 
-Life happens, sometimes in ways we cannot foresee or prepare for. If you encounter an extenuating circumstance or require university accommodations during the semester, please contact the professor as soon as possible. University Accommodations require you to ask the Professor for extensions **before** the deadline.
+Life happens, sometimes in ways we cannot foresee or prepare for. If you encounter an extenuating circumstance or require university accommodations during the semester, please contact the professor as soon as possible. University Accommodations require you to ask the Instructor for extensions **before** the deadline.
+
+Refer to the [Syllabus](/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e/topic/869b2c88-d937-43af-8beb-6c06751270ae) for information on how to request extensions.
