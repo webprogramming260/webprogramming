@@ -19,7 +19,10 @@
         {
           "title": "📅 Schedule",
           "path": "schedule/schedule.md",
-          "id": "2680f434-f121-46bd-a858-5fb6d656a3df"
+          "id": "2680f434-f121-46bd-a858-5fb6d656a3df",
+          "externalRefs": {
+            "canvasPageId": 1510917
+          }
         },
         {
           "title": "Syllabus",
