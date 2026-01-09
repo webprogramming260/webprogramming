@@ -46,7 +46,7 @@ If you do not have a computer of your own, you can rent one from the [BYU Office
 
 Your success in this course is primarily based upon timely execution. Staying on track results in an enjoyable, positive experience. Once you get behind in the course it is extremely difficult to catch up.
 
-You are given 2 late days at the start of the course. You can gain as many as 2 additional late days for each day that you turn in a deliverable early. Late days are deducted for each day you turn in a deliverable late. If you have zero late days for a late assignment you will receive zero points for that assignment.
+You are given 2 late days at the start of the course. You can gain additional late days for each day, excluding Sunday, that you turn in a deliverable early. Late days are deducted for each day you turn in a deliverable late. If you have zero late days for a late assignment you will receive zero points for that assignment.
 
 Any assignments not submitted by the last day of class will receive zero points.
 
