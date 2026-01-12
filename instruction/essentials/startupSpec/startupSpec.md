@@ -44,7 +44,7 @@ The purpose of having you specify how you are going to use the technologies is s
 
 ### Example of representing all technologies
 
-Here is an theoretical example of what a voter application might supply in a specification.
+Here is a theoretical example of what a voter application might supply in a specification.
 
 - **HTML** - Uses correct HTML structure for application. Two HTML pages. One for login and one for voting. Hyperlinks to choice artifact.
 - **CSS** - Application styling that looks good on different screen sizes, uses good whitespace, color choice and contrast.
