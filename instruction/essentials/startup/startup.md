@@ -104,7 +104,7 @@ Create a music room where you can play piano and chat with your friends.
 
 ### Infinisweeper
 
-Play an infinite game of mine sweeper with all of your fiends.
+Play an infinite game of mine sweeper with all of your friends.
 
 ![Infinisweeper](startupInfinisweeper.gif)
 
