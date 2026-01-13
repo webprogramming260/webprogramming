@@ -22,13 +22,13 @@ There are lots of ways to get free usage of services. For example, as of when th
 
 When you create your account you provide your credit card. You will be charged for any services that you use. That means that you need to understand what the pricing is for each service. Many services offer free tier usage withing certain limits, or for the first 12 months of your AWS account. Beyond that you will be billed monthly for your usage.
 
-Make sure you monitor you billing by selecting the **Billing and cost management** interface from the user menu on the AWS browser console. This will give you detailed information about your current costs as well as a forecast for the future. An important role of a DevOps engineer is to understand the costs that result from the architectural choices that you make. This course is a good time to learn these skills before you start incurring bills in the thousands or millions of dollars.
+Make sure you monitor your billing by selecting the **Billing and cost management** interface from the user menu on the AWS browser console. This will give you detailed information about your current costs as well as a forecast for the future. An important role of a Web Developer is to understand the costs that result from the architectural choices that you make. This course is a good time to learn these skills before you start incurring bills in the thousands or millions of dollars.
 
 ![Cost management](costManagement.png)
 
 ## ☑ Assignment
 
-1. Create your AWS [account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+1. Create your AWS [account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
 2. Create a browser bookmark for your AWS browser console page that contains your account ID. That way you will be able to access your account quickly.
 
 _If your section of this course requires that you submit assignments for grading_: Submit in the Canvas assignment that you have completed this.
