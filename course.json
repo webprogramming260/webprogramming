@@ -200,6 +200,8 @@
           "title": "☑ Amazon Web Services - EC2",
           "path": "instruction/webServers/amazonWebServicesEc2/amazonWebServicesEc2.md",
           "id": "bf3c5698-c3e7-4978-89c1-e590e642987b",
+          "interactions": [],
+          "commit": "a9b8a159c63aee5b4c02950b9708a7ea6e4601f5",
           "externalRefs": {
             "canvasPageId": 1498007
           }
