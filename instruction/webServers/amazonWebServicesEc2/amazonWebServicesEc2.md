@@ -32,10 +32,6 @@ Assuming you already have an AWS account it is time to create your web server.
 
    This should display the information about the class AMI. If the AMI ID matches `ami-094c4a0be0b642a24` select it.
 
-<!---
-v7 AMI in case we need to fall back: ami-018f3a022e128a6b2
--->
-
    ![AWS class AMI](webServerAWS260Ami.jpg)
 
 1. Select t3.nano, t3.micro, or t2.micro for the instance type depending on how much power you want, how much you want to spend, or if you qualify for a free usage tier. If you qualify for a free usage tier then pick that that instance type, otherwise choose the cheapest one. You can always change this later if your server is running slow and needs more power.
@@ -149,7 +145,7 @@ The `t3.nano` instance size has just enough memory and CPU to meet the requireme
 
 ## ☑ Assignment
 
-1. Create an EC2 instance using the class AMI (`ami-018f3a022e128a6b2`).
+1. Create an EC2 instance using the class AMI (`ami-094c4a0be0b642a24`).
 1. Assign an elastic IP address (highly suggested).
 1. Test that you can see the default class web page from a browser using the server's public IP address.
 
