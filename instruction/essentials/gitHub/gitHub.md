@@ -14,7 +14,7 @@ GitHub was launched in 2008 by a small group of developers that wanted to make c
 
 We are going to use GitHub for three things.
 
-1. Hosting all of this instruction. Because it is hosted on GitHub you can generate pull requests when you see things that need improvement.
+1. Hosting all of this instruction. Because it is hosted on GitHub, you can generate pull requests when you see things that need improvement.
 1. Publicly hosting your project repositories. This creates a backup copy of your code, demonstrates your progress with your commit history, allows for reviews of your code, and makes it so you can collaborate with your peers. It also looks good on a resume!
 1. Keeping notes about what you have learned and things you want to remember.
 
@@ -118,7 +118,7 @@ In this course you will use the `readme.md` to record your progress on the start
 
 ## Forks
 
-A GitHub fork provides the ability to create a copy of a GitHub repository. Usually you [fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to get a copy of an open source code base that you want to experiment with, or contribute to. For example, the repository containing these instructions. A fork is similar to cloning a repository to your development environment, but it clones to GitHub instead. Then pull the fork down to your development environment to work on it. The fork maintains a link to the upstream (original) repository that allows you to easily pull down updates and merge them with your fork. A fork also allows you to create a pull request in order to push suggested changes to the original repository.
+A GitHub fork provides the ability to create a copy of a GitHub repository. Usually you [fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to get a copy of an open source code base that you want to experiment with or contribute to. For example, the repository containing these instructions. A fork is similar to cloning a repository to your development environment, but it clones to GitHub instead. Then pull the fork down to your development environment to work on it. The fork maintains a link to the upstream (original) repository that allows you to easily pull down updates and merge them with your fork. A fork also allows you to create a pull request in order to push suggested changes to the original repository.
 
 If you have never forked a repository before you should go find an open source project that interests you. For example, here is the [Dad Jokes API](https://github.com/DadJokes-io/Dad_Jokes_API). This simple web service provides an endpoint to get a joke. Consider forking this repository in order to experiment with how it works. Don't worry too much about what the code is doing. That will make more sense as the class goes on.
 
@@ -133,7 +133,7 @@ It would be awesome if we can increase the fork count for `Dad Jokes API` into t
 - [GitHub Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 - [GitHub pulls from forks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
 
-GitHub allows you to create a fork of any repository on GitHub. You just push the `Fork` button from the repository's GitHub page. You can then make modifications to the repository fork and push the changes as a _pull request_. This notifies the original repository's owner that a request is being made to enhance the original repository. The owner can review your changes and if appropriate commit the changes into the original. This is how open source communities manage development from a volunteer group of global developers.
+GitHub allows you to create a fork of any repository on GitHub. You just push the `Fork` button from the repository's GitHub page. You can then make modifications to the repository fork and push the changes as a _pull request_. This notifies the original repository's owner that a request is being made to enhance the original repository. The owner can review your changes and, if appropriate, commit the changes into the original. This is how open source communities manage development from a volunteer group of global developers.
 
 In this class, if you notice something in the instruction that needs to be enhanced, feel free to fork the repo, and make a pull request. This will give you experience with this practice and improve the instruction for others at the same time. Plus your name will be included as a contributor. How cool is that!
 
@@ -170,8 +170,8 @@ Do the following steps to set up your `Startup application repository` in GitHub
 
 ### Creating Your Startup GitHub Repository
 
-1. Open your web browser to the course [template repository](https://github.com/webprogramming260/startup)
-1. Use the template to create a GitHub repository for your startup project
+1. Open your web browser to the course [template repository](https://github.com/webprogramming260/startup).
+1. Use the template to create a GitHub repository for your startup project.
 
    1. Click on the `Use this template` button.
    1. Choose the `Create a new repository` option.
@@ -195,8 +195,8 @@ Do the following steps to set up your `Startup application repository` in GitHub
 
 ### Practice using Git
 
-1. Open up the repository directory in VS Code and modify the `readme.md` and `notes.md` file.create a file. Commit your changes, and push them to GitHub.
-1. Using the GitHub web console modify your `readme.md` file and commit the changes.
+1. Open up the repository directory in VS Code and modify the `README.md` and `notes.md` file. Commit your changes, and push them to GitHub.
+1. Using the GitHub web console modify your `README.md` file and commit the changes.
 1. In VS Code pull down and review the changes.
 
 ### Your notes.md
