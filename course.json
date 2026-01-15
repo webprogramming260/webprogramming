@@ -66,6 +66,8 @@
           "title": "☑ AWS account",
           "path": "instruction/essentials/awsAccount/awsAccount.md",
           "id": "9443b922-92cc-4ca4-8204-c732ee196f98",
+          "interactions": [],
+          "commit": "097280a24144985235a38ab104db1cf9242de991",
           "externalRefs": {
             "canvasPageId": 1497959
           }
