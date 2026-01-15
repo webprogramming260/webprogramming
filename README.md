@@ -1,5 +1,5 @@
 ![byu](byuLogo.png)
-x
+
 # BYU **Web Programming** `cs260`
 
 ![cover](instruction/webprogrammingcover.jpg)
