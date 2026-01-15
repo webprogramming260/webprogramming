@@ -2,7 +2,7 @@
 
 Before we get started with anything else, you need to create an account with Amazon Web Services (AWS). You want to do this as soon as possible as you will need it for much of the work in this course and it might take some time to authorize your account.
 
-There are lots of other great vendors out there, but AWS is by far the leader in the space and so it is good for you to get experience with them. Follow these instructions on how to create an [account with AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/). When you create your account make sure you remember your account ID so that you can use it when you log in to the AWS browser console.
+There are lots of other great vendors out there, but AWS is by far the leader in the space and so it is good for you to get experience with them. Follow these instructions on how to create an [account with AWS](https://signin.aws.amazon.com/signup). When you create your account make sure you remember your account ID so that you can use it when you log in to the AWS browser console.
 
 ## What is this going to cost you?
 
@@ -16,7 +16,12 @@ There is no cost to create an account with AWS, you only pay for what you use, a
 | Route 53       | DNS records                          | $0.50 a month for each root domain                                                                                     |
 |                |                                      | Estimated total: `$15` - `$50` for the course. Much cheaper than a textbook.                                           |
 
-There are lots of ways to get free usage of services. For example, as of when this was written, you can get a 750 hours a month, for the first 12 months, of a Linux t2.micro server instance.
+## Choosing a plan
+
+Currently, as of when this is written, AWS is offering two initial plans when creating your AWS account. This includes a **free plan** or a **paid plan**. Both plans require a credit card to create an account. The following table helps compare the two the plans.
+
+|Plan|Credits|Expiration|Service limits|
+|-|-|-|-|
 
 ## Billing
 
@@ -28,7 +33,7 @@ Make sure you monitor your billing by selecting the **Billing and cost managemen
 
 ## ☑ Assignment
 
-1. Create your AWS [account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
+1. Create your AWS [account](https://signin.aws.amazon.com/signup).
 2. Create a browser bookmark for your AWS browser console page that contains your account ID. That way you will be able to access your account quickly.
 
 _If your section of this course requires that you submit assignments for grading_: Submit in the Canvas assignment that you have completed this.
