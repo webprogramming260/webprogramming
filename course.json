@@ -108,6 +108,14 @@
           }
         },
         {
+          "title": "☑ The Console",
+          "path": "instruction/essentials/console/console.md",
+          "id": "990a0df4-77da-44ec-b7e8-667b6dac0ab0",
+          "externalRefs": {
+            "canvasPageId": 1497969
+          }
+        },
+        {
           "title": "Git",
           "path": "instruction/essentials/git/git.md",
           "id": "c43e9ec4-00fa-4242-ad51-e46fc4ba1a8a",
@@ -145,14 +153,6 @@
           "id": "01d74dc2-806d-47a6-84f3-55ad19535964",
           "externalRefs": {
             "canvasPageId": 1497968
-          }
-        },
-        {
-          "title": "☑ The Console",
-          "path": "instruction/essentials/console/console.md",
-          "id": "990a0df4-77da-44ec-b7e8-667b6dac0ab0",
-          "externalRefs": {
-            "canvasPageId": 1497969
           }
         },
         {
