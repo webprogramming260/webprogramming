@@ -20,7 +20,7 @@ There is no cost to create an account with AWS, you only pay for what you use, a
 
 ![awsSignUp.png](awsSignUp.png)
 
-Currently, as of when this is written, AWS is offering [two initial plans](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html) when creating your AWS account. This includes a **free plan** or a **paid plan**. Both plans require a credit card to create an account.  With either plan you receive $100 of initial credit, with the option to explore different topics that will earn you an additional $100. The following table helps compare the two plans.
+AWS offers [two different plans](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html) when creating your account. There is a **free plan** and a **paid plan**. Both plans require a credit card to create an account.  With either plan you receive $100 of initial credit, with the option to explore different topics that will earn you an additional $100. The following table helps compare the two plans.
 
 |Plan|Credits|Plan expiration|Service limits|Spending limits|
 |-      |-           |               -|-                    |-|
