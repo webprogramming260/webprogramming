@@ -22,10 +22,10 @@ There is no cost to create an account with AWS, you only pay for what you use, a
 
 Currently, as of when this is written, AWS is offering [two initial plans](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html) when creating your AWS account. This includes a **free plan** or a **paid plan**. Both plans require a credit card to create an account.  With either plan you receive $100 of initial credit, with the option to explore different topics that will earn you an additional $100. The following table helps compare the two plans.
 
-|Plan|Credits|Plan expiration|Service limits|
-|-      |-           |               -|-                    |
-|Free|$100-$200|6 months<br/>90 to convert to paid|Only select service available|
-|Paid|$100-$200|unlimited|unlimited|
+|Plan|Credits|Plan expiration|Service limits|Spending limits|
+|-      |-           |               -|-                    |-|
+|Free|$100-$200|6 months<br/>90 days to convert to paid|Only select service available|Restricted. You cannot spend beyond your credits|
+|Paid|$100-$200|unlimited|unlimited|Unlimited. Credit card billed for spending beyond credits|
 
 Unfortunately, the free plan does not provide access to the **Route 53** service. Route 53 is used by this course to manage your DNS hostname and records. That means if you choose the free plan you will need to use some additional service such as **namecheap** or **godaddy** for your DNS activities. For that reason it is suggested that you choose the **paid** plan.
 
