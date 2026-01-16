@@ -25,7 +25,7 @@ Currently, as of when this is written, AWS is offering [two initial plans](https
 |Plan|Credits|Plan expiration|Service limits|Spending limits|
 |-      |-           |               -|-                    |-|
 |Free|$100-$200|6 months<br/>90 days to convert to paid|Only select service available|Restricted. You cannot spend beyond your credits|
-|Paid|$100-$200|unlimited|unlimited|Unlimited. Credit card billed for spending beyond credits|
+|Paid|$100-$200|Unlimited|Unlimited|Unlimited. Credit card billed for spending beyond credits|
 
 Unfortunately, the free plan does not provide access to the **Route 53** service. Route 53 is used by this course to manage your DNS hostname and records. That means if you choose the free plan you will need to use some additional service such as **namecheap** or **godaddy** for your DNS activities. For that reason it is suggested that you choose the **paid** plan.
 
