@@ -2,7 +2,7 @@
 
 ## Course Description
 
-Introduction to Web Programming using a full stack of technologies.
+Introduction to building and deploying full stack web applications using core technologies, frameworks, protocols, and development tools.
 
 ## Course Content
 
