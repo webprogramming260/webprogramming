@@ -30,7 +30,8 @@
           "title": "Syllabus",
           "path": "instruction/syllabus/syllabus.md",
           "id": "869b2c88-d937-43af-8beb-6c06751270ae",
-          "commit": "e3fce2aae837b470d2b109f821102ae92fd56b3f",
+          "interactions": [],
+          "commit": "9a8674f43405a0680ba96134011b947e7f3bb7d1",
           "externalRefs": {
             "canvasPageId": 1497955
           }
