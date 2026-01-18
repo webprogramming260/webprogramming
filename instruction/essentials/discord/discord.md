@@ -1,6 +1,6 @@
 # Discord
 
-Peer learning provides a great opportunity to build social, team building, skills. Take advantage of any chance you get to work with other learners, in and out of, class. By discussing with your peers you learn more as you ask, and answer questions. Nothing completes the learning cycle better than teaching someone else.
+Peer learning provides a great opportunity to build social and team building skills. Take advantage of any chance you get to work with other learners, in and out of class. By discussing with your peers, you learn more as you ask and answer questions. Nothing completes the learning cycle better than teaching someone else.
 
 We use the peer chat service [Discord](https://discord.com/) to ask and answer questions, as well as get online help from the TAs and Instructor.
 
@@ -23,9 +23,9 @@ Discord is organized by servers and channels. If you used the above invite link 
 
 Our server contains the following channels for asking and answering questions:
 
-- **general**: Only use this if it doesn't fit anywhere else
-- **announcements**: Non-questions of interest to the whole class
-- **TA/common-problems**: A place for the TAs to put answers to questions you are likely to have
+- **general**: Only use this if it doesn't fit anywhere else.
+- **announcements**: Non-questions of interest to the whole class.
+- **TA/common-problems**: A place for the TAs to put answers to questions you are likely to have.
 - **Technology channels**: This includes specific topics such as AWS, HTML, React, and so forth.
 
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ When you want to talk with a TA either online or in-person you will use Discord 
 
 ## ☑ Assignment
 
-Get on the Discord server and review each of the channels and the TA area. Review the previous instruction on asking question. Give some thought about proper forum etiquette.
+Get on the Discord server and review each of the channels and the TA area. Review the previous instruction on asking questions. Give some thought about proper forum etiquette.
 
 Figure out who your assigned TA is by reviewing the [TA schedule](https://docs.google.com/spreadsheets/d/1g1AMtgvyfSwMgp85QcwHuy0mVR-nN3bIGI6XNEJWB1U/edit?usp=sharing). TAs are assigned by an alphabetical range. Find the range that contains the first letter of your last name. Using their Discord ID, open Discord to send them a direct message (DM) to introduce yourself.
 
