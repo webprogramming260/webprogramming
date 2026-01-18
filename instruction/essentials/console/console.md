@@ -26,7 +26,7 @@ Once it is installed, hit the Windows button on your keyboard, and type `Git-Bas
 >
 > Do not use `Git Command`, `cmd`, or `Powershell`. That will not work for the commands and scripts we will run in this class.
 
-You can use Windows Subsystem for Linux (WSL) (e.g Ubuntu on Windows) for your work in this class, but you must be very careful to do all of your work actually within WSL. Don't download files to your Windows partition and then access them from WSL. It is suggested that you use `Git Bash` instead of WSL, unless you are really familiar with WSL.
+You can use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about) (e.g Ubuntu on Windows) for your work in this class, but you must be very careful to do all of your work actually within WSL. Don't download files to your Windows partition and then access them from WSL. It is suggested that you use `Git Bash` instead of WSL, unless you are really familiar with WSL.
 
 ### Testing your console application
 
@@ -65,7 +65,7 @@ The other primary purpose of the console is to execute commands. You already did
 - **echo** - Output the parameters of the command
 - **cd** - Change directory
 - **mkdir** - Make directory
-- **rmdir** - Remove directory
+- **rmdir** - Remove an empty directory
 - **rm** - Remove file(s)
 - **mv** - Move file(s)
 - **cp** - Copy files
@@ -94,6 +94,7 @@ You can also chain the input and output of commands using special characters
 - `|` - Take the output from the command on the left and _pipe_, or pass, it to the command on the right
 - `>` - Redirect output to a file. Overwrites the file if it exists
 - `>>` - Redirect output to a file. Appends if the file exists
+- `<` - Pass the input on the right to the program on the left
 
 For example, you can list the files in a directory, pipe it into `grep` to search for files created in Nov, and then pipe that into `wc` to count the number of files found with a date of Nov.
 
