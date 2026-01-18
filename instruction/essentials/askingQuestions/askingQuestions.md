@@ -34,7 +34,7 @@ If you would like to get some help from others, please make sure that you have d
 - Put yourself in a frame of mind to accept new ideas.
 - Remember one purpose of this class is for you to learn how to learn. If the TA feels you are not putting forth your full, they may ask you to return later when you have fulfilled these requirements.
 
-Remember that TAs are _assistants_. They are more than willing to assist you as you learn, but you need to do your part as well. Because of this, the help queue has a limit of 3 session per day per student. Exceptions are made for when you are attempting to passing off a deliverable.
+Remember that TAs are _assistants_. They are more than willing to assist you as you learn, but you need to do your part as well. Because of this, the help queue has a limit of 3 sessions per day per student. Exceptions are made for when you are attempting to pass off a deliverable.
 
 ## Pay it forward
 
