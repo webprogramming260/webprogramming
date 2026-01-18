@@ -2,7 +2,7 @@
 
 📖 **Deeper dive reading**: [MDN Command line crash course](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line)
 
-Before the creation of graphical user interfaces, all computing systems were simple console environments consisting as of a prompt for inputting a command and the display of the command output. All of the original programming tools ran as console application. The console tradition is still actively used by professional developers and most programming tools execute within a console window.
+Before the creation of graphical user interfaces, all computing systems were simple console environments consisting of a prompt for inputting a command and the display of the command output. All of the original programming tools ran as console applications. The console tradition is still actively used by professional developers and most programming tools execute within a console window.
 
 Also known as the command line, shell, or terminal, the console window is an essential web development tool. The console provides access to the file system and allows for the execution of command line applications.
 
@@ -24,13 +24,13 @@ Once it is installed, hit the Windows button on your keyboard, and type `Git-Bas
 
 > [!CAUTION]
 >
-> Do not use `Git Command`, `cmd`, or `Powershell`. That will not work for the commands and scripts we run in this class.
+> Do not use `Git Command`, `cmd`, or `Powershell`. That will not work for the commands and scripts we will run in this class.
 
 You can use Windows Subsystem for Linux (WSL) (e.g Ubuntu on Windows) for your work in this class, but you must be very careful to do all of your work actually within WSL. Don't download files to your Windows partition and then access them from WSL. It is suggested that you use `Git Bash` instead of WSL, unless you are really familiar with WSL.
 
 ### Testing your console application
 
-Once you have a acceptable console application on your development computer, open it up and make sure you can run a simple POSIX compliant command such as `printf 'hello\n'`.
+Once you have an acceptable console application on your development computer, open it up and make sure you can run a simple POSIX compliant command such as `printf 'hello\n'`.
 
 ![Console printf](consolePrintf.jpg)
 
@@ -60,7 +60,7 @@ drwxr-xr-x  4 lee  staff   128B Nov 19 08:47 react
 
 ## Executing commands
 
-The other primary purpose of the console is to execute commands. You already did this in the previous section when you executed commands for working with the file system. However, console commands can perform many different operations. Here are some basic commands that you show experiment with.
+The other primary purpose of the console is to execute commands. You already did this in the previous section when you executed commands for working with the file system. However, console commands can perform many different operations. Here are some basic commands that you should experiment with.
 
 - **echo** - Output the parameters of the command
 - **cd** - Change directory
