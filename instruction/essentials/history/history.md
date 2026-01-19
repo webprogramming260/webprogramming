@@ -1,10 +1,10 @@
 # A brief history of web programming
 
-Having a basic knowledge of the history of web programming helps you to understand why we have the assortment of technologies that you will be working with. There has been three distinct phases that make up this history.
+Having a basic knowledge of the history of web programming helps you to understand why we have the assortment of technologies that you will be working with. There have been three distinct phases that make up this history.
 
-1. The formation of the internet that supports the communication of web applications
-1. The creation of HTML and HTTP that made it possible to shared hyperlinked documents (Web 1.0).
-1. The creation of CSS and JavaScript that enabled interactive web applications (Web 2.0).
+1. The formation of the internet that supports the communication of web applications.
+1. The creation of HTML and HTTP that make it possible to share hyperlinked documents (Web 1.0).
+1. The creation of CSS and JavaScript that enable interactive web applications (Web 2.0).
 
 ## The Internet
 
@@ -14,11 +14,11 @@ The essential first step to enabling what we now call web programming was the fo
 
 — ARPANET access points in the 1970s (**Source**: _Wikipedia_)
 
-ARPANET was defined with the goal of withstanding a nuclear attack. This led to the implementation of a redundantly connected graph of computing devices. Within that network, two computers communicate by dynamically discovering a path to each other without the help of a single central authority.
+ARPANET was defined with the goal of withstanding a nuclear attack. This led to the implementation of a redundantly connected graph of computing devices. Within that network, two computers communicated by dynamically discovering a path to each other without the help of a single central authority.
 
-In the 1980s, the National Science Foundation continued the expansion of the network, and commercial enterprises began to make significant contributions. This eventually led to the Internet as we know it today, as the world went online as part of a massive explosion of consumer participation in the early 1990s. This was followed by another exponential increase in the 2000s as smart phones and appliances became common.
+In the 1980s, the National Science Foundation continued the expansion of the network, and commercial enterprises began to make significant contributions. This eventually led to the internet as we know it today, as the world went online as part of a massive explosion of consumer participation in the early 1990s. This was followed by another exponential increase in the 2000s as smart phones and appliances became common.
 
-The management of the Internet is controlled by two major organizations. The Internet Engineering Task Force (IETF) defines the technical standards that specify how the physical network communicates. The Internet Corporation for Assigned Names and Numbers (ICANN) oversees both the Internet Protocol ([IP](https://en.wikipedia.org/wiki/Internet_Protocol)) address space, and the Domain Name System ([DNS](https://en.wikipedia.org/wiki/Domain_Name_System)). These two databases form the address book of the Internet. When the United States government transitioned control of these governing bodies to a global community of non-profit stake holders in 2016, the Internet became a worldwide asset free from any specific political control.
+The management of the internet is controlled by two major organizations. The Internet Engineering Task Force (IETF) defines the technical standards that specify how the physical network communicates. The Internet Corporation for Assigned Names and Numbers (ICANN) oversees both the Internet Protocol ([IP](https://en.wikipedia.org/wiki/Internet_Protocol)) address space, and the Domain Name System ([DNS](https://en.wikipedia.org/wiki/Domain_Name_System)). These two databases form the address book of the internet. When the United States government transitioned control of these governing bodies to a global community of non-profit stake holders in 2016, the internet became a worldwide asset free from any specific political control.
 
 ## Hypertext Markup Language (HTML)
 
@@ -28,11 +28,11 @@ The management of the Internet is controlled by two major organizations. The Int
 >
 > — Tim Berners-Lee, (**Source**: _Answers for Young People_)
 
-Starting in 1980, Tim Berners-Lee was working at the research laboratory Cern. He was tasked with building a system that would allow researchers to share documents between remote academic institutions. Realizing that the ARPANET provided the necessary connectivity, he defined the protocols for document sharing that formed the underpinning of what would be termed the World Wide Web. Berners-Lee named the document format the HyperText Markup Language ([HTML](https://en.wikipedia.org/wiki/HTML)) based on inspiration from the digital publishing industry's Standard Generalized Markup Language (SGML). One of the key innovations of HTML was the idea that documents could be interconnected with what he termed hyperlinks to allow immediate access to related documents. In 1990 he put all the pieces together and built the world's first web server on his desktop NeXT computer. You can visit a reproduction of the first web site at [info.cern.ch](http://info.cern.ch/).
+Starting in 1980, Tim Berners-Lee was working at the CERN research laboratory. He was tasked with building a system that would allow researchers to share documents between remote academic institutions. Realizing that the ARPANET provided the necessary connectivity, he defined the protocols for document sharing that formed the underpinning of what would be termed the World Wide Web. Berners-Lee named the document format the HyperText Markup Language ([HTML](https://en.wikipedia.org/wiki/HTML)) based on inspiration from the digital publishing industry's Standard Generalized Markup Language (SGML). One of the key innovations of HTML was the idea that documents could be interconnected with what he termed hyperlinks to allow immediate access to related documents. In 1990 he put all the pieces together and built the world's first web server on his desktop NeXT computer. You can visit a reproduction of the first web site at [info.cern.ch](http://info.cern.ch/).
 
 ![First web server](firstWebServer.jpg)
 
-— First web server (**Source**: _Cern_)
+— First web server (**Source**: _CERN_)
 
 Originally, HTML contained only 18 elements, or tags. The latest version of HTML has now grown to over 100. The initial explosion of elements was caused in part by browser vendors racing to create differentiating functionality in order to gain market share. Since 1996 the HTML specification has been controlled by the [W3C](https://www.w3.org/). The following is an example of a simple HTML document.
 
@@ -46,7 +46,7 @@ Originally, HTML contained only 18 elements, or tags. The latest version of HTML
 
 ## HTTP and URL
 
-While HTML was an incredible step forward, Berners-Lee also made other significant contributions. This included the definition of the HyperText Transfer Protocol ([HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)) and the Uniform Resource Locator ([URL](https://en.wikipedia.org/wiki/URL)). These two definitions specify how web documents are addressed and transmitted across the Internet. The following gives an example of a URL and HTTP request.
+While HTML was an incredible step forward, Berners-Lee also made other significant contributions. This included the definition of the HyperText Transfer Protocol ([HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)) and the Uniform Resource Locator ([URL](https://en.wikipedia.org/wiki/URL)). These two definitions specify how web documents are addressed and transmitted across the internet. The following gives an example of a URL and HTTP request.
 
 ```http
 http://info.cern.ch/hypertext/WWW/Helping.html
@@ -60,7 +60,7 @@ Accept: text/html
 
 ## Cascading Style Sheets (CSS)
 
-Cascading Style Sheets ([CSS](https://en.wikipedia.org/wiki/CSS)) was first proposed in 1994 by Håkon Wium Lie, a contemporary of Berners-Lee at CERN, in order to give HTML documents visual styling independent of the content's structure. Before the introduction of CSS, HTML was going down the path of hard coding the visual appearance of the content with HTML elements. This would have resulted in a single visual style for the entire web that was completely defined by the browser vendors.
+Cascading Style Sheets ([CSS](https://en.wikipedia.org/wiki/CSS)) were first proposed in 1994 by Håkon Wium Lie, a contemporary of Berners-Lee at CERN, in order to give HTML documents visual styling independent of the content's structure. Before the introduction of CSS, HTML was going down the path of hard coding the visual appearance of the content with HTML elements. This would have resulted in a single visual style for the entire web that was completely defined by the browser vendors.
 
 ![Hakon Lie](hakonLie.jpg)
 
@@ -79,7 +79,7 @@ p {
 }
 ```
 
-The ability of CSS to style a web page has increased significantly from its original implementation. With modern CSS a web programmer can import fonts, animate HTML elements, respond to user actions, and dynamically alter the entire layout of the page based on the size of a device and its orientation.
+The ability of CSS to style a web page has increased significantly from its original implementation. With modern CSS, a web programmer can import fonts, animate HTML elements, respond to user actions, and dynamically alter the entire layout of the page based on the size of a device and its orientation.
 
 ## JavaScript
 
@@ -91,7 +91,7 @@ In 1995 Netscape (the maker of the popular browser Navigator) decided to add the
 >
 > — Brendan Eich (**Source**: _brendaneich.github.io_)
 
-In 1996 Netscape turned control of JavaScript over to ECMA International in an attempt to standardize the definition of the language. At that point JavaScript officially became know as ECMAScript, although it is still commonly referred to as JavaScript.
+In 1996 Netscape turned control of JavaScript over to ECMA International in an attempt to standardize the definition of the language. At that point JavaScript officially became known as ECMAScript, although it is still commonly referred to as JavaScript.
 
 Here is an example of a simple JavaScript program that combines variables and prints out the result.
 
@@ -116,4 +116,4 @@ Other important milestones in the history of JavaScript include the 2013 standar
 
 Looking forward, there are many exciting opportunities, as well as problems to solve. This includes addressing topics like application complexity, device diversity, internationalization, security, privacy, data ownership, environmental impact, global authorization identity, performance, and accessibility.
 
-The only thing certain is that you have an opportunity to be a big part of it. One important lesson you can learn from these early pioneers, is that with web programming, a single person can change the world. I hope to see your face on this history page one day.
+The only thing certain is that you have an opportunity to be a big part of it. One important lesson you can learn from these early pioneers is that with web programming, a single person can change the world. I hope to see your face on this history page one day.
