@@ -9,7 +9,7 @@ We use the peer chat service [Discord](https://discord.com/) to ask and answer q
 > Use the following invite to join our discussion server:
 > [https://discord.gg/d6Q5RsxHXz](https://discord.gg/d6Q5RsxHXz)
 
-From a desktop computer, you can use Discord from your browser. From your phone you will need to install the application from the app store.
+From a desktop computer, you can use Discord from your browser. From your phone you will need to [install](https://discord.com/download) the application from the app store.
 
 If you have never used Discord before, you will need to create a free account. Take a minute to also set up your avatar.
 
@@ -33,7 +33,7 @@ Our server contains the following channels for asking and answering questions:
 > - You should use the channel that is most appropriate for your discussion.
 > - Do not ask questions in multiple channels.
 > - Only use `general` if it really is not specific to another channel.
-> - If you are replying to someone multiple times then reply in a thread and not in the channel.
+> - If you are replying to someone multiple times then reply in a thread and not in the channel. ([Learn about threads](https://discord.com/blog/connect-the-conversation-with-threads-on-discord))
 > - Make sure you review the instruction on [asking questions](../askingQuestions/askingQuestions.md) before you start asking questions.
 
 ### Getting help
@@ -44,7 +44,7 @@ When you want to talk with a TA either online or in-person you will use Discord 
 
 ## ☑ Assignment
 
-Get on the Discord server and review each of the channels and the TA area. Review the previous instruction on asking questions. Give some thought about proper forum etiquette.
+Get on the Discord server and review each of the channels and the TA area. Review the previous instruction on [asking questions](../askingQuestions/askingQuestions.md). Give some thought about proper forum etiquette.
 
 Figure out who your assigned TA is by reviewing the [TA schedule](https://docs.google.com/spreadsheets/d/1g1AMtgvyfSwMgp85QcwHuy0mVR-nN3bIGI6XNEJWB1U/edit?usp=sharing). TAs are assigned by an alphabetical range. Find the range that contains the first letter of your last name. Using their Discord ID, open Discord to send them a direct message (DM) to introduce yourself.
 
