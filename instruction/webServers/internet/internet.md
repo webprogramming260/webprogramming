@@ -5,13 +5,13 @@
 - [MDN How does the Internet work?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work)
 - [YouTube The Internet in 5 Minutes](https://youtu.be/7_LPdttKXPc)
 
-The internet globally connects independent networks and computing devices. In a simplistic way, you can think of the internet as a massive redundant collection of wires that connect up all the computers in the world. A lot of those wires are wireless (wiFi, satellite, or cell), and not all of computers in the world are connected, but generally that is what the internet is. The deeper your mental model of the internet is, the more effectively you will be able to create web applications.
+The internet globally connects independent networks and computing devices. In a simplistic way, you can think of the internet as a massive, redundant collection of wires that connect all the computers in the world. A lot of those wires are wireless (WiFi, satellite, or cell), and not all computers in the world are connected, but generally that is what the internet is. The deeper your mental model of the internet is, the more effectively you will be able to create web applications.
 
 ![Internet connections](internetConnections.jpg)
 
 ## Making connections
 
-When one device wants to talk to another it must have an IP address. For example, `128.187.16.184` is BYU's address. Usually, human users prefer a symbolic name over an IP address. The symbolic name is called a domain name. Domain names are converted to IP address by doing a lookup in the Domain Name System (DNS). You can look up the IP address for any domain name using the `dig` console utility.
+When one device wants to talk to another it must have an IP address. For example, `128.187.16.184` is BYU's address. Usually, human users prefer a symbolic name over an IP address. The symbolic name is called a domain name. Domain names are converted to IP addresses by doing a lookup in the Domain Name System (DNS). You can look up the IP address for any domain name using the `dig` console utility.
 
 ```sh
 ➜  dig byu.edu
@@ -21,7 +21,7 @@ byu.edu.		5755	IN	A	128.187.16.184
 
 ![Internet requests](internetRequests.jpg)
 
-Once you have the IP address, you connect to the device it represents by first asking for a connection route to the device. A connection route consists of many hops across the network until the destination is dynamically discovered and the connection established. With the connection the transport and application layers start exchanging data.
+Once you have an IP address, you can connect to the device it represents by first asking for a connection route to the device. A connection route consists of many hops across the network until the destination is dynamically discovered, and the connection is established. With the connection, the transport and application layers start exchanging data.
 
 ### Traceroute
 
@@ -43,7 +43,7 @@ traceroute to byu.edu (128.187.16.184), 64 hops max, 52 byte packets
 
 ```
 
-If I run traceroute again I might see a slightly different route since every connection through the internet is dynamically calculated. The ability to discover a route makes the internet resilient when network devices fail or disappear from the network.
+If we run traceroute again, we might see a slightly different route since every connection through the internet is dynamically calculated. The ability to discover a route makes the internet resilient when network devices fail or disappear from the network.
 
 ## Network internals
 
