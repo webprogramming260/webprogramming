@@ -66,4 +66,4 @@ The rotating border is animated with the following CSS that dictates which color
 }
 ```
 
-If you would like to see the complete code listing and play with the code you can do this on [CodePen](https://codepen.io/leesjensen/pen/OPLgvvV?editors=0100). We will talk a lot about how code like this works and what CodePen is later in the instruction.
+If you would like to see the complete code listing and play with the code, you can on [CodePen](https://codepen.io/leesjensen/pen/OPLgvvV?editors=0100). We will talk a lot about how code like this works and what CodePen is later in the instruction.
