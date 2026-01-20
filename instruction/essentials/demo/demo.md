@@ -4,7 +4,7 @@ Before we start digging into creating web servers and talking about protocols le
 
 ![Demonstration](essentialsDemo.gif)
 
-You don't need to worry about the detail about how this all works. The point of this demonstration is just to give you a taste of the amazing things you can do with very little code. However, there are three technologies that make this work: HTML, CSS, and JavaScript.
+You don't need to worry about the details of how this all works. The point of this demonstration is just to give you a taste of the amazing things you can do with very little code. However, there are three technologies that make this work: HTML, CSS, and JavaScript.
 
 The HTML looks like the following and basically has a simple card with text in it.
 
@@ -14,7 +14,7 @@ The HTML looks like the following and basically has a simple card with text in i
 </body>
 ```
 
-The JavaScript handles it when you click on the card, and the JavaScript changes the text.
+The JavaScript handles when you click on the card and changes the text.
 
 ```js
 function titleClick() {
@@ -43,7 +43,7 @@ The CSS is a bit more complex to cover in detail, but it basically handles the s
 }
 ```
 
-The rotating border is animated with the following CSS that tells what colors to use and how to infinitely animate it between 0 and 360 degrees over 2.5 seconds.
+The rotating border is animated with the following CSS that dictates which colors to use and how to infinitely animate it between 0 and 360 degrees over 2.5 seconds.
 
 ```css
 .card::before {
@@ -66,4 +66,4 @@ The rotating border is animated with the following CSS that tells what colors to
 }
 ```
 
-If you would like to see the complete code listing and play with the code you can do this on [CodePen](https://codepen.io/leesjensen/pen/OPLgvvV?editors=0100). We will talk a lot about how this code like this works and what CodePen is later in the instruction.
+If you would like to see the complete code listing and play with the code you can do this on [CodePen](https://codepen.io/leesjensen/pen/OPLgvvV?editors=0100). We will talk a lot about how code like this works and what CodePen is later in the instruction.
