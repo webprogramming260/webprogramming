@@ -1,6 +1,6 @@
 # Amazon Web Services - EC2
 
-Now that you know all about web servers, it is time for you to rent your own. In theory you could contact your ISP and lease an IP address that you would then associate with your laptop. This would make your laptop into a web server, but this has the downside of requiring your laptop to always be available, have enough bandwidth to support your millions of fans, and creates a significant security risk for your laptop. Instead we want to use a cloud provider that can give you an inexpensive small computer that you can experiment with and throw away any time that you would like. This is actually exactly what many web companies do with their core business and so it should work fine for you.
+Now that you know all about web servers, it is time for you to rent your own. In theory you could contact your ISP and lease an IP address that you could then associate with your laptop. This would make your laptop into a web server! Unfortunately, this has the downside that your laptop must always be available and have enough bandwidth to support your millions of fans. It also creates a significant security risk for your laptop. Instead we want to use a cloud provider that can give you an inexpensive small computer that you can experiment with and throw away any time that you would like. This is actually exactly what many web companies do with their core business, so it should work fine for you.
 
 When you rent a web server, it is physically located in a massive data center located in a place like Virginia, Ohio, Dublin, or Tokyo. Think of a data center as a very secure, climate controlled, warehouse that has hundreds of thousands of computers sitting in massive racks.
 
@@ -12,7 +12,7 @@ Assuming you already have an AWS account it is time to create your web server.
 
 > [!NOTE]
 >
-> AWS interface changes all the time, so the images given below may not match what you see. However, the concepts they represent should all be there in some shape or form.
+> AWS interfaces changes all the time, so the images given below may not match what you see. However, the concepts they represent should all be there in some shape or form.
 
 > [!IMPORTANT]
 >
@@ -34,7 +34,7 @@ Assuming you already have an AWS account it is time to create your web server.
 
    ![AWS class AMI](webServerAWS260Ami.jpg)
 
-1. Select t3.nano, t3.micro, or t2.micro for the instance type depending on how much power you want, how much you want to spend, or if you qualify for a free usage tier. If you qualify for a free usage tier then pick that that instance type, otherwise choose the cheapest one. You can always change this later if your server is running slow and needs more power.
+1. Select t3.nano, t3.micro, or t2.micro for the instance type depending on how much power you want, how much you want to spend, or if you qualify for a free usage tier. If you qualify for a free usage tier then pick that instance type, otherwise choose the cheapest one. You can always change this later if your server is running slow and needs more power.
 
    ![AWS Instance name](webServerAWSType.jpg)
 
@@ -46,11 +46,11 @@ Assuming you already have an AWS account it is time to create your web server.
 
    If you have created a server before, then you already have a security group that you can use, and you should not clutter up your account with additional ones. In that case, use the option to `Select existing security group` and select the name of the existing security group.
 
-   A security group represents the rules for allowing access to your servers. Security group rules specify both the port that is accessible on your server, and the source IP address that requests are allowed from. For example, you could allow only port 443 (the secure HTTPS port) from your development environment's IP address. However, doing so would mean that your web application would not be available from any other computer. You can learn more about security groups from the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
+   A security group represents the rules for allowing access to your servers. Security group rules specify both the port that is accessible on your server and the source IP address that requests are allowed from. For example, you could allow only port 443 (the secure HTTPS port) from your development environment's IP address. However, doing so would mean that your web application would not be available from any other computer. You can learn more about security groups from the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
 
    ![AWS Instance name](webServerAWSNetwork.jpg)
 
-1. If you are using a T3 class server you can take an advantage of the unlimited credit specification. If you are not using at T3 class instance you can ignore this step. In the `Advanced details`, change the `Credit specification` to `Unlimited`. This allows your `T class` (throttled class) server to keep using CPU running normally even though it has exceeded its current credit limit. You do incur a minimal charge for when this happens, but the alternative is to always spend more for a larger instance, or to have your server lock up when it hits the limit. For the minimal use that your server will see, you should not normally exceed your limit, but it is nice to not have your server die if you do. Even if you do temporarily exceed the limit, the charges will be mere pennies per hour.
+1. If you are using a T3 class server you can take an advantage of the unlimited credit specification. If you are not using at T3 class instance, you can ignore this step. In the `Advanced details`, change the `Credit specification` to `Unlimited`. This allows your `T class` (throttled class) server to keep running normally even though it has exceeded its current credit limit. You do incur a minimal charge for when this happens, but the alternative is to always spend more for a larger instance, or to have your server lock up when it hits the limit. For the minimal use that your server will see, you should not normally exceed your limit, but it is nice to not have your server die if you do. Even if you do temporarily exceed the limit, the charges will be mere pennies per hour.
 
    ![Web Server](webServerAWSUnlimited.jpg)
 
@@ -92,7 +92,7 @@ chmod  600 yourkeypairfile.pem
 
 As it connects to the server it might warn you that it hasn't seen this server before. You can confidently say yes since you are sure of the identity of this server.
 
-Once it has connected, you are now looking at a console window for the web server that you just launched and you should be in the ubuntu user's home directory. If you run `ls -l`, you should see something like the following. (Note that the dates might appear different.)
+Once it has connected, you are now looking at a console window for the web server that you just launched, and you should be in the ubuntu user's home directory. If you run `ls -l`, you should see something like the following. (Note that the dates might appear different.)
 
 ```sh
 ➜  ls -l
@@ -116,7 +116,7 @@ You have two choices in order to keep the same public IP address:
 1. Never stop your server.
 2. Assign an elastic IP address to your server so that it keeps the same address even if you stop it.
 
-Your first elastic IP address is free. However, the catch is that it is only free while the server instance it is assigned to is running. While your server is not running you are charged $0.005/hr. This is the same cost for running a t3.nano server instance. So if you assign an elastic IP address, you don't save any money unless you are running a more powerful instance, and are stopping your instance when you, or the TAs, don't need it.
+Your first elastic IP address is free. However, the catch is that it is only free while the server instance it is assigned to is running. While your server is not running, you are charged $0.005/hr. This is the same cost for running a t3.nano server instance. So if you assign an elastic IP address, you don't save any money unless you are running a more powerful instance and are stopping your instance when you, or the TAs, don't need it.
 
 We would suggest that you do both options. Keep your server running and associate an elastic IP. That way if you do need to reboot it for some reason, you will still keep the same IP address, and it doesn't cost you anything more either way.
 
@@ -137,11 +137,11 @@ Here is how you [assign an elastic IP address](https://docs.aws.amazon.com/AWSEC
 
 Assigning an elastic IP address will change the IP address for your server, but it will not change again until you release the elastic IP address. If you do terminate your server and create a new one, you can again associate the same elastic IP address with your new server.
 
-Note that your elastic IP address is allocated until you release it, not until you terminate your instance. So make sure you release it when you no longer need it. Otherwise you will get a nasty $3 bill every month.
+Note that your elastic IP address is allocated until you release it, not until you terminate your instance. So make sure you release it when you no longer need it. Otherwise, you will get a nasty $3 bill every month.
 
 ## What size of server should you use?
 
-The `t3.nano` instance size has just enough memory and CPU to meet the requirements of this course if you are careful. However, if you find that your server is running slowly or erratically, you should consider upgrading to a larger instance size. If you have an elastic IP address you can change your instance size whenever you would like and you won't lose your public IP address. You can even stop your server when no one is using it. This is useful because you don't get charged for your server when it is stopped.
+The `t3.nano` instance size has just enough memory and CPU power to meet the requirements of this course if you are careful. However, if you find that your server is running slowly or erratically, you should consider upgrading to a larger instance size. If you have an elastic IP address you can change your instance size whenever you would like and you won't lose your public IP address. You can even stop your server when no one is using it. This is useful because you don't get charged for your server when it is stopped.
 
 ## ☑ Assignment
 
