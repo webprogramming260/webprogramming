@@ -861,6 +861,8 @@
           "title": "🚀 Startup Service",
           "path": "instruction/webServices/startupService/startupService.md",
           "id": "b0ddeea9-629d-402f-a1cb-f8b02a1622e5",
+          "interactions": [],
+          "commit": "cd52315d87efa1c8369632d515c0a3968815bec6",
           "externalRefs": {
             "canvasPageId": 1498093
           }
