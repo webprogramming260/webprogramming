@@ -166,7 +166,7 @@ This [video](https://youtu.be/lr6rmjUhOc0) may help you understand how to develo
   - 20% - Your backend provides service endpoints
   - 20% - Your frontend calls your service endpoints
   - 25% - Supports registration, login, logout, and restricted endpoint
-  - 5% - Uses Brcypt to hash passwords
+  - 5% - Uses BCrypt to hash passwords
 
 ## Go celebrate
 
