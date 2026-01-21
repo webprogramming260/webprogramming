@@ -138,6 +138,8 @@
           "title": "🚀 Startup Specification",
           "path": "instruction/essentials/startupSpec/startupSpec.md",
           "id": "a5ec7378-0c85-4f13-9b78-4e6506b2b508",
+          "interactions": [],
+          "commit": "a4b5f649a48dd4b91c9f3302177f9d0d0b4c5eac",
           "externalRefs": {
             "canvasPageId": 1497966
           }
