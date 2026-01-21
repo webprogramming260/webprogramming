@@ -74,6 +74,8 @@ Submit the URL for your GitHub startup repository to the Canvas assignment.
 
 ## Grading Rubric
 
+- **Prerequisite**: Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
+- **Prerequisite**: Enough Git commits to fully prove your ownership of your code. This usually means dozens of commits spread across multiple days of the deliverable development period. Failure to do this may result in the rejection of your submission.
 - 10% - Proper use of Markdown in `README.md`.
 - 20% - A concise and compelling elevator pitch in your `README.md`.
 - 10% - Description of key features in your `README.md`.
