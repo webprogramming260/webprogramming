@@ -43,7 +43,8 @@ When you are finished, the placeholder for your startup will be available from `
 > Submit your Startup URL that includes your domain name for this deliverable (e.g. `https://startup.yourdomain`). **Do not** submit your GitHub repository URL.
 
 - **Prerequisite**: Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
-
+- 100% Your web page can be displayed using HTTPS and your domain name.
+- 
 ## Go celebrate
 
 You did it! You now have a web server that can be seen by anyone in the world.
