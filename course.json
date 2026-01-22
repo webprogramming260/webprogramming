@@ -327,6 +327,8 @@
           "title": "CSS introduction",
           "path": "instruction/css/introduction/introduction.md",
           "id": "5af1172c-868c-404b-957f-5f6331d866f8",
+          "interactions": [],
+          "commit": "5ae71f21085475448829443471b0d3cf60a6e4ad",
           "externalRefs": {
             "canvasPageId": 1498020
           }
