@@ -90,6 +90,16 @@ In this case, the rules cascade down from the highest nodes in the DOM tree to t
 
 ![CSS cascade](cssCascading.jpg)
 
+### Specificity (precedence)
+
+The rules for determining which declaration will apply to a specific element also depend the type of declaration. The following defines the general rules of precedence from highest to lowest.
+
+1. **Inline Styles**: style="color: black"
+2. **ID Selectors**: #myElement { color: blue; }
+3. **Class Selectors, Attribute Selectors, and Pseudo-classes**: .myClass { color: green; }
+4. **Element Selectors** and **Pseudo-elements**: p { color: red; }
+5. **Universal Selector** (*) and **Inherited styles**
+
 ## The box model
 
 CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. The innermost box holds the element's content. This is where things like the text or image of an element is displayed. Next comes the padding. The padding will inherit things like the background color. After padding is the border, which has properties like color, thickness and line style. The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace. It is important to understand each of these boxes so that you can achieve the desired visual result by applying the proper CSS declaration.
