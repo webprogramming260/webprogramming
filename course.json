@@ -317,6 +317,13 @@
           "externalRefs": {
             "canvasPageId": 1498019
           }
+        },
+        {
+          "title": "Simon video",
+          "type": "video",
+          "path": "https://youtu.be/PKiRH2ZKZeM?cb=1769323467972",
+          "id": "7c3526d1-be9b-46ba-ae51-bae82535acea",
+          "description": ""
         }
       ]
     },
