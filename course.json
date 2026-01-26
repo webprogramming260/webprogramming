@@ -437,19 +437,19 @@
           }
         },
         {
+          "title": "Simon video",
+          "type": "video",
+          "path": "https://youtu.be/HXNx_Gp0jyM",
+          "id": "625cc17e-f079-4a7b-8b6f-22c8d71f7357",
+          "description": ""
+        },
+        {
           "title": "🚀 Startup CSS",
           "path": "instruction/css/startupCss/startupCss.md",
           "id": "78a0fce4-b3b7-47a4-8911-0623981967ce",
           "externalRefs": {
             "canvasPageId": 1498033
           }
-        },
-        {
-          "title": "Simon video",
-          "type": "video",
-          "path": "https://youtu.be/HXNx_Gp0jyM",
-          "id": "625cc17e-f079-4a7b-8b6f-22c8d71f7357",
-          "description": ""
         }
       ]
     },
