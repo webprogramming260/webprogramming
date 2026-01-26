@@ -1022,19 +1022,19 @@
           }
         },
         {
+          "title": "Simon WebSocket video",
+          "type": "video",
+          "path": "https://youtu.be/oVO2VIG0zfI",
+          "id": "a13a749c-ac69-41f3-970f-4098b998868d",
+          "description": ""
+        },
+        {
           "title": "🚀 Startup WebSocket",
           "path": "instruction/webServices/startupWebSocket/startupWebSocket.md",
           "id": "d643d1bf-8e94-4d28-88ae-720025a955db",
           "externalRefs": {
             "canvasPageId": 1498106
           }
-        },
-        {
-          "title": "Simon WebSocket video",
-          "type": "video",
-          "path": "https://youtu.be/oVO2VIG0zfI",
-          "id": "a13a749c-ac69-41f3-970f-4098b998868d",
-          "description": ""
         }
       ]
     },
