@@ -892,6 +892,13 @@
           }
         },
         {
+          "title": "Simon service video",
+          "type": "video",
+          "path": "https://youtu.be/lr6rmjUhOc0",
+          "id": "60904743-03e7-478f-ac08-12c2b1422675",
+          "description": ""
+        },
+        {
           "title": "🚀 Startup Service",
           "path": "instruction/webServices/startupService/startupService.md",
           "id": "b0ddeea9-629d-402f-a1cb-f8b02a1622e5",
@@ -900,13 +907,6 @@
           "externalRefs": {
             "canvasPageId": 1498093
           }
-        },
-        {
-          "title": "Simon service video",
-          "type": "video",
-          "path": "https://youtu.be/lr6rmjUhOc0",
-          "id": "60904743-03e7-478f-ac08-12c2b1422675",
-          "description": ""
         }
       ]
     },
