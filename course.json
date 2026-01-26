@@ -553,6 +553,13 @@
           }
         },
         {
+          "title": "Simon React P1 video",
+          "type": "video",
+          "path": "https://youtu.be/-Gv27DPUPbQ",
+          "id": "27408066-2c44-4f4a-9f4b-03557e5e2f2a",
+          "description": ""
+        },
+        {
           "title": "🚀 Startup React P1: Routing",
           "path": "instruction/webFrameworks/startupReact/startupReactP1.md",
           "id": "9960b760-57e3-4291-9b39-0649e08749bc",
@@ -743,13 +750,6 @@
           "externalRefs": {
             "canvasPageId": 1498076
           }
-        },
-        {
-          "title": "Simon React P1 video",
-          "type": "video",
-          "path": "https://youtu.be/-Gv27DPUPbQ",
-          "id": "27408066-2c44-4f4a-9f4b-03557e5e2f2a",
-          "description": ""
         },
         {
           "title": "Simon React P2 video",
