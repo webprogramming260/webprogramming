@@ -1028,6 +1028,13 @@
           "externalRefs": {
             "canvasPageId": 1498106
           }
+        },
+        {
+          "title": "Simon WebSocket video",
+          "type": "video",
+          "path": "https://youtu.be/HXNx_Gp0jyM",
+          "id": "a13a749c-ac69-41f3-970f-4098b998868d",
+          "description": ""
         }
       ]
     },
