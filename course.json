@@ -311,19 +311,19 @@
           }
         },
         {
+          "title": "Simon Video",
+          "type": "video",
+          "path": "https://youtu.be/HXNx_Gp0jyM}",
+          "id": "1f5cdfca-6e6a-4db6-947f-936500d7b8c5",
+          "description": ""
+        },
+        {
           "title": "🚀 Startup HTML",
           "path": "instruction/html/startupHtml/startupHtml.md",
           "id": "4eaeec05-3dfc-4f9d-9c76-e2f64e1c4660",
           "externalRefs": {
             "canvasPageId": 1498019
           }
-        },
-        {
-          "title": "Simon Video",
-          "type": "video",
-          "path": "https://youtu.be/HXNx_Gp0jyM}",
-          "id": "1f5cdfca-6e6a-4db6-947f-936500d7b8c5",
-          "description": ""
         }
       ]
     },
