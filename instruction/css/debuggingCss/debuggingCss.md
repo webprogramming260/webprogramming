@@ -68,7 +68,7 @@ Experiment with debugging and altering the CSS. Note that you can open up any we
 
 ### 🧧 Possible solution
 
-If you get stuck consider [this](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align).
+If you get stuck consider the difference between [text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-align) and [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/justify-content).
 
 ### Extra Help With Debugging
 
