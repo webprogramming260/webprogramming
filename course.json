@@ -376,6 +376,8 @@
           "title": "Debugging CSS",
           "path": "instruction/css/debuggingCss/debuggingCss.md",
           "id": "c6c5523b-4c18-4b8b-9546-3d1fafffd30b",
+          "interactions": [],
+          "commit": "066c94526e09a83209b36fdba96a551e5202690f",
           "externalRefs": {
             "canvasPageId": 1498025
           }
