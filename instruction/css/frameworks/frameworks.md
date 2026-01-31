@@ -10,7 +10,7 @@ Today, there are lots of different open source CSS frameworks available to choos
 
 ## Tailwind
 
-A new rising contender in the CSS framework space is [Tailwind CSS](https://tailwindcss.com/) and its associated component library [Tailwind UI](https://tailwindui.com/). In the 2022 StateOfCSS poll, Tailwind gained an impressive 46% general usage ranking with a retention rating of 78%, all within the last four years.
+A new rising contender in the CSS framework space is [Tailwind CSS](https://tailwindcss.com/) and its associated component library [Tailwind UI](https://tailwindui.com/). In the 2024 StateOfCSS poll, Tailwind passed Bootstrap as the reigning champion with an  impressive 51% general usage ranking while Bootstrap dropped to 30%.
 
 Tailwind takes a different approach than traditional CSS frameworks. Instead of using large, rich, CSS rulesets to compartmentalize styling and functionality, it uses smaller definitions that are applied specifically to individual HTML elements. This moves much of the CSS representation out of the CSS file and directly into the HTML.
 
