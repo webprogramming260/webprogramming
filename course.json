@@ -418,6 +418,8 @@
           "title": "☑ CSS frameworks",
           "path": "instruction/css/frameworks/frameworks.md",
           "id": "475720b5-b11b-4f35-9167-568ab3573f3b",
+          "interactions": [],
+          "commit": "f55f0f9ce4eb32de24e34836a3873bf5561f317e",
           "externalRefs": {
             "canvasPageId": 1498030
           }
