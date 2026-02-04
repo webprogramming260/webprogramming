@@ -53,7 +53,7 @@ With Bootstrap you use Bootstrap's card, card-body, card-tile, and card-text com
 With Tailwind there are no component level definitions. You simply work with class names that are similar to primitive CSS directives. You apply the class names directly in the HTML and not through CSS files.
 
 ```html
-<div class="max-w-sm rounded overflow-hidden
+<div class="max-w-sm rounded overflow-hidden>
 <div className="max-w-sm rounded bg-white overflow-hidden shadow-lg m-4 p-2">
   <img className="w-full" src="https://picsum.photos/400/200" />
   <div className="px-2 py-4">
