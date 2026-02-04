@@ -552,6 +552,8 @@
           "title": "☑ Simon React P1: Routing",
           "path": "instruction/simon/simonReact/simonReactP1.md",
           "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91",
+          "interactions": [],
+          "commit": "6094709b10b3ebf3d125e50a115ea9cda167d26f",
           "externalRefs": {
             "canvasPageId": 1498045
           }
