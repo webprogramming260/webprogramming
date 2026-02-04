@@ -103,6 +103,12 @@ Next we create a `src` directory where we will put all of the React code. Under 
 
 Finally rename `main.css` to `app.css` and move it to the `src` directory. This will contain all the styles that are shared across the application.
 
+```sh
+mkdir public && mv placeholder.jpg favicon.ico public/
+mkdir -p src/about src/login src/play src/scores
+mv main.css src/app.css
+```
+
 When we are done it will look like this.
 
 ```sh
