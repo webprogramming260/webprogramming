@@ -82,6 +82,10 @@ However, because Bootstrap uses predefined component level classes, you will nee
 
 ## Adding Tailwind to your project
 
+> [!CAUTION]
+>
+> Since tailwind requires the Vite tool chain processor to build your application, you will need to have completed the React P1: routing deliverable before tailwind styling can be deployed to your server.
+
 Since you are already using Vite as the tool chain processor for you react application, it is easy to configure Vite to support tailwind. You need to install tailwind, configure vite to execute tailwind as part of the tool chain, add a reference to the resulting CSS, and start adding Tailwind class names to your HTML elements.
 
 1. Start with the [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) application. This will result in an application that looks like this:
