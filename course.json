@@ -451,6 +451,8 @@
           "title": "🚀 Startup CSS",
           "path": "instruction/css/startupCss/startupCss.md",
           "id": "78a0fce4-b3b7-47a4-8911-0623981967ce",
+          "interactions": [],
+          "commit": "25b50b1f2e0dbfb993d548144f29ef06d8777cea",
           "externalRefs": {
             "canvasPageId": 1498033
           }
@@ -549,19 +551,21 @@
           }
         },
         {
+          "title": "☑ Simon React P1: Routing",
+          "path": "instruction/simon/simonReact/simonReactP1.md",
+          "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91",
+          "interactions": [],
+          "commit": "6094709b10b3ebf3d125e50a115ea9cda167d26f",
+          "externalRefs": {
+            "canvasPageId": 1498045
+          }
+        },
+        {
           "title": "Simon React P1 video",
           "type": "video",
           "path": "https://youtu.be/-Gv27DPUPbQ",
           "id": "27408066-2c44-4f4a-9f4b-03557e5e2f2a",
           "description": ""
-        },
-        {
-          "title": "☑ Simon React P1: Routing",
-          "path": "instruction/simon/simonReact/simonReactP1.md",
-          "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91",
-          "externalRefs": {
-            "canvasPageId": 1498045
-          }
         },
         {
           "title": "🚀 Startup React P1: Routing",
@@ -660,14 +664,6 @@
           }
         },
         {
-          "title": "🚀 Startup React P2: Reactivity",
-          "path": "instruction/webFrameworks/startupReact/startupReactP2.md",
-          "id": "65816624-6bfe-4324-80f4-4b3c8042caae",
-          "externalRefs": {
-            "canvasPageId": 1498066
-          }
-        },
-        {
           "title": "Simon React P2: Reactivity",
           "path": "instruction/simon/simonReact/simonReactP2.md",
           "id": "740eb26d-0189-4077-88fe-b43b7043fe5e",
@@ -681,6 +677,14 @@
           "path": "https://youtu.be/xmH_DJF7kOQ",
           "id": "346520cc-7da5-451f-a3df-54c54c2cb534",
           "description": ""
+        },
+        {
+          "title": "🚀 Startup React P2: Reactivity",
+          "path": "instruction/webFrameworks/startupReact/startupReactP2.md",
+          "id": "65816624-6bfe-4324-80f4-4b3c8042caae",
+          "externalRefs": {
+            "canvasPageId": 1498066
+          }
         },
         {
           "title": "☑ Promises",
