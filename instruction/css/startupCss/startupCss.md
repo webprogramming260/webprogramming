@@ -68,7 +68,7 @@ Doing this will make this deliverable of your startup available from `https://st
 - **Prerequisite**: Enough Git commits to fully prove your ownership of your code. This usually means dozens of commits spread across multiple days of the deliverable development period. Failure to do this may result in the rejection of your submission.
 - Properly styled CSS
   - 10% Visually appealing colors and layout. No overflowing elements.
-  - 20% Use of a CSS framework
+  - 20% Use of a CSS framework such as Bootstrap
   - 20% All visual elements styled using CSS
   - 30% Responsive to window resizing using flexbox and/or grid display
   - 10% Use of a imported font
