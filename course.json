@@ -428,6 +428,8 @@
           "title": "Tailwind",
           "path": "instruction/css/tailwind/tailwind.md",
           "id": "ed787296-29dc-4b7e-accd-5a1f37a3c00d",
+          "interactions": [],
+          "commit": "92c525157f84543b0ab578ef300f69de0e9d8e5a",
           "externalRefs": {
             "canvasPageId": 1498031
           }
