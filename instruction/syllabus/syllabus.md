@@ -53,6 +53,17 @@ In order to receive accommodations beyond the existing late policy you must comp
 1. Submit a request for each assignment you are seeking accommodations for.
 1. Make a comment when you submit so that the TA knows you applied for an accommodation.
 
+
+## Resubmissions
+
+When you work on a deliverable you should follow this basic pattern:
+
+1. **Carefully read and follow all the relevant course instruction**
+1. Do your best work
+1. Submit your best work for grading and feedback
+
+Resubmissions are only considered in cases where the instruction was unclear, or something failed between the submission and grading process (e.g. Your server died before it was able to be graded). If you are unclear about the deliverable, or would like to have someone review your work, please reach out to a TA or the instructor prior to submitting.
+
 ## Commit Policy
 
 It is critical that you develop good software engineering practices. Your GitHub commit history should demonstrate every step of your work in this class. If your history does not prove your ownership of the work you may be given a failing grade for the class.
