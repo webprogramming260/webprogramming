@@ -5,14 +5,14 @@
 - [Tailwind website](https://tailwindcss.com/)
 - [Getting started using Vite](https://tailwindcss.com/docs/installation/using-vite)
 
-Tailwind is a CSS framework that takes a different approach from traditional frameworks. Instead of simply importing a bunch of predefined components such as buttons or navbars, Tailwind provides low-level utility classes that you apply directly in your HTML.
+Tailwind is a CSS framework that takes a different approach from traditional frameworks. Instead of simply importing a bunch of predefined CSS class name selectors for things such as buttons or navbars, Tailwind provides low-level utility classes that you apply directly in your HTML.
 
 ## History
 
 - **Created by**: Adam Wathan, Steve Schoger, Jonathan Reinink, and David Hemphill
 - **Initial release**: November 2017
 - **Motivation**: The team behind Tailwind wanted a way to build UIs faster and more flexibly without constantly switching between HTML and CSS files or overriding styles from traditional frameworks like Bootstrap.
-- **Success**: It has grown to become one of the most popular CSS frameworks due to its developer-first philosophy and modern tooling ecosystem.
+- **Success**: It has grown to become the most popular CSS frameworks due to its developer-first philosophy and modern tooling ecosystem.
 
 ## Tailwind philosophy
 
@@ -69,6 +69,8 @@ The visual result is similar in either case.
 
 However, because Bootstrap uses predefined component level classes, you will need to download the entire Bootstrap CSS framework file in order to render the card. With Tailwind, a custom CSS file is created dynamically for you that only contains the styling that you used.
 
+You may be concerned about all of those "css declarations" being put directly on the HTML elements, but in reality you would use a web framework to modularize the entire **card** into a component and so there is no real duplication of the "css declarations". You are just specifying the component's CSS right where it is used rather in a different file that is referenced by a class name selector.
+
 ### Feature comparison
 
 | Feature            | Tailwind CSS                                          | Bootstrap                                                    |
@@ -80,9 +82,11 @@ However, because Bootstrap uses predefined component level classes, you will nee
 | **Learning curve** | Steep at first as you learn native CSS                | Easy to get started                                          |
 | **JS dependency**  | No JS (except if using plugins)                       | Depends on jQuery (Bootstrap ≤ 4) or native JS (Bootstrap 5) |
 
-## Adding Tailwind to your project
+## Experimenting with Tailwind
 
-Since you are already using Vite as the tool chain processor for you react application, it is easy to configure Vite to support tailwind. You need to install tailwind, configure vite to execute tailwind as part of the tool chain, add a reference to the resulting CSS, and start adding Tailwind class names to your HTML elements.
+Tailwind requires a tool chain processor to convert the class names into a CSS stylesheet. You will include the necessary processor when you move your startup application to React. However, for now you can play with with Tailwind right now by creating a [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) application and then configuring Vite to support tailwind.
+
+The steps involved include creating the demo application, installing tailwind, configuring Vite to execute tailwind as part of the tool chain, adding a reference to the resulting CSS, and adding Tailwind class names to your HTML elements.
 
 1. Start with the [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) application. This will result in an application that looks like this:
 
