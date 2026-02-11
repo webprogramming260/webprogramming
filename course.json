@@ -60,6 +60,13 @@
           }
         },
         {
+          "title": "Introduction slides",
+          "type": "embedded",
+          "path": "https://docs.google.com/presentation/d/e/2PACX-1vTYk3qoFAMJY24kBCrPROl6l6stEAGFSkQKbj3k53JySMiZ240WPGMdIhSf6x35Drm3x6r1CFRhDAYP/pubembed",
+          "id": "3f73a7d5-5c4a-45d8-be23-b0d5846e72e9",
+          "description": "https://docs.google.com/presentation/d/e/2PACX-1vTYk3qoFAMJY24kBCrPROl6l6stEAGFSkQKbj3k53JySMiZ240WPGMdIhSf6x35Drm3x6r1CFRhDAYP/pubembed"
+        },
+        {
           "title": "Why am I here?",
           "path": "instruction/essentials/whyAmIHere/whyAmIHere.md",
           "id": "4fb4310e-9abc-4187-a816-084e3f03ce71",
@@ -183,13 +190,6 @@
           "externalRefs": {
             "canvasPageId": 1498004
           }
-        },
-        {
-          "title": "Introduction slides",
-          "type": "embedded",
-          "path": "https://docs.google.com/presentation/d/e/2PACX-1vTYk3qoFAMJY24kBCrPROl6l6stEAGFSkQKbj3k53JySMiZ240WPGMdIhSf6x35Drm3x6r1CFRhDAYP/pubembed",
-          "id": "3f73a7d5-5c4a-45d8-be23-b0d5846e72e9",
-          "description": "https://docs.google.com/presentation/d/e/2PACX-1vTYk3qoFAMJY24kBCrPROl6l6stEAGFSkQKbj3k53JySMiZ240WPGMdIhSf6x35Drm3x6r1CFRhDAYP/pubembed"
         }
       ]
     },
