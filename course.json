@@ -1029,7 +1029,7 @@
         },
         {
           "title": "Simon WebSocket video",
-          "type": "video",
+          "type": "embedded",
           "path": "https://www.youtube.com/embed/oVO2VIG0zfI",
           "id": "a13a749c-ac69-41f3-970f-4098b998868d",
           "description": ""
