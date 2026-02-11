@@ -961,7 +961,7 @@
         },
         {
           "title": "Simon DB video",
-          "type": "video",
+          "type": "embedded",
           "path": "https://www.youtube.com/embed/f75muk9W-Jc",
           "id": "46be2a6a-a3b3-4e9b-8b2a-990906e83e54",
           "description": ""
