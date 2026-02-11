@@ -60,13 +60,6 @@
           }
         },
         {
-          "title": "Introduction slides",
-          "type": "embedded",
-          "path": "https://docs.google.com/presentation/d/e/2PACX-1vTYk3qoFAMJY24kBCrPROl6l6stEAGFSkQKbj3k53JySMiZ240WPGMdIhSf6x35Drm3x6r1CFRhDAYP/pubembed",
-          "id": "3f73a7d5-5c4a-45d8-be23-b0d5846e72e9",
-          "description": "https://docs.google.com/presentation/d/e/2PACX-1vTYk3qoFAMJY24kBCrPROl6l6stEAGFSkQKbj3k53JySMiZ240WPGMdIhSf6x35Drm3x6r1CFRhDAYP/pubembed"
-        },
-        {
           "title": "Why am I here?",
           "path": "instruction/essentials/whyAmIHere/whyAmIHere.md",
           "id": "4fb4310e-9abc-4187-a816-084e3f03ce71",
@@ -319,8 +312,8 @@
         },
         {
           "title": "Simon HTML video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/zg7eDNRMnWA",
+          "type": "video",
+          "path": "https://youtu.be/zg7eDNRMnWA",
           "id": "1f5cdfca-6e6a-4db6-947f-936500d7b8c5",
           "description": ""
         },
@@ -451,8 +444,8 @@
         },
         {
           "title": "Simon CSS video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/N7DVKsvUJgM",
+          "type": "video",
+          "path": "https://youtu.be/N7DVKsvUJgM",
           "id": "625cc17e-f079-4a7b-8b6f-22c8d71f7357",
           "description": ""
         },
@@ -559,8 +552,8 @@
         },
         {
           "title": "Simon React P1 video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/-Gv27DPUPbQ",
+          "type": "video",
+          "path": "https://youtu.be/-Gv27DPUPbQ",
           "id": "27408066-2c44-4f4a-9f4b-03557e5e2f2a",
           "description": ""
         },
@@ -568,6 +561,8 @@
           "title": "☑ Simon React P1: Routing",
           "path": "instruction/simon/simonReact/simonReactP1.md",
           "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91",
+          "interactions": [],
+          "commit": "9b7ac10855100c0c7209a02e582c94294881bec2",
           "externalRefs": {
             "canvasPageId": 1498045
           }
@@ -686,8 +681,8 @@
         },
         {
           "title": "Simon React P2 video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/xmH_DJF7kOQ",
+          "type": "video",
+          "path": "https://youtu.be/xmH_DJF7kOQ",
           "id": "346520cc-7da5-451f-a3df-54c54c2cb534",
           "description": ""
         },
@@ -906,8 +901,8 @@
         },
         {
           "title": "Simon service video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/lr6rmjUhOc0",
+          "type": "video",
+          "path": "https://youtu.be/lr6rmjUhOc0",
           "id": "60904743-03e7-478f-ac08-12c2b1422675",
           "description": ""
         },
@@ -968,8 +963,8 @@
         },
         {
           "title": "Simon DB video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/f75muk9W-Jc",
+          "type": "video",
+          "path": "https://youtu.be/f75muk9W-Jc",
           "id": "46be2a6a-a3b3-4e9b-8b2a-990906e83e54",
           "description": ""
         },
@@ -1036,8 +1031,8 @@
         },
         {
           "title": "Simon WebSocket video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/oVO2VIG0zfI",
+          "type": "video",
+          "path": "https://youtu.be/oVO2VIG0zfI",
           "id": "a13a749c-ac69-41f3-970f-4098b998868d",
           "description": ""
         },
