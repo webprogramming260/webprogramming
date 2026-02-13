@@ -72,7 +72,7 @@ Doing this will make this deliverable of your startup available from `https://st
 - **Prerequisite**: A link to your GitHub startup repository prominently displayed on your application's home page
 - **Prerequisite**: Notes in your startup Git repository `README.md` file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
 - **Prerequisite**: Enough Git commits to fully prove your ownership of your code. This usually means dozens of commits spread across multiple days of the deliverable development period. Failure to do this may result in the rejection of your submission.
-- Application converted to use React
+- Your startup application converted to use React
   - 10% Bundled using Vite
   - 50% Multiple react components that contain your HTML and CSS. No reactivity is required at this point.
   - 40% React router
