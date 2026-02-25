@@ -197,12 +197,12 @@ const app = express();
 // Third party middleware - Cookies
 app.use(cookieParser());
 
-app.post('/cookie/:name/:value', (req, res, next) => {
+app.post('/cookie/:name/:value', (req, res) => {
   res.cookie(req.params.name, req.params.value);
   res.send({ cookie: `${req.params.name}:${req.params.value}` });
 });
 
-app.get('/cookie', (req, res, next) => {
+app.get('/cookie', (req, res) => {
   res.send({ cookie: req.cookies });
 });
 
@@ -223,7 +223,7 @@ app.get('/store/:storeName', (req, res) => {
 });
 
 // Update store endpoint
-app.put('/st*/:storeName', (req, res) => res.send({ update: req.params.storeName }));
+app.put('/st*suffix/:storeName', (req, res) => res.send({ update: req.params.storeName, prefix: req.params.suffix }));
 
 // Delete store endpoint
 app.delete(/\/store\/(.+)/, (req, res) => res.send({ delete: req.params[0] }));
