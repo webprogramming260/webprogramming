@@ -70,7 +70,7 @@ The route path can also include a limited wildcard syntax or even full regular e
 
 ```js
 // Wildcard - matches /store/x and /star/y
-app.put('/st*/:storeName', (req, res) => res.send({ update: req.params.storeName }));
+app.put('/st*suffix/:storeName', (req, res) => res.send({ update: req.params.storeName, prefix: req.params.suffix }));
 
 // Pure regular expression
 app.delete(/\/store\/(.+)/, (req, res) => res.send({ delete: req.params[0] }));
@@ -143,6 +143,16 @@ app.get('/cookie', (req, res, next) => {
 ```
 
 It is common for middleware functions to add fields and functions to the `req` and `res` objects so that other middleware can access the functionality they provide. You see this happening when the `cookie-parser` middleware adds the `req.cookies` object for reading cookies, and also adds the `res.cookie` function in order to make it easy to add a cookie to a response.
+
+You can use Curl to experiment with the above cookie code with the following commands.
+
+```sh
+➜ curl -c cookies.txt -X POST localhost:3000/cookie/type/chocolate
+{"cookie":"type:chocolate"}
+
+➜ curl -b cookies.txt localhost:3000/cookie
+{"cookie":{"type":"chocolate"}}
+```
 
 ## Error handling middleware
 
