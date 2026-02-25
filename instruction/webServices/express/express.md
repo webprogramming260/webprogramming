@@ -132,12 +132,12 @@ const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
 
-app.post('/cookie/:name/:value', (req, res, next) => {
+app.post('/cookie/:name/:value', (req, res) => {
   res.cookie(req.params.name, req.params.value);
   res.send({ cookie: `${req.params.name}:${req.params.value}` });
 });
 
-app.get('/cookie', (req, res, next) => {
+app.get('/cookie', (req, res) => {
   res.send({ cookie: req.cookies });
 });
 ```
