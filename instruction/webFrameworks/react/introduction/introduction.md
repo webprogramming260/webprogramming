@@ -39,7 +39,7 @@ const list = React.createElement('ol', { class: 'big' }, React.createElement('li
 When the JavaScript interpreter running in the browser executes the `React.createElement` functions it will generate HTML elements are displayed to the user.
 
 ```html
-<ol className="big">
+<ol class="big">
   <li>Item 3</li>
   <li>Item 6</li>
 </ol>
