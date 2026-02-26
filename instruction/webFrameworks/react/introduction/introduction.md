@@ -22,7 +22,7 @@ React abstracts HTML into a JavaScript variant called [JSX](https://reactjs.org/
 ```jsx
 const i = 3;
 const list = (
-  <ol class='big'>
+  <ol className='big'>
     <li>Item {i}</li>
     <li>Item {3 + i}</li>
   </ol>
