@@ -1,6 +1,6 @@
 # Cascading Style Sheets
 
-![CSS Logo](cssLogo.png) test
+![CSS Logo](cssLogo.png) test2
 
 📖 **Deeper dive reading**: [MDN CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
