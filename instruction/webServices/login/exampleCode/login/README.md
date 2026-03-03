@@ -17,6 +17,4 @@ To use the example you must already have Node.js installed.
 1. Start the frontend running from a console window
    1. Change directory into the project root.
    1. Run `npm run dev`.
-1. Use websocket chat
-   1. Open two web browser windows to `http://localhost:5173`.
-   1. Start using login interface to experiment with authentication.
+1. Open a web browser window to [http://localhost:5173](http://localhost:5173).
