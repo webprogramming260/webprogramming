@@ -1,6 +1,8 @@
 # Account creation and login
 
-You support secure authentication in a web application by first providing a way for users to uniquely identify themselves. This usually requires three service endpoints. One to initially `register`, a second to `login` on future visits, and a third to `logout`. Once a user is authenticated we can control access to other authorized endpoints such as getting user data or making purchases. The following demonstrates how to make this all work correctly.
+You support secure authentication in a web application by first providing a way for users to uniquely identify themselves. This usually requires three service endpoints. One to initially `register`, a second to `login` on future visits, and a third to `logout`. Once a user is authenticated we can control access to other authorized endpoints such as getting user data or making purchases.
+
+Let's go ahead and build a service that implements all of the crucial pieces of authentication and authorization. We will start by defining the endpoints, then build the backend service, and then finally create a frontend that lets a user register, login, and access a secure endpoint.
 
 ## Endpoint design
 
@@ -86,48 +88,61 @@ Content-Type: application/json
 
 With our service endpoints defined, we can start building our web service by stubbing out each of the endpoints.
 
-**service.js**
+1. Create a directory called `login` for the project.
+   ```sh
+   mkdir login && cd login
+   ```
+1. Create a subdirectory called `service` and change to that directory.
+   ```sh
+   mkdir service && cd service
+   ```
+1. Initialize the directory as an NPM package and install all of the packages we are going to use.
+   ```sh
+   npm init -y
+   npm install express cookie-parser uuid bcryptjs
+   ```
+1. Save the following code to a file named `service.js`. This is our starting web service.
 
-```js
-const express = require('express');
-const app = express();
+   **service.js**
 
-// registration
-app.post('/api/auth', async (req, res) => {
-  res.send({ email: 'marta@id.com' });
-});
+   ```js
+   const express = require('express');
+   const app = express();
 
-// login
-app.put('/api/auth', async (req, res) => {
-  res.send({ email: 'marta@id.com' });
-});
+   // registration
+   app.post('/api/auth', async (req, res) => {
+     res.send({ email: 'marta@id.com' });
+   });
 
-// logout
-app.delete('/api/auth', async (req, res) => {
-  res.send({});
-});
+   // login
+   app.put('/api/auth', async (req, res) => {
+     res.send({ email: 'marta@id.com' });
+   });
 
-// getMe
-app.get('/api/user', async (req, res) => {
-  res.send({ email: 'marta@id.com' });
-});
+   // logout
+   app.delete('/api/auth', async (req, res) => {
+     res.send({});
+   });
 
-app.listen(3000);
-```
+   // getMe
+   app.get('/api/user', async (req, res) => {
+     res.send({ email: 'marta@id.com' });
+   });
 
-Using the above code, we build the authorization application with the following steps.
+   const port = 3000;
+   app.listen(port, function () {
+     console.log(`Listening on port ${port}`);
+   });
+   ```
 
-1. Create a directory called `authTest` for the project.
-1. Save the above code to a file named `service.js`. This is our starting web service.
-1. Run `npm install express cookie-parser uuid bcryptjs` to install all of the packages we are going to use.
 1. Run `node --watch service.js` or press `F5` in VS Code to start up the web service.
 1. Validate that everything is working by opening a console window and use `curl` to try out one of the endpoints.
 
-   ```sh
-   curl -X POST localhost:3000/api/auth -d '{"email":"test@id.com", "password":"a"}'
+```sh
+curl -X POST localhost:3000/api/auth -d '{"email":"test@id.com", "password":"a"}'
 
-   {"email":"marta@id.com"}
-   ```
+{"email":"marta@id.com"}
+```
 
 ## Handling requests
 
@@ -439,25 +454,19 @@ With everything implemented, we can use `curl` to try it out. First start up the
 
 ```sh
 curl -X POST localhost:3000/api/auth -H 'Content-Type:application/json' -d '{"email":"지안@id.com", "password":"toomanysecrets"}'
-```
 
-```sh
 {"email":"지안@id.com"}
 ```
 
 ```sh
 curl -c cookie.txt -X PUT localhost:3000/api/auth -H 'Content-Type:application/json' -d '{"email":"지안@id.com", "password":"toomanysecrets"}'
-```
 
-```sh
 {"email":"지안@id.com"}
 ```
 
 ```sh
 curl -b cookie.txt localhost:3000/api/user/me
-```
 
-```sh
 {"email":"지안@id.com"}
 ```
 
@@ -467,23 +476,79 @@ With the backend service in place, we can create a simple React application that
 
 ![Login demo](loginDemo.gif)
 
-First we need to follow the basic React setup that we discussed in the simple [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) app that we created in previous instruction. This includes:
+We can start with the same basic set up we used in the simple [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) app that we created in previous instruction.
 
+1. Change back to the root of the `login` project directory.
+   ```sh
+   cd ..
+   ```
 1. Creating an NPM project, installing Vite, and installing React.
    ```sh
    npm init -y
    npm install vite@latest -D
    npm install react react-dom react-router-dom
    ```
-1. Configuring Vite to proxy API requests through to the backend when debugging.
+1. Change the `package.json` file to include a script to run **vite**.
+   ```json
+   "scripts": {
+    "dev": "vite"
+   }
+   ```
+1. Create `vite.config.js` to configure Vite to proxy API requests through to the backend when debugging.
+
+   ```js
+   import { defineConfig } from 'vite';
+
+   export default defineConfig({
+     server: {
+       proxy: {
+         '/api': 'http://localhost:3000',
+       },
+     },
+   });
+   ```
+
 1. Creating a basic `index.html` file that loads your React application.
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+       <title>React Demo</title>
+     </head>
+     <body>
+       <noscript>You need to enable JavaScript to run this app.</noscript>
+       <div id="root"></div>
+       <script type="module" src="/index.jsx"></script>
+     </body>
+   </html>
+   ```
+1. Create a basic CSS definition in `main.css`
+
+   ```css
+   * {
+     font-family: sans-serif;
+   }
+   button {
+     margin: 10px;
+   }
+   label {
+     display: block;
+     margin-top: 10px;
+   }
+   ```
+
 1. Creating your React application in `index.jsx`.
 
 ### The authentication components
 
-In the index.jsx file we will set up some simple routing between a **login** component and a user **profile** component.
+In the `index.jsx` file we will set up some simple routing between a **login** component and a user **profile** component.
 
 ```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import './main.css';
+
 function App() {
   return (
     <BrowserRouter>
@@ -496,9 +561,12 @@ function App() {
     </BrowserRouter>
   );
 }
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 ```
 
-The login component will handle the authentication calls to the backend.
+Add a **Login component** to `index.jsx` that will handle the authentication calls to the backend.
 
 ```jsx
 function Login() {
@@ -550,7 +618,7 @@ function Login() {
 }
 ```
 
-The profile component will display the current user and provide the ability to logout.
+Add a **Profile component** to `index.jsx` that will display the current user and provide the ability to logout.
 
 ```jsx
 function Profile() {
@@ -586,15 +654,6 @@ function Profile() {
 
 ## Experiment
 
-You can find this complete example [here](exampleCode/login). To run it yourself, take the following steps:
+Make sure your backend is running on port 3000 by running `node service.js` in the **service** directory. Start the frontend by running `npm run dev` in the project root directory. Set breakpoints in both the front and backend code and see how they interact. Change the code to experiment with the functionality.
 
-1. Clone the [course instruction repository](https://github.com/webprogramming260/.github) if you haven't already.
-1. Navigate to the `instruction/webServices/login/exampleCode/login` directory in your your command console window.
-1. Run `npm install` from a console window in the `exampleCode/login` directory.
-1. Run `npm install` from a console window in the `exampleCode/login/service` subdirectory.
-1. Open up the login application in VS Code and review what it is doing.
-1. Run and debug the example by pressing `F5` for the file `exampleCode/login/service/service.js`. You may need to select node.js as the debugger the first time you run.
-1. Start the frontend by running `npm run dev` from a console window.
-1. Open a browser window and point it to http://localhost:5137.
-1. Register, login, logout, and access the protected endpoint to get your user information.
-1. Use the browser's debugger to view the authentication communication.
+If your implementation is not quite working, you can find this complete example [here](exampleCode/login).
