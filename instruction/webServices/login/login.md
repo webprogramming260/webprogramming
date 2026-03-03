@@ -40,7 +40,7 @@ Set-Cookie: auth=tokenHere
 Given an email and password, return a cookie containing the authentication token. If the email does not exist or the password is bad, return 401 (unauthorized).
 
 ```http
-POST /api/auth HTTP/2
+PUT /api/auth HTTP/2
 Content-Type: application/json
 {
   "email":"marta@id.com",
