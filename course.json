@@ -995,6 +995,8 @@
           "path": "instruction/webServices/login/login.md",
           "id": "39a40701-dabc-4a51-ad0f-c539ae22ffe5",
           "state": "published",
+          "interactions": [],
+          "commit": "afebbdce858481621958b58d12786e41cabb5c5b",
           "externalRefs": {
             "canvasPageId": 1498091
           }
