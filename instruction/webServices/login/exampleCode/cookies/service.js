@@ -10,7 +10,7 @@ app.get('/cookie', (req, res) => {
   res.send({ token: token });
 });
 
-app.get('*', (req, res) => {
+app.get(/.*/, (req, res) => {
   const token = req.cookies?.token;
   res.send({ token: token });
 });
