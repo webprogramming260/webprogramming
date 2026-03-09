@@ -143,9 +143,12 @@ const db = client.db('rental');
 const collection = db.collection('house');
 
 async function main() {
-  // add all the following database code here
-
-  client.close();
+  try {
+    // add all the following database code here
+    
+  } finally {
+    client.close();
+  }
 }
 
 main();
