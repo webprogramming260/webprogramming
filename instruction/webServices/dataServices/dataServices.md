@@ -141,6 +141,13 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('rental');
 const collection = db.collection('house');
+
+async function main() {
+  // add all the following code in this async function
+
+}
+
+main();
 ```
 
 ### Insert
