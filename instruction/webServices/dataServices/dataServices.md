@@ -221,7 +221,7 @@ await collection.updateMany(query, { $set: { beds: 2 } });
 
 ### Delete
 
-Using the a query you can delete any matching documents with the `deleteMany` function.
+In the same way that you updated documents you can also delete them.
 
 ```js
 const query = { property_type: 'Condo', beds: { $lt: 2 } };
