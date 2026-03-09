@@ -130,7 +130,7 @@ Store your configuration information in the project.
 >
 > Make sure you include `dbConfig.json` in your `.gitignore` file so that it does not get pushed up to GitHub.
 
-With that done, you then import your database credentials and use the `MongoClient` object to make a client connection to the database server. This requires a username, password, and the hostname of the database server. With the client connection you can then get a database object and from that a collection object. The collection object allows you to insert, and query for, documents.
+With that done, go ahead and create a file named `database.js`. In the file you  import your database credentials and use the `MongoClient` object to make a client connection to the database server. This requires a username, password, and the hostname of the database server. With the client connection you can then get a database object and from that a collection object. The collection object allows you to insert, and query for, documents.
 
 ```js
 const { MongoClient } = require('mongodb');
