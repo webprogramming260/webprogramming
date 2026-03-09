@@ -165,7 +165,7 @@ const house = {
   property_type: 'Condo',
   beds: 1,
 };
-await collection.insertOne(house);
+const insertResult = await collection.insertOne(house);
 ```
 
 ### Query
@@ -209,6 +209,15 @@ rentals.forEach((i) => console.log(i));
 ```
 
 The query matches the document that we previously inserted and so we get the same result as before.
+
+### Update
+
+You can update any record by providing a query and the fields you want to update. The `updateMany` function will update everything that matches the query. `updateOne` will only update the first matching document.
+
+```js
+const query = { property_type: 'Condo', beds: { $lt: 2 } };
+await collection.updateMany(query, { $set: { beds: 2 } });
+```
 
 ### Delete
 
