@@ -100,10 +100,23 @@ You can always find the connection string to your Atlas cluster by pressing the 
 
 You need to protect your credentials for connecting to your Mongo database. One common mistake is to check them into your code and then post it to a public GitHub repository. Instead you can load your credentials when the application executes. One common way to do that is to have a JSON configuration file that contains the credentials that you dynamically load into the JavaScript that makes the database connection. You then use the configuration file in your development environment and deploy it to your production environment, but you **never** commit it to GitHub.
 
-In order to accomplish this do the following:
+## Using MongoDB in your application
 
-1. Create a file named `dbConfig.json` in the same directory as the database JavaScript (e.g. `database.js`) that you use to make database requests.
-1. Insert your Mongo DB credentials into the `dbConfig.json` file in JSON format using the following example:
+📖 **Deeper dive reading**: [MongoDB tutorial](https://www.mongodb.com/developer/languages/javascript/node-crud-tutorial/)
+
+The first step to using Mongo in your application is to install the `mongodb` package using NPM.
+
+```sh
+mkdir testMongo && cd testMongo
+npm init -y
+npm install mongodb
+```
+
+
+Store your configuration information in the project.
+
+1. Create a file named `dbConfig.json`.
+1. Insert your Mongo DB credentials, that you got from the connection string when you created your Mongo instance, into the `dbConfig.json` file in JSON format using the following example:
 
    ```json
    {
@@ -116,18 +129,6 @@ In order to accomplish this do the following:
 > [!NOTE]
 >
 > Make sure you include `dbConfig.json` in your `.gitignore` file so that it does not get pushed up to GitHub.
-
-## Using MongoDB in your application
-
-📖 **Deeper dive reading**: [MongoDB tutorial](https://www.mongodb.com/developer/languages/javascript/node-crud-tutorial/)
-
-The first step to using Mongo in your application is to install the `mongodb` package using NPM.
-
-```sh
-mkdir testMongo && cd testMongo
-npm init -y
-npm install mongodb
-```
 
 With that done, you then import your database credentials and use the `MongoClient` object to make a client connection to the database server. This requires a username, password, and the hostname of the database server. With the client connection you can then get a database object and from that a collection object. The collection object allows you to insert, and query for, documents.
 
