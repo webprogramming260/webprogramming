@@ -74,7 +74,7 @@ npm init -y
 npm install express
 ```
 
-In the `service` directory, we create a file named `index.js`. `index.js` is the file we will use with **node.js** to start up our web service. In index.js we create a very basic simple service by adding very basic Express JavaScript code. The code parses the arguments that are passed to node.js on startup to determine what HTTP port to use. If no port is specified then 3000 is used. We then include a temporary endpoint that accepts all HTTP GET requests by specifying `*` as the path. Later, we will replace this endpoint later with the ones we defined above.
+In the `service` directory, we create a file named `index.js`. `index.js` is the file we will use with **node.js** to start up our web service. In index.js we create a very basic simple service by adding very basic Express JavaScript code. The code parses the arguments that are passed to node.js on startup to determine what HTTP port to use. If no port is specified then 3000 is used. We then include a temporary endpoint that accepts all HTTP GET requests by specifying `/.*/` regular expression as the path. Later, we will replace this endpoint later with the ones we defined above.
 
 ```js
 const express = require('express');
@@ -82,7 +82,7 @@ const app = express();
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
-app.get('*', (_req, res) => {
+app.get(/.*/, (_req, res) => {
   res.send({ msg: 'Simon service' });
 });
 
