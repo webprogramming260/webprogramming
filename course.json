@@ -1006,6 +1006,8 @@
           "path": "instruction/simon/simonService/simonService.md",
           "id": "6b51e9ad-0bde-47b4-9c1d-61d5f88492d1",
           "state": "published",
+          "interactions": [],
+          "commit": "54b3c1ec7d16f06325c8610a2444a2599e03827a",
           "externalRefs": {
             "canvasPageId": 1498092
           }
