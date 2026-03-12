@@ -116,12 +116,20 @@ npm install cookie-parser bcryptjs uuid
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
+
+const authCookieName = "token";
 ```
 
 1. **Parse JSON**. All of our endpoints use JSON and so we want Express to automatically parse that for us.
 
    ```js
    app.use(express.json());
+   ```
+
+1. **Parse Cookies**. We also need to check the cookies we are storing so we also want Express to automatically manage that.
+
+   ```js
+   app.use(cookieParser());
    ```
 
 1. **Create the memory data structures**. Add data structures for both the users and the scores. That means whenever the service is restarted the users and scores will be lost. When we introduce the database in a later deliverable, the data will be persistent there.
