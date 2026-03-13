@@ -1006,19 +1006,17 @@
           "path": "instruction/simon/simonService/simonService.md",
           "id": "6b51e9ad-0bde-47b4-9c1d-61d5f88492d1",
           "state": "published",
-          "interactions": [],
-          "commit": "54b3c1ec7d16f06325c8610a2444a2599e03827a",
           "externalRefs": {
             "canvasPageId": 1498092
           }
         },
         {
           "title": "Simon service video",
-          "type": "embedded",
-          "path": "https://youtu.be/lr6rmjUhOc0?cb=20",
+          "type": "video",
+          "path": "https://youtu.be/lr6rmjUhOc0",
           "id": "60904743-03e7-478f-ac08-12c2b1422675",
           "state": "published",
-          "description": "https://youtu.be/lr6rmjUhOc0"
+          "description": ""
         },
         {
           "title": "🚀 Startup Service",
@@ -1026,7 +1024,7 @@
           "id": "b0ddeea9-629d-402f-a1cb-f8b02a1622e5",
           "state": "published",
           "interactions": [],
-          "commit": "cd52315d87efa1c8369632d515c0a3968815bec6",
+          "commit": "031c66730fb2430527b91cb3f41172c4bbc45b87",
           "externalRefs": {
             "canvasPageId": 1498093
           }
