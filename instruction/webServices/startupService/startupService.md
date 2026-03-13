@@ -165,7 +165,7 @@ This [video](https://youtu.be/lr6rmjUhOc0) may help you understand how to develo
   - 10% - Your frontend calls third party service endpoints
   - 20% - Your backend provides service endpoints
   - 20% - Your frontend calls your service endpoints
-  - 25% - Supports registration, login, logout, and restricted endpoint
+  - 25% - Supports registration, login, logout, and an endpoint that requires an auth token
   - 5% - Uses BCrypt to hash passwords
 
 ## Go celebrate
