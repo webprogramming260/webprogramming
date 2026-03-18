@@ -36,6 +36,62 @@ Get familiar with what the example code teaches.
 - View the code in your browser by hosting it using the VS Code Live Server extension.
 - Make modifications to the code as desired. Experiment and see what happens.
 
+## Diving into deployment
+
+Most deliverables that you deploy to your production environment in AWS have a bash shell script that do all the work for you. For this deliverable you will see a file in the root of the simon project named `deployFiles.sh`.
+
+You run a deployment script from a console window in your development environment with a command like the following.
+
+```sh
+./deployFiles.sh -k ~/prod.pem -h yourdomain.click -s simon
+```
+
+The `-k` parameter provides the credential file necessary to access your production environment. The `-h` parameter is the domain name of your production environment. The `-s` parameter represents the name of the application you are deploying (either `simon` or `startup`).
+
+This will make more sense as we gradually build up our technologies but we can discuss our simon-html deployment script as a starting point for deployment. You can view the [entire file here](https://github.com/webprogramming260/simon-html/blob/main/deployService.sh), but we will explain each step below. It isn't critical that you deeply understand everything in the script, but the more you do understand the easier it will be for you to track down and fix problems when they arise.
+
+The first part of the script simply parses the command line parameters so that we can pass in the production environment's security key (or PEM key), the hostname of your domain, and the name of the service you are deploying.
+
+```sh
+while getopts k:h:s: flag
+do
+    case "${flag}" in
+        k) key=${OPTARG};;
+        h) hostname=${OPTARG};;
+        s) service=${OPTARG};;
+    esac
+done
+
+if [[ -z "$key" || -z "$hostname" || -z "$service" ]]; then
+    printf "\nMissing required parameter.\n"
+    printf "  syntax: deployFiles.sh -k <pem key file> -h <hostname> -s <service>\n\n"
+    exit 1
+fi
+
+printf "\n----> Deploying files for $service to $hostname with $key\n"
+```
+
+The target directory on your production environment is deleted so that the new one can replace it. This is done by executing commands remotely using the secure shell program (`ssh`).
+
+```sh
+# Step 1
+printf "\n----> Clear out the previous distribution on the target.\n"
+ssh -i "$key" ubuntu@$hostname << ENDSSH
+rm -rf services/${service}/public
+mkdir -p services/${service}/public
+ENDSSH
+```
+
+The all the project files are then copied to the production environment using the secure copy program (`scp`).
+
+```sh
+# Step 2
+printf "\n----> Copy the distribution package to the target.\n"
+scp -r -i "$key" * ubuntu@$hostname:services/$service/public
+```
+
+
+
 ## Deploy to production
 
 > [!IMPORTANT]
