@@ -82,7 +82,7 @@ mkdir -p services/${service}/public
 ENDSSH
 ```
 
-The all the project files are then copied to the production environment using the secure copy program (`scp`).
+Then all of the project files copied to the production environment using the secure copy program (`scp`).
 
 ```sh
 # Step 2
