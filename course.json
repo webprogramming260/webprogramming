@@ -340,6 +340,8 @@
           "path": "instruction/simon/simonHtml/simonHtml.md",
           "id": "91fa6f53-d63a-43b9-81c3-eedd55ffb658",
           "state": "published",
+          "interactions": [],
+          "commit": "8f1a437fd69c38035e86b66118f072cde7846667",
           "externalRefs": {
             "canvasPageId": 1498018
           }
