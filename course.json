@@ -340,8 +340,6 @@
           "path": "instruction/simon/simonHtml/simonHtml.md",
           "id": "91fa6f53-d63a-43b9-81c3-eedd55ffb658",
           "state": "published",
-          "interactions": [],
-          "commit": "f0253487cb6fd3b370edbeb09ab68b97ad2a405a",
           "externalRefs": {
             "canvasPageId": 1498018
           }
@@ -349,7 +347,7 @@
         {
           "title": "Simon HTML video",
           "type": "video",
-          "path": "https://www.youtube.com/embed/zg7eDNRMnWA",
+          "path": "https://youtu.be/zg7eDNRMnWA",
           "id": "1f5cdfca-6e6a-4db6-947f-936500d7b8c5",
           "state": "published",
           "description": ""
@@ -494,7 +492,7 @@
         {
           "title": "Simon CSS video",
           "type": "video",
-          "path": "https://www.youtube.com/embed/N7DVKsvUJgM",
+          "path": "https://youtu.be/N7DVKsvUJgM",
           "id": "625cc17e-f079-4a7b-8b6f-22c8d71f7357",
           "state": "published",
           "description": ""
@@ -628,7 +626,7 @@
         {
           "title": "Simon React P1 video",
           "type": "video",
-          "path": "https://www.youtube.com/embed/-Gv27DPUPbQ",
+          "path": "https://youtu.be/-Gv27DPUPbQ",
           "id": "27408066-2c44-4f4a-9f4b-03557e5e2f2a",
           "state": "published",
           "description": ""
@@ -755,7 +753,7 @@
         {
           "title": "Simon React P2 video",
           "type": "video",
-          "path": "https://www.youtube.com/embed/xmH_DJF7kOQ",
+          "path": "https://youtu.be/xmH_DJF7kOQ",
           "id": "346520cc-7da5-451f-a3df-54c54c2cb534",
           "state": "published",
           "description": ""
@@ -1015,7 +1013,7 @@
         {
           "title": "Simon service video",
           "type": "video",
-          "path": "https://www.youtube.com/embed/lr6rmjUhOc0",
+          "path": "https://youtu.be/lr6rmjUhOc0",
           "id": "60904743-03e7-478f-ac08-12c2b1422675",
           "state": "published",
           "description": ""
@@ -1086,7 +1084,7 @@
         {
           "title": "Simon DB video",
           "type": "video",
-          "path": "https://www.youtube.com/embed/f75muk9W-Jc",
+          "path": "https://youtu.be/f75muk9W-Jc",
           "id": "46be2a6a-a3b3-4e9b-8b2a-990906e83e54",
           "state": "published",
           "description": ""
@@ -1146,6 +1144,8 @@
           "path": "instruction/webServices/webSocket/chat/chat.md",
           "id": "b5b8b0aa-4a28-465b-8c37-55a48f8af456",
           "state": "published",
+          "interactions": [],
+          "commit": "6e6103fd39fea262078ff7c4a8607352101f1cd4",
           "externalRefs": {
             "canvasPageId": 1498104
           }
@@ -1161,11 +1161,11 @@
         },
         {
           "title": "Simon WebSocket video",
-          "type": "embedded",
-          "path": "https://www.youtube.com/embed/oVO2VIG0zfI",
+          "type": "video",
+          "path": "https://youtu.be/oVO2VIG0zfI",
           "id": "a13a749c-ac69-41f3-970f-4098b998868d",
           "state": "published",
-          "description": "https://youtu.be/oVO2VIG0zfI"
+          "description": ""
         },
         {
           "title": "🚀 Startup WebSocket",
