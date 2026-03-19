@@ -29,6 +29,7 @@ Before we begin writing the code, we need to set up the React application projec
 1. Creating your backend service in `service/service.js` and installing the `express` and `ws` packages.
    ```sh
    mkdir service && cd service
+   npm init -y
    npm install express ws
    ```
 
