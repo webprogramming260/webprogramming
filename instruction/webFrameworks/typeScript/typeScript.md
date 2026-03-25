@@ -212,7 +212,7 @@ root.render(<App greeting='hello' />);
 
 Node LTS version 22 introduced experimental use of TypeScript with the expectation of it being enabled by default in future versions.
 
-index.ts
+**index.ts**
 
 ```ts
 function add(a: number, b: number | string): number {
@@ -228,10 +228,18 @@ const result: number = add(x, '3');
 console.log(result);
 ```
 
-The following will run the above code with Node.js.
+The following will run the above code with Node.js but it will display several warning messages.
 
 ```sh
 node --experimental-transform-types index.ts
+
+6
+```
+
+Node LTS version 24 handles TypeScript right out of the box. 
+
+```sh
+node index.ts
 
 6
 ```
