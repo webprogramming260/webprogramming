@@ -1218,6 +1218,8 @@
           "path": "instruction/webFrameworks/typeScript/typeScript.md",
           "id": "858daf3b-9c04-4eea-9e92-7e4d9f2c1db1",
           "state": "published",
+          "interactions": [],
+          "commit": "bf989d35e3e9632069be91fd8d513346bb482bb6",
           "externalRefs": {
             "canvasPageId": 1498110
           }
