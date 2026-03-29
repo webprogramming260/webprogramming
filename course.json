@@ -49,6 +49,21 @@
           "externalRefs": {
             "canvasPageId": 1497956
           }
+        },
+        {
+          "title": "📅 Winter 2026 schedule",
+          "type": "schedule",
+          "path": "instruction/-winter-2026-schedule/-winter-2026-schedule.md",
+          "id": "2d31cc97-5412-43d8-b34d-aeae939b8447",
+          "description": "",
+          "schedules": [
+            {
+              "id": "ac199f91-96b2-4d06-b672-1ba25546da17",
+              "title": "📅 Winter 2026 schedule",
+              "path": "-winter-2026-schedule.md",
+              "default": true
+            }
+          ]
         }
       ]
     },
