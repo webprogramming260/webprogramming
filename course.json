@@ -14,7 +14,6 @@
           "id": "6d489420-b320-4bc9-b43d-5c041a08b6bf",
           "state": "published",
           "interactions": [],
-          "commit": "408c675affb624682b43dc15c914cc0913a63f5c",
           "externalRefs": {
             "canvasPageId": 1497953
           }
@@ -34,7 +33,6 @@
           "id": "869b2c88-d937-43af-8beb-6c06751270ae",
           "state": "published",
           "interactions": [],
-          "commit": "b060e120a24ba73015d7fe3aee71ece6a849a29d",
           "externalRefs": {
             "canvasPageId": 1497955
           }
@@ -45,7 +43,6 @@
           "id": "73e1af7c-4c2d-4d01-a03c-74dcf2d771bb",
           "state": "published",
           "interactions": [],
-          "commit": "dca24a064d6ad8bf21088607e075af9c4a9a73b2",
           "externalRefs": {
             "canvasPageId": 1497956
           }
@@ -55,6 +52,7 @@
           "type": "schedule",
           "path": "instruction/-winter-2026-schedule/-winter-2026-schedule.md",
           "id": "2d31cc97-5412-43d8-b34d-aeae939b8447",
+          "state": "published",
           "description": "",
           "schedules": [
             {
@@ -94,7 +92,6 @@
           "id": "9443b922-92cc-4ca4-8204-c732ee196f98",
           "state": "published",
           "interactions": [],
-          "commit": "c4bbc6378a27767b366acbe36f56ca2d15a7f031",
           "externalRefs": {
             "canvasPageId": 1497959
           }
@@ -104,7 +101,6 @@
           "path": "instruction/essentials/latePolicy/latePolicy.md",
           "id": "9dce60c0-267d-4397-8ad3-2a5aca3f1d98",
           "state": "published",
-          "commit": "28d0703922cfbb76b8f759e9f6158c4a16c36e1c",
           "externalRefs": {
             "canvasPageId": 1497960
           }
@@ -169,7 +165,6 @@
           "id": "a5ec7378-0c85-4f13-9b78-4e6506b2b508",
           "state": "published",
           "interactions": [],
-          "commit": "a4b5f649a48dd4b91c9f3302177f9d0d0b4c5eac",
           "externalRefs": {
             "canvasPageId": 1497966
           }
@@ -248,7 +243,6 @@
           "id": "bf3c5698-c3e7-4978-89c1-e590e642987b",
           "state": "published",
           "interactions": [],
-          "commit": "a9b8a159c63aee5b4c02950b9708a7ea6e4601f5",
           "externalRefs": {
             "canvasPageId": 1498007
           }
@@ -295,7 +289,6 @@
           "id": "14d20891-6b0a-4f4a-827f-6a88cdaa5174",
           "state": "published",
           "interactions": [],
-          "commit": "bb902e72fb81dd7306782ee1bd2faf50149c38f1",
           "externalRefs": {
             "canvasPageId": 1498012
           }
@@ -387,7 +380,6 @@
           "id": "5af1172c-868c-404b-957f-5f6331d866f8",
           "state": "published",
           "interactions": [],
-          "commit": "1317c7493b747ab6b9c42138186888145f8f4589",
           "externalRefs": {
             "canvasPageId": 1498020
           }
@@ -434,7 +426,6 @@
           "id": "c6c5523b-4c18-4b8b-9546-3d1fafffd30b",
           "state": "published",
           "interactions": [],
-          "commit": "066c94526e09a83209b36fdba96a551e5202690f",
           "externalRefs": {
             "canvasPageId": 1498025
           }
@@ -481,7 +472,6 @@
           "id": "475720b5-b11b-4f35-9167-568ab3573f3b",
           "state": "published",
           "interactions": [],
-          "commit": "f55f0f9ce4eb32de24e34836a3873bf5561f317e",
           "externalRefs": {
             "canvasPageId": 1498030
           }
@@ -518,7 +508,6 @@
           "id": "78a0fce4-b3b7-47a4-8911-0623981967ce",
           "state": "published",
           "interactions": [],
-          "commit": "25b50b1f2e0dbfb993d548144f29ef06d8777cea",
           "externalRefs": {
             "canvasPageId": 1498033
           }
@@ -633,7 +622,6 @@
           "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91",
           "state": "published",
           "interactions": [],
-          "commit": "6094709b10b3ebf3d125e50a115ea9cda167d26f",
           "externalRefs": {
             "canvasPageId": 1498045
           }
@@ -652,7 +640,6 @@
           "id": "9960b760-57e3-4291-9b39-0649e08749bc",
           "state": "published",
           "interactions": [],
-          "commit": "63418295ae7d070a37aec7752f43d648ce0df533",
           "externalRefs": {
             "canvasPageId": 1498046
           }
@@ -955,7 +942,6 @@
           "id": "736b1203-4b6d-4053-a6da-578ee6f54598",
           "state": "published",
           "interactions": [],
-          "commit": "67bdb2fbfca9dcdb1b18e8fba768d93b3c4d4330",
           "externalRefs": {
             "canvasPageId": 1498085
           }
@@ -1011,7 +997,6 @@
           "id": "39a40701-dabc-4a51-ad0f-c539ae22ffe5",
           "state": "published",
           "interactions": [],
-          "commit": "afebbdce858481621958b58d12786e41cabb5c5b",
           "externalRefs": {
             "canvasPageId": 1498091
           }
@@ -1039,7 +1024,6 @@
           "id": "b0ddeea9-629d-402f-a1cb-f8b02a1622e5",
           "state": "published",
           "interactions": [],
-          "commit": "031c66730fb2430527b91cb3f41172c4bbc45b87",
           "externalRefs": {
             "canvasPageId": 1498093
           }
@@ -1082,7 +1066,6 @@
           "id": "c9ba6df5-c222-40c6-90c2-288ae6d93a7f",
           "state": "published",
           "interactions": [],
-          "commit": "18deed7eb55cec24b7fe1222f0e1d3de219ee43a",
           "externalRefs": {
             "canvasPageId": 1498097
           }
@@ -1160,7 +1143,6 @@
           "id": "b5b8b0aa-4a28-465b-8c37-55a48f8af456",
           "state": "published",
           "interactions": [],
-          "commit": "6e6103fd39fea262078ff7c4a8607352101f1cd4",
           "externalRefs": {
             "canvasPageId": 1498104
           }
@@ -1234,7 +1216,6 @@
           "id": "858daf3b-9c04-4eea-9e92-7e4d9f2c1db1",
           "state": "published",
           "interactions": [],
-          "commit": "bf989d35e3e9632069be91fd8d513346bb482bb6",
           "externalRefs": {
             "canvasPageId": 1498110
           }
