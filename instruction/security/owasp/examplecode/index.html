@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Chooser Demo</title>
+    <style>
+      :root {
+        --page-bg: #ffffff;
+        --card-bg: #ffffff;
+        --text-main: #202124;
+        --text-muted: #5f6368;
+        --line: #dadce0;
+        --link: #1a73e8;
+        --demo-bg: #fff6da;
+        --demo-border: #e8cf80;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: start center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text-main);
+        background: var(--page-bg);
+        padding: 18px 24px 28px;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 720px;
+      }
+
+      .notice {
+        margin: 0 0 16px;
+        padding: 10px 14px;
+        border: 1px solid var(--demo-border);
+        border-radius: 10px;
+        background: var(--demo-bg);
+        color: #6c5200;
+        font-size: 13px;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 26px;
+        border-bottom: 1px solid var(--line);
+        font-size: 19px;
+        color: #5f6368;
+        font-weight: 600;
+      }
+
+      .brand-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: conic-gradient(from 40deg, #4285f4 0 25%, #34a853 25% 50%, #fbbc05 50% 75%, #ea4335 75% 100%);
+      }
+
+      .brand-icon::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 6px 0 0 0 #fff;
+      }
+
+      .content {
+        padding: 76px 64px 40px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      h1 {
+        margin: 0;
+        text-align: center;
+        font-size: 2.1rem;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+      }
+
+      .subtitle {
+        margin: 14px 0 0;
+        text-align: center;
+        font-size: 18px;
+        color: var(--text-main);
+      }
+
+      .subtitle a {
+        color: var(--link);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .accounts {
+        margin-top: 74px;
+      }
+
+      .account {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        width: 100%;
+        padding: 18px 0;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        background: #fff;
+        text-align: left;
+        font-size: 14px;
+        color: var(--text-main);
+        cursor: pointer;
+      }
+
+      .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #d16df0;
+        color: #fff;
+        font-weight: 500;
+        font-size: 28px;
+        overflow: hidden;
+      }
+
+      .avatar2 {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #6df0cf;
+        color: #fff;
+        font-weight: 500;
+        font-size: 28px;
+        overflow: hidden;
+      }
+
+      .avatar-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .account-text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .account-name {
+        font-size: 22px;
+        line-height: 1.15;
+      }
+
+      .account-email {
+        font-size: 16px;
+        color: #5f6368;
+      }
+
+      .other-account-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        color: #5f6368;
+      }
+
+      .copy {
+        margin: 62px 0 0;
+        font-size: 18px;
+        line-height: 1.5;
+        color: #5f6368;
+      }
+
+      .copy a,
+      .footer a {
+        color: var(--link);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .copy a:hover,
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 2px 0;
+        color: var(--text-muted);
+        font-size: 18px;
+      }
+
+      .footer select {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font-size: inherit;
+        appearance: none;
+        padding-right: 18px;
+        cursor: pointer;
+      }
+
+      .language {
+        position: relative;
+      }
+
+      .language::after {
+        content: '▼';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        pointer-events: none;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 56px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .login-dialog {
+        border: 0;
+        border-radius: 18px;
+        padding: 0;
+        width: min(92vw, 420px);
+        box-shadow: 0 24px 60px rgba(32, 33, 36, 0.28);
+      }
+
+      .login-dialog::backdrop {
+        background: rgba(32, 33, 36, 0.45);
+      }
+
+      .dialog-body {
+        padding: 24px;
+      }
+
+      .dialog-title {
+        margin: 25px 0 0 0;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .dialog-copy {
+        margin: 0 0 18px;
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .dialog-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .dialog-input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font: inherit;
+      }
+
+      .dialog-field + .dialog-field {
+        margin-top: 14px;
+      }
+
+      .dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .dialog-button {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 18px;
+        background: #fff;
+        color: var(--text-main);
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .dialog-button.primary {
+        border-color: var(--link);
+        background: var(--link);
+        color: #fff;
+      }
+
+      @media (max-width: 520px) {
+        body {
+          padding: 12px;
+        }
+
+        .shell {
+          max-width: 100%;
+        }
+
+        .topbar {
+          padding: 14px 18px;
+          font-size: 16px;
+        }
+
+        .content {
+          padding: 38px 18px 28px;
+        }
+
+        .card {
+          border-radius: 12px;
+        }
+
+        h1 {
+          font-size: 1.9rem;
+        }
+
+        .footer {
+          flex-direction: column;
+          align-items: stretch;
+          font-size: 15px;
+        }
+
+        .footer-links {
+          justify-content: flex-start;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card" aria-label="Account chooser demo">
+        <div class="topbar">
+          <img width="64px" src="google.png" />
+          <span>Sign in with Google</span>
+        </div>
+
+        <div class="content">
+          <h1>Choose an account</h1>
+          <p class="subtitle">to continue to <a href="#">wellsfargo.com</a></p>
+
+          <div class="accounts">
+            <button class="account" type="button" aria-label="Select first account">
+              <div class="avatar" aria-hidden="true">T</div>
+              <div class="account-text">
+                <span class="account-name">Tom Jones</span>
+                <span class="account-email">tomjones@google.com</span>
+              </div>
+            </button>
+
+            <button class="account" type="button" aria-label="Select second account">
+              <div class="avatar2" aria-hidden="true">T</div>
+              <div class="account-text">
+                <span class="account-name">Tom Jones</span>
+                <span class="account-email">tom.jones@cs.byu.edu</span>
+              </div>
+            </button>
+
+            <button class="account" type="button" aria-label="Use another account">
+              <div class="other-account-icon" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="15" cy="15" r="11" stroke="currentColor" stroke-width="2" />
+                  <circle cx="15" cy="12" r="3.5" stroke="currentColor" stroke-width="2" />
+                  <path d="M9.5 22.5C10.8 19.7 12.8 18.3 15 18.3C17.2 18.3 19.2 19.7 20.5 22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="account-text">
+                <span class="account-name">Use another account</span>
+              </div>
+            </button>
+          </div>
+
+          <p class="copy">To continue, Google will share your name, email address, language preference, and profile picture with wellsfargo.com. Before using any app, review its <a href="#">privacy policy</a> and terms of service.</p>
+        </div>
+      </section>
+
+      <div class="footer">
+        <label class="language">
+          <span class="sr-only">Language</span>
+          <select aria-label="Language selector">
+            <option selected>English (United States)</option>
+            <option>English (United Kingdom)</option>
+            <option>Español</option>
+            <option>Français</option>
+          </select>
+        </label>
+
+        <div class="footer-links">
+          <a href="#">Help</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </main>
+
+    <dialog class="login-dialog" id="login-dialog">
+      <h2 class="dialog-title"><img width="64px" src="google.png" />Sign in</h2>
+      <form method="dialog" class="dialog-body">
+        <p class="dialog-copy" id="dialog-copy">Sign in to continue.</p>
+        <div class="dialog-field">
+          <label class="dialog-label" for="login-password-input">Password</label>
+          <input class="dialog-input" id="login-password-input" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" />
+        </div>
+        <div class="dialog-actions">
+          <button class="dialog-button" type="submit" value="cancel">Cancel</button>
+          <button class="dialog-button primary" type="submit" value="submit">Sign in</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="login-dialog" id="error-dialog">
+      <h2 class="dialog-title"><img width="64px" src="google.png" />Sign in</h2>
+      <form method="dialog" class="dialog-body">
+        <p class="dialog-copy" id="dialog-copy">An error has occurred while signing you in. Please try again. If this problem persists, please contact support.</p>
+        <div class="dialog-actions">
+          <button class="dialog-button primary" type="submit" value="submit">Retry</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script>
+      const errorForm = document.querySelector('#error-dialog form');
+
+      errorForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        window.location.href = 'https://www.wellsfargo.com/';
+      });
+    </script>
+
+    <script>
+      const form = document.querySelector('#login-dialog form');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const submitter = e.submitter?.value;
+
+        loginDialog.close();
+        if (submitter === 'submit') {
+          setTimeout(() => {
+            const errorDialog = document.getElementById('error-dialog');
+            errorDialog.showModal();
+          }, 500);
+        }
+      });
+    </script>
+
+    <script>
+      const accountButtons = document.querySelectorAll('.account');
+      const loginDialog = document.getElementById('login-dialog');
+      const dialogCopy = document.getElementById('dialog-copy');
+      const loginPasswordInput = document.getElementById('login-password-input');
+
+      accountButtons.forEach((accountButton) => {
+        accountButton.addEventListener('click', () => {
+          const accountName = accountButton.querySelector('.account-name')?.textContent?.trim() || 'this account';
+          const accountEmail = accountButton.querySelector('.account-email')?.textContent?.trim() || '';
+
+          dialogCopy.textContent = `Signing in as ${accountName} (${accountEmail}). Please enter your password to continue.`;
+          loginPasswordInput.value = '';
+          loginDialog.showModal();
+          loginPasswordInput.focus();
+        });
+      });
+    </script>
+  </body>
+</html>
