@@ -475,6 +475,7 @@
             <span class="value" id="proximityValue">70</span>
           </div>
           <div class="demo proximity-demo" id="proximityDemo"></div>
+          <div class="tiny-note" id="whyProximity">Why this score: Items are being positioned.</div>
         </article>
 
         <article class="principle">
@@ -488,6 +489,7 @@
             <span class="value" id="similarityValue">75</span>
           </div>
           <div class="demo similarity-demo" id="similarityDemo"></div>
+          <div class="tiny-note" id="whySimilarity">Why this score: Visual styles are being applied.</div>
         </article>
 
         <article class="principle">
@@ -506,8 +508,8 @@
               <div class="track-fade" aria-hidden="true"></div>
             </div>
             <div class="continuity-list" id="continuityList"></div>
-            <div class="tiny-note" id="continuityNote">Eye flow hint appears here.</div>
           </div>
+          <div class="tiny-note" id="whyContinuity">Why this score: Eye-flow metrics are being computed.</div>
         </article>
 
         <article class="principle">
@@ -523,6 +525,7 @@
           <div class="demo closure-demo">
             <svg class="closure-svg" id="closureSvg" viewBox="0 0 120 120"></svg>
           </div>
+          <div class="tiny-note" id="whyClosure">Why this score: Shape gaps are being measured.</div>
         </article>
 
         <article class="principle">
@@ -539,7 +542,7 @@
             <div class="figure-bg" id="figureBg"></div>
             <div class="figure-card" id="figureCard">Primary Action</div>
           </div>
-          <div class="tiny-note" id="figureNote">Higher values improve visual separation and readability.</div>
+          <div class="tiny-note" id="whyFigure">Why this score: Figure-ground contrast is being measured.</div>
         </article>
       </section>
     </main>
@@ -594,14 +597,17 @@
       };
 
       const proximityDemo = document.getElementById('proximityDemo');
+      const whyProximity = document.getElementById('whyProximity');
       const similarityDemo = document.getElementById('similarityDemo');
+      const whySimilarity = document.getElementById('whySimilarity');
       const continuityRow = document.getElementById('continuityRow');
       const continuityList = document.getElementById('continuityList');
-      const continuityNote = document.getElementById('continuityNote');
+      const whyContinuity = document.getElementById('whyContinuity');
       const closureSvg = document.getElementById('closureSvg');
+      const whyClosure = document.getElementById('whyClosure');
       const figureBg = document.getElementById('figureBg');
       const figureCard = document.getElementById('figureCard');
-      const figureNote = document.getElementById('figureNote');
+      const whyFigure = document.getElementById('whyFigure');
 
       function clamp(n, min, max) {
         return Math.max(min, Math.min(max, n));
@@ -652,6 +658,7 @@
 
         const endWithinGap = 6;
         const endBetweenGroupGap = 72;
+        const currentGroupGap = Math.round(8 + cohesion * endBetweenGroupGap);
         const endCenters = {};
         let cursor = 0;
         groupedOrder.forEach((txt, idx) => {
@@ -726,6 +733,8 @@
 
           proximityDemo.appendChild(chip);
         });
+
+        whyProximity.textContent = 'Why this score: Fruit and car parts are now separated by about ' + currentGroupGap + 'px, and ordering is ' + Math.round(cohesion * 100) + '% resolved.';
       }
 
       function renderSimilarity(score) {
@@ -782,6 +791,8 @@
 
           similarityDemo.appendChild(item);
         });
+
+        whySimilarity.textContent = 'Why this score: Similarity is ' + Math.round(cohesion * 100) + '%, so fruits converge to one shared style while car parts converge to a distinct alternative style.';
       }
 
       function renderContinuity(score) {
@@ -830,7 +841,8 @@
           continuityList.appendChild(row);
         }
 
-        continuityNote.textContent = cohesion >= 0.7 ? 'Strong continuity: a clear path implies more content and smooth scan flow.' : 'Weak continuity: abrupt direction changes interrupt the eye path.';
+        const verticalDrift = Math.round(22 * chaos);
+        whyContinuity.textContent = 'Why this score: Continuity is reduced by about ' + verticalDrift + 'px of axis drift, so the eye path is ' + (cohesion >= 0.7 ? 'smooth and discoverable.' : 'interrupted by directional jumps.');
       }
 
       function renderClosure(score) {
@@ -849,6 +861,9 @@
           path.setAttribute('d', arcPath(60, 60, 34, seg[0], seg[1]));
           closureSvg.appendChild(path);
         });
+
+        const missingArc = Math.round(gap * 2);
+        whyClosure.textContent = 'Why this score: Each quadrant leaves roughly a ' + missingArc + ' degree opening, which ' + (score >= 65 ? 'still supports easy shape completion.' : 'makes mental completion more difficult.');
       }
 
       function renderFigureGround(score) {
@@ -862,7 +877,7 @@
         figureCard.style.background = 'hsl(165 40% ' + cardL.toFixed(0) + '% / 0.95)';
         figureCard.style.color = textColor;
         figureCard.style.boxShadow = '0 8px 16px rgba(10, 30, 24, ' + (0.1 + separation * 0.25).toFixed(2) + ')';
-        figureNote.textContent = separation > 0.65 ? 'Figure stands out clearly from ground.' : 'Figure and ground are competing for attention.';
+        whyFigure.textContent = 'Why this score: Figure-ground separation is ' + Math.round(separation * 100) + '%, so focal content is ' + (separation > 0.65 ? 'clearly isolated from background noise.' : 'still competing with the background.');
       }
 
       function qualityLabel(score) {
