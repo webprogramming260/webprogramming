@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestalt Principles UI Lab</title>
+    <style>
+      :root {
+        --bg-1: #f5f8f6;
+        --bg-2: #e6efe9;
+        --panel: #ffffff;
+        --ink: #14231b;
+        --muted: #4d5f55;
+        --brand: #0f766e;
+        --brand-2: #f59e0b;
+        --danger: #b91c1c;
+        --line: #d8e2dc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 12% 12%, #ffffff 0%, transparent 46%), linear-gradient(145deg, var(--bg-1), var(--bg-2));
+      }
+
+      .page {
+        width: min(1200px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+        position: sticky;
+        top: 16px;
+        align-self: start;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 1.02rem;
+      }
+
+      p {
+        margin: 0 0 10px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .formula {
+        margin: 8px 0 12px;
+        padding: 8px 10px;
+        border-radius: 9px;
+        border: 1px solid #d0ddd6;
+        background: #f8fbf9;
+        font-family: 'Courier New', monospace;
+        font-size: 0.93rem;
+        color: #203127;
+      }
+
+      .ratings {
+        display: grid;
+        gap: 8px;
+      }
+
+      .rating-row {
+        display: grid;
+        grid-template-columns: 110px 1fr 52px;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.92rem;
+      }
+
+      .bar {
+        height: 10px;
+        border-radius: 999px;
+        background: #edf2ef;
+        overflow: hidden;
+        border: 1px solid #d6e0da;
+      }
+
+      .bar-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #f59e0b, #0f766e);
+        transition: width 180ms ease;
+      }
+
+      .overall {
+        margin-top: 12px;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+      }
+
+      .overall-score {
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: var(--brand);
+      }
+
+      .badge {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        background: #def7f4;
+        color: #065f56;
+      }
+
+      .lab {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .principle {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+        background: #fcfefd;
+      }
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+      }
+
+      .score-pill {
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: #07524a;
+        background: #e7fbf7;
+        border: 1px solid #bcebe2;
+        border-radius: 999px;
+        padding: 2px 8px;
+      }
+
+      .controls {
+        margin: 10px 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      input[type='range'] {
+        width: 100%;
+        accent-color: var(--brand);
+      }
+
+      .value {
+        font-weight: 700;
+        font-size: 0.92rem;
+        min-width: 52px;
+        text-align: right;
+      }
+
+      .demo {
+        border: 1px dashed #b8c8bf;
+        border-radius: 10px;
+        padding: 10px;
+        min-height: 112px;
+        background: linear-gradient(180deg, #ffffff, #f5faf7);
+      }
+
+      .proximity-demo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: #d3faf0;
+        border: 1px solid #9fe8d8;
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+
+      .similarity-demo {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .nav-item {
+        border-radius: 9px;
+        border: 1px solid #aac6bb;
+        padding: 7px 10px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        color: #164136;
+      }
+
+      .continuity-demo {
+        position: relative;
+        display: grid;
+        gap: 10px;
+      }
+
+      .continuity-track {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #c4d4cb;
+        border-radius: 9px;
+        background: linear-gradient(180deg, #ffffff, #f1f7f4);
+        padding: 10px;
+      }
+
+      .track-row {
+        display: flex;
+        align-items: flex-start;
+        transition: gap 180ms ease;
+      }
+
+      .cont-card {
+        min-width: 128px;
+        height: 76px;
+        border-radius: 12px;
+        border: 1px solid #a7d8cc;
+        background: linear-gradient(160deg, #ccf4eb, #9de6d7);
+        box-shadow: 0 3px 8px rgba(10, 60, 52, 0.1);
+        padding: 9px;
+        display: grid;
+        align-content: space-between;
+        font-size: 0.8rem;
+        color: #114238;
+        font-weight: 700;
+        transition:
+          transform 180ms ease,
+          border-radius 180ms ease;
+      }
+
+      .cont-card span {
+        font-size: 0.74rem;
+        color: #255248;
+        font-weight: 600;
+      }
+
+      .track-fade {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 62px;
+        height: 100%;
+        pointer-events: none;
+        background: linear-gradient(90deg, rgba(241, 247, 244, 0), rgba(241, 247, 244, 0.96));
+      }
+
+      .continuity-list {
+        border: 1px solid #c4d4cb;
+        border-radius: 9px;
+        background: #fbfefc;
+        padding: 8px;
+        display: grid;
+        gap: 7px;
+      }
+
+      .flow-row {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        align-items: center;
+        gap: 8px;
+        transition: padding-left 180ms ease;
+      }
+
+      .flow-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #0f766e;
+        box-shadow: 0 0 0 3px #dcf8f2;
+      }
+
+      .flow-line {
+        height: 9px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #a7e8da, #d6f6ee);
+      }
+
+      .closure-demo {
+        display: grid;
+        place-items: center;
+      }
+
+      .closure-svg {
+        width: 120px;
+        height: 120px;
+      }
+
+      .closure-segment {
+        fill: none;
+        stroke: #0f766e;
+        stroke-width: 10;
+        stroke-linecap: round;
+      }
+
+      .figure-demo {
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .figure-bg {
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(45deg, #cfd9d3 0 8px, #e8efeb 8px 16px), radial-gradient(circle at 70% 30%, #ffffff 0 25%, transparent 40%);
+      }
+
+      .figure-card {
+        position: relative;
+        padding: 12px 14px;
+        border-radius: 10px;
+        max-width: 320px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .tiny-note {
+        margin-top: 8px;
+        font-size: 0.8rem;
+        color: #5f7067;
+      }
+
+      .footer-note {
+        margin-top: 8px;
+        font-size: 0.85rem;
+      }
+
+      a {
+        color: #0f766e;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>Gestalt Principles UI Lab</h1>
+        <p>Adjust each principle and watch how grouping, flow, and focus change. Ratings update instantly to estimate how clearly your current design communicates structure.</p>
+        <div class="formula">Overall Score = mean(Proximity, Similarity, Continuity, Closure, Figure-Ground)</div>
+
+        <section class="ratings">
+          <div class="rating-row">
+            <span>Proximity</span>
+            <div class="bar"><div class="bar-fill" id="bar-proximity"></div></div>
+            <strong id="score-proximity">0</strong>
+          </div>
+          <div class="rating-row">
+            <span>Similarity</span>
+            <div class="bar"><div class="bar-fill" id="bar-similarity"></div></div>
+            <strong id="score-similarity">0</strong>
+          </div>
+          <div class="rating-row">
+            <span>Continuity</span>
+            <div class="bar"><div class="bar-fill" id="bar-continuity"></div></div>
+            <strong id="score-continuity">0</strong>
+          </div>
+          <div class="rating-row">
+            <span>Closure</span>
+            <div class="bar"><div class="bar-fill" id="bar-closure"></div></div>
+            <strong id="score-closure">0</strong>
+          </div>
+          <div class="rating-row">
+            <span>Figure-Ground</span>
+            <div class="bar"><div class="bar-fill" id="bar-figure"></div></div>
+            <strong id="score-figure">0</strong>
+          </div>
+        </section>
+
+        <section class="overall">
+          <div class="overall-score" id="overallScore">0 / 100</div>
+          <div class="badge" id="overallLabel">Needs Clarity</div>
+          <p class="footer-note">
+            Reference:
+            <a href="https://en.wikipedia.org/wiki/Gestalt_psychology" target="_blank" rel="noopener noreferrer">Gestalt psychology (Wikipedia)</a>
+          </p>
+        </section>
+      </aside>
+
+      <section class="lab">
+        <article class="principle">
+          <div class="head">
+            <h2>Proximity</h2>
+            <span class="score-pill" id="pill-proximity">0 / 100</span>
+          </div>
+          <p>Close elements are interpreted as one group; distant elements feel unrelated.</p>
+          <div class="controls">
+            <input id="proximity" type="range" min="0" max="100" value="70" />
+            <span class="value" id="proximityValue">70</span>
+          </div>
+          <div class="demo proximity-demo" id="proximityDemo"></div>
+        </article>
+
+        <article class="principle">
+          <div class="head">
+            <h2>Similarity</h2>
+            <span class="score-pill" id="pill-similarity">0 / 100</span>
+          </div>
+          <p>Matching color, shape, and size make elements feel functionally related.</p>
+          <div class="controls">
+            <input id="similarity" type="range" min="0" max="100" value="75" />
+            <span class="value" id="similarityValue">75</span>
+          </div>
+          <div class="demo similarity-demo" id="similarityDemo"></div>
+        </article>
+
+        <article class="principle">
+          <div class="head">
+            <h2>Continuity</h2>
+            <span class="score-pill" id="pill-continuity">0 / 100</span>
+          </div>
+          <p>Continuous paths suggest what comes next. This demo combines a clipped carousel preview and vertical alignment flow.</p>
+          <div class="controls">
+            <input id="continuity" type="range" min="0" max="100" value="72" />
+            <span class="value" id="continuityValue">72</span>
+          </div>
+          <div class="demo continuity-demo" id="continuityDemo">
+            <div class="continuity-track">
+              <div class="track-row" id="continuityRow"></div>
+              <div class="track-fade" aria-hidden="true"></div>
+            </div>
+            <div class="continuity-list" id="continuityList"></div>
+            <div class="tiny-note" id="continuityNote">Eye flow hint appears here.</div>
+          </div>
+        </article>
+
+        <article class="principle">
+          <div class="head">
+            <h2>Closure</h2>
+            <span class="score-pill" id="pill-closure">0 / 100</span>
+          </div>
+          <p>Users mentally complete partially missing shapes when enough structure remains.</p>
+          <div class="controls">
+            <input id="closure" type="range" min="0" max="100" value="68" />
+            <span class="value" id="closureValue">68</span>
+          </div>
+          <div class="demo closure-demo">
+            <svg class="closure-svg" id="closureSvg" viewBox="0 0 120 120"></svg>
+          </div>
+        </article>
+
+        <article class="principle">
+          <div class="head">
+            <h2>Figure-Ground</h2>
+            <span class="score-pill" id="pill-figure">0 / 100</span>
+          </div>
+          <p>Strong contrast separates focal content from its background context.</p>
+          <div class="controls">
+            <input id="figure" type="range" min="0" max="100" value="80" />
+            <span class="value" id="figureValue">80</span>
+          </div>
+          <div class="demo figure-demo">
+            <div class="figure-bg" id="figureBg"></div>
+            <div class="figure-card" id="figureCard">Primary Action</div>
+          </div>
+          <div class="tiny-note" id="figureNote">Higher values improve visual separation and readability.</div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const controls = {
+        proximity: document.getElementById('proximity'),
+        similarity: document.getElementById('similarity'),
+        continuity: document.getElementById('continuity'),
+        closure: document.getElementById('closure'),
+        figure: document.getElementById('figure'),
+      };
+
+      const valueLabels = {
+        proximity: document.getElementById('proximityValue'),
+        similarity: document.getElementById('similarityValue'),
+        continuity: document.getElementById('continuityValue'),
+        closure: document.getElementById('closureValue'),
+        figure: document.getElementById('figureValue'),
+      };
+
+      const bars = {
+        proximity: document.getElementById('bar-proximity'),
+        similarity: document.getElementById('bar-similarity'),
+        continuity: document.getElementById('bar-continuity'),
+        closure: document.getElementById('bar-closure'),
+        figure: document.getElementById('bar-figure'),
+      };
+
+      const scoreText = {
+        proximity: document.getElementById('score-proximity'),
+        similarity: document.getElementById('score-similarity'),
+        continuity: document.getElementById('score-continuity'),
+        closure: document.getElementById('score-closure'),
+        figure: document.getElementById('score-figure'),
+      };
+
+      const pillText = {
+        proximity: document.getElementById('pill-proximity'),
+        similarity: document.getElementById('pill-similarity'),
+        continuity: document.getElementById('pill-continuity'),
+        closure: document.getElementById('pill-closure'),
+        figure: document.getElementById('pill-figure'),
+      };
+
+      const overallScore = document.getElementById('overallScore');
+      const overallLabel = document.getElementById('overallLabel');
+
+      const proximityDemo = document.getElementById('proximityDemo');
+      const similarityDemo = document.getElementById('similarityDemo');
+      const continuityRow = document.getElementById('continuityRow');
+      const continuityList = document.getElementById('continuityList');
+      const continuityNote = document.getElementById('continuityNote');
+      const closureSvg = document.getElementById('closureSvg');
+      const figureBg = document.getElementById('figureBg');
+      const figureCard = document.getElementById('figureCard');
+      const figureNote = document.getElementById('figureNote');
+
+      function clamp(n, min, max) {
+        return Math.max(min, Math.min(max, n));
+      }
+
+      function polarToCartesian(cx, cy, r, angleDeg) {
+        const rad = (Math.PI / 180) * angleDeg;
+        return {
+          x: cx + r * Math.cos(rad),
+          y: cy + r * Math.sin(rad),
+        };
+      }
+
+      function arcPath(cx, cy, r, start, end) {
+        const s = polarToCartesian(cx, cy, r, start);
+        const e = polarToCartesian(cx, cy, r, end);
+        const largeArc = end - start > 180 ? 1 : 0;
+        return 'M ' + s.x.toFixed(2) + ' ' + s.y.toFixed(2) + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + e.x.toFixed(2) + ' ' + e.y.toFixed(2);
+      }
+
+      function renderProximity(score) {
+        proximityDemo.innerHTML = '';
+        const cohesion = score / 100;
+        const mixedOrder = ['Apple', 'Piston', 'Banana', 'Brake Pad', 'Mango', 'Spark Plug'];
+        const groupedOrder = ['Apple', 'Banana', 'Mango', 'Piston', 'Brake Pad', 'Spark Plug'];
+
+        proximityDemo.style.position = 'relative';
+        proximityDemo.style.display = 'block';
+        proximityDemo.style.height = '92px';
+        proximityDemo.style.overflow = 'hidden';
+
+        const width = proximityDemo.clientWidth;
+        const margin = 20;
+
+        const chipWidths = {};
+        groupedOrder.forEach((txt) => {
+          const probe = document.createElement('div');
+          probe.className = 'chip';
+          probe.textContent = txt;
+          probe.style.position = 'absolute';
+          probe.style.visibility = 'hidden';
+          proximityDemo.appendChild(probe);
+          chipWidths[txt] = probe.getBoundingClientRect().width;
+          probe.remove();
+        });
+
+        const startStep = (width - margin * 2) / (mixedOrder.length - 1);
+
+        const endWithinGap = 6;
+        const endBetweenGroupGap = 72;
+        const endCenters = {};
+        let cursor = 0;
+        groupedOrder.forEach((txt, idx) => {
+          if (idx === 3) {
+            cursor += endBetweenGroupGap;
+          }
+          const w = chipWidths[txt];
+          const center = cursor + w / 2;
+          endCenters[txt] = center;
+          cursor += w + endWithinGap;
+        });
+
+        const totalPackedWidth = cursor - endWithinGap;
+        const packedLeft = clamp((width - totalPackedWidth) / 2, margin, Math.max(margin, width - margin - totalPackedWidth));
+
+        const placements = mixedOrder.map((txt, startIdx) => {
+          const startX = margin + startStep * startIdx;
+          const endX = packedLeft + endCenters[txt];
+          const targetX = startX * (1 - cohesion) + endX * cohesion;
+          return { txt, targetX };
+        });
+
+        placements.sort((a, b) => a.targetX - b.targetX);
+
+        const measured = placements.map((p) => {
+          const probe = document.createElement('div');
+          probe.className = 'chip';
+          probe.textContent = p.txt;
+          probe.style.position = 'absolute';
+          probe.style.visibility = 'hidden';
+          proximityDemo.appendChild(probe);
+          const widthPx = probe.getBoundingClientRect().width;
+          probe.remove();
+          return {
+            txt: p.txt,
+            x: p.targetX,
+            width: widthPx,
+          };
+        });
+
+        const minPadding = 6;
+        for (let i = 1; i < measured.length; i += 1) {
+          const prev = measured[i - 1];
+          const curr = measured[i];
+          const minX = prev.x + prev.width / 2 + curr.width / 2 + minPadding;
+          if (curr.x < minX) {
+            curr.x = minX;
+          }
+        }
+
+        for (let i = measured.length - 2; i >= 0; i -= 1) {
+          const next = measured[i + 1];
+          const curr = measured[i];
+          const maxX = next.x - next.width / 2 - curr.width / 2 - minPadding;
+          if (curr.x > maxX) {
+            curr.x = maxX;
+          }
+        }
+
+        measured.forEach((item) => {
+          const chip = document.createElement('div');
+          chip.className = 'chip';
+          chip.textContent = item.txt;
+
+          const clampedX = clamp(item.x, margin + item.width / 2, width - margin - item.width / 2);
+
+          chip.style.position = 'absolute';
+          chip.style.left = clampedX.toFixed(1) + 'px';
+          chip.style.top = '46px';
+          chip.style.transform = 'translate(-50%, -50%)';
+          chip.style.whiteSpace = 'nowrap';
+
+          proximityDemo.appendChild(chip);
+        });
+      }
+
+      function renderSimilarity(score) {
+        similarityDemo.innerHTML = '';
+
+        const cohesion = score / 100;
+        const mismatch = 1 - cohesion;
+        const labels = ['Apple', 'Banana', 'Piston', 'Mango', 'Brake Pad', 'Spark Plug'];
+        const variedHue = [8, 42, 110, 190, 255, 325];
+        const variedRadius = [2, 22, 6, 30, 12, 26];
+        const fruitLabels = new Set(['Apple', 'Banana', 'Mango']);
+
+        const fruitStyle = {
+          hue: 28,
+          sat: 86,
+          light: 53,
+          radius: 999,
+          padX: 16,
+          size: 0.9,
+        };
+
+        const carStyle = {
+          hue: 215,
+          sat: 64,
+          light: 44,
+          radius: 5,
+          padX: 14,
+          size: 0.9,
+        };
+
+        labels.forEach((label, idx) => {
+          const item = document.createElement('div');
+          item.className = 'nav-item';
+          item.textContent = label;
+
+          const isFruit = fruitLabels.has(label);
+          const target = isFruit ? fruitStyle : carStyle;
+
+          const hue = target.hue * cohesion + variedHue[idx] * mismatch;
+          const sat = target.sat * cohesion + (52 + (idx % 3) * 14) * mismatch;
+          const light = target.light * cohesion + (66 + (idx % 4) * 7) * mismatch;
+          const padX = target.padX * cohesion + (8 + (idx % 3) * 8) * mismatch;
+          const radius = target.radius * cohesion + variedRadius[idx] * mismatch;
+          const size = target.size * cohesion + (0.8 + (idx % 4) * 0.1) * mismatch;
+          const rotation = mismatch * ((idx % 2 === 0 ? -1 : 1) * (idx + 1) * 1.7);
+
+          item.style.background = 'hsl(' + hue.toFixed(0) + ' ' + sat.toFixed(0) + '% ' + light.toFixed(0) + '%)';
+          item.style.borderColor = 'hsl(' + hue.toFixed(0) + ' 50% ' + Math.max(28, light - 22).toFixed(0) + '%)';
+          item.style.color = cohesion > 0.6 ? '#f8fffe' : '#1a2b24';
+          item.style.borderRadius = radius.toFixed(0) + 'px';
+          item.style.padding = '7px ' + padX.toFixed(0) + 'px';
+          item.style.fontSize = size.toFixed(2) + 'rem';
+          item.style.transform = 'rotate(' + rotation.toFixed(2) + 'deg)';
+
+          similarityDemo.appendChild(item);
+        });
+      }
+
+      function renderContinuity(score) {
+        continuityRow.innerHTML = '';
+        continuityList.innerHTML = '';
+
+        const cohesion = score / 100;
+        const chaos = 1 - cohesion;
+        const baseGap = 8 + chaos * 13;
+        continuityRow.style.gap = baseGap.toFixed(1) + 'px';
+
+        const cards = ['Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5'];
+        cards.forEach((label, idx) => {
+          const card = document.createElement('div');
+          card.className = 'cont-card';
+          card.innerHTML = label + '<span>Preview</span>';
+
+          const yJitter = Math.sin((idx + 1) * 1.27) * chaos * 16;
+          const extraGap = Math.cos((idx + 2) * 1.11) * chaos * 10;
+          const width = 130 + Math.sin(idx * 1.09) * chaos * 18;
+          const radius = 12 + chaos * (idx % 2 === 0 ? -7 : 8);
+
+          card.style.minWidth = width.toFixed(0) + 'px';
+          card.style.transform = 'translateY(' + yJitter.toFixed(1) + 'px)';
+          card.style.marginRight = Math.max(0, extraGap).toFixed(1) + 'px';
+          card.style.borderRadius = radius.toFixed(0) + 'px';
+          continuityRow.appendChild(card);
+        });
+
+        for (let i = 0; i < 4; i += 1) {
+          const row = document.createElement('div');
+          row.className = 'flow-row';
+
+          const axisShift = Math.sin((i + 1) * 1.15) * chaos * 22;
+          row.style.paddingLeft = axisShift.toFixed(1) + 'px';
+
+          const dot = document.createElement('div');
+          dot.className = 'flow-dot';
+
+          const line = document.createElement('div');
+          line.className = 'flow-line';
+          line.style.width = (84 + Math.cos((i + 2) * 0.9) * chaos * 24).toFixed(0) + '%';
+
+          row.appendChild(dot);
+          row.appendChild(line);
+          continuityList.appendChild(row);
+        }
+
+        continuityNote.textContent = cohesion >= 0.7 ? 'Strong continuity: a clear path implies more content and smooth scan flow.' : 'Weak continuity: abrupt direction changes interrupt the eye path.';
+      }
+
+      function renderClosure(score) {
+        closureSvg.innerHTML = '';
+        const gap = 6 + ((100 - score) / 100) * 42;
+        const segments = [
+          [0 + gap, 90 - gap],
+          [90 + gap, 180 - gap],
+          [180 + gap, 270 - gap],
+          [270 + gap, 360 - gap],
+        ];
+
+        segments.forEach((seg) => {
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('class', 'closure-segment');
+          path.setAttribute('d', arcPath(60, 60, 34, seg[0], seg[1]));
+          closureSvg.appendChild(path);
+        });
+      }
+
+      function renderFigureGround(score) {
+        const separation = score / 100;
+        const bgStrength = 0.78 - separation * 0.62;
+        const cardL = 92 - separation * 56;
+        const textL = separation > 0.5 ? 97 : 12;
+        const textColor = separation > 0.5 ? 'hsl(0 0% ' + textL.toFixed(0) + '%)' : 'hsl(155 26% 12%)';
+
+        figureBg.style.opacity = bgStrength.toFixed(2);
+        figureCard.style.background = 'hsl(165 40% ' + cardL.toFixed(0) + '% / 0.95)';
+        figureCard.style.color = textColor;
+        figureCard.style.boxShadow = '0 8px 16px rgba(10, 30, 24, ' + (0.1 + separation * 0.25).toFixed(2) + ')';
+        figureNote.textContent = separation > 0.65 ? 'Figure stands out clearly from ground.' : 'Figure and ground are competing for attention.';
+      }
+
+      function qualityLabel(score) {
+        if (score >= 85) return 'Excellent Clarity';
+        if (score >= 70) return 'Strong';
+        if (score >= 55) return 'Moderate';
+        if (score >= 40) return 'Needs Improvement';
+        return 'Needs Clarity';
+      }
+
+      function update() {
+        const scores = {
+          proximity: Number(controls.proximity.value),
+          similarity: Number(controls.similarity.value),
+          continuity: Number(controls.continuity.value),
+          closure: Number(controls.closure.value),
+          figure: Number(controls.figure.value),
+        };
+
+        scores.proximity = clamp(scores.proximity, 0, 100);
+        scores.similarity = clamp(scores.similarity, 0, 100);
+        scores.continuity = clamp(scores.continuity, 0, 100);
+        scores.closure = clamp(scores.closure, 0, 100);
+        scores.figure = clamp(scores.figure, 0, 100);
+
+        Object.keys(scores).forEach((key) => {
+          valueLabels[key].textContent = String(scores[key]);
+          scoreText[key].textContent = String(scores[key]);
+          pillText[key].textContent = scores[key] + ' / 100';
+          bars[key].style.width = scores[key] + '%';
+        });
+
+        renderProximity(scores.proximity);
+        renderSimilarity(scores.similarity);
+        renderContinuity(scores.continuity);
+        renderClosure(scores.closure);
+        renderFigureGround(scores.figure);
+
+        const overall = Math.round((scores.proximity + scores.similarity + scores.continuity + scores.closure + scores.figure) / 5);
+        overallScore.textContent = overall + ' / 100';
+        overallLabel.textContent = qualityLabel(overall);
+      }
+
+      Object.values(controls).forEach((control) => {
+        control.addEventListener('input', update);
+      });
+
+      window.addEventListener('resize', () => {
+        renderContinuity(Number(controls.continuity.value));
+      });
+
+      update();
+    </script>
+  </body>
+</html>
