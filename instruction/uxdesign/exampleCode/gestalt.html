@@ -79,6 +79,44 @@
         color: #203127;
       }
 
+      .presets {
+        margin: 0 0 12px;
+      }
+
+      .presets-label {
+        margin: 0 0 6px;
+        font-size: 0.84rem;
+        color: #476156;
+        font-weight: 700;
+      }
+
+      .preset-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .preset-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 5px 10px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .preset-btn.active {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
       .ratings {
         display: grid;
         gap: 8px;
@@ -378,6 +416,14 @@
         <h1>Gestalt Principles UI Lab</h1>
         <p>Adjust each principle and watch how grouping, flow, and focus change. Ratings update instantly to estimate how clearly your current design communicates structure.</p>
         <div class="formula">Overall Score = mean(Proximity, Similarity, Continuity, Closure, Figure-Ground)</div>
+        <div class="presets">
+          <div class="presets-label">Quick presets</div>
+          <div class="preset-row">
+            <button class="preset-btn" id="presetPoor" type="button">Poor</button>
+            <button class="preset-btn" id="presetMedium" type="button">Medium</button>
+            <button class="preset-btn" id="presetExcellent" type="button">Excellent</button>
+          </div>
+        </div>
 
         <section class="ratings">
           <div class="rating-row">
@@ -541,6 +587,11 @@
 
       const overallScore = document.getElementById('overallScore');
       const overallLabel = document.getElementById('overallLabel');
+      const presetButtons = {
+        poor: document.getElementById('presetPoor'),
+        medium: document.getElementById('presetMedium'),
+        excellent: document.getElementById('presetExcellent'),
+      };
 
       const proximityDemo = document.getElementById('proximityDemo');
       const similarityDemo = document.getElementById('similarityDemo');
@@ -822,6 +873,22 @@
         return 'Needs Clarity';
       }
 
+      function setActivePreset(key) {
+        Object.keys(presetButtons).forEach((k) => {
+          presetButtons[k].classList.toggle('active', k === key);
+        });
+      }
+
+      function applyPreset(values, presetKey) {
+        controls.proximity.value = values.proximity;
+        controls.similarity.value = values.similarity;
+        controls.continuity.value = values.continuity;
+        controls.closure.value = values.closure;
+        controls.figure.value = values.figure;
+        setActivePreset(presetKey);
+        update();
+      }
+
       function update() {
         const scores = {
           proximity: Number(controls.proximity.value),
@@ -857,6 +924,18 @@
 
       Object.values(controls).forEach((control) => {
         control.addEventListener('input', update);
+      });
+
+      presetButtons.poor.addEventListener('click', () => {
+        applyPreset({ proximity: 10, similarity: 10, continuity: 10, closure: 10, figure: 10 }, 'poor');
+      });
+
+      presetButtons.medium.addEventListener('click', () => {
+        applyPreset({ proximity: 55, similarity: 58, continuity: 54, closure: 56, figure: 57 }, 'medium');
+      });
+
+      presetButtons.excellent.addEventListener('click', () => {
+        applyPreset({ proximity: 92, similarity: 94, continuity: 90, closure: 91, figure: 93 }, 'excellent');
       });
 
       window.addEventListener('resize', () => {
