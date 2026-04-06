@@ -54,6 +54,12 @@ One easy way to build an application that uses current design trends is to use a
 
 ![Frameworks](designConsistencyFramework.jpg)
 
+## Affordance, Signifiers, and Feedback
+
+Interactions between the interface and the user are a common point of failure when aligning the mental model of a user and the application designer. Interactions are often times describe in terms of affordance, signifiers, and feedback. An affordance is a relationship between an object and a person; it is what the object can do (e.g., a button "affords" clicking). A signifier is the visual cue that tells the user where and how to act (e.g., the shadow or color of that button). Feedback informs the user that the action has completed with a given result.
+
+![Affordance](affordance.gif)
+
 ## Navigation
 
 A user should never get lost while using your application. To help orient your user you want to carefully design the flow of the application and provide the proper navigational controls.
