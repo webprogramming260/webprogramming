@@ -345,7 +345,7 @@ export default defineConfig({
 
 You can find this complete example [here](https://github.com/webprogramming260/webprogramming/tree/main/instruction/webServices/webSocket/chat/exampleCode). To run it yourself, take the following steps:
 
-1. Clone the repository.
+1. Clone the [repository](https://github.com/webprogramming260/webprogramming).
 1. Run `npm install` from a console window in the example root directory.
 1. Run `npm install` from a console window in the example service subdirectory.
 1. Open up the code in VS Code and review what it is doing.
