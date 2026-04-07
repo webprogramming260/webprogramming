@@ -1288,13 +1288,6 @@
           "externalRefs": {
             "canvasPageId": 1498117
           }
-        },
-        {
-          "title": "test2",
-          "type": "embedded",
-          "path": "instruction/uxdesign/exampleCode/index.html",
-          "id": "aa016812-143f-4565-8ab7-b053f88aff1c",
-          "description": "instruction/uxdesign/exampleCode/index.html"
         }
       ]
     }
