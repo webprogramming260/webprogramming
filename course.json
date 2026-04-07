@@ -1288,6 +1288,13 @@
           "externalRefs": {
             "canvasPageId": 1498117
           }
+        },
+        {
+          "title": "test",
+          "type": "embedded",
+          "path": "instruction/uxdesign/exampleCode/gestalt.html",
+          "id": "892ade4c-1b59-4e29-899c-33bf7e80fbe7",
+          "description": "instruction/uxdesign/exampleCode/gestalt.html"
         }
       ]
     }
