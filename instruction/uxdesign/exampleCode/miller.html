@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miller's Law Demo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+      }
+
+      .container {
+        width: min(1060px, 94vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .stage-wrap {
+        background: #ffffff;
+        border: 1px solid #d7deea;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin-bottom: 12px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      input[type='range'] {
+        width: 100%;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .equation {
+        padding: 10px;
+        background: #f1f5fb;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        margin-bottom: 12px;
+        line-height: 1.35;
+      }
+
+      .results {
+        display: grid;
+        gap: 6px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 8px;
+        background: #f8fbff;
+        border: 1px solid #e0e8f5;
+        border-radius: 6px;
+      }
+
+      .status-good {
+        color: #0f766e;
+        font-weight: 700;
+      }
+
+      .status-risk {
+        color: #b45309;
+        font-weight: 700;
+      }
+
+      .status-over {
+        color: #b91c1c;
+        font-weight: 700;
+      }
+
+      button {
+        border: 1px solid #bfd1ec;
+        background: #e8f0ff;
+        color: #1f2937;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      button:hover {
+        background: #dce9ff;
+      }
+
+      .actions {
+        margin: 12px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .stage-wrap {
+        padding: 12px;
+      }
+
+      .stage {
+        min-height: 560px;
+        border-radius: 8px;
+        border: 2px dashed #bac7dc;
+        background: linear-gradient(135deg, #f8fbff, #edf3ff);
+        padding: 16px;
+      }
+
+      .sequence {
+        display: grid;
+        gap: 12px;
+      }
+
+      .chunk {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid #d7deea;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .token {
+        min-width: 38px;
+        text-align: center;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #d5dff0;
+        background: #f6f9ff;
+        font-weight: 700;
+      }
+
+      .hidden .token {
+        color: transparent;
+        text-shadow: 0 0 8px rgba(31, 41, 55, 0.65);
+      }
+
+      .recall {
+        margin-top: 12px;
+      }
+
+      .recall textarea {
+        width: 100%;
+        min-height: 90px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #c6d0e1;
+        resize: vertical;
+        font-family: inherit;
+      }
+
+      .hint {
+        color: #475569;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+
+      @media (max-width: 900px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .stage {
+          min-height: 460px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <h1>Miller's Law Demo <a style="font-size: 10px" href="https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two" target="_blank" rel="noopener noreferrer">Wikipedia</a></h1>
+        <p>Miller's Law suggests people can hold roughly 7 plus or minus 2 chunks in working memory. Use this demo to compare raw items vs chunked groups.</p>
+
+        <div class="control">
+          <label for="itemCount">Total items: <span class="value" id="itemCountValue">12</span></label>
+          <input id="itemCount" type="range" min="3" max="24" value="12" step="1" />
+        </div>
+
+        <div class="control">
+          <label for="chunkSize">Items per chunk: <span class="value" id="chunkSizeValue">3</span></label>
+          <input id="chunkSize" type="range" min="1" max="8" value="3" step="1" />
+        </div>
+
+        <div class="equation" id="equation">effective chunks = ceil(items / chunk size)</div>
+
+        <div class="results">
+          <div class="row"><span>Total items</span><span id="itemsOut">12</span></div>
+          <div class="row"><span>Chunk size</span><span id="sizeOut">3</span></div>
+          <div class="row"><span>Effective chunks</span><span id="chunksOut">4</span></div>
+          <div class="row"><span>Miller range</span><span id="rangeOut">5-9 chunks</span></div>
+          <div class="row"><span>Load status</span><span id="statusOut" class="status-good">Comfortable</span></div>
+        </div>
+
+        <div class="actions">
+          <button id="generate" type="button">Generate sequence</button>
+          <button id="toggleHide" type="button">Hide sequence</button>
+          <button id="check" type="button">Check recall</button>
+        </div>
+
+        <p class="hint" id="status">Memorize the sequence, then press "Check recall" to hide it and enter your answer.</p>
+      </section>
+
+      <section class="stage-wrap">
+        <div class="stage" aria-label="Miller law interaction area">
+          <div class="sequence" id="sequence"></div>
+          <div class="recall" id="recallPanel" hidden>
+            <label for="recallInput">Your recall</label>
+            <textarea id="recallInput" placeholder="Example: 4 1 9 ..."></textarea>
+          </div>
+          <p class="hint" id="recallResult">No recall check yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const itemCount = document.getElementById('itemCount');
+      const chunkSize = document.getElementById('chunkSize');
+      const itemCountValue = document.getElementById('itemCountValue');
+      const chunkSizeValue = document.getElementById('chunkSizeValue');
+
+      const equation = document.getElementById('equation');
+      const itemsOut = document.getElementById('itemsOut');
+      const sizeOut = document.getElementById('sizeOut');
+      const chunksOut = document.getElementById('chunksOut');
+      const statusOut = document.getElementById('statusOut');
+
+      const sequence = document.getElementById('sequence');
+      const recallPanel = document.getElementById('recallPanel');
+      const recallInput = document.getElementById('recallInput');
+      const recallResult = document.getElementById('recallResult');
+      const status = document.getElementById('status');
+
+      const generateButton = document.getElementById('generate');
+      const toggleHideButton = document.getElementById('toggleHide');
+      const checkButton = document.getElementById('check');
+
+      let currentTokens = [];
+      let hidden = false;
+
+      function randomToken() {
+        return String(Math.floor(Math.random() * 10));
+      }
+
+      function makeSequence(length) {
+        const tokens = [];
+        for (let i = 0; i < length; i += 1) {
+          tokens.push(randomToken());
+        }
+        return tokens;
+      }
+
+      function chunkTokens(tokens, size) {
+        const chunks = [];
+        for (let i = 0; i < tokens.length; i += size) {
+          chunks.push(tokens.slice(i, i + size));
+        }
+        return chunks;
+      }
+
+      function renderSequence() {
+        const size = Number(chunkSize.value);
+        const chunks = chunkTokens(currentTokens, size);
+
+        sequence.innerHTML = '';
+        sequence.classList.toggle('hidden', hidden);
+
+        chunks.forEach((chunk) => {
+          const chunkDiv = document.createElement('div');
+          chunkDiv.className = 'chunk';
+
+          chunk.forEach((token) => {
+            const tokenDiv = document.createElement('div');
+            tokenDiv.className = 'token';
+            tokenDiv.textContent = token;
+            chunkDiv.appendChild(tokenDiv);
+          });
+
+          sequence.appendChild(chunkDiv);
+        });
+      }
+
+      function updateLoadModel() {
+        const items = Number(itemCount.value);
+        const size = Number(chunkSize.value);
+        const effectiveChunks = Math.ceil(items / size);
+
+        itemCountValue.textContent = String(items);
+        chunkSizeValue.textContent = String(size);
+        itemsOut.textContent = String(items);
+        sizeOut.textContent = String(size);
+        chunksOut.textContent = String(effectiveChunks);
+        equation.textContent = 'effective chunks = ceil(' + items + ' / ' + size + ') = ' + effectiveChunks;
+
+        statusOut.className = '';
+        if (effectiveChunks > 9 || items > 12) {
+          statusOut.textContent = 'Likely overload';
+          statusOut.classList.add('status-over');
+        } else if (effectiveChunks > 5 || items > 9) {
+          statusOut.textContent = 'In range, but challenging';
+          statusOut.classList.add('status-risk');
+        } else {
+          statusOut.textContent = 'Comfortable';
+          statusOut.classList.add('status-good');
+        }
+      }
+
+      function regenerate() {
+        currentTokens = makeSequence(Number(itemCount.value));
+        hidden = false;
+        recallPanel.hidden = true;
+        recallInput.value = '';
+        toggleHideButton.textContent = 'Hide sequence';
+        recallResult.textContent = 'No recall check yet.';
+        status.textContent = 'Memorize the sequence, then press "Check recall" to hide it and enter your answer.';
+        renderSequence();
+        updateLoadModel();
+      }
+
+      function toggleHidden() {
+        hidden = !hidden;
+        toggleHideButton.textContent = hidden ? 'Show sequence' : 'Hide sequence';
+        renderSequence();
+      }
+
+      function checkRecall() {
+        if (recallPanel.hidden) {
+          hidden = true;
+          toggleHideButton.textContent = 'Show sequence';
+          recallPanel.hidden = false;
+          recallResult.textContent = 'Sequence hidden. Enter your recall and press "Check recall" again to score.';
+          status.textContent = 'Now enter the sequence from memory, then press "Check recall" again.';
+          renderSequence();
+          recallInput.focus();
+          return;
+        }
+
+        const raw = recallInput.value.trim();
+        const guessed = raw ? raw.split(/[\s,]+/).filter(Boolean) : [];
+
+        if (!guessed.length) {
+          recallResult.textContent = 'Enter at least one token to check recall.';
+          return;
+        }
+
+        const max = Math.max(guessed.length, currentTokens.length);
+        let correctAtPosition = 0;
+
+        for (let i = 0; i < max; i += 1) {
+          if ((guessed[i] || '').toUpperCase() === (currentTokens[i] || '').toUpperCase()) {
+            correctAtPosition += 1;
+          }
+        }
+
+        const pct = currentTokens.length ? (correctAtPosition / currentTokens.length) * 100 : 0;
+        recallResult.textContent = 'Correct position matches: ' + correctAtPosition + '/' + currentTokens.length + ' (' + pct.toFixed(0) + '%).';
+      }
+
+      itemCount.addEventListener('input', regenerate);
+      chunkSize.addEventListener('input', () => {
+        updateLoadModel();
+        renderSequence();
+      });
+
+      generateButton.addEventListener('click', regenerate);
+      toggleHideButton.addEventListener('click', toggleHidden);
+      checkButton.addEventListener('click', checkRecall);
+
+      regenerate();
+    </script>
+  </body>
+</html>
