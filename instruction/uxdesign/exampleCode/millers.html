@@ -366,24 +366,37 @@
         }
 
         const raw = recallInput.value.trim();
-        const guessed = raw ? raw.split(/[\s,]+/).filter(Boolean) : [];
+        const guessedDigits = raw.replace(/\D/g, '');
+        const targetDigits = currentTokens.join('');
 
-        if (!guessed.length) {
-          recallResult.textContent = 'Enter at least one token to check recall.';
+        if (!guessedDigits.length) {
+          recallResult.textContent = 'Enter at least one digit to check recall.';
           return;
         }
 
-        const max = Math.max(guessed.length, currentTokens.length);
+        const max = Math.max(guessedDigits.length, targetDigits.length);
         let correctAtPosition = 0;
 
         for (let i = 0; i < max; i += 1) {
-          if ((guessed[i] || '').toUpperCase() === (currentTokens[i] || '').toUpperCase()) {
+          if ((guessedDigits[i] || '') === (targetDigits[i] || '')) {
             correctAtPosition += 1;
           }
         }
 
-        const pct = currentTokens.length ? (correctAtPosition / currentTokens.length) * 100 : 0;
-        recallResult.textContent = 'Correct position matches: ' + correctAtPosition + '/' + currentTokens.length + ' (' + pct.toFixed(0) + '%).';
+        const pct = targetDigits.length ? (correctAtPosition / targetDigits.length) * 100 : 0;
+        if (guessedDigits === targetDigits) {
+          recallResult.textContent = 'Perfect match. Spacing and grouping ignored.';
+          return;
+        }
+
+        recallResult.textContent =
+          'Digit-by-digit matches: ' +
+          correctAtPosition +
+          '/' +
+          targetDigits.length +
+          ' (' +
+          pct.toFixed(0) +
+          '%). Spacing and grouping ignored.';
       }
 
       itemCount.addEventListener('input', regenerate);
