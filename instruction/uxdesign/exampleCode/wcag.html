@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WCAG Contrast Utility</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+      }
+
+      .container {
+        width: min(1000px, 94vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .stage-wrap {
+        background: #ffffff;
+        border: 1px solid #d7deea;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin-bottom: 12px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      input[type='text'] {
+        width: 100%;
+        border: 1px solid #c5d2e5;
+        border-radius: 8px;
+        padding: 7px 9px;
+        font-family: 'Courier New', monospace;
+      }
+
+      input[type='color'] {
+        width: 100%;
+        height: 38px;
+        border: 1px solid #c5d2e5;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      input[type='range'] {
+        width: 100%;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .input-grid {
+        display: grid;
+        grid-template-columns: 86px 1fr;
+        gap: 8px;
+      }
+
+      .equation {
+        padding: 10px;
+        background: #f1f5fb;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        margin-bottom: 12px;
+        line-height: 1.35;
+      }
+
+      .results {
+        display: grid;
+        gap: 6px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 6px 8px;
+        background: #f8fbff;
+        border: 1px solid #e0e8f5;
+        border-radius: 6px;
+      }
+
+      .row strong {
+        white-space: nowrap;
+      }
+
+      .pass {
+        color: #0f7c51;
+        font-weight: 700;
+      }
+
+      .fail {
+        color: #b42318;
+        font-weight: 700;
+      }
+
+      .info {
+        color: #1f2937;
+        font-weight: 700;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      button {
+        border: 1px solid #bfd1ec;
+        background: #e8f0ff;
+        color: #1f2937;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      button:hover {
+        background: #dce9ff;
+      }
+
+      .preset-grid {
+        margin-top: 8px;
+        margin-bottom: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+      }
+
+      .target-toggle {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .target-toggle label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .preset {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #c9d9f1;
+        border-radius: 8px;
+        background: #ffffff;
+        padding: 6px 8px;
+        cursor: pointer;
+      }
+
+      .preset-swatch {
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        border: 1px solid rgba(15, 23, 42, 0.3);
+        flex: 0 0 auto;
+      }
+
+      .stage-wrap {
+        padding: 12px;
+      }
+
+      .stage {
+        min-height: 560px;
+        border-radius: 8px;
+        border: 2px dashed #bac7dc;
+        background: linear-gradient(135deg, #f8fbff, #edf3ff);
+        padding: 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .preview-card {
+        border: 1px solid #d5deed;
+        border-radius: 10px;
+        padding: 14px;
+        background: #ffffff;
+      }
+
+      .sample {
+        border: 1px solid rgba(15, 23, 42, 0.25);
+        border-radius: 8px;
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+
+      .sample h2 {
+        margin: 0 0 6px;
+        line-height: 1.25;
+      }
+
+      .sample h1 {
+        margin: 0 0 8px;
+        line-height: 1.1;
+      }
+
+      .sample p {
+        margin: 0;
+      }
+
+      .ui-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        border: 2px solid currentColor;
+        padding: 6px 12px;
+        font-weight: 700;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+
+      .hint {
+        color: #475569;
+        font-size: 0.95rem;
+        margin-top: 6px;
+      }
+
+      .error {
+        color: #b42318;
+        font-weight: 700;
+      }
+
+      @media (max-width: 860px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .stage {
+          min-height: 420px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <h1>WCAG Contrast Utility</h1>
+        <p>
+          WCAG contrast helps ensure text and interface elements remain readable for people with low vision and in varied viewing conditions.
+          <a href="https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines" target="_blank" rel="noopener noreferrer">Learn more on Wikipedia</a>.
+        </p>
+
+        <div class="control">
+          <label>Colors</label>
+          <div class="target-toggle" id="presetTarget">
+            <label><input type="radio" name="presetTarget" value="foreground" checked /> Foreground</label>
+            <label><input type="radio" name="presetTarget" value="background" /> Background</label>
+          </div>
+        </div>
+
+        <div class="control">
+          <div class="input-grid">
+            <input id="colorPicker" type="color" value="#1f2937" />
+            <input id="colorHex" type="text" value="#1f2937" aria-label="Active target hex" />
+          </div>
+        </div>
+
+        <div class="preset-grid" id="presets"></div>
+
+        <div class="control">
+          <label for="sampleSize">Sample text size: <span class="value" id="sizeValue">18</span> px</label>
+          <input id="sampleSize" type="range" min="12" max="44" step="1" value="18" />
+        </div>
+
+        <div class="control">
+          <label><input id="sampleBold" type="checkbox" /> Sample text is bold</label>
+        </div>
+
+        <div class="equation" id="equation">Contrast ratio = (L1 + 0.05) / (L2 + 0.05)</div>
+
+        <div class="results" id="results"></div>
+
+        <div class="actions">
+          <button id="swapColors" type="button">Swap colors</button>
+          <button id="resetDemo" type="button">Reset to default</button>
+        </div>
+      </section>
+
+      <section class="stage-wrap">
+        <div class="stage" aria-label="WCAG preview area">
+          <div class="preview-card">
+            <div class="sample" id="sampleText">
+              <h1 id="sampleLargeHeading">Large heading contrast sample</h1>
+              <h2 id="sampleHeading">Readable heading sample</h2>
+              <p id="sampleBody">The quick brown fox jumps over the lazy dog. 1234567890</p>
+            </div>
+            <div class="ui-chip" id="sampleUi" role="img" aria-label="Sample user interface component">
+              <span class="dot" aria-hidden="true"></span>
+              UI Component Contrast
+            </div>
+            <p class="hint">The heading and body represent text contrast. The pill shows non-text UI contrast.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const colorPicker = document.getElementById('colorPicker');
+      const colorHex = document.getElementById('colorHex');
+      const sampleSize = document.getElementById('sampleSize');
+      const sampleBold = document.getElementById('sampleBold');
+      const sizeValue = document.getElementById('sizeValue');
+      const equation = document.getElementById('equation');
+      const results = document.getElementById('results');
+      const status = document.getElementById('status');
+      const sampleText = document.getElementById('sampleText');
+      const sampleLargeHeading = document.getElementById('sampleLargeHeading');
+      const sampleHeading = document.getElementById('sampleHeading');
+      const sampleBody = document.getElementById('sampleBody');
+      const sampleUi = document.getElementById('sampleUi');
+      const swapColors = document.getElementById('swapColors');
+      const resetDemo = document.getElementById('resetDemo');
+      const presets = document.getElementById('presets');
+      const presetTargetInputs = document.querySelectorAll('input[name="presetTarget"]');
+
+      let foregroundColor = '#1f2937';
+      let backgroundColor = '#f4f7fb';
+
+      const HICKS_COLORS = ['#1f2937', '#f4f7fb', '#ffffff', '#2563eb', '#e11d48', '#16a34a', '#ca8a04', '#7c3aed', '#ea580c'];
+
+      function setStatus(message) {
+        if (status) {
+          status.textContent = message;
+        }
+      }
+
+      function normalizeHex(input) {
+        const value = input.trim().toLowerCase();
+        if (!/^#([0-9a-f]{3}|[0-9a-f]{6})$/.test(value)) {
+          return null;
+        }
+
+        if (value.length === 4) {
+          return '#' + value[1] + value[1] + value[2] + value[2] + value[3] + value[3];
+        }
+
+        return value;
+      }
+
+      function hexToRgb(hex) {
+        return {
+          r: parseInt(hex.slice(1, 3), 16),
+          g: parseInt(hex.slice(3, 5), 16),
+          b: parseInt(hex.slice(5, 7), 16),
+        };
+      }
+
+      function channelToLinear(channel) {
+        const sRgb = channel / 255;
+        if (sRgb <= 0.03928) {
+          return sRgb / 12.92;
+        }
+        return Math.pow((sRgb + 0.055) / 1.055, 2.4);
+      }
+
+      function relativeLuminance(hex) {
+        const rgb = hexToRgb(hex);
+        const r = channelToLinear(rgb.r);
+        const g = channelToLinear(rgb.g);
+        const b = channelToLinear(rgb.b);
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      }
+
+      function contrastRatio(foreground, background) {
+        const l1 = relativeLuminance(foreground);
+        const l2 = relativeLuminance(background);
+        const lighter = Math.max(l1, l2);
+        const darker = Math.min(l1, l2);
+        return {
+          ratio: (lighter + 0.05) / (darker + 0.05),
+          lighter,
+          darker,
+        };
+      }
+
+      function isLargeText(px, bold) {
+        return px >= 24 || (bold && px >= 18.66);
+      }
+
+      function passFail(ratio, threshold) {
+        return ratio >= threshold ? 'PASS' : 'FAIL';
+      }
+
+      function resultRow(label, value, threshold, verdict) {
+        const verdictClass = verdict === 'PASS' ? 'pass' : verdict === 'FAIL' ? 'fail' : 'info';
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.innerHTML = '<span>' + label + ' <strong>(' + threshold + ')</strong></span><span>' + value + '</span><span class="' + verdictClass + '">' + verdict + '</span>';
+        return row;
+      }
+
+      function getSelectedTarget() {
+        const selectedTarget = document.querySelector('input[name="presetTarget"]:checked');
+        return selectedTarget ? selectedTarget.value : 'foreground';
+      }
+
+      function setActiveInputToSelectedTarget() {
+        const target = getSelectedTarget();
+        const activeColor = target === 'background' ? backgroundColor : foregroundColor;
+        colorHex.value = activeColor;
+        colorPicker.value = activeColor;
+        colorHex.classList.remove('error');
+      }
+
+      function applyActiveInputToSelectedTarget() {
+        const activeColor = normalizeHex(colorHex.value);
+        if (!activeColor) {
+          colorHex.classList.add('error');
+          return false;
+        }
+
+        colorHex.classList.remove('error');
+        colorHex.value = activeColor;
+        colorPicker.value = activeColor;
+
+        if (getSelectedTarget() === 'background') {
+          backgroundColor = activeColor;
+        } else {
+          foregroundColor = activeColor;
+        }
+
+        return true;
+      }
+
+      function renderPresets() {
+        presets.innerHTML = '';
+        HICKS_COLORS.forEach((hex) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'preset';
+          button.innerHTML = '<span class="preset-swatch" style="background:' + hex + '"></span><span>' + hex + '</span>';
+
+          button.addEventListener('click', () => {
+            const target = getSelectedTarget();
+            if (target === 'background') {
+              backgroundColor = hex;
+            } else {
+              foregroundColor = hex;
+            }
+            setActiveInputToSelectedTarget();
+            update();
+            setStatus('Preset color applied to ' + target + '.');
+          });
+
+          presets.appendChild(button);
+        });
+      }
+
+      function update() {
+        sizeValue.textContent = sampleSize.value;
+
+        if (!applyActiveInputToSelectedTarget()) {
+          results.innerHTML = '<div class="row"><span>Invalid hex value</span><span class="fail">Needs #RGB or #RRGGBB</span></div>';
+          setStatus('Fix the hex format to compute WCAG contrast.');
+          return;
+        }
+
+        const sizePx = Number(sampleSize.value);
+        const bold = sampleBold.checked;
+        const large = isLargeText(sizePx, bold);
+        const contrast = contrastRatio(foregroundColor, backgroundColor);
+        const ratio = contrast.ratio;
+
+        equation.textContent = 'Contrast = (' + contrast.lighter.toFixed(4) + ' + 0.05) / (' + contrast.darker.toFixed(4) + ' + 0.05) = ' + ratio.toFixed(2) + ':1';
+
+        sampleText.style.color = foregroundColor;
+        sampleText.style.background = backgroundColor;
+        sampleLargeHeading.style.fontSize = Math.max(32, sizePx + 14) + 'px';
+        sampleLargeHeading.style.fontWeight = bold ? '700' : '500';
+        sampleHeading.style.fontSize = sizePx + 'px';
+        sampleHeading.style.fontWeight = bold ? '700' : '400';
+        sampleBody.style.fontSize = Math.max(12, sizePx - 3) + 'px';
+        sampleBody.style.fontWeight = bold ? '700' : '400';
+        sampleUi.style.color = foregroundColor;
+        sampleUi.style.background = backgroundColor;
+
+        results.innerHTML = '';
+        results.appendChild(resultRow('Contrast ratio', ratio.toFixed(2) + ':1', 'Computed', 'INFO'));
+
+        if (large) {
+          results.appendChild(resultRow('Large text AA', ratio.toFixed(2) + ':1', '>= 3.0:1', passFail(ratio, 3)));
+          results.appendChild(resultRow('Large text AAA', ratio.toFixed(2) + ':1', '>= 4.5:1', passFail(ratio, 4.5)));
+        } else {
+          results.appendChild(resultRow('Normal text AA', ratio.toFixed(2) + ':1', '>= 4.5:1', passFail(ratio, 4.5)));
+          results.appendChild(resultRow('Normal text AAA', ratio.toFixed(2) + ':1', '>= 7.0:1', passFail(ratio, 7)));
+        }
+
+        results.appendChild(resultRow('Non-text UI (AA)', ratio.toFixed(2) + ':1', '>= 3.0:1', passFail(ratio, 3)));
+      }
+
+      colorPicker.addEventListener('input', () => {
+        colorHex.value = colorPicker.value;
+        update();
+      });
+
+      colorHex.addEventListener('input', update);
+      sampleSize.addEventListener('input', update);
+      sampleBold.addEventListener('input', update);
+      presetTargetInputs.forEach((input) => {
+        input.addEventListener('input', () => {
+          setActiveInputToSelectedTarget();
+          update();
+          setStatus('Preset target set to ' + input.value + '.');
+        });
+      });
+
+      swapColors.addEventListener('click', () => {
+        const fg = foregroundColor;
+        foregroundColor = backgroundColor;
+        backgroundColor = fg;
+        setActiveInputToSelectedTarget();
+        update();
+      });
+
+      resetDemo.addEventListener('click', () => {
+        foregroundColor = '#1f2937';
+        backgroundColor = '#f4f7fb';
+        sampleSize.value = '18';
+        sampleBold.checked = false;
+        setActiveInputToSelectedTarget();
+        update();
+      });
+
+      renderPresets();
+      setActiveInputToSelectedTarget();
+      update();
+    </script>
+  </body>
+</html>
