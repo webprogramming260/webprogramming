@@ -369,7 +369,7 @@
       let foregroundColor = '#1f2937';
       let backgroundColor = '#f4f7fb';
 
-      const HICKS_COLORS = ['#1f2937', '#f4f7fb', '#ffffff', '#2563eb', '#e11d48', '#16a34a', '#ca8a04', '#7c3aed', '#ea580c', '#0f766e'];
+      const DEFAULT_COLORS = ['#1f2937', '#f4f7fb', '#ffffff', '#00ff00', '#e11d48', '#16a34a', '#ca8a04', '#7c3aed', '#8f0000', '#0000ff'];
 
       function setStatus(message) {
         if (status) {
@@ -477,7 +477,7 @@
 
       function renderPresets() {
         presets.innerHTML = '';
-        HICKS_COLORS.forEach((hex) => {
+        DEFAULT_COLORS.forEach((hex) => {
           const button = document.createElement('button');
           button.type = 'button';
           button.className = 'preset';
