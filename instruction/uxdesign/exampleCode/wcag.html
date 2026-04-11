@@ -91,8 +91,10 @@
         background: #f1f5fb;
         border-radius: 8px;
         font-family: 'Courier New', monospace;
+        font-size: 0.86rem;
         margin-bottom: 12px;
         line-height: 1.35;
+        white-space: pre-line;
       }
 
       .results {
@@ -108,10 +110,14 @@
         background: #f8fbff;
         border: 1px solid #e0e8f5;
         border-radius: 6px;
+        font-size: 0.9rem;
       }
 
       .row strong {
         white-space: nowrap;
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: #0044b3;
       }
 
       .pass {
@@ -406,12 +412,34 @@
         return Math.pow((sRgb + 0.055) / 1.055, 2.4);
       }
 
-      function relativeLuminance(hex) {
+      function channelToSrgb(channel) {
+        return channel / 255;
+      }
+
+      function colorDetails(hex) {
         const rgb = hexToRgb(hex);
-        const r = channelToLinear(rgb.r);
-        const g = channelToLinear(rgb.g);
-        const b = channelToLinear(rgb.b);
-        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        const sr = channelToSrgb(rgb.r);
+        const sg = channelToSrgb(rgb.g);
+        const sb = channelToSrgb(rgb.b);
+        const lr = channelToLinear(rgb.r);
+        const lg = channelToLinear(rgb.g);
+        const lb = channelToLinear(rgb.b);
+
+        return {
+          hex,
+          rgb,
+          sr,
+          sg,
+          sb,
+          lr,
+          lg,
+          lb,
+          luminance: 0.2126 * lr + 0.7152 * lg + 0.0722 * lb,
+        };
+      }
+
+      function relativeLuminance(hex) {
+        return colorDetails(hex).luminance;
       }
 
       function contrastRatio(foreground, background) {
@@ -511,10 +539,12 @@
         const sizePx = Number(sampleSize.value);
         const bold = sampleBold.checked;
         const large = isLargeText(sizePx, bold);
+        const fg = colorDetails(foregroundColor);
+        const bg = colorDetails(backgroundColor);
         const contrast = contrastRatio(foregroundColor, backgroundColor);
         const ratio = contrast.ratio;
 
-        equation.textContent = 'Contrast = (' + contrast.lighter.toFixed(4) + ' + 0.05) / (' + contrast.darker.toFixed(4) + ' + 0.05) = ' + ratio.toFixed(2) + ':1';
+        equation.textContent = 'Foreground ' + fg.hex.toUpperCase() + ': L_fg = ' + fg.luminance.toFixed(4) + '\n' + 'Background ' + bg.hex.toUpperCase() + ': L_bg = ' + bg.luminance.toFixed(4) + '\n\n' + '(max(L_fg, L_bg) + 0.05) / (min(L_fg, L_bg) + 0.05)' + '\n\n(' + contrast.lighter.toFixed(4) + ' + 0.05) / (' + contrast.darker.toFixed(4) + ' + 0.05)';
 
         sampleText.style.color = foregroundColor;
         sampleText.style.background = backgroundColor;
