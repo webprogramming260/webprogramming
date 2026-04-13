@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web APIs Event Loop Demo</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1280px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 390px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.4rem;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+      }
+
+      p {
+        margin: 0 0 10px;
+        line-height: 1.45;
+      }
+
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .control-row #resetBtn {
+        margin-left: auto;
+      }
+
+      button {
+        border: 1px solid #0f766e;
+        background: #0f766e;
+        color: #ffffff;
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .ghost {
+        border-color: #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+      }
+
+      .chip-row {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .chip {
+        background: var(--accent-soft);
+        border: 1px solid #bfe7da;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+
+      .chip b {
+        color: var(--accent);
+      }
+
+      .code {
+        margin: 8px 0 12px;
+        border: 1px solid #d1e4db;
+        border-radius: 10px;
+        background: #f5faf8;
+        overflow: hidden;
+      }
+
+      .code-head {
+        padding: 8px 10px;
+        border-bottom: 1px solid #d7e9e1;
+        background: #edf7f3;
+        font-weight: 700;
+        color: #2b4e40;
+      }
+
+      pre {
+        margin: 0;
+        padding: 10px;
+        font-size: 1rem;
+        font-family: 'Courier New', monospace;
+      }
+
+      .line {
+        display: inline-block;
+        border-radius: 3px;
+        padding: 1px 4px;
+      }
+
+      .line.active {
+        background: #d9f3ea;
+      }
+
+      .break {
+        display: block;
+        padding: 2px 0;
+      }
+
+      .console {
+        border: 1px solid #cbe2d8;
+        border-radius: 10px;
+        background: #fbfefd;
+        min-height: 140px;
+        max-height: 190px;
+        overflow: auto;
+      }
+
+      .console-item {
+        padding: 6px 9px;
+        border-bottom: 1px solid #e3f0ea;
+        font-family: 'Courier New', monospace;
+        font-size: 0.82rem;
+      }
+
+      .console-item:last-child {
+        border-bottom: 0;
+      }
+
+      .lab {
+        padding: 12px;
+      }
+
+      .canvas {
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        padding: 10px;
+        min-height: 620px;
+      }
+
+      .stage {
+        background: #ffffff;
+        border: 1px solid #d1e2da;
+        box-shadow: 0 2px 8px rgba(11, 65, 52, 0.08);
+        border-radius: 8px;
+        min-height: 596px;
+        padding: 12px;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr 1fr;
+      }
+
+      .banner {
+        grid-column: 1 / -1;
+        background: #f3faf7;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 8px 10px;
+        color: #35584a;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .zone {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #ffffff;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        min-height: 170px;
+      }
+
+      .zone h3 {
+        margin: 0 0 8px;
+        font-size: 0.95rem;
+      }
+
+      .zone-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .task {
+        border: 1px solid #c3dfd3;
+        border-radius: 8px;
+        background: #eff9f5;
+        padding: 7px 8px;
+        font-size: 0.82rem;
+      }
+
+      .task.flash-enter {
+        animation: taskFlash 0.28s ease-in-out 3;
+      }
+
+      @keyframes taskFlash {
+        0% {
+          background: #eff9f5;
+          box-shadow: 0 0 0 0 rgba(14, 124, 102, 0);
+        }
+
+        50% {
+          background: #bfeedd;
+          box-shadow: 0 0 0 2px rgba(14, 124, 102, 0.28);
+        }
+
+        100% {
+          background: #eff9f5;
+          box-shadow: 0 0 0 0 rgba(14, 124, 102, 0);
+        }
+      }
+
+      .task small {
+        display: block;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      .empty {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .legend {
+        margin-top: 12px;
+        background: #f8fcfa;
+        border: 1px solid #d3e6dd;
+        border-radius: 10px;
+        padding: 12px;
+      }
+
+      .legend h2 {
+        margin: 0 0 10px;
+      }
+
+      .legend-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .legend-item {
+        background: #ffffff;
+        border: 1px solid #cfe3d8;
+        border-radius: 8px;
+        padding: 10px;
+      }
+
+      .legend-item h3 {
+        margin: 0 0 6px;
+        font-size: 0.95rem;
+        color: #1a5949;
+      }
+
+      .legend-item p {
+        margin: 0;
+        color: #37584c;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 1020px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .stage {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto auto auto auto;
+          min-height: 0;
+        }
+
+        .legend-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>Event Loop: Stack, Web APIs, Queue</h1>
+        <p>This simulation shows how your sample code moves work between the call stack, Web APIs, microtasks, and callback queue.</p>
+
+        <div class="control-row">
+          <button id="backBtn" type="button">Prev</button>
+          <button id="forwardBtn" type="button">Next</button>
+          <button id="resetBtn" class="ghost" type="button">Reset</button>
+        </div>
+
+        <div class="chip-row">
+          <div class="chip"><b>Virtual Time:</b> <span id="clock">0 ms</span></div>
+          <div class="chip"><b>Status:</b> <span id="status">Ready</span></div>
+        </div>
+
+        <div class="code">
+          <div class="code-head">Program being simulated</div>
+          <pre>
+<span class="line" data-line="1">function log(args) {</span>
+<span class="line" data-line="2">  console.log(JSON.stringify(args));</span>
+<span class="line" data-line="3">}</span>
+<span class='break'></span>
+<span class="line" data-line="5">log('start');</span>
+<span class='break'></span>
+<span class="line" data-line="7">setTimeout(() =&gt; {</span>
+<span class="line" data-line="8">  log('timout complete')</span>
+<span class="line" data-line="9">}, 2000);</span>
+<span class='break'></span>
+<span class="line" data-line="11">// Promise request</span>
+<span class="line" data-line="12">fetch('a.com').then((result) =&gt; {</span>
+<span class="line" data-line="13"> result.json().then((json) =&gt; {</span>
+<span class="line" data-line="14">    log(json)</span>
+<span class="line" data-line="15"> });</span>
+<span class="line" data-line="16">});</span>
+<span class='break'></span>
+<span class="line" data-line="18">// Async request</span>
+<span class="line" data-line="19">(async () =&gt; {</span>
+<span class="line" data-line="20">  const result = await fetch('b.com');</span>
+<span class="line" data-line="21">  const json = await result.json();</span>
+<span class="line" data-line="22">  log(json);</span>
+<span class='break'></span>
+<span class="line" data-line="24">  log('end');</span>
+<span class="line" data-line="25">})();</span>
+          </pre>
+        </div>
+
+        <h2>Console Output</h2>
+        <div class="console" id="consoleOutput"></div>
+      </aside>
+
+      <section class="lab">
+        <div class="canvas">
+          <div class="stage">
+            <div class="banner" id="banner">Use Next to begin stepping through the sequence.</div>
+
+            <section class="zone">
+              <h3>Call Stack</h3>
+              <ul class="zone-list" id="stack"></ul>
+            </section>
+
+            <section class="zone">
+              <h3>Web APIs</h3>
+              <ul class="zone-list" id="webApis"></ul>
+            </section>
+
+            <section class="zone">
+              <h3>Callback Queue (tasks)</h3>
+              <ul class="zone-list" id="callbackQueue"></ul>
+            </section>
+
+            <section class="zone">
+              <h3>Microtask Queue (promises)</h3>
+              <ul class="zone-list" id="microtaskQueue"></ul>
+            </section>
+          </div>
+        </div>
+
+        <section class="legend" aria-label="Box descriptions">
+          <h2>What Each Box Means</h2>
+          <div class="legend-grid">
+            <article class="legend-item">
+              <h3>Call Stack</h3>
+              <p>The call stack is where JavaScript runs code frames right now. It executes one frame at a time, and async callbacks can only run when the stack is clear.</p>
+            </article>
+
+            <article class="legend-item">
+              <h3>Web APIs</h3>
+              <p>Web APIs handle browser-managed async work such as timers, network requests, and response parsing. They run outside the JS stack and signal completion later.</p>
+            </article>
+
+            <article class="legend-item">
+              <h3>Callback Queue (tasks)</h3>
+              <p>This queue stores completed task callbacks like setTimeout handlers. The event loop moves one task to the call stack only after the stack is empty.</p>
+            </article>
+
+            <article class="legend-item">
+              <h3>Microtask Queue (promises)</h3>
+              <p>This queue stores promise continuations from await and then/catch/finally. Microtasks run before the next task, immediately after current stack work finishes.</p>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const backBtn = document.getElementById('backBtn');
+      const forwardBtn = document.getElementById('forwardBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const clock = document.getElementById('clock');
+      const statusEl = document.getElementById('status');
+      const banner = document.getElementById('banner');
+      const consoleOutput = document.getElementById('consoleOutput');
+      const stackEl = document.getElementById('stack');
+      const webApisEl = document.getElementById('webApis');
+      const callbackQueueEl = document.getElementById('callbackQueue');
+      const microtaskQueueEl = document.getElementById('microtaskQueue');
+
+      const codeLines = Array.from(document.querySelectorAll('.line'));
+      const state = {
+        stack: [],
+        webApis: [],
+        callbackQueue: [],
+        microtaskQueue: [],
+        logs: [],
+        time: 0,
+        timeline: [],
+        timelineIndex: 0,
+        nextItemId: 1,
+      };
+
+      const lastRenderedKeys = {
+        stack: new Set(),
+        webApis: new Set(),
+        callbackQueue: new Set(),
+        microtaskQueue: new Set(),
+      };
+
+      function setStatus(text) {
+        statusEl.textContent = text;
+      }
+
+      function setBanner(text) {
+        banner.textContent = text;
+      }
+
+      function setTime(ms) {
+        state.time = ms;
+        clock.textContent = ms + ' ms';
+      }
+
+      function addItem(list, label, meta) {
+        list.push({ id: state.nextItemId++, label, meta });
+      }
+
+      function clearHighlights() {
+        codeLines.forEach((line) => line.classList.remove('active'));
+      }
+
+      function highlight(lineNumber) {
+        clearHighlights();
+        const target = document.querySelector('.line[data-line="' + lineNumber + '"]');
+        if (target) {
+          target.classList.add('active');
+        }
+      }
+
+      function renderList(zoneName, element, items, emptyText) {
+        element.innerHTML = '';
+        if (!items.length) {
+          lastRenderedKeys[zoneName] = new Set();
+          const empty = document.createElement('li');
+          empty.className = 'empty';
+          empty.textContent = emptyText;
+          element.appendChild(empty);
+          return;
+        }
+
+        const previousKeys = lastRenderedKeys[zoneName] || new Set();
+        const nextKeys = new Set();
+
+        items.forEach((item, index) => {
+          const itemKey = String(item.id ?? item.label + '|' + (item.meta || '') + '|' + index);
+          nextKeys.add(itemKey);
+
+          const li = document.createElement('li');
+          li.className = 'task';
+          if (!previousKeys.has(itemKey)) {
+            li.classList.add('flash-enter');
+          }
+          li.textContent = item.label;
+          if (item.meta) {
+            const meta = document.createElement('small');
+            meta.textContent = item.meta;
+            li.appendChild(meta);
+          }
+          element.appendChild(li);
+        });
+
+        lastRenderedKeys[zoneName] = nextKeys;
+      }
+
+      function renderConsole() {
+        consoleOutput.innerHTML = '';
+        if (!state.logs.length) {
+          const empty = document.createElement('div');
+          empty.className = 'console-item';
+          empty.textContent = '';
+          consoleOutput.appendChild(empty);
+          return;
+        }
+
+        state.logs.forEach((entry) => {
+          const row = document.createElement('div');
+          row.className = 'console-item';
+          row.textContent = '[' + entry.time + ' ms] ' + entry.text;
+          consoleOutput.appendChild(row);
+        });
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      }
+
+      function renderAll() {
+        renderList('stack', stackEl, state.stack.slice().reverse(), 'Stack is empty');
+        renderList('webApis', webApisEl, state.webApis, 'No active Web API work');
+        renderList('callbackQueue', callbackQueueEl, state.callbackQueue, 'Queue is empty');
+        renderList('microtaskQueue', microtaskQueueEl, state.microtaskQueue, 'Queue is empty');
+        renderConsole();
+      }
+
+      function logLine(text) {
+        state.logs.push({ time: state.time, text });
+      }
+
+      function executeEvent(event) {
+        setTime(event.at);
+        event.action();
+        renderAll();
+      }
+
+      function buildTimeline() {
+        return [
+          {
+            at: 0,
+            action: () => {
+              addItem(state.stack, 'Global Script');
+              setBanner('Global Script execution begins.');
+            },
+          },
+          {
+            at: 1,
+            action: () => {
+              highlight(1);
+              setBanner('Register log function.');
+            },
+          },
+          {
+            at: 40,
+            action: () => {
+              highlight(5);
+              setBanner('Call log function.');
+            },
+          },
+          {
+            at: 60,
+            action: () => {
+              highlight(2);
+              addItem(state.stack, "log('start')");
+              logLine('start');
+              setBanner('Execute log function and return.');
+            },
+          },
+          {
+            at: 80,
+            action: () => {
+              state.stack.pop();
+              highlight(7);
+              addItem(state.webApis, 'setTimeout callback', 'Timer: 2000 ms');
+              setBanner('setTimeout is registered in Web APIs while script continues.');
+            },
+          },
+          {
+            at: 120,
+            action: () => {
+              highlight(12);
+              addItem(state.webApis, "fetch('a.com')", 'Network pending');
+              setBanner("fetch('a.com') enters microtasks.");
+            },
+          },
+          {
+            at: 160,
+            action: () => {
+              highlight(20);
+              addItem(state.webApis, "fetch('b.com')", 'Network pending');
+              setBanner("fetch('b.com') enters microtasks.");
+            },
+          },
+          {
+            at: 180,
+            action: () => {
+              clearHighlights();
+              state.stack.pop();
+              setBanner('Global script finishes. Async work continues in Web APIs.');
+            },
+          },
+          {
+            at: 520,
+            action: () => {
+              state.webApis = state.webApis.filter((job) => job.label !== "fetch('a.com')");
+              highlight(12);
+              addItem(state.microtaskQueue, "fetch('a.com')", 'Promise settled');
+              setBanner(`fetch('a.com') resolves.`);
+            },
+          },
+          {
+            at: 560,
+            action: () => {
+              state.microtaskQueue.shift();
+              addItem(state.stack, "fetch('a.com') callback");
+              highlight(13);
+              addItem(state.webApis, "'a.com'.json()", 'Body parsing pending');
+              setBanner(`'a.com'.json() enters microtasks.`);
+            },
+          },
+          {
+            at: 600,
+            action: () => {
+              state.stack.pop();
+              clearHighlights();
+              setBanner('Task completes.');
+            },
+          },
+          {
+            at: 760,
+            action: () => {
+              state.webApis = state.webApis.filter((job) => job.label !== "'a.com'.json()");
+              addItem(state.microtaskQueue, "'a.com'.json()", 'Body parsing resolved');
+              setBanner("'a.com'.json() body parsing resolved.");
+            },
+          },
+          {
+            at: 800,
+            action: () => {
+              state.microtaskQueue.shift();
+              addItem(state.stack, "'a.com'.json() body parsing");
+              highlight(14);
+              setBanner("'a.com'.json() callback runs, then logs result to console.");
+            },
+          },
+          {
+            at: 820,
+            action: () => {
+              addItem(state.stack, `log('a.com')`);
+              highlight(2);
+              logLine(`{ origin: 'a.com' }`);
+              setBanner('Execute log function and return.');
+            },
+          },
+          {
+            at: 840,
+            action: () => {
+              highlight(14);
+              state.stack.pop();
+            },
+          },
+          {
+            at: 860,
+            action: () => {
+              clearHighlights();
+              state.stack.pop();
+              setBanner('Task completes.');
+            },
+          },
+          {
+            at: 980,
+            action: () => {
+              state.webApis = state.webApis.filter((job) => job.label !== "fetch('b.com')");
+              addItem(state.microtaskQueue, `fetch('b.com')`, 'Promise resolved');
+              setBanner(`fetch('b.com') resolves. Enters microtasks.`);
+            },
+          },
+          {
+            at: 1000,
+            action: () => {
+              state.microtaskQueue.shift();
+              addItem(state.stack, 'Async continuation #1');
+              highlight(20);
+              setBanner(`fetch('b.com') result assigned.`);
+            },
+          },
+          {
+            at: 1020,
+            action: () => {
+              state.microtaskQueue.shift();
+              highlight(21);
+              addItem(state.webApis, `'b.com'.json()`, 'Body parsing pending');
+              setBanner(`'b.com'.json() enters microtasks.`);
+            },
+          },
+          {
+            at: 1060,
+            action: () => {
+              state.stack.pop();
+              setBanner('Continuation #1 completes.');
+              clearHighlights();
+            },
+          },
+          {
+            at: 1220,
+            action: () => {
+              state.webApis = state.webApis.filter((job) => job.label !== `'b.com'.json()`);
+              addItem(state.microtaskQueue, `'b.com'.json()`, 'Promise resolved');
+              setBanner(`'b.com'.json() resolves.`);
+            },
+          },
+          {
+            at: 1240,
+            action: () => {
+              state.microtaskQueue.shift();
+              addItem(state.stack, 'Async continuation #2');
+              highlight(21);
+              setBanner(`'b.com'.json() result assigned.`);
+            },
+          },
+          {
+            at: 1241,
+            action: () => {
+              highlight(22);
+              setBanner('Call log function.');
+            },
+          },
+          {
+            at: 1260,
+            action: () => {
+              addItem(state.stack, `log('b.com')`);
+              highlight(2);
+              logLine(`{ origin: 'b.com' }`);
+              setBanner('Execute log function and return.');
+            },
+          },
+          {
+            at: 1300,
+            action: () => {
+              highlight(24);
+              state.stack.pop();
+              setBanner('Call log function.');
+            },
+          },
+          {
+            at: 1320,
+            action: () => {
+              addItem(state.stack, `log('end')`);
+              highlight(2);
+              logLine(`end`);
+              setBanner('Execute log function and return.');
+            },
+          },
+          {
+            at: 1360,
+            action: () => {
+              clearHighlights();
+              state.stack.pop();
+              state.stack.pop();
+              setBanner('Async flow finishes.');
+            },
+          },
+          {
+            at: 2000,
+            action: () => {
+              setBanner('setTimeout triggers and enters callback queue.');
+              state.webApis = state.webApis.filter((job) => job.label !== 'setTimeout callback');
+              addItem(state.callbackQueue, 'setTimeout callback', 'Ready for stack');
+            },
+          },
+          {
+            at: 2060,
+            action: () => {
+              setBanner('setTimeout callback added to the stack.');
+              highlight(7);
+              state.callbackQueue.shift();
+              addItem(state.stack, 'setTimeout callback');
+            },
+          },
+          {
+            at: 2100,
+            action: () => {
+              setBanner('Call log function.');
+              highlight(8);
+            },
+          },
+          {
+            at: 2120,
+            action: () => {
+              addItem(state.stack, `log('timeout complete')`);
+              highlight(2);
+              logLine('timeout complete');
+              setBanner('Execute log function and return.');
+            },
+          },
+          {
+            at: 2140,
+            action: () => {
+              state.stack.pop();
+              state.stack.pop();
+              clearHighlights();
+              setStatus('Complete');
+              forwardBtn.disabled = false;
+              setBanner('Event loop complete: timer callback runs after stack is clear.');
+            },
+          },
+        ];
+      }
+
+      function initializeTimeline() {
+        state.timeline = buildTimeline();
+        state.timelineIndex = 0;
+      }
+
+      function enterStepMode() {
+        setStatus('Executing');
+        forwardBtn.disabled = false;
+        backBtn.disabled = false;
+      }
+
+      function applyStepProgress(stepCount) {
+        state.stack = [];
+        state.webApis = [];
+        state.callbackQueue = [];
+        state.microtaskQueue = [];
+        state.logs = [];
+        state.nextItemId = 1;
+        clearHighlights();
+        setTime(0);
+
+        for (let i = 0; i < stepCount; i += 1) {
+          const event = state.timeline[i];
+          if (!event) {
+            break;
+          }
+          setTime(event.at);
+          event.action();
+        }
+
+        state.timelineIndex = Math.max(0, Math.min(stepCount, state.timeline.length));
+
+        if (state.timelineIndex === 0) {
+          setBanner('Executing ready. Press Next to advance.');
+        }
+
+        if (state.timelineIndex >= state.timeline.length) {
+          clearHighlights();
+          setStatus('Complete');
+          forwardBtn.disabled = true;
+        } else {
+          setStatus('Executing');
+          forwardBtn.disabled = false;
+        }
+
+        backBtn.disabled = state.timelineIndex === 0;
+        renderAll();
+      }
+
+      function resetState() {
+        state.stack = [];
+        state.webApis = [];
+        state.callbackQueue = [];
+        state.microtaskQueue = [];
+        state.logs = [];
+        state.nextItemId = 1;
+        initializeTimeline();
+        setTime(0);
+        setStatus('Ready');
+        setBanner('Use Next to begin stepping through the sequence.');
+        backBtn.disabled = true;
+        forwardBtn.disabled = false;
+        clearHighlights();
+        renderAll();
+      }
+
+      function forwardDemo() {
+        const event = state.timeline[state.timelineIndex];
+        if (!event) {
+          clearHighlights();
+          setStatus('Complete');
+          setBanner('Event loop complete: all states have been stepped through.');
+          forwardBtn.disabled = true;
+          return;
+        }
+
+        enterStepMode();
+        executeEvent(event);
+        state.timelineIndex += 1;
+
+        if (state.timelineIndex >= state.timeline.length) {
+          clearHighlights();
+          setStatus('Complete');
+          forwardBtn.disabled = true;
+        } else {
+          backBtn.disabled = false;
+        }
+      }
+
+      function backDemo() {
+        if (state.timelineIndex === 0) {
+          return;
+        }
+
+        enterStepMode();
+        applyStepProgress(state.timelineIndex - 1);
+      }
+
+      backBtn.addEventListener('click', backDemo);
+      forwardBtn.addEventListener('click', forwardDemo);
+      resetBtn.addEventListener('click', resetState);
+
+      resetState();
+    </script>
+  </body>
+</html>
