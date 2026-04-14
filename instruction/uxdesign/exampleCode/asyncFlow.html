@@ -118,9 +118,9 @@
 
       .code {
         margin: 8px 0 12px;
-        border: 1px solid #d1e4db;
+        border: 1px solid #2f4a43;
         border-radius: 10px;
-        background: #f5faf8;
+        background: #0f1b1a;
         overflow: hidden;
       }
 
@@ -137,6 +137,7 @@
         padding: 10px;
         font-size: 1rem;
         font-family: 'Courier New', monospace;
+        color: #d8eee6;
       }
 
       .line {
@@ -145,8 +146,35 @@
         padding: 1px 4px;
       }
 
+      .tok-key {
+        color: #83b8ff;
+        font-weight: 700;
+      }
+
+      .tok-fn {
+        color: #d39cff;
+      }
+
+      .tok-str {
+        color: #8ce0b6;
+      }
+
+      .tok-com {
+        color: #8ca29a;
+        font-style: italic;
+      }
+
+      .tok-num {
+        color: #ffc17d;
+      }
+
       .line.active {
-        background: #d9f3ea;
+        background: #5a582a;
+        color: #fffff3;
+        outline: 1px solid #e8e687;
+        box-shadow:
+          0 0 0 1px rgba(232, 230, 135, 0.25),
+          0 0 12px rgba(184, 182, 65, 0.28);
       }
 
       .break {
@@ -247,18 +275,21 @@
 
       @keyframes taskFlash {
         0% {
-          background: #eff9f5;
-          box-shadow: 0 0 0 0 rgba(14, 124, 102, 0);
+          border: 1px solid #dfdfc3;
+          background: #fdf9d7;
+          box-shadow: 0 0 0 0 rgba(124, 122, 14, 0);
         }
 
         50% {
-          background: #bfeedd;
-          box-shadow: 0 0 0 2px rgba(14, 124, 102, 0.28);
+          border: 1px solid #dfdfc3;
+          background: #fdfdaa;
+          box-shadow: 0 0 0 2px rgba(124, 118, 14, 0);
         }
 
         100% {
-          background: #eff9f5;
-          box-shadow: 0 0 0 0 rgba(14, 124, 102, 0);
+          border: 1px solid #dfdfc3;
+          background: #fefee7;
+          box-shadow: 0 0 0 0 rgba(124, 118, 14, 0);
         }
       }
 
@@ -353,30 +384,30 @@
         <div class="code">
           <div class="code-head">Program being simulated</div>
           <pre>
-<span class="line" data-line="1">function log(args) {</span>
-<span class="line" data-line="2">  console.log(JSON.stringify(args));</span>
+<span class="line" data-line="1"><span class="tok-key">function</span> <span class="tok-fn">log</span>(m) {</span>
+<span class="line" data-line="2">  console.log(JSON.stringify(m));</span>
 <span class="line" data-line="3">}</span>
 <span class='break'></span>
-<span class="line" data-line="5">log('start');</span>
+<span class="line" data-line="5"><span class="tok-fn">log</span>(<span class="tok-str">'start'</span>);</span>
 <span class='break'></span>
-<span class="line" data-line="7">setTimeout(() =&gt; {</span>
-<span class="line" data-line="8">  log('timout complete')</span>
-<span class="line" data-line="9">}, 2000);</span>
+<span class="line" data-line="7"><span class="tok-fn">setTimeout</span>(() =&gt; {</span>
+<span class="line" data-line="8">  <span class="tok-fn">log</span>(<span class="tok-str">'timout complete'</span>)</span>
+<span class="line" data-line="9">}, <span class="tok-num">2000</span>);</span>
 <span class='break'></span>
-<span class="line" data-line="11">// Promise request</span>
-<span class="line" data-line="12">fetch('a.com').then((result) =&gt; {</span>
-<span class="line" data-line="13"> result.json().then((json) =&gt; {</span>
-<span class="line" data-line="14">    log(json)</span>
+<span class="line" data-line="11"><span class="tok-com">// Promise request</span></span>
+<span class="line" data-line="12"><span class="tok-fn">fetch</span>(<span class="tok-str">'a.com'</span>).then((r) =&gt; {</span>
+<span class="line" data-line="13"> r.json().then((json) =&gt; {</span>
+<span class="line" data-line="14">    <span class="tok-fn">log</span>(json)</span>
 <span class="line" data-line="15"> });</span>
 <span class="line" data-line="16">});</span>
 <span class='break'></span>
-<span class="line" data-line="18">// Async request</span>
-<span class="line" data-line="19">(async () =&gt; {</span>
-<span class="line" data-line="20">  const result = await fetch('b.com');</span>
-<span class="line" data-line="21">  const json = await result.json();</span>
-<span class="line" data-line="22">  log(json);</span>
+<span class="line" data-line="18"><span class="tok-com">// Async request</span></span>
+<span class="line" data-line="19">(<span class="tok-key">async</span> () =&gt; {</span>
+<span class="line" data-line="20">  <span class="tok-key">const</span> r = <span class="tok-key">await</span> <span class="tok-fn">fetch</span>(<span class="tok-str">'b.com'</span>);</span>
+<span class="line" data-line="21">  <span class="tok-key">const</span> json = <span class="tok-key">await</span> r.json();</span>
+<span class="line" data-line="22">  <span class="tok-fn">log</span>(json);</span>
 <span class='break'></span>
-<span class="line" data-line="24">  log('end');</span>
+<span class="line" data-line="24">  <span class="tok-fn">log</span>(<span class="tok-str">'end'</span>);</span>
 <span class="line" data-line="25">})();</span>
           </pre>
         </div>
