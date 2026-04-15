@@ -211,7 +211,7 @@
         border: 2px dashed #b9cfd0;
         background: #f7fbf9;
         padding: 10px;
-        min-height: 620px;
+        min-height: 700px;
       }
 
       .stage {
@@ -219,7 +219,7 @@
         border: 1px solid #d1e2da;
         box-shadow: 0 2px 8px rgba(11, 65, 52, 0.08);
         border-radius: 8px;
-        min-height: 596px;
+        min-height: 676px;
         padding: 12px;
         display: grid;
         gap: 12px;
@@ -229,15 +229,18 @@
 
       .banner {
         grid-column: 1 / -1;
-        background: #f3faf7;
-        border: 2px solid #c7ddd2;
-        border-radius: 8px;
-        padding: 14px 16px;
-        color: #35584a;
-        font-size: 1.08rem;
-        font-weight: 700;
-        letter-spacing: 0.01em;
-        box-shadow: 0 3px 10px rgba(33, 73, 57, 0.12);
+        background: linear-gradient(120deg, #0f6b5a 0%, #189477 55%, #24a887 100%);
+        border: 2px solid #0b5a4b;
+        border-radius: 10px;
+        padding: 16px 18px;
+        color: #f5fffb;
+        font-size: 1.14rem;
+        font-weight: 800;
+        letter-spacing: 0.015em;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+          0 5px 16px rgba(8, 82, 66, 0.38);
       }
 
       .zone {
@@ -247,7 +250,8 @@
         padding: 10px;
         display: flex;
         flex-direction: column;
-        min-height: 170px;
+        min-height: 236px;
+        max-height: 236px;
       }
 
       .stack-zone,
@@ -300,8 +304,12 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 8px;
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
       }
 
       .task {
