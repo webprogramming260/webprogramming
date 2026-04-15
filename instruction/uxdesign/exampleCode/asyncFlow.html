@@ -189,6 +189,29 @@
         min-height: 140px;
         max-height: 190px;
         overflow: auto;
+        transition:
+          box-shadow 0.3s,
+          background 0.3s;
+      }
+
+      .console.paint-flash {
+        box-shadow:
+          0 0 0 3px #24a887,
+          0 0 16px #24a88766;
+        background: #e2f4ee;
+        animation: paintFlash 0.5s;
+      }
+
+      @keyframes paintFlash {
+        0% {
+          background: #e2f4ee;
+        }
+        60% {
+          background: #b6f2d7;
+        }
+        100% {
+          background: #fbfefd;
+        }
       }
 
       .console-item {
@@ -451,6 +474,7 @@
         <div class="chip-row">
           <div class="chip"><b>Virtual Time:</b> <span id="clock">0 ms</span></div>
           <div class="chip"><b>Status:</b> <span id="status">Ready</span></div>
+          <div class="chip"><b>Next frame in:</b> <span id="frameCountdown">—</span></div>
         </div>
 
         <div class="code">
@@ -560,6 +584,7 @@
       const statusEl = document.getElementById('status');
       const banner = document.getElementById('banner');
       const domOutput = document.getElementById('domOutput');
+      const frameCountdown = document.getElementById('frameCountdown');
       const stackEl = document.getElementById('stack');
       const webApisEl = document.getElementById('webApis');
       const callbackQueueEl = document.getElementById('callbackQueue');
@@ -674,13 +699,36 @@
         domOutput.scrollTop = domOutput.scrollHeight;
       }
 
-      function renderAll() {
+      function getNextFrameMs() {
+        // Find the next paintFrame event in the timeline after the current index
+        for (let i = state.timelineIndex; i < state.timeline.length; i++) {
+          const event = state.timeline[i];
+          if (!event) continue;
+          // Heuristic: paintFrame is called in events with setBanner containing 'Frame tick paints' or 'painted DOM update'
+          if (String(event.action).includes('paintFrame')) {
+            return event.at - state.time;
+          }
+        }
+        return null;
+      }
+
+      function renderAll(painted) {
         renderList('stack', stackEl, state.stack.slice().reverse(), 'Stack is empty');
         renderList('webApis', webApisEl, state.webApis, 'No active Web API work');
         renderList('callbackQueue', callbackQueueEl, state.callbackQueue, 'Queue is empty');
         renderList('microtaskQueue', microtaskQueueEl, state.microtaskQueue, 'Queue is empty');
         renderList('renderQueue', renderQueueEl, state.renderQueue, 'No frame scheduled');
         renderDomOutput();
+        // Frame countdown
+        const ms = getNextFrameMs();
+        frameCountdown.textContent = ms !== null && ms >= 0 ? ms + ' ms' : '—';
+        // Animate DOM output if a paint just occurred
+        if (painted) {
+          domOutput.classList.remove('paint-flash');
+          // Force reflow for restart
+          void domOutput.offsetWidth;
+          domOutput.classList.add('paint-flash');
+        }
       }
 
       function queueRender(text) {
@@ -693,18 +741,24 @@
 
       function paintFrame() {
         if (!state.hasPendingPaint) {
+          renderAll(false);
           return;
         }
         state.renderQueue = [];
         state.paintedDomText = state.pendingDomText;
         state.renderHistory.push({ text: state.paintedDomText });
         state.hasPendingPaint = false;
+        renderAll(true);
       }
 
       function executeEvent(event) {
         setTime(event.at);
         event.action();
-        renderAll();
+        // If paintFrame was just called, renderAll(true) will already have run
+        // Otherwise, renderAll(false)
+        if (!String(event.action).includes('paintFrame')) {
+          renderAll(false);
+        }
       }
 
       function buildTimeline() {
