@@ -312,6 +312,12 @@
         overflow-y: auto;
       }
 
+      .render-zone {
+        grid-column: 1 / -1;
+        min-height: 120px;
+        max-height: 120px;
+      }
+
       .task {
         border: 1px solid #c3dfd3;
         border-radius: 8px;
@@ -420,7 +426,7 @@
       @media (max-width: 760px) {
         .stage {
           grid-template-columns: 1fr;
-          grid-template-rows: auto auto auto auto auto;
+          grid-template-rows: auto auto auto auto auto auto;
           min-height: 0;
         }
 
@@ -478,7 +484,7 @@
           </pre>
         </div>
 
-        <h2>DOM Output</h2>
+        <h2>Painted Output</h2>
         <div class="console" id="domOutput"></div>
       </aside>
 
@@ -506,6 +512,11 @@
               <h3>Microtask Queue (promises)</h3>
               <ul class="zone-list" id="microtaskQueue"></ul>
             </section>
+
+            <section class="zone queue-zone render-zone">
+              <h3>Render Loop (frames)</h3>
+              <ul class="zone-list" id="renderQueue"></ul>
+            </section>
           </div>
         </div>
 
@@ -531,6 +542,11 @@
               <h3>Microtask Queue (promises)</h3>
               <p>This queue stores promise continuations from await and then/catch/finally. Microtasks run before the next task, immediately after current stack work finishes.</p>
             </article>
+
+            <article class="legend-item">
+              <h3>Render Loop (frames)</h3>
+              <p>DOM updates can queue during JS execution, but visual paint happens on frame ticks after stack and microtasks are clear.</p>
+            </article>
           </div>
         </section>
       </section>
@@ -548,6 +564,7 @@
       const webApisEl = document.getElementById('webApis');
       const callbackQueueEl = document.getElementById('callbackQueue');
       const microtaskQueueEl = document.getElementById('microtaskQueue');
+      const renderQueueEl = document.getElementById('renderQueue');
 
       const codeLines = Array.from(document.querySelectorAll('.line'));
       const state = {
@@ -555,7 +572,11 @@
         webApis: [],
         callbackQueue: [],
         microtaskQueue: [],
+        renderQueue: [],
         renderHistory: [],
+        pendingDomText: '',
+        paintedDomText: '',
+        hasPendingPaint: false,
         time: 0,
         timeline: [],
         timelineIndex: 0,
@@ -567,6 +588,7 @@
         webApis: new Set(),
         callbackQueue: new Set(),
         microtaskQueue: new Set(),
+        renderQueue: new Set(),
       };
 
       function setStatus(text) {
@@ -657,11 +679,26 @@
         renderList('webApis', webApisEl, state.webApis, 'No active Web API work');
         renderList('callbackQueue', callbackQueueEl, state.callbackQueue, 'Queue is empty');
         renderList('microtaskQueue', microtaskQueueEl, state.microtaskQueue, 'Queue is empty');
+        renderList('renderQueue', renderQueueEl, state.renderQueue, 'No frame scheduled');
         renderDomOutput();
       }
 
-      function logLine(text) {
-        state.renderHistory.push({ time: state.time, text: String(text) });
+      function queueRender(text) {
+        state.pendingDomText = String(text);
+        state.hasPendingPaint = true;
+        if (!state.renderQueue.length) {
+          addItem(state.renderQueue, 'Paint frame', 'Waiting for render opportunity');
+        }
+      }
+
+      function paintFrame() {
+        if (!state.hasPendingPaint) {
+          return;
+        }
+        state.renderQueue = [];
+        state.paintedDomText = state.pendingDomText;
+        state.renderHistory.push({ text: state.paintedDomText });
+        state.hasPendingPaint = false;
       }
 
       function executeEvent(event) {
@@ -698,8 +735,8 @@
             action: () => {
               highlight(2);
               addItem(state.stack, "render('start')");
-              logLine('start');
-              setBanner('Execute render function and return.');
+              queueRender('start');
+              setBanner('Render call queues a DOM update. Paint waits for a frame.');
             },
           },
           {
@@ -733,6 +770,13 @@
               clearHighlights();
               state.stack.pop();
               setBanner('Global script finishes. Async work continues in Web APIs.');
+            },
+          },
+          {
+            at: 192,
+            action: () => {
+              paintFrame();
+              setBanner('Frame tick paints pending DOM updates.');
             },
           },
           {
@@ -776,7 +820,7 @@
               state.microtaskQueue.shift();
               addItem(state.stack, "'a.com'.json() body parsing");
               highlight(14);
-              setBanner("'a.com'.json() callback runs, then logs result to console.");
+              setBanner("'a.com'.json() callback runs and queues a DOM update.");
             },
           },
           {
@@ -784,8 +828,8 @@
             action: () => {
               addItem(state.stack, `render('a.com')`);
               highlight(2);
-              logLine(`{ origin: 'a.com' }`);
-              setBanner('Execute render function and return.');
+              queueRender(`{ origin: 'a.com' }`);
+              setBanner('Execute render function and return. Paint waits for next frame.');
             },
           },
           {
@@ -801,6 +845,13 @@
               clearHighlights();
               state.stack.pop();
               setBanner('Task completes.');
+            },
+          },
+          {
+            at: 872,
+            action: () => {
+              paintFrame();
+              setBanner('Frame tick paints pending DOM updates.');
             },
           },
           {
@@ -865,8 +916,8 @@
             action: () => {
               addItem(state.stack, `render('b.com')`);
               highlight(2);
-              logLine(`{ origin: 'b.com' }`);
-              setBanner('Execute render function and return.');
+              queueRender(`{ origin: 'b.com' }`);
+              setBanner('Execute render function and return. Paint waits for next frame.');
             },
           },
           {
@@ -882,8 +933,8 @@
             action: () => {
               addItem(state.stack, `render('end')`);
               highlight(2);
-              logLine(`end`);
-              setBanner('Execute render function and return.');
+              queueRender(`end`);
+              setBanner('Second render call updates pending DOM before paint.');
             },
           },
           {
@@ -893,6 +944,13 @@
               state.stack.pop();
               state.stack.pop();
               setBanner('Async flow finishes.');
+            },
+          },
+          {
+            at: 1380,
+            action: () => {
+              paintFrame();
+              setBanner('Frame tick paints latest pending DOM update.');
             },
           },
           {
@@ -924,8 +982,8 @@
             action: () => {
               addItem(state.stack, `render('timeout complete')`);
               highlight(2);
-              logLine('timeout complete');
-              setBanner('Execute render function and return.');
+              queueRender('timeout complete');
+              setBanner('Execute render function and return. Paint waits for next frame.');
             },
           },
           {
@@ -934,9 +992,15 @@
               state.stack.pop();
               state.stack.pop();
               clearHighlights();
+              setBanner('Timer callback completes. Frame can paint now.');
+            },
+          },
+          {
+            at: 2150,
+            action: () => {
+              paintFrame();
               setStatus('Complete');
-              forwardBtn.disabled = false;
-              setBanner('Event loop complete: timer callback runs after stack is clear.');
+              setBanner('Event loop complete: paint committed after JS work finished.');
             },
           },
         ];
@@ -958,7 +1022,11 @@
         state.webApis = [];
         state.callbackQueue = [];
         state.microtaskQueue = [];
+        state.renderQueue = [];
         state.renderHistory = [];
+        state.pendingDomText = '';
+        state.paintedDomText = '';
+        state.hasPendingPaint = false;
         state.nextItemId = 1;
         clearHighlights();
         setTime(0);
@@ -996,7 +1064,11 @@
         state.webApis = [];
         state.callbackQueue = [];
         state.microtaskQueue = [];
+        state.renderQueue = [];
         state.renderHistory = [];
+        state.pendingDomText = '';
+        state.paintedDomText = '';
+        state.hasPendingPaint = false;
         state.nextItemId = 1;
         initializeTimeline();
         setTime(0);
