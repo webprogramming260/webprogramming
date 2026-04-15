@@ -449,7 +449,7 @@
 <span class="line" data-line="5"><span class="tok-fn">log</span>(<span class="tok-str">'start'</span>);</span>
 <span class='break'></span>
 <span class="line" data-line="7"><span class="tok-fn">setTimeout</span>(() =&gt; {</span>
-<span class="line" data-line="8">  <span class="tok-fn">log</span>(<span class="tok-str">'timout complete'</span>)</span>
+<span class="line" data-line="8">  <span class="tok-fn">log</span>(<span class="tok-str">'timeout complete'</span>)</span>
 <span class="line" data-line="9">}, <span class="tok-num">2000</span>);</span>
 <span class='break'></span>
 <span class="line" data-line="11"><span class="tok-com">// Promise request</span></span>
@@ -743,7 +743,7 @@
               addItem(state.stack, "fetch('a.com') callback");
               highlight(13);
               addItem(state.webApis, "'a.com'.json()", 'Body parsing pending');
-              setBanner(`'a.com'.json() enters microtasks.`);
+              setBanner(`'a.com'.json() added to Web APIs.`);
             },
           },
           {
@@ -815,10 +815,9 @@
           {
             at: 1020,
             action: () => {
-              state.microtaskQueue.shift();
               highlight(21);
               addItem(state.webApis, `'b.com'.json()`, 'Body parsing pending');
-              setBanner(`'b.com'.json() enters microtasks.`);
+              setBanner(`'b.com'.json() enters Web APIs.`);
             },
           },
           {
