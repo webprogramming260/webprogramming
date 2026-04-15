@@ -230,12 +230,14 @@
       .banner {
         grid-column: 1 / -1;
         background: #f3faf7;
-        border: 1px solid #d9ebe3;
+        border: 2px solid #c7ddd2;
         border-radius: 8px;
-        padding: 8px 10px;
+        padding: 14px 16px;
         color: #35584a;
-        font-size: 0.9rem;
+        font-size: 1.08rem;
         font-weight: 700;
+        letter-spacing: 0.01em;
+        box-shadow: 0 3px 10px rgba(33, 73, 57, 0.12);
       }
 
       .zone {
@@ -246,6 +248,47 @@
         display: flex;
         flex-direction: column;
         min-height: 170px;
+      }
+
+      .stack-zone,
+      .api-zone {
+        background: linear-gradient(180deg, #ffffff 0%, #f7fcf9 100%);
+      }
+
+      .stack-zone {
+        border: 2px solid #b8bfc8;
+        background: linear-gradient(160deg, #fafbfc 0%, #eef1f4 100%);
+        box-shadow:
+          inset 0 0 0 1px rgba(113, 124, 138, 0.2),
+          0 2px 8px rgba(89, 98, 110, 0.14);
+      }
+
+      .stack-zone h3 {
+        color: #3e4a57;
+      }
+
+      .api-zone {
+        border: 2px solid #e3ba77;
+        background: linear-gradient(160deg, #fffaf0 0%, #fff3dc 100%);
+        box-shadow:
+          inset 0 0 0 1px rgba(201, 139, 29, 0.2),
+          0 2px 8px rgba(166, 113, 20, 0.14);
+      }
+
+      .api-zone h3 {
+        color: #8a5107;
+      }
+
+      .queue-zone {
+        border: 2px solid #a5c9f3;
+        background: linear-gradient(160deg, #f8fbff 0%, #eef5ff 100%);
+        box-shadow:
+          inset 0 0 0 1px rgba(120, 160, 210, 0.22),
+          0 2px 8px rgba(52, 101, 159, 0.14);
+      }
+
+      .queue-zone h3 {
+        color: #184f8c;
       }
 
       .zone h3 {
@@ -267,6 +310,21 @@
         background: #eff9f5;
         padding: 7px 8px;
         font-size: 0.82rem;
+      }
+
+      .queue-zone .task {
+        border-color: #9fc2eb;
+        background: #e8f2ff;
+      }
+
+      .api-zone .task {
+        border-color: #e0b46c;
+        background: #fff0d1;
+      }
+
+      .stack-zone .task {
+        border-color: #b9c1cb;
+        background: #e9edf2;
       }
 
       .task.flash-enter {
@@ -368,7 +426,7 @@
     <main class="page">
       <aside class="panel">
         <h1>Event Loop: Stack, Web APIs, Queue</h1>
-        <p>This simulation shows how your sample code moves work between the call stack, Web APIs, microtasks, and callback queue.</p>
+        <p>This simulation shows how your sample code moves work between the call stack, Web APIs, microtasks, and macrotask queue.</p>
 
         <div class="control-row">
           <button id="backBtn" type="button">Prev</button>
@@ -421,22 +479,22 @@
           <div class="stage">
             <div class="banner" id="banner">Use Next to begin stepping through the sequence.</div>
 
-            <section class="zone">
+            <section class="zone stack-zone">
               <h3>Call Stack</h3>
               <ul class="zone-list" id="stack"></ul>
             </section>
 
-            <section class="zone">
+            <section class="zone api-zone">
               <h3>Web APIs</h3>
               <ul class="zone-list" id="webApis"></ul>
             </section>
 
-            <section class="zone">
-              <h3>Callback Queue (tasks)</h3>
+            <section class="zone queue-zone">
+              <h3>Macrotask Queue (tasks)</h3>
               <ul class="zone-list" id="callbackQueue"></ul>
             </section>
 
-            <section class="zone">
+            <section class="zone queue-zone">
               <h3>Microtask Queue (promises)</h3>
               <ul class="zone-list" id="microtaskQueue"></ul>
             </section>
@@ -457,7 +515,7 @@
             </article>
 
             <article class="legend-item">
-              <h3>Callback Queue (tasks)</h3>
+              <h3>Macrotask Queue (tasks)</h3>
               <p>This queue stores completed task callbacks like setTimeout handlers. The event loop moves one task to the call stack only after the stack is empty.</p>
             </article>
 
@@ -650,7 +708,7 @@
             action: () => {
               highlight(12);
               addItem(state.webApis, "fetch('a.com')", 'Network pending');
-              setBanner("fetch('a.com') enters microtasks.");
+              setBanner("fetch('a.com') in Web APIs while script continues.");
             },
           },
           {
@@ -658,7 +716,7 @@
             action: () => {
               highlight(20);
               addItem(state.webApis, "fetch('b.com')", 'Network pending');
-              setBanner("fetch('b.com') enters microtasks.");
+              setBanner("fetch('b.com') in Web APIs while script continues.");
             },
           },
           {
@@ -833,7 +891,7 @@
           {
             at: 2000,
             action: () => {
-              setBanner('setTimeout triggers and enters callback queue.');
+              setBanner('setTimeout triggers and enters macrotask queue.');
               state.webApis = state.webApis.filter((job) => job.label !== 'setTimeout callback');
               addItem(state.callbackQueue, 'setTimeout callback', 'Ready for stack');
             },
