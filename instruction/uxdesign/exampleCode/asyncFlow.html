@@ -481,7 +481,7 @@
           <div class="code-head">Program being simulated</div>
           <pre>
 <span class="line" data-line="1"><span class="tok-key">function</span> <span class="tok-fn">render</span>(m) {</span>
-<span class="line" data-line="2">  body.innerText = JSON.stringify(m);</span>
+<span class="line" data-line="2">  body.innerText = m;</span>
 <span class="line" data-line="3">}</span>
 <span class='break'></span>
 <span class="line" data-line="5"><span class="tok-fn">render</span>(<span class="tok-str">'start'</span>);</span>
@@ -599,7 +599,7 @@
         microtaskQueue: [],
         renderQueue: [],
         renderHistory: [],
-        pendingDomText: '',
+        pendingDomText: [],
         paintedDomText: '',
         hasPendingPaint: false,
         time: 0,
@@ -732,11 +732,10 @@
       }
 
       function queueRender(text) {
-        state.pendingDomText = String(text);
+        const label = String(text);
+        state.pendingDomText.push(label);
         state.hasPendingPaint = true;
-        if (!state.renderQueue.length) {
-          addItem(state.renderQueue, 'Paint frame', 'Waiting for render opportunity');
-        }
+        addItem(state.renderQueue, label, 'Pending DOM update');
       }
 
       function paintFrame() {
@@ -745,8 +744,11 @@
           return;
         }
         state.renderQueue = [];
-        state.paintedDomText = state.pendingDomText;
-        state.renderHistory.push({ text: state.paintedDomText });
+        state.pendingDomText.forEach((txt) => {
+          state.renderHistory.push({ text: txt });
+        });
+        state.paintedDomText = '';
+        state.pendingDomText = [];
         state.hasPendingPaint = false;
         renderAll(true);
       }
@@ -1078,7 +1080,7 @@
         state.microtaskQueue = [];
         state.renderQueue = [];
         state.renderHistory = [];
-        state.pendingDomText = '';
+        state.pendingDomText = [];
         state.paintedDomText = '';
         state.hasPendingPaint = false;
         state.nextItemId = 1;
@@ -1120,7 +1122,7 @@
         state.microtaskQueue = [];
         state.renderQueue = [];
         state.renderHistory = [];
-        state.pendingDomText = '';
+        state.pendingDomText = [];
         state.paintedDomText = '';
         state.hasPendingPaint = false;
         state.nextItemId = 1;
