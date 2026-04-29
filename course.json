@@ -362,6 +362,13 @@
           "externalRefs": {
             "canvasPageId": 1498019
           }
+        },
+        {
+          "title": "HTML exploration",
+          "type": "instruction",
+          "path": "instruction/html-exploration/html-exploration.md",
+          "id": "c8c4fea3-c26d-4329-aea5-732a0ee007f4",
+          "description": ""
         }
       ]
     },
