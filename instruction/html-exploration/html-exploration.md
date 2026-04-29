@@ -33,7 +33,15 @@ To explore this structure effectively, you should focus on the relationship betw
 
 ```masteryls
 {"id":"b9b2c3d4-e5f6-7890-1234-567890123460", "title":"Page structure", "type":"ai-web-page", "height":420}
-Prompt for an HTML page that doesn't have any styling but demonstrates the common structural tags.
+**Initial Prompt**: Create an HTML page that does not have any styling but demonstrates the common structural tags.
+
+Alter the generated HTML and experiment. Feel free to use a different prompt to create a new starting point for example allowing the use of CSS to highlight the page structure.
+```
+
+
+```masteryls
+{"id":"9f5c55c8-27cb-4042-b75e-9844336409ce", "title":"Essay", "type":"essay" }
+Describe the common HTML structural elements.
 ```
 
 
