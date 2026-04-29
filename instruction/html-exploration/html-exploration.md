@@ -31,6 +31,10 @@ To explore this structure effectively, you should focus on the relationship betw
 
 ## Interactive experimentation
 
+```masteryls
+{"id":"b9b2c3d4-e5f6-7890-1234-567890123460", "title":"Page structure", "type":"ai-web-page", "height":420}
+Prompt for an HTML page that doesn't have any styling but demonstrates the common structural tags.
+```
 
 
 ## Experiment on your own
