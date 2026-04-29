@@ -345,10 +345,11 @@
           "state": "published",
           "interactions": [
             "b9b2c3d4-e5f6-7890-1234-567890123460",
+            "9f5c55c8-27cb-4042-b75e-9844336409ce",
             "html-dom-mental-model"
           ],
           "description": "",
-          "commit": "10bf041d93e6407acdb5575997494c013029ed3d"
+          "commit": "bb158341c48c9426982ddcc9c8fb848b32bbf214"
         },
         {
           "title": "Simon HTML",
