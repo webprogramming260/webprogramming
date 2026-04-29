@@ -338,6 +338,13 @@
           }
         },
         {
+          "title": "HTML exploration",
+          "type": "instruction",
+          "path": "instruction/html-exploration/html-exploration.md",
+          "id": "c8c4fea3-c26d-4329-aea5-732a0ee007f4",
+          "description": ""
+        },
+        {
           "title": "Simon HTML",
           "path": "instruction/simon/simonHtml/simonHtml.md",
           "id": "91fa6f53-d63a-43b9-81c3-eedd55ffb658",
@@ -362,13 +369,6 @@
           "externalRefs": {
             "canvasPageId": 1498019
           }
-        },
-        {
-          "title": "HTML exploration",
-          "type": "instruction",
-          "path": "instruction/html-exploration/html-exploration.md",
-          "id": "c8c4fea3-c26d-4329-aea5-732a0ee007f4",
-          "description": ""
         }
       ]
     },
