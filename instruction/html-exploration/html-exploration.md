@@ -5,16 +5,13 @@ Learning HTML is more than memorizing a list of tags; it is about building a rob
 
 When you write HTML, you are creating a blueprint. However, the browser doesn't just display your text file; it parses it into an in-memory representation called the **Document Object Model (DOM)**. Understanding the DOM is the "aha!" moment for many developers. It transforms your flat code into a live, branching tree structure where every element is a "node."
 
+
 ```mermaid
-graph TD
-    Document[Document] --> Root[html element]
-    Root --> Head[head element]
-    Root --> Body[body element]
-    Head --> Title[title: My Page]
-    Body --> Header[header element]
-    Body --> Main[main element]
-    Main --> P[p element: Hello World]
-    Main --> Img[img element]
+graph LR
+    A[Square Rect] -- Link text --> B((Circle))
+    A --> C(Round Rect)
+    B --> D{Rhombus}
+    C --> D
 ```
 
 To explore this structure effectively, you should focus on the relationship between **Tags** and **Attributes**. Think of tags as the "nouns" (the objects themselves) and attributes as the "adjectives" (the properties or configurations of those objects). For example, an `<a>` tag defines a link, but the `href` attribute tells the browser where that link actually goes.
