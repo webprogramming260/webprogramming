@@ -3,7 +3,22 @@
 
 Learning HTML is more than memorizing a list of tags; it is about building a robust mental model of how the web is structured. HTML serves as the **backbone** of every website, providing the essential skeleton upon which CSS (styling) and JavaScript (behavior) are built. Without this structural foundation, the other technologies have nothing to hook onto. By exploring HTML through discovery—rather than rote memorization—you foster a sense of curiosity that allows you to see the web as a series of nested containers and relationships.
 
-When you write HTML, you are creating a blueprint. However, the browser doesn't just display your text file; it parses it into an in-memory representation called the **Document Object Model (DOM)**. Understanding the DOM is the "aha!" moment for many developers. It transforms your flat code into a live, branching tree structure where every element is a "node."
+An HTML document is typically comprised of a root element that contains zero or more children elements. Those children can then contain other children. This forms a "tree" of elements the define how the page is structured. When an HTML element is represented in a textual file format it is often refered to as a **tag**. The opening and closing tags show where the element starts and ends with the children represented in between The following code demonstrates a simple document.
+
+```html
+<html>
+<head><title>My Page</title></head>
+<body>
+    <header>
+        <p>Demo</p>
+    </header>
+    <main>
+        <p>Hello World</p>
+    </main>
+</html>
+```
+
+When you write HTML, you are creating a blueprint. However, the browser doesn't just display your text file; it parses it into an in-memory representation called the **Document Object Model (DOM)**. Understanding the DOM is the "aha!" moment for many developers. It transforms your flat code into a branching tree structure where every element is a "node." JavaScript code and CSS styling directives interact with the nodes in the DOM to make the HTML come alive.
 
 
 ```mermaid
@@ -14,10 +29,12 @@ graph TD
     Root --> Body[body element]
     Head --> Title[title: My Page]
     Body --> Header[header element]
+    Header --> P1[p element: Demo]
     Body --> Main[main element]
-    Main --> P[p element: Hello World]
+    Main --> P2[p element: Hello World]
     Main --> Img[img element]
 ```
+
 
 To explore this structure effectively, you should focus on the relationship between **Tags** and **Attributes**. Think of tags as the "nouns" (the objects themselves) and attributes as the "adjectives" (the properties or configurations of those objects). For example, an `<a>` tag defines a link, but the `href` attribute tells the browser where that link actually goes.
 
@@ -33,9 +50,11 @@ To explore this structure effectively, you should focus on the relationship betw
 
 ```masteryls
 {"id":"b9b2c3d4-e5f6-7890-1234-567890123460", "title":"Page structure", "type":"ai-web-page", "height":420}
-**Initial Prompt**: Create an HTML page that does not have any styling but demonstrates the common structural tags.
+**Initial Prompt**: Create an HTML page that does not have any styling but demonstrates the common structural elements.
 
-Alter the generated HTML and experiment. Feel free to use a different prompt to create a new starting point for example allowing the use of CSS to highlight the page structure.
+**Styled Prompt**: Create an HTML page that uses CSS to clarify the structure of the document.
+
+Alter the generated HTML and experiment. Use the **Discuss** feature to explain the meaning of the different elements.
 ```
 
 
