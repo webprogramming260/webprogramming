@@ -59,7 +59,7 @@ Alter the generated HTML and experiment. Use the **Discuss** feature to explain 
 
 
 ```masteryls
-{"id":"9f5c55c8-27cb-4042-b75e-9844336409ce", "title":"Essay", "type":"essay" }
+{"id":"9f5c55c8-27cb-4042-b75e-9844336409ce", "title":"Common elements", "type":"essay" }
 Describe the common HTML structural elements.
 ```
 
