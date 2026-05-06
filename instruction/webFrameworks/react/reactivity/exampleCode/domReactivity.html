@@ -178,8 +178,9 @@
             <button onclick="updateCounter(1)">+</button>
           </div>
           <div class="code-block">
-            const [count, setCount] = useState(0);
-            <span class="highlight">setCount(count + 1);</span>
+            state.count += amount;
+            const counterEl = document.getElementById('counter-val');
+            <span class="highlight">counterEl.textContent = state.count;</span>
           </div>
         </section>
 
@@ -190,8 +191,9 @@
           <input type="text" id="text-input" placeholder="Type something..." oninput="updateText(this.value)" />
           <div class="state-display">Value: <span id="text-val">...</span></div>
           <div class="code-block">
-            const [text, setText] = useState("");
-            <span class="highlight">onChange={(e) => setText(e.target.value)}</span>
+            state.text = val;
+            const textEl = document.getElementById('text-val');
+            <span class="highlight">textEl.textContent = state.text || '...';</span>
           </div>
         </section>
 
@@ -202,8 +204,9 @@
           <button class="secondary" onclick="toggleTheme()">Switch Theme</button>
           <div id="theme-box" class="theme-preview theme-light">Current: Light</div>
           <div class="code-block">
-            const [isDark, setIsDark] = useState(false);
-            <span class="highlight">className={isDark ? "dark" : "light"}</span>
+            state.isDark = !state.isDark;
+            const themeClass = state.isDark ? 'theme-dark' : 'theme-light';
+            <span class="highlight">box.className = `theme-preview ${themeClass}`;</span>
           </div>
         </section>
 
@@ -214,8 +217,10 @@
           <button onclick="addItem()">Add Random Item</button>
           <ul id="item-list" style="margin-top: 10px; list-style: none; font-size: 0.8rem"></ul>
           <div class="code-block">
-            const [items, setItems] = useState([]);
-            <span class="highlight">setItems([...items, newItem]);</span>
+            state.items = [...state.items, randomFruit];
+            const li = document.createElement('li');
+            li.textContent = item;
+            <span class="highlight">listEl.appendChild(li);</span>
           </div>
         </section>
       </div>
