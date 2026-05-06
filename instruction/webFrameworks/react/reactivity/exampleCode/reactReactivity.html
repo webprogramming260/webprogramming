@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Reactivity Demo</title>
+    <style>
+      :root {
+        --primary: #fbdc9e;
+        --secondary: #282c34;
+        --text: #333;
+        --bg: #f4f7f6;
+        --card-bg: #ffffff;
+        --border: #ddd;
+        --success: #4caf50;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--bg);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: var(--secondary);
+        color: var(--primary);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 10px;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      @media (min-width: 600px) {
+        .demo-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+      }
+
+      .card:hover {
+        border: solid rgb(133, 133, 133) thin;
+      }
+
+      .card h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: var(--secondary);
+        border-bottom: 2px solid var(--primary);
+        display: inline-block;
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: var(--secondary);
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: opacity 0.2s;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      button.secondary {
+        background-color: var(--primary);
+        color: var(--secondary);
+      }
+
+      input[type='text'] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .state-display {
+        font-family: monospace;
+        background: #eee;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
+
+      .code-block {
+        background: #282c34;
+        color: #abb2bf;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        margin-top: 15px;
+        overflow-x: auto;
+        white-space: pre;
+      }
+
+      .highlight {
+        color: var(--primary);
+      }
+
+      .theme-preview {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        margin-top: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .theme-dark {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .theme-light {
+        background-color: #fff;
+        color: #333;
+      }
+
+      /* Animation for list items */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .list-item {
+        animation: fadeIn 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      function ReactReactivityDemo() {
+        const [count, setCount] = useState(0);
+        const [text, setText] = useState('');
+        const [isDark, setIsDark] = useState(false);
+        const [items, setItems] = useState([]);
+
+        const fruits = ['🍎 Apple', '🍌 Banana', '🍒 Cherry', '🍇 Grape', '🥝 Kiwi'];
+
+        function addItem() {
+          const randomFruit = fruits[Math.floor(Math.random() * fruits.length)];
+          setItems((prevItems) => [...prevItems, randomFruit]);
+        }
+
+        return (
+          <div className="container">
+            <header>
+              <h1>React Reactivity Demo</h1>
+              <p>React state hooks automatically trigger UI updates.</p>
+            </header>
+
+            <div className="demo-grid">
+              <section className="card" id="counter-card">
+                <h2>1. Simple Counter</h2>
+                <p>State is a number that increments or decrements.</p>
+                <div className="controls">
+                  <button onClick={() => setCount((prev) => prev - 1)}>-</button>
+                  <span className="state-display" id="counter-val">
+                    {count}
+                  </span>
+                  <button onClick={() => setCount((prev) => prev + 1)}>+</button>
+                </div>
+                <div className="code-block">
+                  {'const [count, setCount] = useState(0);\n'}
+                  <span className="highlight">setCount(count + 1);</span>
+                </div>
+              </section>
+
+              <section className="card" id="input-card">
+                <h2>2. Controlled Input</h2>
+                <p>State syncs with the input field value in real-time.</p>
+                <input type="text" id="text-input" placeholder="Type something..." value={text} onChange={(e) => setText(e.target.value)} />
+                <div className="state-display">
+                  Value: <span id="text-val">{text || '...'}</span>
+                </div>
+                <div className="code-block">
+                  {'const [text, setText] = useState("");\n'}
+                  <span className="highlight">onChange={(e) => setText(e.target.value)}</span>
+                </div>
+              </section>
+
+              <section className="card" id="toggle-card">
+                <h2>3. Boolean Toggle</h2>
+                <p>State manages a true/false value to switch styles.</p>
+                <button className="secondary" onClick={() => setIsDark((prev) => !prev)}>
+                  Switch Theme
+                </button>
+                <div id="theme-box" className={`theme-preview ${isDark ? 'theme-dark' : 'theme-light'}`}>
+                  {`Current: ${isDark ? 'Dark' : 'Light'}`}
+                </div>
+                <div className="code-block">
+                  {'const [isDark, setIsDark] = useState(false);\n'}
+                  <span className="highlight">className={isDark ? 'dark' : 'light'}</span>
+                </div>
+              </section>
+
+              <section className="card" id="list-card">
+                <h2>4. Array State</h2>
+                <p>Adding items to an array in state.</p>
+                <button onClick={addItem}>Add Random Item</button>
+                <ul id="item-list" style={{ marginTop: '10px', listStyle: 'none', fontSize: '0.8rem' }}>
+                  {items.map((item, index) => (
+                    <li key={`${item}-${index}`} className="list-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="code-block">
+                  {'const [items, setItems] = useState([]);\n'}
+                  <span className="highlight">setItems([...items, newItem]);</span>
+                </div>
+              </section>
+            </div>
+
+            <footer style={{ marginTop: '40px', textAlign: 'center', fontSize: '0.8rem', color: '#666' }}>
+              <p>
+                This demo uses React and <code>useState</code> for reactivity.
+              </p>
+              <p>State → Render → UI Update</p>
+            </footer>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<ReactReactivityDemo />);
+    </script>
+  </body>
+</html>
