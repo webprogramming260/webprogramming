@@ -338,20 +338,6 @@
           }
         },
         {
-          "title": "HTML exploration",
-          "type": "instruction",
-          "path": "instruction/html-exploration/html-exploration.md",
-          "id": "c8c4fea3-c26d-4329-aea5-732a0ee007f4",
-          "state": "published",
-          "interactions": [
-            "b9b2c3d4-e5f6-7890-1234-567890123460",
-            "9f5c55c8-27cb-4042-b75e-9844336409ce",
-            "html-dom-mental-model"
-          ],
-          "description": "",
-          "commit": "e7e4d57778f464bf65153a26c9d01046d005de13"
-        },
-        {
           "title": "Simon HTML",
           "path": "instruction/simon/simonHtml/simonHtml.md",
           "id": "91fa6f53-d63a-43b9-81c3-eedd55ffb658",
