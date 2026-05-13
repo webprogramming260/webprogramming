@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Playground Lab</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+        --danger: #9f2d2d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1220px, 96vw);
+        margin: 20px auto;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 12px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      p {
+        margin: 0 0 8px;
+        line-height: 1.35;
+      }
+
+      .control {
+        margin: 8px 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .preset-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .preset-btn,
+      .action-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover,
+      .action-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .preset-btn.active,
+      .action-btn.primary {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
+      .formula {
+        margin: 6px 0;
+        font-family: 'Courier New', monospace;
+        background: #eff7f3;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 6px;
+        color: #2b4e40;
+        font-size: 0.8rem;
+      }
+
+      .status {
+        margin-top: 8px;
+        border: 1px solid #d4e7dd;
+        border-radius: 8px;
+        background: #f8fcfa;
+        padding: 8px;
+        font-size: 0.84rem;
+      }
+
+      .status.error {
+        border-color: #e7c0c0;
+        background: #fff4f4;
+        color: var(--danger);
+      }
+
+      .lab {
+        padding: 12px;
+      }
+
+      .canvas-wrap {
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        min-height: 500px;
+        padding: 12px;
+      }
+
+      .canvas-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        background: #f3faf7;
+        color: #35584a;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+      }
+
+      .toolbar-title {
+        font-weight: 700;
+      }
+
+      .stage {
+        border-radius: 10px;
+        border: 1px solid #d1e2da;
+        min-height: 380px;
+        background-image: linear-gradient(90deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px), linear-gradient(0deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px);
+        background-size: 24px 24px;
+        overflow: auto;
+        padding: 12px;
+      }
+
+      .editor {
+        width: 100%;
+        min-height: 220px;
+        resize: vertical;
+        border: 1px solid #c8ddd2;
+        border-radius: 8px;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.88rem;
+        line-height: 1.4;
+        color: #1f4438;
+        background: #ffffff;
+      }
+
+      .output-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .output-card {
+        border: 1px solid #cde0d7;
+        border-radius: 8px;
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .output-head {
+        margin: 0;
+        padding: 8px 10px;
+        border-bottom: 1px solid #dbece4;
+        background: #f5fbf8;
+        font-size: 0.82rem;
+        color: #35584a;
+        font-weight: 700;
+      }
+
+      .output-body {
+        margin: 0;
+        min-height: 120px;
+        max-height: 280px;
+        overflow: auto;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        color: #22483b;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .canvas-wrap {
+          min-height: 420px;
+        }
+
+        .output-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="canvas-wrap">
+        <div class="canvas-toolbar">
+          <h1 class="toolbar-title">JavaScript Interpreter</h1>
+          <span id="runTimeLabel">No run yet</span>
+        </div>
+
+        <div class="stage">
+          <label for="editor">JavaScript editor</label>
+          <textarea id="editor" class="editor" spellcheck="false">
+const values = [2, 4, 6, 8];
+const doubled = values.map((n) => n * 2);
+console.log('Doubled:', doubled);
+return doubled;</textarea
+          >
+          <button class="action-btn primary" id="runBtn" type="button">Run code</button>
+          <button class="action-btn" id="clearBtn" type="button">Clear output</button>
+          <button class="action-btn" id="resetBtn" type="button">Reset editor</button>
+
+          <div class="output-grid">
+            <section class="output-card">
+              <h2 class="output-head">Result</h2>
+              <pre class="output-body" id="resultOutput">(nothing yet)</pre>
+            </section>
+
+            <section class="output-card">
+              <h2 class="output-head">Console</h2>
+              <pre class="output-body" id="consoleOutput">(no logs yet)</pre>
+            </section>
+          </div>
+        </div>
+        <div class="status" id="statusBox">Ready to run.</div>
+      </div>
+    </main>
+
+    <script>
+      const presetRow = document.getElementById('presetRow');
+      const runBtn = document.getElementById('runBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const editor = document.getElementById('editor');
+      const resultOutput = document.getElementById('resultOutput');
+      const consoleOutput = document.getElementById('consoleOutput');
+      const statusBox = document.getElementById('statusBox');
+      const runTimeLabel = document.getElementById('runTimeLabel');
+
+      const defaultCode = editor.value;
+      const RUN_TIMEOUT_MS = 1500;
+
+      function formatValue(value) {
+        if (value === undefined) {
+          return 'undefined';
+        }
+        if (typeof value === 'string') {
+          return value;
+        }
+        try {
+          return JSON.stringify(value, null, 2);
+        } catch (error) {
+          return String(value);
+        }
+      }
+
+      function setStatus(text, isError) {
+        statusBox.textContent = text;
+        statusBox.classList.toggle('error', Boolean(isError));
+      }
+
+      function decodePresetCode(rawCode) {
+        return rawCode.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+      }
+
+      function runUserCode(code) {
+        return new Promise((resolve) => {
+          const workerSource = `
+            self.onmessage = async function(event) {
+              const source = event.data;
+              const logs = [];
+              const pushLog = function(level, args) {
+                const text = args
+                  .map(function(item) {
+                    try {
+                      return typeof item === 'string' ? item : JSON.stringify(item);
+                    } catch (e) {
+                      return String(item);
+                    }
+                  })
+                  .join(' ');
+                logs.push(level + ': ' + text);
+              };
+
+              const console = {
+                log: function() { pushLog('log', Array.from(arguments)); },
+                info: function() { pushLog('info', Array.from(arguments)); },
+                warn: function() { pushLog('warn', Array.from(arguments)); },
+                error: function() { pushLog('error', Array.from(arguments)); },
+              };
+
+              try {
+                const AsyncFunction = Object.getPrototypeOf(async function() {}).constructor;
+                const fn = new AsyncFunction('console', source);
+                const result = await fn(console);
+                self.postMessage({ ok: true, result: result, logs: logs });
+              } catch (error) {
+                self.postMessage({ ok: false, error: error && error.message ? error.message : String(error), logs: logs });
+              }
+            };
+          `;
+
+          const blob = new Blob([workerSource], { type: 'text/javascript' });
+          const worker = new Worker(URL.createObjectURL(blob));
+          const started = performance.now();
+
+          const timer = setTimeout(() => {
+            worker.terminate();
+            resolve({ ok: false, timedOut: true, elapsed: Math.round(performance.now() - started), logs: [] });
+          }, RUN_TIMEOUT_MS);
+
+          worker.onmessage = function (event) {
+            clearTimeout(timer);
+            worker.terminate();
+            const elapsed = Math.round(performance.now() - started);
+            resolve({
+              ok: event.data.ok,
+              result: event.data.result,
+              error: event.data.error,
+              logs: event.data.logs || [],
+              elapsed: elapsed,
+            });
+          };
+
+          worker.onerror = function () {
+            clearTimeout(timer);
+            worker.terminate();
+            resolve({ ok: false, error: 'Worker failed to execute code.', elapsed: Math.round(performance.now() - started), logs: [] });
+          };
+
+          worker.postMessage(code);
+        });
+      }
+
+      async function executeCode() {
+        const code = editor.value;
+        setStatus('Running JavaScript...', false);
+
+        const result = await runUserCode(code);
+
+        runTimeLabel.textContent = result.elapsed + ' ms';
+
+        if (result.timedOut) {
+          resultOutput.textContent = '(timed out)';
+          consoleOutput.textContent = '(execution timed out after ' + RUN_TIMEOUT_MS + ' ms)';
+          setStatus('Execution timed out. Try simplifying or removing long loops.', true);
+          return;
+        }
+
+        if (result.logs.length > 0) {
+          consoleOutput.textContent = result.logs.join('\n');
+        } else {
+          consoleOutput.textContent = '(no logs yet)';
+        }
+
+        if (result.ok) {
+          resultOutput.textContent = formatValue(result.result);
+          setStatus('Execution finished successfully.', false);
+        } else {
+          resultOutput.textContent = '(error)';
+          setStatus('Execution error: ' + result.error, true);
+        }
+      }
+
+      runBtn.addEventListener('click', () => {
+        executeCode();
+      });
+
+      clearBtn.addEventListener('click', () => {
+        resultOutput.textContent = '(nothing yet)';
+        consoleOutput.textContent = '(no logs yet)';
+        runTimeLabel.textContent = 'No run yet';
+        setStatus('Output cleared.', false);
+      });
+
+      resetBtn.addEventListener('click', () => {
+        editor.value = defaultCode;
+        setStatus('Editor reset to default example.', false);
+      });
+    </script>
+  </body>
+</html>
