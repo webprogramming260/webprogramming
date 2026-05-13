@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selectors Lab</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+        --target: #d6f2ea;
+        --target-line: #59a38f;
+        --target-ink: #0f5647;
+        --error-bg: #fff2ec;
+        --error-line: #f2bca8;
+        --error-ink: #8a2e11;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1220px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 12px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      p {
+        margin: 0 0 8px;
+        line-height: 1.35;
+      }
+
+      .control {
+        margin: 8px 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      input[type='text'] {
+        width: 100%;
+        border: 1px solid #bed4c9;
+        border-radius: 8px;
+        padding: 7px 9px;
+        background: #ffffff;
+        font-size: 0.9rem;
+      }
+
+      .preset-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .preset-btn,
+      .clear-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover,
+      .clear-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .preset-btn.active {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
+      .formula {
+        margin: 6px 0;
+        font-family: 'Courier New', monospace;
+        background: #eff7f3;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 6px;
+        color: #2b4e40;
+        font-size: 0.8rem;
+      }
+
+      .meta {
+        margin-top: 8px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .meta-line {
+        font-size: 0.84rem;
+        padding: 6px 8px;
+        border: 1px solid #d4e7dd;
+        border-radius: 8px;
+        background: #f8fcfa;
+        color: #2f5749;
+      }
+
+      .meta-line b {
+        color: var(--accent);
+      }
+
+      .message {
+        margin-top: 8px;
+        min-height: 36px;
+        border: 1px solid #d4e7dd;
+        border-radius: 8px;
+        background: #f8fcfa;
+        color: #2f5749;
+        padding: 8px;
+        font-size: 0.82rem;
+      }
+
+      .message.error {
+        background: var(--error-bg);
+        border-color: var(--error-line);
+        color: var(--error-ink);
+      }
+
+      .lab {
+        padding: 12px;
+      }
+
+      .canvas-wrap {
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        min-height: 420px;
+        padding: 12px;
+      }
+
+      .canvas-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        background: #f3faf7;
+        color: #35584a;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+      }
+
+      .toolbar-label {
+        font-weight: 700;
+      }
+
+      .canvas-toolbar .clear-btn {
+        padding: 4px 10px;
+        background: #ffffff;
+      }
+
+      .stage {
+        border-radius: 10px;
+        border: 1px solid #d1e2da;
+        min-height: 320px;
+        background-image: linear-gradient(90deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px), linear-gradient(0deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px);
+        background-size: 24px 24px;
+        overflow: auto;
+        padding: 14px;
+      }
+
+      .stage-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+        gap: 12px;
+      }
+
+      .map-pane {
+        border: 1px solid #d4e7dd;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        overflow: auto;
+      }
+
+      .pane-title {
+        margin: 0;
+        padding: 8px 10px;
+        border-bottom: 1px solid #d4e7dd;
+        background: #f3faf7;
+        color: #31554a;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .demo-tree {
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .node {
+        border: 1px solid #bfd8cc;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #204a3d;
+        font-size: 0.82rem;
+        line-height: 1.3;
+        padding: 6px 8px;
+        display: block;
+      }
+
+      .node code {
+        display: block;
+        font-family: 'Courier New', monospace;
+        font-size: 0.78rem;
+        color: #295a4a;
+      }
+
+      .children {
+        margin-top: 8px;
+        margin-left: 14px;
+        display: grid;
+        gap: 8px;
+      }
+
+      ul.node {
+        list-style: none;
+      }
+
+      ul.node > li {
+        margin-top: 8px;
+      }
+
+      ul.node > li:first-child {
+        margin-top: 0;
+      }
+
+      .html-outline {
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.78rem;
+        color: #2d5346;
+        line-height: 1.45;
+      }
+
+      .html-line {
+        display: block;
+        border-radius: 4px;
+        padding: 2px 6px;
+      }
+
+      .depth-1 {
+        padding-left: 16px;
+      }
+
+      .depth-2 {
+        padding-left: 32px;
+      }
+
+      .depth-3 {
+        padding-left: 48px;
+      }
+
+      .node.match {
+        background: var(--target);
+        border-color: var(--target-line);
+        color: var(--target-ink);
+        box-shadow: 0 0 0 2px rgba(89, 163, 143, 0.18);
+      }
+
+      .html-line.match {
+        background: var(--target);
+        color: var(--target-ink);
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .stage-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>CSS Selectors Lab</h1>
+        <p>Type a selector, see exactly which nodes match, and learn selector behavior by example.</p>
+
+        <div class="control">
+          <label for="selectorInput">Try a selector</label>
+          <input id="selectorInput" type="text" value=".card .title" spellcheck="false" aria-label="CSS selector input" />
+        </div>
+
+        <div class="control">
+          <label>Quick selectors</label>
+          <div class="preset-row" id="presetRow">
+            <button class="preset-btn active" type="button" data-selector=".card .title">.card .title</button>
+            <button class="preset-btn" type="button" data-selector=".card > .title">.card &gt; .title</button>
+            <button class="preset-btn" type="button" data-selector="#feed .item">#feed .item</button>
+            <button class="preset-btn" type="button" data-selector="ul.tags > li.featured">ul.tags &gt; li.featured</button>
+            <button class="preset-btn" type="button" data-selector="[data-role='cta']">[data-role='cta']</button>
+            <button class="preset-btn" type="button" data-selector=".item + .item">.item + .item</button>
+            <button class="preset-btn" type="button" data-selector="article.card:hover">article.card:hover</button>
+            <button class="preset-btn" type="button" data-selector="ul.tags > li:nth-of-type(2)">ul.tags &gt; li:nth-of-type(2)</button>
+            <button class="preset-btn" type="button" data-selector="li:nth-of-type(odd)">li:nth-of-type(odd)</button>
+          </div>
+        </div>
+
+        <div class="formula">Supports: type, .class, #id, [attr], descendant, child (&gt;), adjacent sibling (+), and pseudo-classes :hover and :nth-of-type(n)/:nth-child(n).</div>
+
+        <div class="meta">
+          <div class="meta-line"><b>Matches:</b> <span id="matchCount">0</span></div>
+          <div class="meta-line"><b>Current selector:</b> <span id="currentSelector">none</span></div>
+        </div>
+
+        <div class="message" id="messageBox">Enter or pick a selector to begin.</div>
+      </aside>
+
+      <section class="lab">
+        <div class="canvas-wrap">
+          <div class="canvas-toolbar" id="canvasToolbar">
+            <span class="toolbar-label">Selector preview</span>
+            <button class="clear-btn" id="clearMatches" type="button">Clear highlight</button>
+          </div>
+          <div class="stage" id="previewStage">
+            <div class="stage-grid">
+              <section class="map-pane">
+                <h2 class="pane-title">HTML outline</h2>
+                <div class="html-outline" id="htmlOutline">
+                  <span class="html-line" data-node="app">&lt;div id="app" class="shell"&gt;</span>
+                  <span class="html-line depth-1" data-node="feed">&lt;section id="feed"&gt;</span>
+                  <span class="html-line depth-2" data-node="cardA">&lt;article class="card"&gt;</span>
+                  <span class="html-line depth-3" data-node="titleA">&lt;h2 class="title"&gt;</span>
+                  <span class="html-line depth-3" data-node="itemA1">&lt;div class="item"&gt;</span>
+                  <span class="html-line depth-3" data-node="itemA2">&lt;div class="item"&gt;</span>
+                  <span class="html-line depth-3" data-node="cta">&lt;button data-role="cta"&gt;</span>
+                  <span class="html-line depth-2" data-node="cardB">&lt;article class="card"&gt;</span>
+                  <span class="html-line depth-3" data-node="titleB">&lt;p class="title"&gt;</span>
+                  <span class="html-line depth-3" data-node="meta">&lt;span class="meta"&gt;</span>
+                  <span class="html-line depth-2" data-node="tags">&lt;ul class="tags"&gt;</span>
+                  <span class="html-line depth-3" data-node="tag1">&lt;li&gt;</span>
+                  <span class="html-line depth-3" data-node="tag2">&lt;li class="featured"&gt;</span>
+                  <span class="html-line depth-3" data-node="tag3">&lt;li&gt;</span>
+                </div>
+              </section>
+
+              <section class="map-pane">
+                <h2 class="pane-title">Rendered structure</h2>
+                <div class="demo-tree" id="demoTree">
+                  <div id="app" class="shell node" data-node="app">
+                    <code>div#app.shell</code>
+                    <div class="children">
+                      <section id="feed" class="node" data-node="feed">
+                        <code>section#feed</code>
+                        <div class="children">
+                          <article class="card node" data-node="cardA">
+                            <code>article.card</code>
+                            <h2 class="title node" data-node="titleA"><code>h2.title</code></h2>
+                            <div class="item node" data-node="itemA1"><code>div.item</code></div>
+                            <div class="item node" data-node="itemA2"><code>div.item</code></div>
+                            <button class="node" data-node="cta" data-role="cta"><code>button[data-role='cta']</code></button>
+                          </article>
+
+                          <article class="card node" data-node="cardB">
+                            <code>article.card</code>
+                            <p class="title node" data-node="titleB"><code>p.title</code></p>
+                            <span class="node" data-node="meta"><code>span.meta</code></span>
+                          </article>
+
+                          <ul class="tags node" data-node="tags">
+                            <code>ul.tags</code>
+                            <li class="node" data-node="tag1"><code>li</code></li>
+                            <li class="featured node" data-node="tag2"><code>li.featured</code></li>
+                            <li class="node" data-node="tag3"><code>li</code></li>
+                          </ul>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const selectorInput = document.getElementById('selectorInput');
+      const presetRow = document.getElementById('presetRow');
+      const clearMatches = document.getElementById('clearMatches');
+
+      const matchCount = document.getElementById('matchCount');
+      const currentSelector = document.getElementById('currentSelector');
+      const messageBox = document.getElementById('messageBox');
+      const canvasToolbarLabel = document.querySelector('.toolbar-label');
+      const previewStage = document.getElementById('previewStage');
+      const demoTree = document.getElementById('demoTree');
+      const htmlOutline = document.getElementById('htmlOutline');
+
+      function clearHighlights() {
+        const nodes = previewStage.querySelectorAll('.node.match');
+        nodes.forEach((node) => node.classList.remove('match'));
+        const lines = htmlOutline.querySelectorAll('.html-line.match');
+        lines.forEach((line) => line.classList.remove('match'));
+      }
+
+      function setMessage(text, isError) {
+        messageBox.textContent = text;
+        messageBox.classList.toggle('error', Boolean(isError));
+      }
+
+      function updateActivePreset(selector) {
+        const buttons = presetRow.querySelectorAll('.preset-btn');
+        buttons.forEach((button) => {
+          button.classList.toggle('active', button.dataset.selector === selector);
+        });
+      }
+
+      function findUnsupportedPseudo(selector) {
+        const pseudos = selector.match(/:[a-z-]+(?:\([^)]*\))?/gi) || [];
+        const unsupported = pseudos.find((pseudo) => {
+          const lower = pseudo.toLowerCase();
+          return !(lower === ':hover' || lower.startsWith(':nth-of-type(') || lower.startsWith(':nth-child('));
+        });
+        return unsupported || '';
+      }
+
+      function runSelector(selectorText) {
+        const selector = selectorText.trim();
+        clearHighlights();
+
+        if (!selector) {
+          currentSelector.textContent = 'none';
+          matchCount.textContent = '0';
+          canvasToolbarLabel.textContent = 'Selector preview';
+          setMessage('Enter or pick a selector to begin.', false);
+          updateActivePreset('');
+          return;
+        }
+
+        const unsupportedPseudo = findUnsupportedPseudo(selector);
+        if (unsupportedPseudo) {
+          currentSelector.textContent = selector;
+          matchCount.textContent = '0';
+          canvasToolbarLabel.textContent = 'Selector preview - unsupported pseudo-class';
+          setMessage('Pseudo-class ' + unsupportedPseudo + ' is not supported in this lab. Try :hover or :nth-of-type(...).', true);
+          updateActivePreset('');
+          return;
+        }
+
+        let matched;
+        try {
+          matched = demoTree.querySelectorAll(selector);
+        } catch (error) {
+          currentSelector.textContent = selector;
+          matchCount.textContent = '0';
+          canvasToolbarLabel.textContent = 'Selector preview - invalid selector';
+          setMessage('Invalid selector syntax. Check punctuation and brackets.', true);
+          updateActivePreset('');
+          return;
+        }
+
+        matched.forEach((node) => {
+          node.classList.add('match');
+          const nodeId = node.dataset.node;
+          if (!nodeId) {
+            return;
+          }
+          const line = htmlOutline.querySelector('[data-node="' + nodeId + '"]');
+          if (line) {
+            line.classList.add('match');
+          }
+        });
+
+        currentSelector.textContent = selector;
+        matchCount.textContent = String(matched.length);
+        canvasToolbarLabel.textContent = 'Selector preview - ' + selector;
+
+        if (matched.length === 0) {
+          setMessage('No matches. Try a broader selector or check descendants vs direct children.', false);
+        } else {
+          setMessage('Matched ' + matched.length + ' element' + (matched.length === 1 ? '' : 's') + '.', false);
+        }
+
+        updateActivePreset(selector);
+      }
+
+      selectorInput.addEventListener('input', () => {
+        runSelector(selectorInput.value);
+      });
+
+      presetRow.addEventListener('click', (event) => {
+        const button = event.target.closest('.preset-btn');
+        if (!button) {
+          return;
+        }
+
+        selectorInput.value = button.dataset.selector;
+        runSelector(selectorInput.value);
+      });
+
+      clearMatches.addEventListener('click', () => {
+        selectorInput.value = '';
+        runSelector('');
+      });
+
+      previewStage.addEventListener('pointerover', () => {
+        if (selectorInput.value.includes(':hover')) {
+          runSelector(selectorInput.value);
+        }
+      });
+
+      previewStage.addEventListener('pointerout', () => {
+        if (selectorInput.value.includes(':hover')) {
+          runSelector(selectorInput.value);
+        }
+      });
+
+      runSelector(selectorInput.value);
+    </script>
+  </body>
+</html>
