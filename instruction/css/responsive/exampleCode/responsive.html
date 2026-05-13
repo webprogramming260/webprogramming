@@ -1,0 +1,58 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <section>
+    <p>Main content</p>
+  </section>
+  <aside>
+    <p>Aside</p>
+  </aside>
+</body>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+  }
+  body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+  section {
+    flex: 2;
+    background: #444;
+    color: white;
+    height: 100%;
+    width: 100%;
+  }
+
+  aside {
+    background: #cbc;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+
+  @media (orientation: portrait) {
+    body {
+      flex-direction: column;
+    }
+  }
+
+  @media ((orientation: portrait) and (max-height: 500px)) {
+    aside {
+      display: none;
+    }
+  }
+</style>
