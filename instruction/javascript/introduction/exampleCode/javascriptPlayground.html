@@ -194,6 +194,10 @@
         overflow: hidden;
       }
 
+      .output-card.preview-card {
+        grid-column: 1 / -1;
+      }
+
       .output-head {
         margin: 0;
         padding: 8px 10px;
@@ -216,6 +220,14 @@
         color: #22483b;
         white-space: pre-wrap;
         word-break: break-word;
+      }
+
+      .preview-frame {
+        display: block;
+        width: 100%;
+        min-height: 220px;
+        border: 0;
+        background: #ffffff;
       }
 
       @media (max-width: 980px) {
@@ -267,6 +279,11 @@ return doubled;</textarea
               <h2 class="output-head">Console</h2>
               <pre class="output-body" id="consoleOutput">(no logs yet)</pre>
             </section>
+
+            <section class="output-card preview-card">
+              <h2 class="output-head">Sandbox Preview</h2>
+              <iframe id="previewFrame" class="preview-frame" sandbox="allow-scripts" title="Sandbox preview"></iframe>
+            </section>
           </div>
         </div>
         <div class="status" id="statusBox">Ready to run.</div>
@@ -283,9 +300,11 @@ return doubled;</textarea
       const consoleOutput = document.getElementById('consoleOutput');
       const statusBox = document.getElementById('statusBox');
       const runTimeLabel = document.getElementById('runTimeLabel');
+      const previewFrame = document.getElementById('previewFrame');
 
       const defaultCode = editor.value;
       const RUN_TIMEOUT_MS = 1500;
+      let activeRunId = 0;
 
       function formatValue(value) {
         if (value === undefined) {
@@ -310,72 +329,232 @@ return doubled;</textarea
         return rawCode.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
       }
 
+      function resetPreviewFrame() {
+        previewFrame.srcdoc = `
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <style>
+                body {
+                  margin: 0;
+                  padding: 16px;
+                  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+                  color: #29473a;
+                  background: #f8fcfa;
+                }
+              </style>
+            </head>
+            <body>
+              <p>Sandbox output will appear here.</p>
+            </body>
+          </html>
+        `;
+      }
+
       function runUserCode(code) {
         return new Promise((resolve) => {
-          const workerSource = `
-            self.onmessage = async function(event) {
-              const source = event.data;
-              const logs = [];
-              const pushLog = function(level, args) {
-                const text = args
-                  .map(function(item) {
-                    try {
-                      return typeof item === 'string' ? item : JSON.stringify(item);
-                    } catch (e) {
-                      return String(item);
+          const started = performance.now();
+          activeRunId += 1;
+          const runId = activeRunId;
+          const sourceLiteral = JSON.stringify(code).replace(/</g, '\\u003c');
+          const frameMarkup = `
+            <!doctype html>
+            <html lang="en">
+              <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <style>
+                  body {
+                    margin: 0;
+                    padding: 16px;
+                    min-height: 100vh;
+                    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+                    color: #153124;
+                    background: #ffffff;
+                  }
+                </style>
+              </head>
+              <body>
+                <script>
+                  (function() {
+                    const runId = ${JSON.stringify(runId)};
+                    const source = ${sourceLiteral};
+                    const logs = [];
+                    let pendingTasks = 0;
+                    let executionFinished = false;
+                    let executionFailed = false;
+                    let result;
+                    let errorMessage = '';
+                    let responseSent = false;
+                    const activeTimers = new Map();
+
+                    const nativeSetTimeout = window.setTimeout.bind(window);
+                    const nativeClearTimeout = window.clearTimeout.bind(window);
+                    const nativeSetInterval = window.setInterval.bind(window);
+                    const nativeClearInterval = window.clearInterval.bind(window);
+
+                    function serializeError(error) {
+                      return error && error.message ? error.message : String(error);
                     }
-                  })
-                  .join(' ');
-                logs.push(level + ': ' + text);
-              };
 
-              const console = {
-                log: function() { pushLog('log', Array.from(arguments)); },
-                info: function() { pushLog('info', Array.from(arguments)); },
-                warn: function() { pushLog('warn', Array.from(arguments)); },
-                error: function() { pushLog('error', Array.from(arguments)); },
-              };
+                    function postResponse(payload) {
+                      parent.postMessage(Object.assign({ runId: runId }, payload), '*');
+                    }
 
-              try {
-                const AsyncFunction = Object.getPrototypeOf(async function() {}).constructor;
-                const fn = new AsyncFunction('console', source);
-                const result = await fn(console);
-                self.postMessage({ ok: true, result: result, logs: logs });
-              } catch (error) {
-                self.postMessage({ ok: false, error: error && error.message ? error.message : String(error), logs: logs });
-              }
-            };
+                    function finishTask() {
+                      pendingTasks = Math.max(0, pendingTasks - 1);
+                      maybeSendResponse();
+                    }
+
+                    function maybeSendResponse() {
+                      if (responseSent || !executionFinished || pendingTasks > 0) {
+                        return;
+                      }
+
+                      responseSent = true;
+                      if (executionFailed) {
+                        postResponse({ ok: false, error: errorMessage, logs: logs });
+                      } else {
+                        postResponse({ ok: true, result: result, logs: logs });
+                      }
+                    }
+
+                    function pushLog(level, args) {
+                      const text = args
+                        .map(function(item) {
+                          try {
+                            return typeof item === 'string' ? item : JSON.stringify(item);
+                          } catch (error) {
+                            return String(item);
+                          }
+                        })
+                        .join(' ');
+                      logs.push(level + ': ' + text);
+                    }
+
+                    const capturedConsole = {
+                      log: function() { pushLog('log', Array.from(arguments)); },
+                      info: function() { pushLog('info', Array.from(arguments)); },
+                      warn: function() { pushLog('warn', Array.from(arguments)); },
+                      error: function() { pushLog('error', Array.from(arguments)); },
+                    };
+
+                    window.console = capturedConsole;
+
+                    window.setTimeout = function(callback, delay) {
+                      const args = Array.prototype.slice.call(arguments, 2);
+                      pendingTasks += 1;
+                      const timerId = nativeSetTimeout(function() {
+                        activeTimers.delete(timerId);
+                        try {
+                          callback.apply(window, args);
+                        } catch (error) {
+                          executionFailed = true;
+                          errorMessage = serializeError(error);
+                        } finally {
+                          finishTask();
+                        }
+                      }, delay);
+
+                      activeTimers.set(timerId, { type: 'timeout' });
+                      return timerId;
+                    };
+
+                    window.clearTimeout = function(timerId) {
+                      if (activeTimers.has(timerId)) {
+                        activeTimers.delete(timerId);
+                        nativeClearTimeout(timerId);
+                        finishTask();
+                        return;
+                      }
+
+                      nativeClearTimeout(timerId);
+                    };
+
+                    window.setInterval = function(callback, delay) {
+                      const args = Array.prototype.slice.call(arguments, 2);
+                      pendingTasks += 1;
+                      const timerId = nativeSetInterval(function() {
+                        try {
+                          callback.apply(window, args);
+                        } catch (error) {
+                          executionFailed = true;
+                          errorMessage = serializeError(error);
+                          window.clearInterval(timerId);
+                        }
+                      }, delay);
+
+                      activeTimers.set(timerId, { type: 'interval' });
+                      return timerId;
+                    };
+
+                    window.clearInterval = function(timerId) {
+                      if (activeTimers.has(timerId)) {
+                        activeTimers.delete(timerId);
+                        nativeClearInterval(timerId);
+                        finishTask();
+                        return;
+                      }
+
+                      nativeClearInterval(timerId);
+                    };
+
+                    nativeSetTimeout(async function() {
+                      try {
+                        const AsyncFunction = Object.getPrototypeOf(async function() {}).constructor;
+                        const fn = new AsyncFunction('console', source);
+                        result = await fn(capturedConsole);
+                        executionFinished = true;
+                        maybeSendResponse();
+                      } catch (error) {
+                        executionFinished = true;
+                        executionFailed = true;
+                        errorMessage = serializeError(error);
+                        maybeSendResponse();
+                      }
+                    }, 0);
+                  }());
+                <\/script>
+              </body>
+            </html>
           `;
 
-          const blob = new Blob([workerSource], { type: 'text/javascript' });
-          const worker = new Worker(URL.createObjectURL(blob));
-          const started = performance.now();
+          resetPreviewFrame();
+          previewFrame.srcdoc = frameMarkup;
 
           const timer = setTimeout(() => {
-            worker.terminate();
-            resolve({ ok: false, timedOut: true, elapsed: Math.round(performance.now() - started), logs: [] });
+            if (runId !== activeRunId) {
+              return;
+            }
+
+            window.removeEventListener('message', handleMessage);
+            resetPreviewFrame();
+            resolve({ ok: false, timedOut: true, elapsed: Math.round(performance.now() - started), logs: [], runId: runId });
           }, RUN_TIMEOUT_MS);
 
-          worker.onmessage = function (event) {
+          function handleMessage(event) {
+            if (!event.data || event.data.runId !== runId) {
+              return;
+            }
+
+            if (event.source !== previewFrame.contentWindow) {
+              return;
+            }
+
+            window.removeEventListener('message', handleMessage);
             clearTimeout(timer);
-            worker.terminate();
-            const elapsed = Math.round(performance.now() - started);
             resolve({
               ok: event.data.ok,
               result: event.data.result,
               error: event.data.error,
               logs: event.data.logs || [],
-              elapsed: elapsed,
+              elapsed: Math.round(performance.now() - started),
+              runId: runId,
             });
-          };
+          }
 
-          worker.onerror = function () {
-            clearTimeout(timer);
-            worker.terminate();
-            resolve({ ok: false, error: 'Worker failed to execute code.', elapsed: Math.round(performance.now() - started), logs: [] });
-          };
-
-          worker.postMessage(code);
+          window.addEventListener('message', handleMessage);
         });
       }
 
@@ -384,6 +563,9 @@ return doubled;</textarea
         setStatus('Running JavaScript...', false);
 
         const result = await runUserCode(code);
+        if (result.runId !== activeRunId) {
+          return;
+        }
 
         runTimeLabel.textContent = result.elapsed + ' ms';
 
@@ -414,9 +596,11 @@ return doubled;</textarea
       });
 
       clearBtn.addEventListener('click', () => {
+        activeRunId += 1;
         resultOutput.textContent = '(nothing yet)';
         consoleOutput.textContent = '(no logs yet)';
         runTimeLabel.textContent = 'No run yet';
+        resetPreviewFrame();
         setStatus('Output cleared.', false);
       });
 
@@ -424,6 +608,8 @@ return doubled;</textarea
         editor.value = defaultCode;
         setStatus('Editor reset to default example.', false);
       });
+
+      resetPreviewFrame();
     </script>
   </body>
 </html>
