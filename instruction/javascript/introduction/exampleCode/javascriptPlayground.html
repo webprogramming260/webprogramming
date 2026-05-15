@@ -180,6 +180,33 @@
         background: #ffffff;
       }
 
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .timeout-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: auto;
+        font-size: 0.82rem;
+        color: #35584a;
+      }
+
+      .timeout-input {
+        width: 88px;
+        border: 1px solid #c8ddd2;
+        border-radius: 999px;
+        padding: 5px 10px;
+        font: inherit;
+        color: #1f4438;
+        background: #ffffff;
+      }
+
       .output-grid {
         margin-top: 10px;
         display: grid;
@@ -258,16 +285,16 @@
         </div>
 
         <div class="stage">
-          <label for="editor">JavaScript editor</label>
-          <textarea id="editor" class="editor" spellcheck="false">
-const values = [2, 4, 6, 8];
-const doubled = values.map((n) => n * 2);
-console.log('Doubled:', doubled);
-return doubled;</textarea
-          >
-          <button class="action-btn primary" id="runBtn" type="button">Run code</button>
-          <button class="action-btn" id="clearBtn" type="button">Clear output</button>
-          <button class="action-btn" id="resetBtn" type="button">Reset editor</button>
+          <textarea id="editor" class="editor" spellcheck="false">console.log("Code executed!");</textarea>
+          <div class="control-row">
+            <button class="action-btn primary" id="runBtn" type="button">Run code</button>
+            <button class="action-btn" id="clearBtn" type="button">Clear output</button>
+            <button class="action-btn" id="resetBtn" type="button">Reset editor</button>
+            <label class="timeout-wrap" for="timeoutInput">
+              Timeout (ms)
+              <input id="timeoutInput" class="timeout-input" type="number" min="100" step="100" value="5000" />
+            </label>
+          </div>
 
           <div class="output-grid">
             <section class="output-card">
@@ -291,11 +318,11 @@ return doubled;</textarea
     </main>
 
     <script>
-      const presetRow = document.getElementById('presetRow');
       const runBtn = document.getElementById('runBtn');
       const clearBtn = document.getElementById('clearBtn');
       const resetBtn = document.getElementById('resetBtn');
       const editor = document.getElementById('editor');
+      const timeoutInput = document.getElementById('timeoutInput');
       const resultOutput = document.getElementById('resultOutput');
       const consoleOutput = document.getElementById('consoleOutput');
       const statusBox = document.getElementById('statusBox');
@@ -303,7 +330,11 @@ return doubled;</textarea
       const previewFrame = document.getElementById('previewFrame');
 
       const defaultCode = editor.value;
-      const RUN_TIMEOUT_MS = 1500;
+      const DEFAULT_TIMEOUT_MS = 5000;
+      const SCRIPT_OPEN = '<scr' + 'ipt>';
+      const SCRIPT_CLOSE = '</scr' + 'ipt>';
+      const BODY_CLOSE = '</bo' + 'dy>';
+      const HTML_CLOSE = '</ht' + 'ml>';
       let activeRunId = 0;
 
       function formatValue(value) {
@@ -325,225 +356,214 @@ return doubled;</textarea
         statusBox.classList.toggle('error', Boolean(isError));
       }
 
-      function decodePresetCode(rawCode) {
-        return rawCode.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+      function getRunTimeoutMs() {
+        const value = Number(timeoutInput.value);
+        if (!Number.isFinite(value) || value < 100) {
+          return DEFAULT_TIMEOUT_MS;
+        }
+        return Math.round(value);
+      }
+
+      function setDefaultOutputs() {
+        resultOutput.textContent = '(nothing yet)';
+        consoleOutput.textContent = '(no logs yet)';
+        runTimeLabel.textContent = 'No run yet';
       }
 
       function resetPreviewFrame() {
-        previewFrame.srcdoc = `
-          <!doctype html>
-          <html lang="en">
-            <head>
-              <meta charset="UTF-8" />
-              <style>
-                body {
-                  margin: 0;
-                  padding: 16px;
-                  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-                  color: #29473a;
-                  background: #f8fcfa;
-                }
-              </style>
-            </head>
-            <body>
-              <p>Sandbox output will appear here.</p>
-            </body>
-          </html>
-        `;
+        previewFrame.srcdoc = ['<!doctype html>', '<html lang="en">', '<head>', '<meta charset="UTF-8">', '<style>', 'body { margin: 0; padding: 16px; font-family: Trebuchet MS, Segoe UI, sans-serif; color: #29473a; background: #f8fcfa; }', 'p { margin: 0; }', '</style>', '</head>', '<body>', '<p>Sandbox output will appear here.</p>', BODY_CLOSE, HTML_CLOSE].join('\n');
       }
 
-      function runUserCode(code) {
+      function escapeUserCode(code) {
+        return JSON.stringify(code).split('<').join('\\u003c');
+      }
+
+      function buildSandboxPage(code, runId) {
+        const sandboxScript = [
+          '(function () {',
+          '  const runId = ' + JSON.stringify(runId) + ';',
+          '  const source = ' + escapeUserCode(code) + ';',
+          '  const logs = [];',
+          '  const activeTimers = new Map();',
+          '  let nextTimerToken = 1;',
+          '  let pendingTasks = 0;',
+          '  let executionFinished = false;',
+          '  let executionFailed = false;',
+          '  let responseSent = false;',
+          '  let result;',
+          "  let errorMessage = '';",
+          '  const nativeSetTimeout = window.setTimeout.bind(window);',
+          '  const nativeClearTimeout = window.clearTimeout.bind(window);',
+          '  const nativeSetInterval = window.setInterval.bind(window);',
+          '  const nativeClearInterval = window.clearInterval.bind(window);',
+          '',
+          '  function serializeError(error) {',
+          '    return error && error.message ? error.message : String(error);',
+          '  }',
+          '',
+          '  function postResponse(payload) {',
+          "    parent.postMessage(Object.assign({ runId: runId }, payload), '*');",
+          '  }',
+          '',
+          '  function pushLog(level, args) {',
+          '    const text = args.map(function (item) {',
+          '      try {',
+          "        return typeof item === 'string' ? item : JSON.stringify(item);",
+          '      } catch (error) {',
+          '        return String(item);',
+          '      }',
+          "    }).join(' ');",
+          "    logs.push(level + ': ' + text);",
+          '  }',
+          '',
+          '  function maybeSendResponse() {',
+          '    if (responseSent || !executionFinished || pendingTasks > 0) {',
+          '      return;',
+          '    }',
+          '    responseSent = true;',
+          '    if (executionFailed) {',
+          '      postResponse({ ok: false, error: errorMessage, logs: logs });',
+          '    } else {',
+          '      postResponse({ ok: true, result: result, logs: logs });',
+          '    }',
+          '  }',
+          '',
+          '  function finishTask() {',
+          '    pendingTasks = Math.max(0, pendingTasks - 1);',
+          '    maybeSendResponse();',
+          '  }',
+          '',
+          '  function reserveTask(kind, nativeId) {',
+          '    const token = nextTimerToken++;',
+          '    activeTimers.set(token, { kind: kind, nativeId: nativeId });',
+          '    pendingTasks += 1;',
+          '    return token;',
+          '  }',
+          '',
+          '  function releaseTask(token) {',
+          '    if (!activeTimers.has(token)) {',
+          '      return null;',
+          '    }',
+          '    const entry = activeTimers.get(token);',
+          '    activeTimers.delete(token);',
+          '    finishTask();',
+          '    return entry;',
+          '  }',
+          '',
+          '  const capturedConsole = {',
+          "    log: function () { pushLog('log', Array.from(arguments)); },",
+          "    info: function () { pushLog('info', Array.from(arguments)); },",
+          "    warn: function () { pushLog('warn', Array.from(arguments)); },",
+          "    error: function () { pushLog('error', Array.from(arguments)); }",
+          '  };',
+          '',
+          '  window.console = capturedConsole;',
+          '',
+          '  window.setTimeout = function (callback, delay) {',
+          '    const args = Array.prototype.slice.call(arguments, 2);',
+          '    let token;',
+          '    const nativeId = nativeSetTimeout(function () {',
+          '      activeTimers.delete(token);',
+          '      try {',
+          '        callback.apply(window, args);',
+          '      } catch (error) {',
+          '        executionFailed = true;',
+          '        errorMessage = serializeError(error);',
+          '      } finally {',
+          '        finishTask();',
+          '      }',
+          '    }, delay);',
+          "    token = reserveTask('timeout', nativeId);",
+          '    return token;',
+          '  };',
+          '',
+          '  window.clearTimeout = function (token) {',
+          '    const entry = releaseTask(token);',
+          '    if (entry) {',
+          '      nativeClearTimeout(entry.nativeId);',
+          '      return;',
+          '    }',
+          '    nativeClearTimeout(token);',
+          '  };',
+          '',
+          '  window.setInterval = function (callback, delay) {',
+          '    const args = Array.prototype.slice.call(arguments, 2);',
+          '    let token;',
+          '    const nativeId = nativeSetInterval(function () {',
+          '      try {',
+          '        callback.apply(window, args);',
+          '      } catch (error) {',
+          '        executionFailed = true;',
+          '        errorMessage = serializeError(error);',
+          '        window.clearInterval(token);',
+          '      }',
+          '    }, delay);',
+          "    token = reserveTask('interval', nativeId);",
+          '    return token;',
+          '  };',
+          '',
+          '  window.clearInterval = function (token) {',
+          '    const entry = releaseTask(token);',
+          '    if (entry) {',
+          '      nativeClearInterval(entry.nativeId);',
+          '      return;',
+          '    }',
+          '    nativeClearInterval(token);',
+          '  };',
+          '',
+          '  nativeSetTimeout(async function () {',
+          '    try {',
+          '      const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;',
+          "      const fn = new AsyncFunction('console', source);",
+          '      result = await fn(capturedConsole);',
+          '      executionFinished = true;',
+          '      maybeSendResponse();',
+          '    } catch (error) {',
+          '      executionFinished = true;',
+          '      executionFailed = true;',
+          '      errorMessage = serializeError(error);',
+          '      maybeSendResponse();',
+          '    }',
+          '  }, 0);',
+          '}());',
+        ].join('\n');
+
+        return ['<!doctype html>', '<html lang="en">', '<head>', '<meta charset="UTF-8">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<style>', 'body { margin: 0; padding: 16px; min-height: 100vh; font-family: Trebuchet MS, Segoe UI, sans-serif; color: #153124; background: #ffffff; }', '</style>', '</head>', '<body>', SCRIPT_OPEN, sandboxScript, SCRIPT_CLOSE, BODY_CLOSE, HTML_CLOSE].join('\n');
+      }
+
+      function runUserCode(code, timeoutMs) {
         return new Promise((resolve) => {
-          const started = performance.now();
           activeRunId += 1;
           const runId = activeRunId;
-          const sourceLiteral = JSON.stringify(code).replace(/</g, '\\u003c');
-          const frameMarkup = `
-            <!doctype html>
-            <html lang="en">
-              <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <style>
-                  body {
-                    margin: 0;
-                    padding: 16px;
-                    min-height: 100vh;
-                    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-                    color: #153124;
-                    background: #ffffff;
-                  }
-                </style>
-              </head>
-              <body>
-                <script>
-                  (function() {
-                    const runId = ${JSON.stringify(runId)};
-                    const source = ${sourceLiteral};
-                    const logs = [];
-                    let pendingTasks = 0;
-                    let executionFinished = false;
-                    let executionFailed = false;
-                    let result;
-                    let errorMessage = '';
-                    let responseSent = false;
-                    const activeTimers = new Map();
+          const started = performance.now();
 
-                    const nativeSetTimeout = window.setTimeout.bind(window);
-                    const nativeClearTimeout = window.clearTimeout.bind(window);
-                    const nativeSetInterval = window.setInterval.bind(window);
-                    const nativeClearInterval = window.clearInterval.bind(window);
+          previewFrame.srcdoc = buildSandboxPage(code, runId);
 
-                    function serializeError(error) {
-                      return error && error.message ? error.message : String(error);
-                    }
-
-                    function postResponse(payload) {
-                      parent.postMessage(Object.assign({ runId: runId }, payload), '*');
-                    }
-
-                    function finishTask() {
-                      pendingTasks = Math.max(0, pendingTasks - 1);
-                      maybeSendResponse();
-                    }
-
-                    function maybeSendResponse() {
-                      if (responseSent || !executionFinished || pendingTasks > 0) {
-                        return;
-                      }
-
-                      responseSent = true;
-                      if (executionFailed) {
-                        postResponse({ ok: false, error: errorMessage, logs: logs });
-                      } else {
-                        postResponse({ ok: true, result: result, logs: logs });
-                      }
-                    }
-
-                    function pushLog(level, args) {
-                      const text = args
-                        .map(function(item) {
-                          try {
-                            return typeof item === 'string' ? item : JSON.stringify(item);
-                          } catch (error) {
-                            return String(item);
-                          }
-                        })
-                        .join(' ');
-                      logs.push(level + ': ' + text);
-                    }
-
-                    const capturedConsole = {
-                      log: function() { pushLog('log', Array.from(arguments)); },
-                      info: function() { pushLog('info', Array.from(arguments)); },
-                      warn: function() { pushLog('warn', Array.from(arguments)); },
-                      error: function() { pushLog('error', Array.from(arguments)); },
-                    };
-
-                    window.console = capturedConsole;
-
-                    window.setTimeout = function(callback, delay) {
-                      const args = Array.prototype.slice.call(arguments, 2);
-                      pendingTasks += 1;
-                      const timerId = nativeSetTimeout(function() {
-                        activeTimers.delete(timerId);
-                        try {
-                          callback.apply(window, args);
-                        } catch (error) {
-                          executionFailed = true;
-                          errorMessage = serializeError(error);
-                        } finally {
-                          finishTask();
-                        }
-                      }, delay);
-
-                      activeTimers.set(timerId, { type: 'timeout' });
-                      return timerId;
-                    };
-
-                    window.clearTimeout = function(timerId) {
-                      if (activeTimers.has(timerId)) {
-                        activeTimers.delete(timerId);
-                        nativeClearTimeout(timerId);
-                        finishTask();
-                        return;
-                      }
-
-                      nativeClearTimeout(timerId);
-                    };
-
-                    window.setInterval = function(callback, delay) {
-                      const args = Array.prototype.slice.call(arguments, 2);
-                      pendingTasks += 1;
-                      const timerId = nativeSetInterval(function() {
-                        try {
-                          callback.apply(window, args);
-                        } catch (error) {
-                          executionFailed = true;
-                          errorMessage = serializeError(error);
-                          window.clearInterval(timerId);
-                        }
-                      }, delay);
-
-                      activeTimers.set(timerId, { type: 'interval' });
-                      return timerId;
-                    };
-
-                    window.clearInterval = function(timerId) {
-                      if (activeTimers.has(timerId)) {
-                        activeTimers.delete(timerId);
-                        nativeClearInterval(timerId);
-                        finishTask();
-                        return;
-                      }
-
-                      nativeClearInterval(timerId);
-                    };
-
-                    nativeSetTimeout(async function() {
-                      try {
-                        const AsyncFunction = Object.getPrototypeOf(async function() {}).constructor;
-                        const fn = new AsyncFunction('console', source);
-                        result = await fn(capturedConsole);
-                        executionFinished = true;
-                        maybeSendResponse();
-                      } catch (error) {
-                        executionFinished = true;
-                        executionFailed = true;
-                        errorMessage = serializeError(error);
-                        maybeSendResponse();
-                      }
-                    }, 0);
-                  }());
-                <\/script>
-              </body>
-            </html>
-          `;
-
-          resetPreviewFrame();
-          previewFrame.srcdoc = frameMarkup;
-
-          const timer = setTimeout(() => {
+          const timerId = window.setTimeout(function () {
             if (runId !== activeRunId) {
               return;
             }
-
             window.removeEventListener('message', handleMessage);
             resetPreviewFrame();
-            resolve({ ok: false, timedOut: true, elapsed: Math.round(performance.now() - started), logs: [], runId: runId });
-          }, RUN_TIMEOUT_MS);
+            resolve({
+              ok: false,
+              timedOut: true,
+              logs: [],
+              elapsed: Math.round(performance.now() - started),
+              runId: runId,
+            });
+          }, timeoutMs);
 
           function handleMessage(event) {
             if (!event.data || event.data.runId !== runId) {
               return;
             }
-
             if (event.source !== previewFrame.contentWindow) {
               return;
             }
 
             window.removeEventListener('message', handleMessage);
-            clearTimeout(timer);
+            window.clearTimeout(timerId);
             resolve({
               ok: event.data.ok,
               result: event.data.result,
@@ -559,10 +579,10 @@ return doubled;</textarea
       }
 
       async function executeCode() {
-        const code = editor.value;
         setStatus('Running JavaScript...', false);
+        const timeoutMs = getRunTimeoutMs();
 
-        const result = await runUserCode(code);
+        const result = await runUserCode(editor.value, timeoutMs);
         if (result.runId !== activeRunId) {
           return;
         }
@@ -571,16 +591,12 @@ return doubled;</textarea
 
         if (result.timedOut) {
           resultOutput.textContent = '(timed out)';
-          consoleOutput.textContent = '(execution timed out after ' + RUN_TIMEOUT_MS + ' ms)';
+          consoleOutput.textContent = '(execution timed out after ' + timeoutMs + ' ms)';
           setStatus('Execution timed out. Try simplifying or removing long loops.', true);
           return;
         }
 
-        if (result.logs.length > 0) {
-          consoleOutput.textContent = result.logs.join('\n');
-        } else {
-          consoleOutput.textContent = '(no logs yet)';
-        }
+        consoleOutput.textContent = result.logs.length > 0 ? result.logs.join('\n') : '(no logs yet)';
 
         if (result.ok) {
           resultOutput.textContent = formatValue(result.result);
@@ -591,24 +607,24 @@ return doubled;</textarea
         }
       }
 
-      runBtn.addEventListener('click', () => {
+      runBtn.addEventListener('click', function () {
         executeCode();
       });
 
-      clearBtn.addEventListener('click', () => {
+      clearBtn.addEventListener('click', function () {
         activeRunId += 1;
-        resultOutput.textContent = '(nothing yet)';
-        consoleOutput.textContent = '(no logs yet)';
-        runTimeLabel.textContent = 'No run yet';
+        setDefaultOutputs();
         resetPreviewFrame();
         setStatus('Output cleared.', false);
       });
 
-      resetBtn.addEventListener('click', () => {
+      resetBtn.addEventListener('click', function () {
         editor.value = defaultCode;
         setStatus('Editor reset to default example.', false);
       });
 
+      timeoutInput.value = String(DEFAULT_TIMEOUT_MS);
+      setDefaultOutputs();
       resetPreviewFrame();
     </script>
   </body>
