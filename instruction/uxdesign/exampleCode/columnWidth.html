@@ -13,7 +13,18 @@
         align-items: stretch;
         margin: 1em;
       }
+
+      section > div,
+      section > p {
+        flex-shrink: 0;
+      }
+
+      body {
+        overflow-x: auto;
+      }
+
       p {
+        font-size: 0.25em;
         padding: 1em;
         border: 1px solid rgb(29 84 126);
         border-top-right-radius: 15px;
@@ -24,11 +35,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 2in;
+        width: 0.5in;
         background-color: rgb(29 84 126);
         color: white;
         font-weight: bold;
-        font-size: xx-large;
+        font-size: large;
       }
 
       .column-1 {
