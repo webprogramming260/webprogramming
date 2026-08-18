@@ -1,5 +1,5 @@
 {
-  "title": "Web Programming v2",
+  "title": "Web Programming",
   "links": {},
   "externalRefs": {
     "canvasCourseId": "36027",
@@ -13,14 +13,14 @@
         "id": "7491e895-8aab-400d-9b9b-1dcdfdf78b65",
         "title": "📅 Winter 2026 Schedule",
         "path": "schedule/schedule.md",
-        "default": false,
+        "default": true,
         "state": "published"
       },
       {
         "id": "144c7d47-63e1-4e38-b3bb-17f0ae5f6898",
         "title": "Summer 2026 Schedule",
         "path": "schedule/summer-2026-schedule.md",
-        "default": true,
+        "default": false,
         "state": "published"
       }
     ]
