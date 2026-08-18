@@ -49,16 +49,38 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
 
 ## ☑ Assignment
 
-Create a fork of this [CodePen](https://codepen.io/leesjensen/pen/ExRoqPz) and experiment.
-
+```masteryls
+{"id":"99869011-3a94-40f9-b48f-6e34c9127943", "title":"Modify Fetch Example", "type":"ai-web-page", "allowAiPrompt":false, "gradingCriteria":"Use another Service Call, not https://quote.cs260.click", "height":150 }
 Replace the quotable service call with a different one. Here are some suggestions.
-
 - **Random user** - https://randomuser.me/api/
 - **Jokes** - https://api.chucknorris.io/jokes/random?category=dev
 - **GitHub user** - https://api.github.com/users/octocat
 - **Photos** - https://picsum.photos/id/0/info
 - **Quote** - https://quote.cs260.click
 
-When you are done submit your CodePen URL to the Canvas assignment.
+~~~html
+<body>
+
+  <pre></pre>
+
+  <script>
+    const url = "https://quote.cs260.click";
+    
+    fetch(url)
+      .then((x) => x.json())
+      .then((response) => {
+        document.querySelector("pre").textContent = JSON.stringify(
+          response,
+          null,
+          "  "
+        );
+      })
+      .catch((err) => {
+        document.querySelector("pre").textContent = err.message;
+      });
+  </script>
+</body>
+~~~
+```
 
 Don't forget to update your GitHub startup repository notes.md with all of the things you learned and want to remember.

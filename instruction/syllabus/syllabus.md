@@ -4,31 +4,40 @@
 
 Introduction to building and deploying full stack web applications using core technologies, frameworks, protocols, and development tools.
 
-## Course Content
+## Learning Environment
 
-All of the content for this course is found here, in this GitHub repository. We use GitHub to host the content so that we can rapidly enhance and correct the content. Using GitHub also makes it so that you can get more familiar with this essential professional development tool.
+We use [MasteryLS](https://masteryls.com) as the primary learning system for this course. MasteryLS provides efficient content navigation, search, and consistent structure. MasteryLS also enables extensive AI support for personalized learning and automated feedback. 
 
-You can always reach the root of the content repository with this link:
+ [Canvas](https://byu.instructure.com) is automatically synced with MasteryLS so that it can serve purely as a gradebook.
 
-[https://github.com/webprogramming260](https://github.com/webprogramming260)
+## Course Content Repository
 
-We suggest that you bookmark the link for easy access to the content.
+All of the content for this course is maintained in a [GitHub repository](https://github.com/webprogramming260). We use GitHub to manage the content so that we can rapidly enhance and correct it. Using GitHub also makes it so that you can get more familiar with this essential professional development tool.
 
 If you find errors in the content then we encourage you to fork the content repository and [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). That way everyone benefits from your work, and you are listed as a contributor on a significant open source project.
 
-##  Prerequisites
+## Prerequisites
 
 CS 142 or 111
 
 This course covers Web Programming at an introductory level. You must complete CS 142 or CS 111 as a prerequisite. By the end of this course you will know how to create and host a full stack web application.
 
-##  Course Learning Outcomes
+## Course Learning Outcomes
 
-1. Web Pages: Utilize HTML, CSS, and JavaScript to create interactive web pages.
-1. Web Frameworks: Utilize a web framework to modularize and package a web application.
-1. Web Services: Utilize DNS, HTTPS, WebSocket, service endpoints, authentication, and data persistence to create a backend service.
-1. Infrastructure: Deploy applications and manage code.
-1. Security and Design: Utilize production web application design and security practices.
+**Full-Stack Web Application Development**: 
+Design and implement interactive, full-stack web applications using modern web technologies, applying computational thinking and user-centered design to solve meaningful problems that serve others.
+
+**Web Architecture**: 
+Design and reason about web architectures, including client-server communication, APIs, authentication, real-time interaction, and data persistence, with an awareness of the responsibility to build systems that meet present needs and continue to serve well as those needs change over time.
+
+**AI-Augmented Development**: 
+Use AI tools as a collaborative partner to support design, implementation, debugging, and learning, while critically evaluating their outputs for correctness and long-term maintainability.
+
+**Security and Societal Impact**: 
+Apply secure coding practices and evaluate the ethical implications of web technologies, including privacy, accessibility, and eternal impact of the systems they build.
+
+**Deployment and Application Management**: 
+Deploy and manage web applications, demonstrating responsibility for reliability, performance, and the experience of real users in production environments.
 
 ## Course Materials
 
@@ -36,7 +45,7 @@ You do not need to purchase any textbooks for this class. All instruction materi
 
 To host your web applications, you are required to rent a web server and purchase a domain name from Amazon Web Services (AWS). The cost for this is estimated to be between $20 and $60 depending on your use of AWS and how often you have your services running.
 
-##  Technology Needs
+## Technology Needs
 
 You will need a reasonably current computer to complete the programming projects for this course. A minimum of 8 gigabytes of RAM is recommended, as well several gigabytes of free disk space.
 
@@ -66,7 +75,7 @@ Resubmissions are only considered in cases where the instruction was unclear, or
 
 ## Commit Policy
 
-It is critical that you develop good software engineering practices. Your GitHub commit history should demonstrate every step of your work in this class. If your history does not prove your ownership of the work you may be given a failing grade for the class.
+It is critical that you develop good software engineering practices. Your GitHub commit history should demonstrate every step of your work in this class. An acceptable commit history requires granular commits (_multiple commits_) done over the entire period of the assignment (_multiple days_) If your history does not prove your ownership of the work **you may be given a failing grade for the class**.
 
 ## TAs
 
@@ -76,9 +85,11 @@ Also, please understand that even though the TAs have taken the class and passed
 
 In summary, TAs are here to help but not to hold your hand and take away the learning experience of programming and debugging. But when you are stuck, do not hesitate to come in and ask for help.
 
-## **Doing Your Own Work**
+## Doing Your Own Work
 
-All deliverables must be your own work. You are encouraged to study with other students, discuss concepts, ideas, and general approaches. However, you may not submit someone else's solution as your deliverable or provide your solution to other students. You may use generative AI as an assistant when developing your deliverables.
+All deliverables must be your own work. You are encouraged to study with other students, discuss concepts, ideas, and general approaches. However, you may not submit someone else's solution as your deliverable or provide your solution to other students.
+
+You may use AI at the partner level as defined by the Computer Science Department Policy on AI.
 
 In order to demonstrate original authorship, you must:
 
@@ -89,7 +100,39 @@ In order to demonstrate original authorship, you must:
 
 **Violations of this policy will result in all involved students failing the course and the possibility of further action at the university level.**
 
-##   Grade Scheme
+## AI Usage Definition
+
+**Level**: `Partner`
+
+**Intent**: Collaborate with AI while maintaining ownership and understanding.
+
+**Allowed**
+- AI-generated code or content contributions
+- Iterative co-development
+- AI-assisted debugging and refinement
+
+**Requirements**
+- You must understand all submitted work
+- You must be able to explain any part on request. If you cannot explain your work, you may fail the class.
+
+**Prompt Guidance**: Use prompts that support collaboration with explanation:
+- “Help me implement this function step by step and explain each part.”
+- “Suggest an approach, then help me code it.”
+- “Walk me through improving this design.”
+- “Explain why this solution works.”
+
+**Rule of thumb**: You are co-creating, not delegating.
+
+
+```masteryls
+{"id":"cae08349-d561-4c4b-9a84-208fab172b36", "title":"Acknowledgement", "type":"multiple-select" }
+
+
+- [x] I have read this syllabus
+```
+
+
+## Grade Scheme
 
 The following grading standards will be used in this class:
 
@@ -108,7 +151,7 @@ The following grading standards will be used in this class:
 | D-    | < 63.0 % to 60.0% |
 | F     | < 60.0 % to 0.0%  |
 
-##  BYU Online Policies
+## BYU Online Policies
 
 ### Statement on Belonging 
 

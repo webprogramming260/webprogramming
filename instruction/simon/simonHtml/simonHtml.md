@@ -116,3 +116,19 @@ scp -r -i "$key" * ubuntu@$hostname:services/$service/public
 
 - Update your `startup` repository notes.md with what you learned.
 - Make sure your project is visible from your production environment (e.g. https://simon.yourdomain.click).
+
+
+
+```masteryls
+{"id":"9c16c49d-eed4-4852-9843-c994c9542dfd", "title":"Simon HTML Deployed", "type":"url-submission", "syncGrade":false, "autoGrade":false, "validateUrl":true, "gradingCriteria":"The title contains 'Simon HTML'" }
+After you have deployed _Simon HTML_, verify that it is accessible by providing the URL.
+
+_Example: https://simon.yourdomain.click_
+```
+
+
+```masteryls
+{"id":"83677e81-fe42-4657-be14-d4537d10f7d9", "title":"Essay", "type":"essay", "syncGrade":true, "autoGrade":false }
+How did your deployment go? Explain what the `deployFiles.sh` script is doing.
+```
+

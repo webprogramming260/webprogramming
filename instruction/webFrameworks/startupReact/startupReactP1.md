@@ -72,6 +72,13 @@ Doing this will make this deliverable of your startup available from `https://st
 >
 > This Simon prerequisite is different than other deliverables. Make sure you read and comply with the instruction.
 
+
+```masteryls
+{"id":"b6e9b25c-9338-43dc-af83-3801ef95c8f9", "title":"Simon React P1 deployed", "type":"multiple-select" }
+- [x] I have completed my port of Simon CSS to use a React router and it is available on my production system under the **simon** subdomain.
+```
+
+
 - **Prerequisite**: Ported version of Simon CSS ported to Simon React and deployed to your production environment
 - **Prerequisite**: A link to your GitHub startup repository prominently displayed on your application's home page
 - **Prerequisite**: Notes in your startup Git repository `README.md` file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
@@ -81,6 +88,18 @@ Doing this will make this deliverable of your startup available from `https://st
   - 70% Multiple react components that contain your HTML and CSS. No reactivity is required at this point.
   - 20% React router
 
+
+```masteryls
+{"id":"8a3b15ea-b4cf-4a2c-a151-3e2c8c27ecd5", "title":"Startup React P1: Routing deliverable","type":"github-submission","syncGrade":true,"autoGrade":false,"gradingCriteria":"The README.md file contains a section named 'React part1' containing a checklist of rubric items. Only review code that is related to the  checked items\n - Use the learner's description of what they said they did to determine the resulting score. Check the code to verify that they actually did what they said they did.\n- Reduce the student's score for anything that is not checked or completed.\n- Review the structure and quality of the code and modify the resulting score appropriately."}
+Update your README.md with clear descriptions  of what you did for each of the rubric items. When that is done, submit the URL to your startup repository.
+
+_Example: https://github.com/myaccount/startup_
+
+**Note:** If you are updating your repository after initially submitting, you may need to way a few minutes before GitHub will return the version with your latest changes.
+```       
+
+
+
 ## Go celebrate
 
-With the port to React your startup should now feel like a modern web application. Time to celebrate. I'm thinking lollipops. 🍭
+With the port to React your startup should now feel like a modern web application. Time to celebrate. I'm thinking lollipops for everyone! 🍭

@@ -59,6 +59,13 @@ console.log(a, b, c);
 // OUTPUT: undefined, 22, 44
 ```
 
+
+```masteryls
+{"id":"dda944de-a226-4787-87b2-02176f5719b5", "title":"Teaching", "type":"teaching" }
+What is JavaScript destructuring and what would I use if for?
+```
+
+
 ## Destructuring in React
 
 React makes extensive use of destructuring when you pass parameters to components and create state. In the example below, React passes all the parameters to the component as an object, but the object is destructured to just the `initialCount` parameter. Likewise, the return value from `React.useState` destructures the array to just the variable and the update function.

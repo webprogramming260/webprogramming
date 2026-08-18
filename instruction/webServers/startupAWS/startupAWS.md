@@ -27,12 +27,12 @@ When you are finished, the placeholder for your startup will be available from `
 ## 🚀 Deliverable
 
 1. [Set up your AWS account](../../essentials/awsAccount/awsAccount.md) using your byu.edu email address.
-1. [Create a new EC2 instance](../amazonWebServicesEc2/amazonWebServicesEc2.md) and access the server using `http://6.5.4.3` (where 6.5.4.3 is your IP address).
+1. [Create a new EC2 instance](../amazonWebServicesEc2/amazonWebServicesEc2.md) and access the server using `http://x.x.x.x` (where x.x.x.x is your IP address).
 1. [Lease a domain](../amazonWebServicesRoute53/amazonWebServicesRoute53.md) in Route53. Make sure you respond to the email that they will send you.
 1. Make sure that you can access your server through HTTP through http://startup.yourdomain (where yourdomain is replaced with the domain you leased from Route53)
 1. [Edit your Caddyfile](../https/https.md) so that you can access your server through HTTPS.
-1. You should see the default web page displayed through HTTPS
-1. Upload the URL to your startup application to the Canvas assignment. The URL should have the form https://startup.yourdomain
+1. You should see the default web page displayed through HTTPS 
+1. You should see the default startup pages with a URL like https://startup.yourdomain
 
 ![Web Browser Secure](../https/webServerBrowserSecure.png)
 
@@ -43,7 +43,19 @@ When you are finished, the placeholder for your startup will be available from `
 > Submit your Startup URL that includes your domain name for this deliverable (e.g. `https://startup.yourdomain`). **Do not** submit your GitHub repository URL.
 
 - **Prerequisite**: Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
-- 100% Your web page can be displayed using HTTPS and your domain name.
+
+- 10% Rented an EC2 server from AWS and it is accessible.
+- 10% Leased a domain name and associated it with my server.
+- 80% My server is available using your hostname. For example: `https://yourdomainnamehere.click`
+
+
+```masteryls
+{"id":"6edadab4-91ee-46f0-952e-469f42dc841e", "title":"Startup AWS Deliverable", "type":"url-submission", "syncGrade":true, "autoGrade":true, "gradingCriteria":"The content must contain the text `web programming 260`. The URL protocol must be HTTPS." }
+After completing all the prerequisites and rubric items, submit the URL to your startup server. The server must be up and running correctly.
+
+_Example: https://mydomainname.click_
+```
+
 
 ## Go celebrate
 

@@ -2,6 +2,8 @@
 
 ![HTML Logo](htmlLogo.png)
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTly4g06As_UbVttYzLVeVWhNz9Ceo4HzYlsh2EVo9d2ijNj4rUCxqFCygq14D0Uu3TY4y-U9VCnW6x/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 📖 **Deeper dive reading**:
 
 - [MDN HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -164,6 +166,30 @@ By default a web server will display the HTML file named `index.html` when a web
 
 ## Rendering HTML
 
-You can save any HTML file to your computer's disk and then open the file using your browser. You can also open the HTML file in VS Code and use the Live Server extension to display the HTML. Another way to easily play with HTML is to use a sandbox like [CodePen](https://codepen.io). However, when you use CodePen it is not necessary to supply the HTML DocType header or the root `html` element since CodePen already assumes you are providing HTML. Here is our example HTML document rendered in CodePen.
+You can save any HTML file to your computer's disk and then open the file using your browser. You can also open the HTML file in VS Code and use the Live Server extension to display the HTML. 
 
-![CodePen HTML introduction](htmlIntroductionCodePen.png)
+Another way to easily play with HTML is to use a sandbox like the interaction shown below that contains the example HTML document we discussed earlier. Experiment with the HTML and see what you can create.
+
+
+```masteryls
+{"id":"77bcd45a-b7ef-4bc4-bdb2-4ad2adfda22e", "title":"Web page development", "type":"ai-web-page", "allowAiPrompt":true, "syncGrade":false, "autoGrade":false, "gradingCriteria":"Everything is valid HTML. Includes tables, lists, links, and images.", "height":300 }
+
+Make sure you includes table, list, link, and image tags. Ask the **AI assistance** or **Discuss** pane for help if you need it.
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <main>
+      <h1>Hello world</h1>
+      <p class="introduction">
+        HTML welcomes you to the amazing world of
+        <span class="topic">web programming</span>.
+      </p>
+      <p class="question">What will this mean to you?</p>
+      <p class="assignment">Learn more <span>here</span>.</p>
+    </main>
+  </body>
+</html>
+~~~
+```

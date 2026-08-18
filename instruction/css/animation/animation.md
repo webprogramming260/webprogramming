@@ -22,6 +22,7 @@ p {
 
   animation-name: demo;
   animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 ```
 
@@ -34,7 +35,7 @@ Now we are ready to create the keyframes. We don't have to define what happens a
   }
 
   to {
-    font-size: 20vh;
+    font-size: 30vh;
   }
 }
 ```
@@ -48,21 +49,63 @@ That's everything we need to do. However, let's make one more addition. It would
   }
 
   95% {
-    font-size: 21vh;
+    font-size: 28vh;
   }
 
   to {
-    font-size: 20vh;
+    font-size: 30vh;
   }
 }
 ```
 
-![CSS animation](cssAnimation.gif)
 
-You can see this animation working with this [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX).
+```masteryls
+{"id":"37433cdd-9dd1-4009-857a-f36bd4c97ab6", "title":"Animation demo", "type":"ai-web-page", "allowAiPrompt":false, "syncGrade":false, "autoGrade":false, "gradingCriteria":"Animation grows and then shrinks back to the original size",  "height":100 }
+Modify the animation so that it grows out and then shrinks back.
+~~~html
+<p>Animate</p>
+<style>
+p {
+  text-align: center;
+  font-size: 20vh;
 
-Animation is not just for pushing buttons or making text float around. Here is an example of [animating a watch](https://codepen.io/leesjensen/pen/MWBjXNq) using only HTML and CSS.
+  animation-name: demo;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+@keyframes demo {
+  from {
+    font-size: 0vh;
+  }
 
-![Watch animation](cssAnimationWatch.gif)
+  95% {
+    font-size: 28vh;
+  }
 
-CodePen has a lot of CSS animation examples that you can experiment with. Here is a simple one with [floating clouds](https://codepen.io/leesjensen/pen/wvXEaRq) that I found interesting. If you find an interesting one share it with us on Discord.
+  to {
+    font-size: 30vh;
+  }
+}
+</style>
+~~~
+```
+
+
+```masteryls
+{"id":"c7c8584b-11a9-424e-89cb-c8adfb13e2b6", "title":"Animations", "type":"essay", "syncGrade":false, "autoGrade":false }
+Explain how animations work in CSS.
+```
+
+
+## Complex example
+
+Animation is not just for pushing buttons or making text float around. Here is an example of animating a watch using only HTML and CSS.
+
+
+```masteryls
+{"id":"a8b4122a-c249-4f5c-a35d-3107fc95715a", "title":"Animated watch", "type":"ai-web-page", "allowAiPrompt":false, "syncGrade":false, "autoGrade":false, "gradingCriteria":"Second hand runs backwards", "height":500, "file":"watch.html" }
+See if you can make the second hand run backwards.
+
+```
+
+

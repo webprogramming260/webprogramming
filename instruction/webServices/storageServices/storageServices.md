@@ -21,6 +21,13 @@ Here is a table of major cloud storage providers that offer programmatic access,
 | **MinIO**                    | [MinIO Documentation](https://min.io/docs/)                                               | No        | N/A                   |
 | **OpenStack Swift**          | [OpenStack Swift Documentation](https://docs.openstack.org/swift/latest/)                 | No        | N/A                   |
 
+
+```masteryls
+{"id":"0ec7e6ab-6316-4e0f-a654-5df1a6f0ceb2", "title":"Storage service providers", "type":"essay" }
+Which storage service provider would you choose? Describe your need and why that particular provider is your preference.
+```
+
+
 ## AWS S3
 
 Since we are already using AWS for this course, let's take a closer look at [AWS S3](https://aws.amazon.com/s3/). S3 provides the following advantages:

@@ -108,6 +108,17 @@ Doing this will make this deliverable of your startup available from `https://st
   - 70% Multiple react components that **implement or mock all app functionality**
   - 30% React `useState` and `useEffect` hooks
 
+```masteryls
+{"id":"fe301f80-87fe-4afd-86af-492a6de0167f", "title":"Startup React part 2: Reactivity deliverable", "type":"github-submission","syncGrade":true,"autoGrade":false,"gradingCriteria":"The README.md file contains a section named 'React part 2' containing a checklist of rubric items. Only review code that is related to the  checked items\n - Use the learner's description of what they said they did to determine the resulting score. Check the code to verify that they actually did what they said they did.\n- Reduce the student's score for anything that is not checked or completed.\n- Review the structure and quality of the code and modify the resulting score appropriately."}
+Update your README.md with clear descriptions  of what you did for each of the rubric items. When that is done, submit the URL to your startup repository.
+
+_Example: https://github.com/myaccount/startup_
+
+**Note:** If you are updating your repository after initially submitting, you may need to way a few minutes before GitHub will return the version with your latest changes.
+```       
+
+
+
 ## Go celebrate
 
 With the addition of reactivity to your startup it should be basically functional. Anything that remains should be stubbed out in some way that makes the application usable. Time to celebrate. I'm thinking tacos. 🌮

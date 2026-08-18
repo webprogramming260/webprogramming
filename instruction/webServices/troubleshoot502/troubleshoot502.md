@@ -145,3 +145,12 @@ This is the structure you application will have once it is bundled and deployed 
 - Missing `peerProxy.js` file (if using a separate file for backend websocket)
 - Incorrect path to file location of `peerProxy.js`
 - Missing node modules: ws, bcryptjs, uuid, mongodb, express, cookie-parser
+
+
+## Exercises
+
+
+```masteryls
+{"id":"f312ba3c-f0b5-40b7-8641-362f6fd032d8", "title":"Troubleshoot 502", "type":"essay" }
+What are the steps you can take to troubleshoot a 502 HTTP status error?
+```

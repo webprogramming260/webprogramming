@@ -657,3 +657,14 @@ function Profile() {
 Make sure your backend is running on port 3000 by running `node service.js` in the **service** directory. Start the frontend by running `npm run dev` in the project root directory. Set breakpoints in both the front and backend code and see how they interact. Change the code to experiment with the functionality.
 
 If your implementation is not quite working, you can find this complete example [here](exampleCode/login).
+
+
+```masteryls
+{"id":"3b31bc21-3356-413e-a1e0-7619d22d641b", "title":"Authentication", "type":"multiple-select" }
+After experimenting with the above code, check all the boxes that you completed.
+
+- [x] I coded up the login **backend** in my development environment.
+- [x] I coded up the login **frontend** in my development environment.
+- [x] I set breakpoints and successfully debugged the **backend**.
+- [x] I set breakpoints and successfully debugged the **frontend**.```
+

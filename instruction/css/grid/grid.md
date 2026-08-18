@@ -36,4 +36,8 @@ Here is what the finished product looks like.
 
 ![CSS grid](cssGrid.gif)
 
-You can experiment with the source on [CodePen](https://codepen.io/leesjensen/pen/GRGXoWP).
+
+```masteryls
+{"id":"7bcb0c87-2acf-4c83-8134-20059674a5a2", "title":"Grid demonstration", "type":"ai-web-page", "allowAiPrompt":false, "syncGrade":true, "autoGrade":false, "gradingCriteria":"Grid items are 50px square", "height":500, "file":"grid.html" }
+Resize your browser window to see the impact on the grid. Change the min width to be 50px to see how that changes things. Then make it so the items are 50px square.
+```

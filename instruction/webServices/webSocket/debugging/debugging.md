@@ -34,7 +34,7 @@ You can debug both sides of the WebSocket communication with VS Code to debug th
 ![WebSocket server debugging](webServicesWebSocketServerDebug.gif)
 
 ## Debugging the client
-
+http://localhost:5173/course/05cf2876-16ce-4db0-864e-caa5d05200ad/topic/7d94fe22-b7ad-422c-ba77-6f3fb6be8ab7$0
 1. Open a Chrome browser, point it at `localhost:3000` and then open the debugger by pressing `F12`.
 1. Paste this code into the debugger console window and press enter to execute it. Executing this code will immediately hit the server breakpoint. Take a look at what is going on and then remove the breakpoint from the server.
 
@@ -57,3 +57,16 @@ You can debug both sides of the WebSocket communication with VS Code to debug th
 1. Send some more messages and observe the communication back and forth without stopping on the breakpoints.
 
 ![WebSocket client debugging](webServicesWebSocketClientDebug.gif)
+
+
+```masteryls
+{"id":"0437a32d-6a2a-4150-8698-00c837280423", "title":"Debugging WebSocket", "type":"multiple-select" }
+I have successfully done the following:
+
+- [x] Created a WebSocket server
+- [x] Created a WebSocket client
+- [x] Added a breakpoint and debugged the server
+- [x] Added a breakpoint and debugged the client
+- [x] Modified the code to send different information
+```
+

@@ -1,5 +1,10 @@
 # Simon DB
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSMauJf2fnTBi6v2qPzQPrpx8TyufOd3YRB6BY5FGQy-0kfYFrzFou4eBjDVCx_KTARWrjgAQknfJSe/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
+
 ![Simon](../simon.png)
 
 This deliverable demonstrates using MongoDB to persistently store user's scores and authentication data.
@@ -128,3 +133,13 @@ Get familiar with what this code teaches.
 
 - Update your `startup` repository notes.md with what you learned.
 - Make sure your project is visible from your production environment (e.g. https://simon.yourdomain.click).
+
+
+
+```masteryls
+{"id":"623ef50d-cf6e-42f6-b243-8d88770f028f", "title":"Simon DB", "type":"url-submission", "syncGrade":false, "autoGrade":false, "validateUrl":true, "gradingCriteria":"The title contains 'Simon DB'" }
+After you have deployed _Simon DB_, verify that it is accessible by providing the URL.
+
+_Example: https://simon.yourdomain.click_
+```
+

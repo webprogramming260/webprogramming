@@ -2,6 +2,9 @@
 
 ![CSS Logo](cssLogo.png)
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQRrNtrNhocW1BbO-LuXLwxNiV_N1ApAOprbtXgk6jJABVKnMd1OcJFires3aEQMLeBfL2bUx3leabC/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
 📖 **Deeper dive reading**: [MDN CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 Cascading Style Sheets (CSS) converts the structure and content of HTML into a vibrant, responsive experience. The initial objective of CSS was to simply style the HTML based upon the desires of the user, developer, and browser. In modern web applications CSS styling focuses more on helping the developer create complex renderings of dynamic content that is responsive to the actions of the user and the device the application is rendered on. With CSS a web programmer can animate the page, deploy custom fonts, respond to user actions, and dynamically alter the entire layout of the page based on the size of a device and its orientation.
@@ -15,15 +18,36 @@ For example, consider the following rule.
 ```css
 p {
   font-family: sans-serif;
-  font-size: 2em;
+  font-size: 3em;
+  font-weight: 200;
   color: navy;
   text-shadow: 3px 3px 1px #cccccc;
 }
 ```
 
-The selector `p` selects all paragraph elements in the HTML document. The four specified declarations then: 1) change the font to use a sans-serif font, 2) increase the font size to be twice as big as the default font, 3) change the text color to be navy, and 4) create a gray shadow for the text. The result looks like this.
+The selector `p` selects all paragraph elements in the HTML document. The four specified declarations then: 1) change the font to use a sans-serif font, 2) increase the font size to be three times bigger and thinner than the default font, 3) change the text color to be navy, and 4) create a gray shadow for the text. The result looks like this.
 
-![CSS simple rule](cssSimpleRule.jpg)
+
+```masteryls
+{"id":"900199ab-aebe-4b11-968f-768deff00b11", "title":"Web page development", "type":"ai-web-page", "allowAiPrompt":false, "gradingCriteria":"Proper use of CSS selectors and declarations. Background color is blue and text color is white", "height":200 }
+Manipulate the following CSS to change the background color to blue and the text color to white.
+
+~~~html
+  <style>
+    h1 {
+      font-family: sans-serif;
+      font-size: 3em;
+      font-weight: 200;
+      color: navy;
+      text-shadow: 3px 3px 1px #cccccc;
+    }
+  </style>
+  <body style="display:grid;place-items:center">
+    <h1>Hello, curious learner.</h1>
+  </body>
+~~~
+```
+
 
 ## Associating CSS with HTML
 
@@ -104,9 +128,25 @@ The rules for determining which declaration will apply to a specific element als
 
 CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. The innermost box holds the element's content. This is where things like the text or image of an element is displayed. Next comes the padding. The padding will inherit things like the background color. After padding is the border, which has properties like color, thickness and line style. The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace. It is important to understand each of these boxes so that you can achieve the desired visual result by applying the proper CSS declaration.
 
-![CSS box model](cssBoxModel.jpg)
+
+
+```masteryls
+{"id":"a9ebc5d9-f459-4d83-ac6a-6d3e4e284204", "title":"CSS box model", "type":"web-page", "height":600 "file":"exampleCode/cssBoxModel.html"}
+```
 
 By default, the width and height of an element is defined by the width and height of the content box. You can change the `box-sizing` CSS property from the default value of `content-box` to `border-box` in order to redefine the width and height to also include the padding and the border. This often makes it easier to style elements when their visual size matches their actual size.
+
+
+```masteryls
+{"id":"438b7332-5266-4185-b951-c2c399c7c72a", "title":"Components of the CSS Box Model", "type":"multiple-choice"}
+In the CSS box model, every HTML element is treated as a rectangular box. Which of the following correctly identifies the four components of this box, ordered from the innermost layer to the outermost layer?
+
+- [ ] Content, Border, Padding, Margin
+- [x] Content, Padding, Border, Margin
+- [ ] Content, Padding, Margin, Outline
+- [ ] Text, Spacing, Border, Margin
+```
+
 
 ## CSS Versions
 

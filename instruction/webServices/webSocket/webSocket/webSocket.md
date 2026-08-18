@@ -1,5 +1,9 @@
 # WebSocket
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQcgglX5RnK8G9gp9fkiUluBR5J3zx4phXHh3qCEkDqDY84ofcoI_HfmxVqNFl9p6yeiZXmTQofKWvJ/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 ![webSocket](webServicesWebSocketsLogo.png)
 
 HTTP is based on a client-server architecture. A client always initiates the request and the server responds. This is great if you are building a global document library connected by hyperlinks, but for many other use cases it just doesn't work. Applications for notifications, distributed task processing, peer-to-peer communication, or asynchronous events need communication that is initiated by two or more connected devices.
@@ -65,3 +69,96 @@ wss.on('connection', (ws) => {
 ```
 
 In a later instruction we will show you how to run and debug this example.
+
+
+## WebSocket details
+
+Although the `ws` package makes it easy to use WebSocket in your applications, you should be aware of some of the internal details that can be easy to overlook. Without a basic understanding of how WebSocket works it can be frustrating to implement in a production system.
+
+![websocket.jpg](websocket.jpg)
+
+### The WebSocket Handshake
+WebSockets begin as a standard HTTP request. To establish a connection, the client sends an "Upgrade" header to the server. If the server supports the protocol, it responds with an HTTP 101 status code (Switching Protocols). Once this handshake is successful, the TCP connection remains open, and both parties can send data at any time.
+
+### Full-Duplex Communication
+Unlike standard HTTP (Request-Response), WebSockets are **full-duplex**. This means the client and server can send data simultaneously without waiting for the other to finish. This eliminates the overhead of opening a new connection for every message.
+
+### Connection Statefulness
+WebSockets are stateful. The server must keep track of every active connection in memory. This differs from RESTful APIs, which are stateless. Because of this, scaling WebSockets often requires a "Sticky Session" strategy on load balancers or a pub/sub mechanism (like Redis) to synchronize messages across multiple server instances.
+
+### Handling Binary Data
+WebSockets support both UTF-8 text and binary data. When handling binary data, you can choose between `Blob` (useful for files) and `ArrayBuffer` (useful for raw binary processing).
+
+```javascript
+const socket = new WebSocket('ws://example.com/socket');
+
+// Set the binary type to 'arraybuffer' or 'blob'
+socket.binaryType = 'arraybuffer';
+
+socket.onmessage = (event) => {
+  if (event.data instanceof ArrayBuffer) {
+    const view = new DataView(event.data);
+    console.log('Received binary data:', view.getInt8(0));
+  } else {
+    console.log('Received text data:', event.data);
+  }
+};
+```
+
+### Heartbeats and Keep-Alive
+WebSocket connections can be dropped by firewalls, proxies, or load balancers if they are idle for too long. To prevent this, implement a "heartbeat" (ping/pong) mechanism to ensure the connection remains active.
+
+```javascript
+// Server-side logic (Node.js using 'ws' library)
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', (ws) => {
+  ws.isAlive = true;
+  
+  // Mark as alive when a 'pong' is received
+  ws.on('pong', () => {
+    ws.isAlive = true;
+  });
+});
+
+// Check every 30 seconds if connections are still alive
+const interval = setInterval(() => {
+  wss.clients.forEach((ws) => {
+    if (ws.isAlive === false) return ws.terminate();
+    
+    ws.isAlive = false;
+    ws.ping(); // Send ping to client
+  });
+}, 30000);
+```
+
+### Closing Codes
+When a connection closes, the WebSocket API provides a numeric code and a reason. Understanding these codes is critical for debugging and implementing auto-reconnect logic.
+*   `1000`: Normal Closure.
+*   `1001`: Going Away (e.g., server shutdown or browser tab closed).
+*   `1006`: Abnormal Closure (connection lost without a close frame).
+
+```javascript
+socket.onclose = (event) => {
+  if (event.wasClean) {
+    console.log(`Closed cleanly, code=${event.code} reason=${event.reason}`);
+  } else {
+    // e.g. server process killed or network down
+    console.error('Connection died');
+    // Implement reconnection logic here
+  }
+};
+```
+
+### Security (WSS)
+Always use `wss://` (WebSocket Secure) in production. It uses TLS/SSL to encrypt the data stream. This not only protects data but also prevents "Man-in-the-Middle" attacks and ensures that transparent proxy servers do not interfere with or block the WebSocket traffic.
+
+## Exercises
+
+
+```masteryls
+{"id":"1c9ef4b5-ba34-4e52-a2d5-80ae6d426997", "title":"HTTP vs WebSocket", "type":"essay" }
+Explain the essential differences between the HTTP and WebSocket protocols.
+```
+

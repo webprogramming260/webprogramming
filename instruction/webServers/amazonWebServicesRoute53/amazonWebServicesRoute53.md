@@ -88,11 +88,20 @@ The start of authority (`SOA`) record provides contact information about the own
 If you do not already own a domain name that you want to use for this course, then lease one from Route 53 now.
 
 1. Open the AWS browser console and log in.
-1. Use Route 53 to purchase a domain name.
+1. Use Route 53 to lease a domain name.
 1. Set up your DNS records using Route 53. Make sure you have a record representing your root domain name, and a wild card subdomain.
 1. Test that you can access your server using your domain name and any subdomain name.
 
 Don't forget to update your GitHub startup repository notes.md with all of the things you learned and want to remember.
+
+
+```masteryls
+{"id":"2c001816-b07f-4ac0-b2b0-34c7b74d7c32", "title":"Domain name", "type":"url-submission", "gradingCriteria":"Contains the text `web programming 260`" }
+After you have leased your domain name and set up your DNS records, provide the URL for your **root domain name** here.
+
+_Example: http://mydomainname.click_
+```
+
 
 ## Common problems
 

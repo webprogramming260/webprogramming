@@ -27,3 +27,20 @@ const interval = setInterval(() => console.log('do something'), 1000);
 
 setTimeout(() => clearInterval(interval), 5000);
 ```
+
+
+## Experiment
+
+Use the **JavaScript Interpreter**, or the console pane in the browser debugger, to experiment with the `setTimeout` and `setInterval` functions.
+
+
+```masteryls
+{"id":"e92449de-b242-437c-becf-f32950a9b985", "type":"web-page", "height":650, "file":"../introduction/javascriptPlayground.html" }
+```
+
+## Reflect
+
+```masteryls
+{"id":"b8866af7-c9c5-4250-bfb3-c58968294f8c", "title":"Async function", "type":"essay" }
+Demonstrate the usage of setInterval by printing out the current time every second. After five seconds cancel the interval execution.
+```

@@ -22,7 +22,7 @@ The ability to dynamically modify an object is incredibly useful when manipulati
 
 > [!NOTE]
 >
-> The different uses of the term `object`. Object can refer to the standard JavaScript objects (e.g. `Promise, Map, Object, Function, Date, ...`), or it can refer specifically to the JavaScript Object object (i.e. `new Object()`), or it can refer to any JavaScript object you create (e.g. `{a:'a', b:2}` ). This overloaded usage can be a bit confusing.
+> There are different meanings of the term `object` in JavaScript. Object can refer to the standard JavaScript objects (e.g. `Promise, Map, Object, Function, Date, ...`), or it can refer specifically to the JavaScript `Object` object (i.e. `new Object()`), or it can refer to any JavaScript object you create (e.g. `{a:'a', b:2}` ). This overloaded usage can be a bit confusing.
 
 ## Object-literals
 
@@ -39,6 +39,7 @@ const obj = {
   },
 };
 ```
+
 
 ## Object functions
 
@@ -167,3 +168,55 @@ const e = new Employee('Eich', 'programmer');
 console.log(e.print());
 // OUTPUT: My name is Eich. I am a programmer
 ```
+
+## Dynamic Object Manipulation
+
+In many modern programming languages, particularly dynamic ones like JavaScript and Python, objects are not rigid structures fixed at the moment of instantiation. While a class defines the initial blueprint, the resulting objects can often be manipulated dynamically during runtime. This means you can add new properties, modify existing methods, or even delete members entirely based on the application's state or user input.
+
+This flexibility allows developers to use objects as flexible data containers. For instance, in JavaScript, you can assign a value to a property that wasn't previously defined in the class, and the engine will automatically attach it to that specific instance. This is often referred to as "monkey patching" or "dynamic property assignment."
+
+### Key Concepts in Dynamic Manipulation
+
+*   **Property Addition:** Attaching new data fields to an instance after it has been created.
+*   **Property Deletion:** Removing a field or method from an instance to save memory or change behavior.
+*   **Method Overriding:** Replacing a specific instance's function without affecting other instances of the same class.
+
+The following code example demonstrates how a standard object can be modified on the fly in JavaScript:
+
+```javascript
+class Hero {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+const paladin = new Hero("Arthur");
+
+// 1. Dynamically adding a property
+paladin.level = 10; 
+
+// 2. Dynamically adding a method
+paladin.greet = function() {
+  console.log(`Greetings, I am ${this.name}, Level ${this.level}`);
+};
+
+paladin.greet(); // Output: Greetings, I am Arthur, Level 10
+
+// 3. Deleting a property
+delete paladin.level;
+console.log(paladin.level); // Output: undefined
+```
+
+While dynamic manipulation offers immense power, it should be used with caution. Over-reliance on dynamic properties can lead to "hidden classes" issues in engine optimization and can make code harder to debug, as the object's shape is no longer guaranteed by its class definition.
+
+```masteryls
+{"id":"dyn-obj-001", "title":"Dynamic Property Assignment", "type":"multiple-choice"}
+What happens in a dynamic language like JavaScript when you assign a value to a property that was not defined in the class constructor?
+
+- [ ] The program throws a "PropertyNotDefined" runtime error.
+- [ ] The value is ignored and the object remains unchanged.
+- [x] The engine creates the property on that specific instance and assigns the value.
+- [ ] The property is added to the Class blueprint, affecting all existing and future instances.
+```
+
+

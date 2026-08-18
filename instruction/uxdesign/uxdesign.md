@@ -1,5 +1,9 @@
 # UX design
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQNrqzNYjHcEbSENqwiPRAOHqwaz2FvIJxm6kv5GeBCwHT1_Its-ZfmFo4c-xQyFThoI4CiP64iUa88/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 Properly considering the user experience (UX) of your application will make all the difference in your success. Focusing first on technology, cost, or revenue tends to lead to an unsatisfying user experience. Instead you want to consider why someone is using your application, how they want to interact, how visually appealing it is, and how easy it is to get something done.
 
 ## Design as a story
@@ -46,19 +50,61 @@ You can also include significant amounts of content. You just need to keep thing
 
 There is a tension that exists with web applications between being consistent with how other applications work and being unique so that your experience stands out. What you want to avoid is being so different that a user has to think hard in order to use your application. This is usually avoided by using the standard conventions that a user expects to find on a web application. The following image describes the `standard layout` and navigation controls of an application.
 
-![Holy grail](designConsistencyHolyGrail.jpg)
+![standardLayout.jpg](standardLayout.jpg)
 
 What a `standard layout` is defined to be will migrate over time as new trends in application fashion seek to make things look fresh. However, if you follow current trends, your users are more likely to engage in your application.
 
-One easy way to build an application that uses current design trends is to use a web framework that provides standard layouts, colors, and iconography. Here is an example of a template application built using a web framework with just a few minutes of work.
+One easy way to build an application that uses current design trends is to use a web framework that provides standard layouts, colors, and iconography.
 
-![Frameworks](designConsistencyFramework.jpg)
+## UX principles
+
+### Hick's Law
+
+You need to consider the impact of the choices that you present to a user. [Hick's Law](https://en.wikipedia.org/wiki/Hick%27s_law) states that the time necessary to make a decision increases logarithmically with the number of choices presented. That doesn't mean that you should not provide options to the user, but that you should limit the number of choices given at any point in time.
+
+```masteryls
+{"id":"76fbfe66-0470-4284-a685-3aeceaf03956", "title":"Web page", "type":"web-page", "height":650, "file":"hicks.html"}
+```
+
+For example, the process of building a pizza involves many steps. First you must pick the location you want to order from, then the pizza size, cheese, meats, and veggies. Finally you need to provide payment. Each of those choices require a lot of input from the user, and so limiting the number of choices displayed at one time will help reduce decision fatigue and you will have better odds of them completing the ordering process.
+
+![Decision pizza making](designDecisionFatiguePizza.gif)
+
+> Source: Papa Johns
+
+### Miller's Law
+
+Miller’s Law states that the average person can only keep approximately seven (plus or minus two) items in their working memory at any given time. In UX design, this principle highlights the importance of **chunking**, which involves organizing complex information into smaller, manageable groups. By limiting the number of elements presented simultaneously, designers can reduce cognitive load, making interfaces easier to navigate and information more efficient to process.
+
+```masteryls
+{"id":"24b8f96d-90f4-40f9-a199-856f334ae11d", "title":"Web page", "type":"web-page", "height":800, "file":"millers.html"}
+```
+
+### Fitts's Law
+
+Fitts's Law is a fundamental principle in UX design that predicts the time required to rapidly move to a target area. Established by psychologist Paul Fitts in 1954, the law states that the time to acquire a target is a function of the distance to the target and the size of the target. In the digital realm, this means that the larger and closer a UI element is to the user's current cursor or thumb position, the easier and faster it is to interact with.
+
+When applying Fitts's Law, designers focus on two primary levers: **Target Size** and **Distance**. By increasing the clickable area of a button, you reduce the precision required by the user, thereby decreasing the likelihood of errors. Conversely, placing related interactive elements close to each other minimizes the travel time required to complete a sequence of actions.
+
+```masteryls
+{"id":"d6a55c62-dbe1-4ecc-9111-630201602713", "title":"Web page", "type":"web-page", "height":700, "file":"fitts.html"}
+```
+
+### Gestalt
+
+Gestalt principles are psychological theories that describe how the human brain naturally organizes individual visual elements into collective patterns or unified wholes. In web UX design, these principles—such as proximity, similarity, continuity, and closure—serve as a framework for creating intuitive interfaces that align with how users perceive information. By applying Gestalt theory, designers can effectively group related content, establish a clear visual hierarchy, and reduce cognitive load, ensuring that users can navigate a website effortlessly without having to consciously process every distinct element.
+
+```masteryls
+{"id":"5ef3467a-6064-401b-8356-5e465d4e1128", "title":"Web page", "type":"web-page", "height":600, "file":"gestalt.html"}
+```
 
 ## Affordance, Signifiers, and Feedback
 
 Interactions between the interface and the user are a common point of failure when aligning the mental model of a user and the application designer. Interactions are often times describe in terms of affordance, signifiers, and feedback. An affordance is a relationship between an object and a person; it is what the object can do (e.g., a button "affords" clicking). A signifier is the visual cue that tells the user where and how to act (e.g., the shadow or color of that button). Feedback informs the user that the action has completed with a given result.
 
-![Affordance](affordance.gif)
+```masteryls
+{"id":"ee3c3a47-7636-4d74-b353-c6b9fa7f8973", "title":"Affordance", "type":"web-page", "height":250, "file":"affordance.html"}
+```
 
 ## Navigation
 
@@ -181,33 +227,21 @@ You want to be consistent in the size of the text that you use as well as the nu
 
 These sizes are just suggestions but they serve as a good place to start. If you are using an application framework then they will have default text sizes defined. The important thing is that you are consistent with the sizing. Titles should not be one size for a particular view and a different size on another one. Inconsistency confuses the user and makes the application feel haphazardly designed.
 
+```masteryls
+{"id":"114ea268-bff2-4d3a-986d-5eead3651698", "title":"Web page", "type":"web-page", "height":400, "file":"fontSize.html"}
+```
+
 ### Limiting line length
 
 Limiting the number of characters displayed on a line makes it easier to read paragraphs of text. The browser will automatically wrap text based on the viewport width, but having a line spread across a 4K monitor that is hundreds of characters long will make your application look clunky and drive the user crazy as they try and find the start of the next line in a long paragraph.
 
-Instead you want to specify a maximum width for your paragraphs. Usually a width of 60 to 80 characters is optimal. You can set this with the `max-width` property set to something like `35em`. The `em` unit is the approximately the width of the `m` character in the font and so about half of an 'm' is about the average character width.
+Instead you want to specify a maximum width for your paragraphs. Usually a width of 60 to 80 characters is optimal. You can set this with the `max-width` property set to something like `35em`. The `em` unit is relative to the font size of the element (e.g., if the font size is 16px, `1em` is 16px). Since the average character width is approximately `0.5em`, a `35em` limit helps maintain that ideal character count.
 
 The following shows the visual and cognitive impact of different line lengths.
 
-![Line length](designLineLength.jpg)
-
-## Internationalization
-
-Designing a global international application requires careful consideration from the beginning. Attempting to internationalize a complex, mature application after it has a domestic presence is very difficult.
-
-One of the most important aspects to consider is the translation of textual content and the ability of the user to select their desired language.
-
-![Unicode](designInternationalizationUnicode.jpg)
-
-Successful translation also requires the text to be rendered properly. For example, several languages are read from right to left. Therefore the content, and the application itself, must be displayed in that orientation.
-
-![Right to left](designInternationalizationRtl.jpg)
-
-Likewise the format for displaying dates, times, numbers, and currency varies greatly between nationalities. This includes country specific currency symbols (¥, $, €, or ฿), the order of date fields (MM/DD/YY or DD/MM/YY), and numerical separators (1,000.50 or 1.000,50).
-
-Iconography can also be a concern. An owl in the United States represents wisdom, but in some Asian countries it symbolizes stupidity. Icons that carry religious representations can be even more disruptive.
-
-Proper international design requires thought across the full technology stack. If data is not properly passed, stored, and rendered at every level of the stack it will fail to properly work globally. For example, dates and times should always be stored in a format that properly represents time zones (e.g. ISO 8601) and rendered based upon the user's location. That way when users do things like global calendaring or traveling between countries their data is not corrupted.
+```masteryls
+{"id":"f29ba02a-ae57-4509-84cc-9273ab72e0ad", "title":"Web page", "type":"web-page", "height":450, "file":"columnWidth.html"}
+```
 
 ## Space
 
@@ -269,15 +303,11 @@ However, too much animation can physically make your users sick. Here is an exam
 
 > Source: fireart.studio
 
-## Decision fatigue
+Use the following interaction to experiment with different animation speeds and layout.
 
-You need to consider the impact of the choices that you present to a user. [Hick's Law](https://en.wikipedia.org/wiki/Hick%27s_law) states that the time necessary to make a decision increases logarithmically with the number of choices presented. That doesn't mean that you should not provide options to the user, but that you should limit the number of choices given at any point in time.
-
-For example, the process of building a pizza involves many steps. First you must pick the location you want to order from, then the pizza size, cheese, meats, and veggies. Finally you need to provide payment. Each of those choices require a lot of input from the user, and so limiting the number of choices displayed at one time will help reduce decision fatigue and you will have better odds of them completing the ordering process.
-
-![Decision pizza making](designDecisionFatiguePizza.gif)
-
-> Source: Papa Johns
+```masteryls
+{"id":"1f60c33b-02f4-42d3-9e1f-62f04d3034e4", "title":"Web page", "type":"web-page", "height":800, "file":"animation.html"}
+```
 
 ## Device aware
 
@@ -305,35 +335,6 @@ The following website demonstrates what happens when an application fails to pro
 
 ![Orientation](designDeviceOrientation.jpg)
 
-## Performance
-
-📖 **Suggesting reading**:
-
-- [Google site performance](https://www.youtube.com/watch?v=OpMfx_Zie2g)
-- [MDN Performance](https://developer.mozilla.org/en-US/docs/Web/Performance)
-
-Application performance is an important aspect of your design that often gets overlooked until it is too late. Your application can be visually stunning, have intuitive navigation, and have amazing interactivity, but if it takes minutes to load or react to a user's actions, it will completely fail. Many studies have analyzed the relationship between performance and user retention. One [study](https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/) showed that as load times increase from one second to five seconds it causes 90% more users to bounce, or leave the application.
-
-![Bounce rates](designPerformanceBounceRates.jpg)
-
-> Source: thinkwithgoogle.com
-
-You need to set performance goals for your application and consistently monitor how your application is doing. Generally you want your application to load in under a second. However, with modern single page web applications it can take several seconds to do the initial load. You can mitigate the appearance of a slow application by giving the impression of progress, by partially loading some content or displaying a loading animation.
-
-The Chrome debugging tools provide a lot of help for diagnosing your application performance. The network tab will show you the size of your application files and the amount of time it takes to transfer them.
-
-![Performance](designPerformanceNetwork.jpg)
-
-You can use the Chrome debugging Lighthouse tool to run an analysis of your application. This will give you an average performance rating based upon the initial load time, longest content paint, and time before the user can interact with the page.
-
-![Performance](designPerformance.jpg)
-
-## Short circuit
-
-Sometimes factors such as network latency will impact the performance of your application or make it partially unavailable. You want to consider how you can create a meaningful experience for your users even when you cannot provide full functionality. For example, your application might rely on a third party service for processing payment before they can access the application. Rather than deny the user access when the payment service is down, you could collect the payment information and attempt to process it later. In the meantime the user is allowed to continue working. If later, the payment processing fails, then you handle the problem just as if their credit card was cancelled after accepting payment.
-
-This ability to provide an alternative path is sometimes called short circuit or fallback functionality. This removes barriers from your application that otherwise would turn away customers, and they are usually not difficult to implement. You just need to consider each functional piece of your application and provide an alternative if that functionality is not available.
-
 ## Accessibility
 
 📖 **Suggesting reading**: [MDN Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
@@ -348,7 +349,101 @@ You can help users with visual impairments by considering color blindness when s
 | Audio    | Closed captions, textual alternatives, visual animation |
 | Physical | Keyboard navigation, element ordering                   |
 
-Many of the accessibility tools that users employ require that your HTML is well structured and has attributes that support [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics) standards. Make sure you understand the proper use of elements and aria when you design a production application.
+```masteryls
+{"id":"73326d7c-77e2-450a-9b71-3bb0bae11045", "title":"Web page", "type":"web-page", "height":700, "file":"colorBlind.html"}
+```
+
+### ARIA
+
+ARIA (Accessible Rich Internet Applications) is a set of technical attributes defined by the W3C that enhances the accessibility of web content, particularly for dynamic components and advanced user interface controls. In UX design, ARIA serves as a critical bridge between complex interactive elements—such as custom sliders, modal windows, or real-time status updates—and assistive technologies like screen readers. By applying ARIA roles, states, and properties to HTML, designers and developers provide the necessary semantic context to ensure that users with disabilities can navigate and interact with digital products effectively, even when standard HTML elements lack the built-in functionality to describe a specific UI behavior.
+
+When standard HTML5 elements (like `<button>` or `<input type="checkbox">`) do not meet specific design requirements, ARIA (Accessible Rich Internet Applications) attributes must be used to communicate the role, state, and properties of custom components to assistive technologies.
+
+#### Example: Accessible Custom Toggle Switch
+
+In this example, a custom toggle switch is built using a `<button>`. While it looks like a switch visually, screen readers need ARIA to understand its function and current state.
+
+```html
+<!-- The label is associated with the button via aria-labelledby -->
+<span id="notifications-label" class="label-text">Enable Notifications</span>
+
+<button type="button" role="switch" aria-checked="false" aria-labelledby="notifications-label" class="toggle-switch" onclick="toggleState(this)">
+  <span class="thumb"></span>
+</button>
+
+<script>
+  function toggleState(element) {
+    // Toggle the aria-checked attribute between "true" and "false"
+    const isChecked = element.getAttribute('aria-checked') === 'true';
+    element.setAttribute('aria-checked', !isChecked);
+
+    // Update visual styles via CSS classes if necessary
+    element.classList.toggle('is-active');
+  }
+</script>
+```
+
+Note that this example makes up for the lack of accessibility controls in the standard HTML button element. You must be careful not to overuse, or incorrectly use, ARIA attributes in your applications. Doing so make the code less maintainable.
+
+#### Key ARIA Attributes Explained
+
+| Attribute         | Purpose                                                                                                                                            |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `role="switch"`   | Informs the screen reader that the element is a type of checkbox that represents an "on/off" state rather than a simple "checked/unchecked" state. |
+| `aria-checked`    | Indicates the current state of the switch. This must be updated dynamically via JavaScript when the user interacts with the component.             |
+| `aria-labelledby` | Points to the ID of the text element that labels the switch, providing an "accessible name" so the user knows what they are toggling.              |
+
+### WCAG
+
+The Web Content Accessibility Guidelines (WCAG) are the internationally recognized standards for digital accessibility, developed by the World Wide Web Consortium (W3C). In UX design, adhering to WCAG ensures that digital products are inclusive for users with a diverse range of disabilities, including visual, auditory, motor, and cognitive impairments. These guidelines are organized around four foundational principles known as **POUR**: Perceivable, Operable, Understandable, and Robust.
+
+| Principle          | Definition                                                                                       | UX Design Application                                                                                     |
+| :----------------- | :----------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| **Perceivable**    | Information and interface components must be presented in ways that users can sense.             | Providing text alternatives for non-text content (alt text) and ensuring sufficient color contrast.       |
+| **Operable**       | User interface components and navigation must be functional and easy to use.                     | Ensuring all site features are accessible via keyboard and providing users enough time to complete tasks. |
+| **Understandable** | Information and the operation of the user interface must be clear and predictable.               | Using plain language, providing helpful error messages, and maintaining consistent navigation patterns.   |
+| **Robust**         | Content must be compatible with a wide variety of user agents, including assistive technologies. | Using valid HTML and ARIA labels so that screen readers can accurately interpret the interface.           |
+
+### Contrast ratios
+
+The Web Content Accessibility Guidelines (WCAG) establish specific contrast ratios to ensure that text and interactive elements are sufficiently distinguishable from their backgrounds. These standards are designed to assist users with low vision, color blindness, or situational impairments—such as high-glare environments—in perceiving information clearly. Contrast is measured as a ratio of the relative luminance between the foreground and background colors, ranging from 1:1 (no contrast) to 21:1 (maximum contrast, such as black text on a white background).
+
+| WCAG Level         | Text Type                             | Minimum Contrast Ratio |
+| :----------------- | :------------------------------------ | :--------------------- |
+| **AA** (Minimum)   | Normal Text (under 18pt or 14pt bold) | 4.5:1                  |
+| **AA** (Minimum)   | Large Text (18pt+ or 14pt+ bold)      | 3:1                    |
+| **AAA** (Enhanced) | Normal Text (under 18pt or 14pt bold) | 7:1                    |
+| **AAA** (Enhanced) | Large Text (18pt+ or 14pt+ bold)      | 4.5:1                  |
+
+```masteryls
+{"id":"a66cc13f-5ad3-4170-bbc9-1aa1e5b2ea6c", "title":"Web page", "type":"web-page", "height":1000, "file":"wcag.html"}
+```
+
+By following these standards—typically aiming for Level AA conformance—designers can create experiences that are not only legally compliant but also more usable for all individuals, regardless of their physical or cognitive abilities.
+
+### Best Practices for UX Accessibility
+
+1.  **Prefer Native HTML:** Only use ARIA if a native element cannot achieve the required design or behavior. For example, a standard `<input type="checkbox">` provides built-in keyboard support and state reporting without extra code.
+2.  **Keyboard Interactivity:** When using `role="switch"` on a non-button element (like a `div`), you must manually add `tabindex="0"` and handle "Enter" or "Space" key presses via JavaScript.
+3.  **State Synchronization:** Ensure the visual state (CSS) and the ARIA state (`aria-checked`) are always synchronized. Assistive technology relies solely on the ARIA attribute, not the visual CSS styles.
+
+## Internationalization
+
+Designing a global international application requires careful consideration from the beginning. Attempting to internationalize a complex, mature application after it has a domestic presence is very difficult.
+
+One of the most important aspects to consider is the translation of textual content and the ability of the user to select their desired language.
+
+![Unicode](designInternationalizationUnicode.jpg)
+
+Successful translation also requires the text to be rendered properly. For example, several languages are read from right to left. Therefore the content, and the application itself, must be displayed in that orientation.
+
+![Right to left](designInternationalizationRtl.jpg)
+
+Likewise the format for displaying dates, times, numbers, and currency varies greatly between nationalities. This includes country specific currency symbols (¥, $, €, or ฿), the order of date fields (MM/DD/YY or DD/MM/YY), and numerical separators (1,000.50 or 1.000,50).
+
+Iconography can also be a concern. An owl in the United States represents wisdom, but in some Asian countries it symbolizes stupidity. Icons that carry religious representations can be even more disruptive.
+
+Proper international design requires thought across the full technology stack. If data is not properly passed, stored, and rendered at every level of the stack it will fail to properly work globally. For example, dates and times should always be stored in a format that properly represents time zones (e.g. ISO 8601) and rendered based upon the user's location. That way when users do things like global calendaring or traveling between countries their data is not corrupted.
 
 ## Legal
 
@@ -439,3 +534,50 @@ Legal walls usually only protect the application vendor and provide little or no
 ![Cookie acceptance wall](designWallsLegal.png)
 
 Another common example of a legal wall is an application that requires the acceptance of terms and conditions before you can use the application. You want to minimize the impact of legal walls as much as possible since they lessen the user's experience and encourage the user to question why a legal consent is required in the first place.
+
+## Exercises
+
+```masteryls
+{8bd04a4c-d49f-48d0-b334-93f1f9264df9:"Applying Fitts's Law", "type":"multiple-choice"}
+According to Fitts's Law, which of the following changes would most effectively improve the usability of a primary Call-to-Action (CTA) button?
+
+- [x] Increasing the clickable area of the button and placing it closer to the user's expected cursor path.
+- [ ] Increasing the white space (padding) between the button and the user's focus area.
+- [ ] Changing the button's color to a low-contrast shade to make it less distracting.
+- [ ] Making the button smaller to ensure it doesn't interfere with the surrounding text content.
+```
+
+```masteryls
+{"id":"e1a5b678-044f-4e0b-9231-c604ac54f424", "title":"The Role of Functional Animation", "type":"multiple-choice"}
+In UX design, what is the primary purpose of "functional animation" as opposed to decorative animation?
+
+- [ ] To keep the user's attention on the screen for as long as possible by using constant motion
+- [ ] To hide slow back-end processing speeds by distracting the user with complex visual effects
+- [x] To explain state changes, provide feedback, and reduce the user's cognitive load
+- [ ] To ensure that the website meets the minimum requirements for modern CSS framework compliance
+```
+
+```masteryls
+{"id":"591a2b3a-020a-44e0-bd59-dd12d4fd9271", "title":"WCAG Text Contrast Standards", "type":"multiple-choice"}
+To meet the WCAG 2.1 Success Criterion 1.4.3 (Contrast Minimum) at the **Level AA** standard, what is the minimum required contrast ratio for standard-sized body text (less than 18pt or 14pt bold)?
+
+- [ ] 3:1
+- [x] 4.5:1
+- [ ] 7:1
+- [ ] 2.1:1
+```
+
+```masteryls
+{"id":"3d32eb56-a523-40ce-bf6a-3919754cd0d0", "title":"The Role of Whitespace", "type":"multiple-choice"}
+When designing a web interface, how does the strategic application of whitespace (negative space) primarily impact a user's interaction with the content?
+
+- [ ] It minimizes the overall page length to ensure all content remains "above the fold" for faster access.
+- [x] It enhances readability and visual hierarchy by defining relationships between elements and reducing cognitive overload.
+- [ ] It acts as a technical buffer to ensure that high-resolution images do not overlap during browser window resizing.
+- [ ] It is used to intentionally slow down the user's scanning speed to increase the "time on page" metric for SEO purposes.
+```
+
+```masteryls
+{"id":"874ca32f-0894-4cf6-897f-276848f55620", "title":"Bad UX example", "type":"essay" }
+Provide the URL for a website that violates principles of good UX design. Describe what the problem is an how it could be resolved.
+```

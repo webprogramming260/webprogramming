@@ -1,5 +1,9 @@
 # Promises
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRzCskqalrO8JG4A_Co__ps6EuvgXnrOZYkByycVm2X_9YFg9mvP151-JzzfyOl_5CSvKsf3LlfiPIT/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 📖 **Deeper dive reading**:
 
 - [MDN Using Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
@@ -107,10 +111,8 @@ coinToss
 
 ## ☑ Assignment
 
-This [CodePen](https://codepen.io/leesjensen/pen/RwJJKwj) uses promises to order pizzas. Create a fork of the pen and take some time to experiment with it. Modify the CodePen to include a new function that makes the pizza and include it in the promise chain.
 
-_If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
-
-### 🧧 Possible solution
-
-If you get stuck here is a [possible solution](https://codepen.io/leesjensen/pen/vYVgpyL).
+```masteryls
+{"id":"0d1e6e3d-8473-41ae-83f9-c074b95dafaa", "title":"Web page development", "type":"ai-web-page", "allowAiPrompt":false, "gradingCriteria":"The code must include a function that makes the pizza and is included in the promise chain", "height":500, "file":"pizzaPromise.html" }
+This code uses promises to order pizzas. Take some time to experiment with it. Modify the code to include a new function that makes the pizza and include it in the promise chain. If you get stuck use the **Discuss** feature to make progress.
+```

@@ -1,5 +1,9 @@
 # Authorization services
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTOKTq1Yq8U6fQn4IEk0XBcu06IfPGDu6qWltqmGB2J4la4juk55Y6hNe3HsGEVbPPHxlg5Eea4UXy1/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 If your application is going to remember a user's data then it will need a way to uniquely associate the data with a particular credential. That usually means that you `authenticate` a user by asking for information, such as an email address and password. You then remember, for some period of time, that the user has authenticated by storing an `authentication token` on the user's device. Often that token is stored in a [cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie) that is passed back to your web service on each request. The service can now associate data that the user supplies with a unique identifier that corresponds to their authorization token.
 
 ![authentication](authentication.png)
@@ -15,3 +19,22 @@ In an attempt to remove the complexity of authentication and authorization from 
 Authorization services often use standard protocols for authenticating and authorizing. These include standards such as [OAuth](https://en.wikipedia.org/wiki/OAuth), [SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language), and [OIDC](https://en.wikipedia.org/wiki/OpenID). Additionally, they usually support concepts like `Single Sign On` (SSO) and Federated Login. Single sign on allows a user to use the same credentials for multiple web applications. For example, you can log in to GitHub using your Google credentials. Federated login allows a user to log in once, and then the authentication token is reused to automatically log the user in to multiple websites. For example, logging in to Gmail allows you to also use Google Docs and YouTube without logging in again.
 
 For this course we will implement our own authentication using a simple email/password design. Knowing how to implement a simple authentication design will help you appreciate what authentication services provide. If you want to experiment with different authorization services you might consider [AWS Cognito](https://aws.amazon.com/cognito/), or [Google Firebase](https://firebase.google.com/docs/auth).
+
+## Exercises
+
+
+```masteryls
+{"id":"defe3e58-3278-494d-90db-1ae1793e9979", "title":"Authentication vs. Authorization", "type":"multiple-choice"}
+In the context of identity and access management (IAM), what is the primary functional difference between **authentication** and **authorization**?
+
+- [ ] Authentication determines the specific resources a user can access, while authorization verifies the user's claim of identity through credentials.
+- [x] Authentication verifies *who* a user is, while authorization determines *what* that authenticated user is allowed to do or access.
+- [ ] Authentication is the process of auditing user actions in a log, while authorization is the process of encrypting sensitive data.
+- [ ] Authentication refers to the physical security of a data center, while authorization refers to the digital firewall rules protecting a network.
+```
+
+
+```masteryls
+{"id":"1210a031-235a-4a65-a084-786dac9a4f75", "title":"Authentication Tokens", "type":"essay" }
+What is the purpose of an authentication token?
+```

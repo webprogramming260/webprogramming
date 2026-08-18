@@ -1,5 +1,9 @@
 # Security practice
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSLYWsTvgWLc_byN1mIS7sGKhwhxmiQCCIwJ5eEBLSvVNsxauR5kh-LgKPIj8_FO9vBvT8tqa4wvSYd/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 You will not really internalize how security exploits work until you get some practice with them. One way to do this is to use a practice security web application. There are lots of practice applications, but we will discuss [Juice Shop](https://soundcloud.com/braimee/owasp-juice-shop-jingle).
 
 ## Juice Shop
@@ -39,3 +43,10 @@ You can solve the first hacking challenge by discovering the hidden score board 
 You can then find a challenge that looks interesting and try to solve it. Challenges that have a tutorial icon will step you through the challenge and explain how it works. You can then use that knowledge to solve challenges that don't have a tutorial.
 
 To begin, it is suggested that you do the `DOM XSS` tutorial. This will show you how to do a XSS attack using the application search input.
+
+
+```masteryls
+{"id":"0edff028-d213-489b-8d8e-e92e01e3daee", "title":"Juice Shop", "type":"essay" }
+Describe what you did to solve the DOM XSS challenge.
+```
+

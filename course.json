@@ -1,1181 +1,1291 @@
 {
-  "title": "Web Programming",
+  "title": "Web Programming v2",
   "links": {},
   "externalRefs": {
-    "canvasCourseId": "32210"
+    "canvasCourseId": "36027",
+    "canvasScheduleFileId": "7491e895-8aab-400d-9b9b-1dcdfdf78b65",
+    "canvasMasteryAssignmentId": 1373840
+  },
+  "schedule": {
+    "id": "7db53081-d129-4698-8e24-8d449cfc9f3f",
+    "files": [
+      {
+        "id": "7491e895-8aab-400d-9b9b-1dcdfdf78b65",
+        "title": "📅 Winter 2026 Schedule",
+        "path": "schedule/schedule.md",
+        "default": false,
+        "state": "published"
+      },
+      {
+        "id": "144c7d47-63e1-4e38-b3bb-17f0ae5f6898",
+        "title": "Summer 2026 Schedule",
+        "path": "schedule/summer-2026-schedule.md",
+        "default": true,
+        "state": "published"
+      }
+    ]
   },
   "modules": [
     {
       "title": "Course info",
+      "externalRefs": {
+        "canvasModuleId": 393330
+      },
       "topics": [
         {
           "title": "Home",
           "path": "README.md",
-          "id": "6d489420-b320-4bc9-b43d-5c041a08b6bf",
+          "id": "84e8268d-0a0e-4c94-a9b1-34e31c78bb12",
           "state": "published",
-          "interactions": [],
-          "commit": "408c675affb624682b43dc15c914cc0913a63f5c",
+          "interactions": [
+            "ef2f9d20-99b5-4adc-ab98-3a6536234103"
+          ],
           "externalRefs": {
-            "canvasPageId": 1497953
-          }
-        },
-        {
-          "title": "📅 Schedule",
-          "path": "schedule/schedule.md",
-          "id": "2680f434-f121-46bd-a858-5fb6d656a3df",
-          "state": "published",
-          "interactions": [],
-          "commit": "315b9e4abf532c96b31f6c3a2b6ca2d2bfb2a8c6",
-          "externalRefs": {
-            "canvasPageId": 1510917
+            "canvasPageId": 1583371
           }
         },
         {
           "title": "Syllabus",
           "path": "instruction/syllabus/syllabus.md",
-          "id": "869b2c88-d937-43af-8beb-6c06751270ae",
+          "id": "2a2c0a38-93b4-4e6c-987f-630bf4fc9a2c",
           "state": "published",
-          "interactions": [],
-          "commit": "b060e120a24ba73015d7fe3aee71ece6a849a29d",
+          "interactions": [
+            "cae08349-d561-4c4b-9a84-208fab172b36"
+          ],
           "externalRefs": {
-            "canvasPageId": 1497955
-          }
-        },
-        {
-          "title": "Instruction topics",
-          "path": "instruction/modules.md",
-          "id": "73e1af7c-4c2d-4d01-a03c-74dcf2d771bb",
-          "state": "published",
-          "interactions": [],
-          "commit": "dca24a064d6ad8bf21088607e075af9c4a9a73b2",
-          "externalRefs": {
-            "canvasPageId": 1497956
+            "canvasPageId": 1583372
           }
         }
       ]
     },
     {
       "title": "Development essentials",
+      "externalRefs": {
+        "canvasModuleId": 393331
+      },
       "topics": [
         {
-          "title": "☑ Course Introduction",
+          "title": "Course Introduction",
+          "type": "instruction",
           "path": "instruction/essentials/introduction/introduction.md",
-          "id": "bdfd6d6e-9f39-4dc2-8494-4678a931a804",
+          "id": "43d47065-2706-45b4-a06c-a9aa279a6358",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497957
-          }
+          "interactions": [
+            "6fdc2fdb-e3de-49c9-ba25-f66b0da68d1a"
+          ],
+          "description": ""
         },
         {
-          "title": "Why am I here?",
-          "path": "instruction/essentials/whyAmIHere/whyAmIHere.md",
-          "id": "4fb4310e-9abc-4187-a816-084e3f03ce71",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497958
-          }
-        },
-        {
-          "title": "☑ AWS account",
+          "title": "AWS account",
+          "type": "instruction",
           "path": "instruction/essentials/awsAccount/awsAccount.md",
-          "id": "9443b922-92cc-4ca4-8204-c732ee196f98",
+          "id": "3c862f0a-66ef-4478-8fd3-a3a4293f1197",
           "state": "published",
-          "interactions": [],
-          "commit": "c4bbc6378a27767b366acbe36f56ca2d15a7f031",
-          "externalRefs": {
-            "canvasPageId": 1497959
-          }
+          "interactions": [
+            "95f8915a-4870-461b-8c54-711a5b44ebf8"
+          ],
+          "description": ""
         },
         {
           "title": "Late policy",
           "path": "instruction/essentials/latePolicy/latePolicy.md",
-          "id": "9dce60c0-267d-4397-8ad3-2a5aca3f1d98",
+          "id": "297e8bbb-24b0-44f0-8b1d-cec497a23a29",
           "state": "published",
-          "commit": "28d0703922cfbb76b8f759e9f6158c4a16c36e1c",
-          "externalRefs": {
-            "canvasPageId": 1497960
-          }
+          "interactions": [
+            "a819fd43-c894-4945-b851-3b513d659573"
+          ]
         },
         {
           "title": "Startup application",
           "path": "instruction/essentials/startup/startup.md",
-          "id": "2f4948ae-f7b2-4823-956c-cc486de7621a",
+          "id": "5d60f39a-7825-4f87-99e2-66760c91b945",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497961
-          }
+          "interactions": [
+            "e0524127-4cf0-4fc8-aa8d-bfcaee7ca4e2"
+          ]
         },
         {
-          "title": "☑ Demo day submission",
+          "title": "Demo day",
+          "type": "instruction",
           "path": "instruction/webFrameworks/demoDay/demoDay.md",
-          "id": "0477a3ad-5fc1-4fa4-947e-1c7b5af53d01",
+          "id": "d154a1e4-1c7a-426d-ac79-ab43a739bd02",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497962
-          }
+          "interactions": [],
+          "description": ""
         },
         {
           "title": "Let's play Simon",
           "path": "instruction/essentials/simon/simon.md",
-          "id": "af09ce7e-d234-422c-97ab-4a92d7508045",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497963
-          }
+          "id": "3488f380-2670-433c-aeef-c014394d1769",
+          "state": "published"
         },
         {
-          "title": "☑ The Console",
-          "path": "instruction/essentials/console/console.md",
-          "id": "990a0df4-77da-44ec-b7e8-667b6dac0ab0",
+          "title": "Partnering with AI",
+          "type": "instruction",
+          "path": "instruction/partnering-with-ai/partnering-with-ai.md",
+          "id": "96e3a6d4-8b60-4cdb-9f2c-aedaa2cb8a15",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497969
-          }
+          "interactions": [
+            "2b2f6f12-7443-4269-a90f-9e88cd7b25b0"
+          ],
+          "description": "Explain why you want to use AI to build web apps, how to get a copilot educational license, and how to use copilot to build a web app interactively in vscode"
+        },
+        {
+          "title": "The Console",
+          "type": "instruction",
+          "path": "instruction/essentials/console/console.md",
+          "id": "2824abc8-ef18-443d-8cb2-744bcc4102ba",
+          "state": "published",
+          "interactions": [
+            "17b331a2-c57e-4959-8b12-f9ea064e208b"
+          ],
+          "description": ""
         },
         {
           "title": "Git",
           "path": "instruction/essentials/git/git.md",
-          "id": "c43e9ec4-00fa-4242-ad51-e46fc4ba1a8a",
+          "id": "de621ad4-595f-4347-b852-b9b88981813f",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497964
-          }
+          "interactions": [
+            "39686cd9-b760-4b3a-a26d-5bd89b55f2fa"
+          ]
         },
         {
-          "title": "☑ GitHub",
+          "title": "GitHub",
+          "type": "instruction",
           "path": "instruction/essentials/gitHub/gitHub.md",
-          "id": "b2748609-0b17-44f4-8ae5-d2bea903e14f",
+          "id": "d77e713c-1ffa-4982-a26b-cc8d5817f05a",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497965
-          }
+          "interactions": [
+            "4134acb2-3190-49b2-a22f-c31c1d9b51c2",
+            "eb260e82-1162-494d-9d9c-21ed68b68d16"
+          ],
+          "description": ""
         },
         {
           "title": "🚀 Startup Specification",
+          "type": "project",
+          "points": 50,
           "path": "instruction/essentials/startupSpec/startupSpec.md",
-          "id": "a5ec7378-0c85-4f13-9b78-4e6506b2b508",
+          "id": "7cbe0e92-3536-45ad-b38c-d28f1be714b5",
           "state": "published",
-          "interactions": [],
-          "commit": "a4b5f649a48dd4b91c9f3302177f9d0d0b4c5eac",
+          "interactions": [
+            "6134acb2-3190-49b2-a22f-c31c1d9b51c2"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1497966
+            "canvasAssignmentId": 1373671
           }
         },
         {
           "title": "Asking questions",
           "path": "instruction/essentials/askingQuestions/askingQuestions.md",
-          "id": "0a6bc3dd-3b3c-4459-b092-f121bb06fef8",
+          "id": "0150c66e-d356-4d5b-87f2-3edec7bc8763",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497967
-          }
+          "interactions": [
+            "9f35a1b4-8968-4829-b951-bd7a1ad2ee08"
+          ]
         },
         {
-          "title": "☑ Discord",
+          "title": "Discord",
+          "type": "instruction",
           "path": "instruction/essentials/discord/discord.md",
-          "id": "01d74dc2-806d-47a6-84f3-55ad19535964",
+          "id": "d2dc86f2-7876-4833-9453-8c08be34b867",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497968
-          }
+          "interactions": [
+            "c15f1685-7ab3-4a61-90cb-f959fb03b62a"
+          ],
+          "description": ""
         },
         {
           "title": "Editors",
           "path": "instruction/essentials/editors/editors.md",
-          "id": "2265975f-c072-41dd-80c4-16e2f959a812",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497982
-          }
+          "id": "0a074321-6c2f-4175-847e-aac49368ba07",
+          "state": "published"
         },
         {
           "title": "History of the web",
           "path": "instruction/essentials/history/history.md",
-          "id": "77578030-bbcf-4267-a3fb-437e115585c9",
+          "id": "89cc51de-a431-4c8e-be10-da9a1ca6bd89",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1497994
-          }
+          "interactions": [
+            "1383742c-41c4-458c-9af8-76c6be90b28d"
+          ]
         },
         {
           "title": "Demonstration",
           "path": "instruction/essentials/demo/demo.md",
-          "id": "66dd3ef0-9271-4385-8214-0452d25aee56",
+          "id": "e627317e-e5df-4895-b786-27c13681470d",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498004
-          }
+          "interactions": [
+            "eecac632-b04b-49a9-a0b6-3c3961cb3e58"
+          ]
         }
       ]
     },
     {
       "title": "Web server setup",
+      "externalRefs": {
+        "canvasModuleId": 393332
+      },
       "topics": [
         {
           "title": "Technology stack",
           "path": "instruction/essentials/techStack/techStack.md",
-          "id": "61d3e99a-03f5-4365-9713-fb170d7b1db7",
+          "id": "3ba0daf2-c9cb-4b57-aff7-c4d1715d497f",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498005
-          }
+          "interactions": [
+            "22f24721-5dc0-4595-bf54-7761b265fc6e"
+          ]
         },
         {
           "title": "The internet",
           "path": "instruction/webServers/internet/internet.md",
-          "id": "d8f549bd-423b-40e8-b503-f0c50f93579e",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498006
-          }
+          "id": "d9929620-75dd-4917-b0e5-64f0e95b200f",
+          "state": "published"
         },
         {
-          "title": "☑ Amazon Web Services - EC2",
+          "title": "Amazon Web Services - EC2",
+          "type": "instruction",
           "path": "instruction/webServers/amazonWebServicesEc2/amazonWebServicesEc2.md",
-          "id": "bf3c5698-c3e7-4978-89c1-e590e642987b",
+          "id": "36d1da56-eddc-44c4-bf5c-d093ef8b6d0f",
           "state": "published",
-          "interactions": [],
-          "commit": "a9b8a159c63aee5b4c02950b9708a7ea6e4601f5",
-          "externalRefs": {
-            "canvasPageId": 1498007
-          }
+          "interactions": [
+            "2ef4a23e-17f9-4d97-bf73-a981e1b3312e"
+          ],
+          "description": ""
         },
         {
           "title": "Domain names",
           "path": "instruction/webServers/domainNames/domainNames.md",
-          "id": "364262ab-5fab-46df-ae7e-331ce8a85bd3",
+          "id": "b01f4f7e-f4d5-40d6-8550-80bbbbd4e87e",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498008
-          }
+          "interactions": [
+            "40be2110-3597-41ed-afbc-91f0daf97ed0"
+          ]
         },
         {
-          "title": "☑ Amazon Web Services - Route 53",
+          "title": "Amazon Web Services - Route 53",
+          "type": "instruction",
           "path": "instruction/webServers/amazonWebServicesRoute53/amazonWebServicesRoute53.md",
-          "id": "3a1230ce-833a-4c23-94a4-faaf2b20c70d",
+          "id": "9813019c-cbcb-4cc5-8992-958d05e60e8a",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498009
-          }
+          "interactions": [
+            "2c001816-b07f-4ac0-b2b0-34c7b74d7c32"
+          ],
+          "description": ""
         },
         {
           "title": "Caddy",
           "path": "instruction/webServers/caddy/caddy.md",
-          "id": "2923c003-340a-4a6f-ae97-01cb3f10cc87",
+          "id": "809544f1-3f67-458c-ad8a-b2d3c700707b",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498010
-          }
+          "interactions": [
+            "a34ac072-d0cd-45ca-99b7-cd68de602b76",
+            "2a9e30d3-27d0-47be-b272-479c14333b73"
+          ]
         },
         {
-          "title": "☑ HTTPS, TLS, and certificates",
+          "title": "HTTPS, TLS, and certificates",
+          "type": "instruction",
           "path": "instruction/webServers/https/https.md",
-          "id": "6cb78336-c521-4daa-99e1-85355a419bad",
+          "id": "f195faf7-3f38-42dc-9a05-4480a426beb7",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498011
-          }
+          "interactions": [
+            "66953e86-234d-4c50-b2a2-d37afec943f0"
+          ],
+          "description": ""
         },
         {
           "title": "🚀 Startup AWS",
+          "type": "project",
+          "points": 100,
           "path": "instruction/webServers/startupAWS/startupAWS.md",
-          "id": "14d20891-6b0a-4f4a-827f-6a88cdaa5174",
+          "id": "8eff8b18-8645-4fd6-aff4-d4ad25df9860",
           "state": "published",
-          "interactions": [],
-          "commit": "bb902e72fb81dd7306782ee1bd2faf50149c38f1",
+          "interactions": [
+            "6edadab4-91ee-46f0-952e-469f42dc841e"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498012
+            "canvasAssignmentId": 1373672
           }
         }
       ]
     },
     {
       "title": "HTML",
+      "externalRefs": {
+        "canvasModuleId": 393333
+      },
       "topics": [
-        {
-          "title": "☑ CodePen",
-          "path": "instruction/essentials/codePen/codepen.md",
-          "id": "c32515df-9013-46d9-8b82-3bbff0d0d63c",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498013
-          }
-        },
         {
           "title": "HTML introduction",
           "path": "instruction/html/introduction/introduction.md",
-          "id": "e1e417d3-f7c9-400a-8934-4b26cb9fed13",
+          "id": "d99df9c2-1cd1-4da2-9e25-3cc8c5d3e902",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498014
-          }
+          "interactions": [
+            "77bcd45a-b7ef-4bc4-bdb2-4ad2adfda22e"
+          ]
         },
         {
-          "title": "☑ Structure",
+          "title": "Structure",
+          "type": "instruction",
           "path": "instruction/html/structure/structure.md",
-          "id": "f4e4893b-6287-490d-ae10-70522e597b1c",
+          "id": "4339fab0-841c-48e2-993c-7b9310cd5f26",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498015
-          }
+          "interactions": [
+            "a6fc521e-33ca-4116-bc6b-9a6507f58642"
+          ],
+          "description": ""
         },
         {
-          "title": "☑ Input",
+          "title": "Input",
+          "type": "instruction",
           "path": "instruction/html/input/input.md",
-          "id": "f082e590-2e2d-4b6d-a27e-9059848f29fb",
+          "id": "392e4c96-5bf6-48db-8496-82346b40e7e8",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498016
-          }
+          "interactions": [
+            "0875ed29-b9fb-4b47-a3bf-05cd622d574b"
+          ],
+          "description": ""
         },
         {
-          "title": "☑ Media",
+          "title": "Media",
+          "type": "instruction",
           "path": "instruction/html/media/media.md",
-          "id": "dfc0ccfe-c784-44b3-8bbc-454d612791dc",
+          "id": "b4981931-3b9b-4498-8ad8-44b37be1ef5c",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498017
-          }
+          "interactions": [
+            "5cdb3b2d-c448-4dfb-a6f3-3bf87946e906"
+          ],
+          "description": ""
+        },
+        {
+          "title": "Review and explore",
+          "type": "instruction",
+          "path": "instruction/html-exploration/html-exploration.md",
+          "id": "d3769d1e-6e36-40e2-8a07-377013608f8a",
+          "state": "published",
+          "interactions": [
+            "b9b2c3d4-e5f6-7890-1234-567890123465",
+            "9f5c55c8-27cb-4042-b75e-9844336409ce",
+            "4cfe6080-6b5f-4296-97fc-9bc4cb11f559"
+          ],
+          "description": ""
         },
         {
           "title": "Simon HTML",
           "path": "instruction/simon/simonHtml/simonHtml.md",
-          "id": "91fa6f53-d63a-43b9-81c3-eedd55ffb658",
+          "id": "58c0002c-5d62-44c7-be44-e773ee8a6cb8",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498018
-          }
+          "interactions": [
+            "9c16c49d-eed4-4852-9843-c994c9542dfd",
+            "83677e81-fe42-4657-be14-d4537d10f7d9"
+          ]
         },
         {
           "title": "Simon HTML video",
           "type": "video",
           "path": "https://www.youtube.com/embed/zg7eDNRMnWA",
-          "id": "1f5cdfca-6e6a-4db6-947f-936500d7b8c5",
+          "id": "b7b02a66-bbad-4617-98aa-2c67e8300b0c",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup HTML",
+          "type": "project",
+          "points": 100,
           "path": "instruction/html/startupHtml/startupHtml.md",
-          "id": "4eaeec05-3dfc-4f9d-9c76-e2f64e1c4660",
+          "id": "bcb184b3-7d76-4313-b701-8f6172725344",
           "state": "published",
+          "interactions": [
+            "6c137756-4306-431c-bec8-bc44706cff71"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498019
+            "canvasAssignmentId": 1373673
           }
         }
       ]
     },
     {
       "title": "CSS",
+      "externalRefs": {
+        "canvasModuleId": 393334
+      },
       "topics": [
         {
           "title": "CSS introduction",
           "path": "instruction/css/introduction/introduction.md",
-          "id": "5af1172c-868c-404b-957f-5f6331d866f8",
+          "id": "95954169-d374-4d01-9a62-a35a79e2b1dd",
           "state": "published",
-          "interactions": [],
-          "commit": "1317c7493b747ab6b9c42138186888145f8f4589",
-          "externalRefs": {
-            "canvasPageId": 1498020
-          }
+          "interactions": [
+            "900199ab-aebe-4b11-968f-768deff00b11",
+            "438b7332-5266-4185-b951-c2c399c7c72a"
+          ]
         },
         {
           "title": "Selectors",
           "path": "instruction/css/selectors/selectors.md",
-          "id": "761f4a02-59b6-4d0f-b451-3e90ef9b81a7",
+          "id": "c89f3fee-c8f5-4e12-b17c-018ddb4cc70a",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498021
-          }
+          "interactions": [
+            "9bc25c74-548c-4430-b7e0-6cc8971a5cc4"
+          ]
         },
         {
           "title": "Declarations",
           "path": "instruction/css/declarations/declarations.md",
-          "id": "84b312bf-92b1-484b-ae15-42f089a0a830",
+          "id": "eaf32abc-95ed-4550-afeb-699e77e9dc40",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498022
-          }
+          "interactions": [
+            "d63220b7-a462-46bc-a70f-ad675f9bc072",
+            "49513c22-eef3-47e6-8e87-3531954e7660"
+          ]
         },
         {
           "title": "Fonts",
           "path": "instruction/css/fonts/fonts.md",
-          "id": "e9172db0-bc35-4d00-8110-6c2472c8474e",
+          "id": "d94887e3-ca21-4365-bb20-ebb9cf6b5654",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498023
-          }
+          "interactions": [
+            "13b69025-c7e6-403a-aae3-a463a1f5f7ec"
+          ]
         },
         {
           "title": "Animation",
           "path": "instruction/css/animation/animation.md",
-          "id": "4b8771bd-5a8e-427c-8f03-7f0c885a4949",
+          "id": "65265215-42bc-4199-8a3c-0bb3c5f65073",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498024
-          }
+          "interactions": [
+            "37433cdd-9dd1-4009-857a-f36bd4c97ab6",
+            "c7c8584b-11a9-424e-89cb-c8adfb13e2b6",
+            "a8b4122a-c249-4f5c-a35d-3107fc95715a"
+          ]
         },
         {
           "title": "Debugging CSS",
           "path": "instruction/css/debuggingCss/debuggingCss.md",
-          "id": "c6c5523b-4c18-4b8b-9546-3d1fafffd30b",
+          "id": "642673c9-afde-4635-86fa-4dba7c5a4137",
           "state": "published",
-          "interactions": [],
-          "commit": "066c94526e09a83209b36fdba96a551e5202690f",
-          "externalRefs": {
-            "canvasPageId": 1498025
-          }
+          "interactions": []
         },
         {
-          "title": "☑ CSS practice",
+          "title": "CSS practice",
+          "type": "instruction",
           "path": "instruction/css/practice/practice.md",
-          "id": "46e34117-8cc4-4d7a-a9c3-8c68d094d548",
+          "id": "59544ce5-cbb6-4bf2-9e15-b9b5cd310bd1",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498026
-          }
+          "interactions": [
+            "37a86410-ae62-446a-a8d4-69325c4a0157"
+          ],
+          "description": ""
         },
         {
           "title": "Responsive design",
           "path": "instruction/css/responsive/responsive.md",
-          "id": "64d70146-7bf5-408b-9894-ac4ba8d5a086",
+          "id": "990fa327-84c9-45f0-aefd-880d3a01ac25",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498027
-          }
+          "interactions": [
+            "e75c7257-bc32-4b55-9f35-bf535b7bc571"
+          ]
         },
         {
           "title": "Grid",
           "path": "instruction/css/grid/grid.md",
-          "id": "c841365f-6e97-473c-8129-f01299bd360f",
+          "id": "abe420f5-495a-4727-8931-0cea766ea843",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498028
-          }
+          "interactions": [
+            "7bcb0c87-2acf-4c83-8134-20059674a5a2"
+          ]
         },
         {
-          "title": "☑ Flex",
+          "title": "Flex",
+          "type": "instruction",
           "path": "instruction/css/flexbox/flexbox.md",
-          "id": "e1c16ce4-84a5-4063-b55a-343a7bd87c55",
+          "id": "32bc9d1d-4f52-4285-9708-10c252e999a4",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498029
-          }
+          "interactions": [
+            "6332b90a-e5af-423d-9d1c-27e3ac6ef8aa"
+          ],
+          "description": ""
         },
         {
-          "title": "☑ CSS frameworks",
-          "path": "instruction/css/frameworks/frameworks.md",
-          "id": "475720b5-b11b-4f35-9167-568ab3573f3b",
+          "title": "Responsive design demo",
+          "type": "embedded",
+          "path": "https://leesjensen.com/demo/responsive.html",
+          "id": "a37cfe45-c70b-4537-b9f3-15f41599c761",
           "state": "published",
-          "interactions": [],
-          "commit": "f55f0f9ce4eb32de24e34836a3873bf5561f317e",
-          "externalRefs": {
-            "canvasPageId": 1498030
-          }
+          "description": "https://leesjensen.com/demo/responsive.html"
+        },
+        {
+          "title": "CSS frameworks",
+          "type": "instruction",
+          "path": "instruction/css/frameworks/frameworks.md",
+          "id": "172ab5b4-04bc-4c42-9b5f-57c4a8989d54",
+          "state": "published",
+          "interactions": [
+            "e790f0e1-a84b-4046-9149-c1cc0bbdb01f"
+          ],
+          "description": ""
         },
         {
           "title": "Tailwind",
           "path": "instruction/css/tailwind/tailwind.md",
-          "id": "ed787296-29dc-4b7e-accd-5a1f37a3c00d",
+          "id": "29c105f5-3d98-4743-8947-3bad1efd169b",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498031
-          }
+          "interactions": [
+            "34a35a7b-6a78-4f40-bf6d-1fef7be61963",
+            "bfc61aa3-7da1-41f5-922b-630c5bcd4db4"
+          ]
         },
         {
           "title": "Simon CSS",
           "path": "instruction/simon/simonCss/simonCss.md",
-          "id": "ddff42e2-8451-4467-b5b4-b05621dc92fb",
+          "id": "12bd61d7-e363-4f7f-9e2b-927386e4ecea",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498032
-          }
+          "interactions": [
+            "ac16c49d-eed4-4852-9843-c994c9542dfd"
+          ]
         },
         {
           "title": "Simon CSS video",
           "type": "video",
           "path": "https://www.youtube.com/embed/N7DVKsvUJgM",
-          "id": "625cc17e-f079-4a7b-8b6f-22c8d71f7357",
+          "id": "8f4c2ce0-214a-4c50-ae9b-14f71151685e",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup CSS",
+          "type": "project",
+          "points": 100,
           "path": "instruction/css/startupCss/startupCss.md",
-          "id": "78a0fce4-b3b7-47a4-8911-0623981967ce",
+          "id": "ce71d22f-df42-4835-9d7c-a3afe572dc88",
           "state": "published",
-          "interactions": [],
-          "commit": "25b50b1f2e0dbfb993d548144f29ef06d8777cea",
+          "interactions": [
+            "b249b114-0510-4280-bd69-06e557e7bbd4"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498033
+            "canvasAssignmentId": 1373674
           }
         }
       ]
     },
     {
       "title": "JavaScript & Web frameworks",
+      "externalRefs": {
+        "canvasModuleId": 393335
+      },
       "topics": [
         {
           "title": "JavaScript introduction",
           "path": "instruction/javascript/introduction/introduction.md",
-          "id": "7111012f-1970-4d89-b2ec-36e652546367",
+          "id": "846ac3d3-8703-4a2e-ae53-0144967cbee2",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498034
-          }
+          "interactions": []
         },
         {
           "title": "Adding JavaScript to HTML",
           "path": "instruction/javascript/addingToHtml/addingToHtml.md",
-          "id": "3e64f91b-b12b-4d4a-a17e-8de4c435d5ca",
+          "id": "abd52096-048d-47e5-b50c-8386076edb37",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498035
-          }
+          "interactions": [
+            "cb181c05-18c3-49a3-bdcf-f4755b53f56c"
+          ]
         },
         {
           "title": "Node.js",
           "path": "instruction/javascript/node/node.md",
-          "id": "2c8a5bb4-8b6e-424b-8bb0-9ddcef83b584",
+          "id": "d37bc80e-b699-4249-9a11-388e2548fd29",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498036
-          }
+          "interactions": [
+            "6ee76cff-5ee4-4681-87af-919fd6c43221"
+          ]
         },
         {
           "title": "Debugging JavaScript",
           "path": "instruction/javascript/debuggingJavascript/debuggingJavascript.md",
-          "id": "ff7ff901-d07a-45b5-a579-079d0fd057fb",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498037
-          }
+          "id": "e294a41d-79c6-4101-8712-94b3fe230949",
+          "state": "published"
         },
         {
           "title": "Debugging Node.js",
           "path": "instruction/javascript/debuggingNode/debuggingNode.md",
-          "id": "e52ce4e4-bb8b-4531-bceb-e89a3acafa07",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498038
-          }
+          "id": "c59b1ddc-386e-4c87-b304-dc1995363f30",
+          "state": "published"
         },
         {
           "title": "Web frameworks",
           "path": "instruction/webFrameworks/introduction/introduction.md",
-          "id": "c63d9ddc-7c73-4a54-98e5-16060bd75222",
+          "id": "f972436f-fd9c-45ca-a51a-156b1e6cbb03",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498039
-          }
+          "interactions": [
+            "9ad21eaa-cd4f-4e2f-8ede-ece0177ef6a5"
+          ]
         },
         {
           "title": "Toolchains",
           "path": "instruction/webFrameworks/react/toolChains/toolChains.md",
-          "id": "06676ee0-c926-4c83-bca0-c44635fe9a0e",
+          "id": "f706ca9d-1aad-469c-a549-4edaa7b581fa",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498040
-          }
+          "interactions": [
+            "toolchain-concept-check"
+          ]
         },
         {
-          "title": "☑ Vite",
+          "title": "Vite",
+          "type": "instruction",
           "path": "instruction/webFrameworks/react/vite/vite.md",
-          "id": "d23372d6-12ae-45ec-83b9-1b3880b8592a",
+          "id": "94d58212-317a-4744-a172-00ca145f2858",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498041
-          }
+          "interactions": [
+            "d16e7f1e-e689-4862-bf06-7ceda139a4de"
+          ],
+          "description": ""
         },
         {
           "title": "React",
           "path": "instruction/webFrameworks/react/introduction/introduction.md",
-          "id": "cbbecdb5-1311-4407-b4f0-16e3e319d4e2",
+          "id": "5bc6a62d-3106-4ace-9c21-08ddcc992f0f",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498042
-          }
+          "interactions": [
+            "b55d56f9-ade3-4b8a-8b54-18e448995a11",
+            "a55d56f9-ade3-4b8a-8b54-18e448995a22",
+            "b55d56f9-ade3-4b8a-8b54-18e448995a32"
+          ]
         },
         {
-          "title": "☑ Components",
+          "title": "Components",
+          "type": "instruction",
           "path": "instruction/webFrameworks/react/components/components.md",
-          "id": "0f370b75-bbc4-4411-bc49-5d386f3ec602",
+          "id": "ef3d76f9-2d32-4b26-a1b1-2a279b742a9e",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498043
-          }
+          "interactions": [
+            "cf497eee-ab3e-4a39-b2f3-f6f00a5eb6f6",
+            "cc76e021-8012-43be-bb3b-8427ee7aabbf"
+          ],
+          "description": ""
         },
         {
-          "title": "☑ Router",
+          "title": "Router",
+          "type": "instruction",
           "path": "instruction/webFrameworks/react/router/router.md",
-          "id": "16e16d6f-e80f-4a7e-9aa9-1f31bca3a85c",
+          "id": "41c73fe0-dd77-477a-85ae-8046eed7ccc7",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498044
-          }
+          "interactions": [
+            "f1da9f1e-e9e2-49ac-b3ec-99cded897e4c"
+          ],
+          "description": ""
         },
         {
-          "title": "☑ Simon React P1: Routing",
+          "title": "Simon React P1: Routing",
+          "type": "instruction",
           "path": "instruction/simon/simonReact/simonReactP1.md",
-          "id": "0d93b198-31ff-4808-bbeb-d6eed3fbec91",
+          "id": "a2ba4351-fc02-41b7-8795-3d9ac17be2ff",
           "state": "published",
-          "interactions": [],
-          "commit": "6094709b10b3ebf3d125e50a115ea9cda167d26f",
-          "externalRefs": {
-            "canvasPageId": 1498045
-          }
+          "interactions": [
+            "bc16c49e-eed4-4852-9843-c994c9542dfd"
+          ],
+          "description": ""
         },
         {
           "title": "Simon React P1 video",
           "type": "video",
           "path": "https://www.youtube.com/embed/-Gv27DPUPbQ",
-          "id": "27408066-2c44-4f4a-9f4b-03557e5e2f2a",
+          "id": "fa73d003-cdb5-4272-8959-61544a674867",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup React P1: Routing",
+          "type": "project",
+          "points": 100,
           "path": "instruction/webFrameworks/startupReact/startupReactP1.md",
-          "id": "9960b760-57e3-4291-9b39-0649e08749bc",
+          "id": "a0744c55-1f96-424b-81fe-570ee3870963",
           "state": "published",
-          "interactions": [],
-          "commit": "63418295ae7d070a37aec7752f43d648ce0df533",
+          "interactions": [
+            "b6e9b25c-9338-43dc-af83-3801ef95c8f9",
+            "8a3b15ea-b4cf-4a2c-a151-3e2c8c27ecd5"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498046
+            "canvasAssignmentId": 1373675
           }
         },
         {
           "title": "JavaScript Console",
           "path": "instruction/javascript/console/console.md",
-          "id": "80c286a7-e37b-4b44-a150-b1735321e167",
+          "id": "a200c81b-f154-4699-beb7-8f9142ad164a",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498047
-          }
+          "interactions": [
+            "f79f6d59-ba17-418d-a8f3-e3ea16baaee4"
+          ]
         },
         {
           "title": "Functions",
           "path": "instruction/javascript/functions/functions.md",
-          "id": "571279c9-040d-4160-a5ab-fa1065289fa5",
+          "id": "183be696-976a-4df0-be54-166357455952",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498048
-          }
+          "interactions": [
+            "f88669f7-c9c5-4250-bfb3-c58968294f8c"
+          ]
         },
         {
           "title": "Arrow functions",
           "path": "instruction/javascript/arrow/arrow.md",
-          "id": "ce5aad0c-106c-4a4a-8d5a-65b422960a57",
+          "id": "02b9a912-938c-435c-afe1-6237a3a90128",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498049
-          }
+          "interactions": [
+            "2c99a226-2eea-4382-b74d-dd609e1be0a1",
+            "155bb729-1239-4569-8199-1cb5cc13f842"
+          ]
         },
         {
-          "title": "☑ Arrays",
+          "title": "Arrays",
+          "type": "instruction",
           "path": "instruction/javascript/array/array.md",
-          "id": "a91555b0-d483-4e8e-a471-863454ad1c71",
+          "id": "1f2e58f8-c29e-47f7-aee5-d7e86fff3745",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498050
-          }
+          "interactions": [
+            "3aa165a2-34b3-4395-a23a-e8c5018785e0",
+            "c0e860ee-dea3-4211-8b96-aa97828347b8"
+          ],
+          "description": ""
         },
         {
           "title": "Objects and classes",
           "path": "instruction/javascript/objectClasses/objectClasses.md",
-          "id": "c0e6f41d-fea1-4aed-874c-8ad9feb252a7",
+          "id": "a6483266-226b-482a-8f35-1c1878ad544e",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498051
-          }
+          "interactions": [
+            "dyn-obj-001"
+          ]
         },
         {
           "title": "Destructuring",
           "path": "instruction/javascript/destructuring/destructuring.md",
-          "id": "10a69d01-5357-47bc-8cc6-81cffd775e32",
+          "id": "6a68e93c-e941-4162-82af-fcb82c74d740",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498052
-          }
+          "interactions": [
+            "dda944de-a226-4787-87b2-02176f5719b5"
+          ]
         },
         {
           "title": "Time and interval",
           "path": "instruction/javascript/timeoutAndInterval/timeoutAndInterval.md",
-          "id": "6e41aac2-2b85-41e2-834a-09b997a7f716",
+          "id": "01c5785d-ebe0-4346-869d-0fb5d46a0929",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498053
-          }
+          "interactions": [
+            "b8866af7-c9c5-4250-bfb3-c58968294f8c"
+          ]
         },
         {
           "title": "Hooks",
           "path": "instruction/webFrameworks/react/hooks/hooks.md",
-          "id": "e4a6edb4-89b3-4b7e-b1b2-f30d04a6225f",
+          "id": "d2709f1b-a217-4c40-935a-00e8c1c7676a",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498054
-          }
+          "interactions": [
+            "16073f88-fc50-4a77-9a94-57144690f2bd",
+            "25c9b6d0-0074-458e-9cdf-2878abe27bb4"
+          ]
         },
         {
-          "title": "☑ Reactivity",
+          "title": "Reactivity",
+          "type": "instruction",
           "path": "instruction/webFrameworks/react/reactivity/reactivity.md",
-          "id": "6978f44c-02d4-46e0-a404-bb4a59ee09de",
+          "id": "ca717d53-f9d9-46d0-836b-72403a07edf5",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498055
-          }
+          "interactions": [
+            "b55d57fa-aee4-4b8a-8b54-18e448995a32"
+          ],
+          "description": ""
         },
         {
           "title": "JSON",
           "path": "instruction/javascript/json/json.md",
-          "id": "41d6fdb8-9bbd-4c95-a121-8c0b2d21390b",
+          "id": "d817fb60-bbe9-4e10-a7ed-1a8bdeb142b2",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498056
-          }
+          "interactions": [
+            "aee3f849-7c00-4c27-bbd6-8727d2e4823c"
+          ]
         },
         {
           "title": "LocalStorage",
           "path": "instruction/javascript/localStorage/localStorage.md",
-          "id": "8505567a-1e32-42f9-90ab-9480a6ea15e1",
+          "id": "dc4cc9f4-09b4-44ea-b146-19e7e4b0bcf1",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498057
-          }
+          "interactions": [
+            "0cc9e91e-e677-43a1-99e8-4e164e464b3b"
+          ]
         },
         {
           "title": "Simon React P2: Reactivity",
           "path": "instruction/simon/simonReact/simonReactP2.md",
-          "id": "740eb26d-0189-4077-88fe-b43b7043fe5e",
+          "id": "d75d2da4-b805-4cfd-ab91-8062f68cda00",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498065
-          }
+          "interactions": [
+            "3aff8d87-8a17-4b86-b2b4-1dfed2f63f9a"
+          ]
         },
         {
           "title": "Simon React P2 video",
           "type": "video",
           "path": "https://www.youtube.com/embed/xmH_DJF7kOQ",
-          "id": "346520cc-7da5-451f-a3df-54c54c2cb534",
+          "id": "9bf94960-7d32-4ca8-967c-e24460871da6",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup React P2: Reactivity",
+          "type": "project",
+          "points": 100,
           "path": "instruction/webFrameworks/startupReact/startupReactP2.md",
-          "id": "65816624-6bfe-4324-80f4-4b3c8042caae",
+          "id": "0997511e-7167-46df-8ce8-6d2530513332",
           "state": "published",
+          "interactions": [
+            "fe301f80-87fe-4afd-86af-492a6de0167f"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498066
+            "canvasAssignmentId": 1373676
           }
         },
         {
-          "title": "☑ Promises",
+          "title": "Promises",
+          "type": "instruction",
           "path": "instruction/javascript/promises/promises.md",
-          "id": "bdbe34c8-d2bf-44dd-aedb-ffd512fe3f56",
+          "id": "c1f64a19-98db-4202-ace7-0a4a08b44def",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498067
-          }
+          "interactions": [
+            "0d1e6e3d-8473-41ae-83f9-c074b95dafaa"
+          ],
+          "description": ""
         },
         {
-          "title": "☑ Async/await",
+          "title": "Async/await",
+          "type": "instruction",
           "path": "instruction/javascript/asyncAwait/asyncAwait.md",
-          "id": "6843c07d-eb3c-413d-9454-e233ca257d06",
+          "id": "01b3ded8-f148-413e-b1c3-1c4f9674836c",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498068
-          }
+          "interactions": [
+            "ad1e6e3d-9473-41ae-83f9-c074b95dafab"
+          ],
+          "description": ""
         },
         {
           "title": "String",
           "path": "instruction/javascript/string/string.md",
-          "id": "2e2e41b0-4846-49cf-b60d-47a17b120cb0",
+          "id": "4b424100-8093-495d-a7b8-507493a405e4",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498069
-          }
+          "interactions": [
+            "afadc858-7b3b-4623-aabe-95b3ef2f242b"
+          ]
         },
         {
           "title": "Types, operators, conditionals, and loops",
           "path": "instruction/javascript/typeConstruct/typeConstruct.md",
-          "id": "7b7cf670-07ab-417b-a95d-182d8f75ae91",
+          "id": "e6940572-2dc8-4d4f-a40b-3e16665a75b3",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498070
-          }
+          "interactions": [
+            "87c7299d-9eb3-4c1a-a14c-5686f805f141",
+            "d0dfb8f6-7b0b-45ed-b6ed-27b041440f7f",
+            "45a11ede-ba2a-4c74-892f-0398d542214a"
+          ]
         },
         {
-          "title": "☑ Document object model (DOM)",
+          "title": "Document object model (DOM)",
+          "type": "instruction",
           "path": "instruction/javascript/dom/dom.md",
-          "id": "6cc1ede2-3f8e-477d-95da-ad301c57ea0e",
+          "id": "0b1d61c7-0d9b-4423-b01b-ce8c475277a7",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498071
-          }
+          "interactions": [
+            "444db27b-aeb1-454f-9e34-e9cca9691e9a"
+          ],
+          "description": ""
         },
         {
           "title": "Regular expressions",
           "path": "instruction/javascript/regularExpressions/regularExpressions.md",
-          "id": "807979e6-2b06-459c-b37c-435a8d45332b",
+          "id": "698ca713-98f6-4a0b-86c5-e5221d512ed3",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498072
-          }
+          "interactions": [
+            "31ec24f7-eb02-45bf-80b9-05dc7e942983"
+          ]
         },
         {
           "title": "Rest and spread",
           "path": "instruction/javascript/restSpread/restSpread.md",
-          "id": "9dee7c6b-b573-45e0-968f-4fa05e45e184",
+          "id": "6fa62d75-519a-4081-9599-951e9e3a69e5",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498073
-          }
+          "interactions": [
+            "ad615866-c70c-4d0c-9cce-33c29c48f94d"
+          ]
         },
         {
           "title": "Exceptions",
           "path": "instruction/javascript/exceptions/exceptions.md",
-          "id": "11bf9a98-e9a3-4f6d-bd0a-64041573579f",
+          "id": "8195026d-9e28-459b-a913-73aa3175c928",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498074
-          }
+          "interactions": [
+            "55009832-643e-4f31-949e-dde1cb3b6576"
+          ]
         },
         {
           "title": "Scope",
           "path": "instruction/javascript/scope/scope.md",
-          "id": "490670ff-c7d1-4ecd-9b12-80005faeca85",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498075
-          }
-        },
-        {
-          "title": "☑ Tic-tac-toe tutorial",
-          "path": "instruction/webFrameworks/react/ticTacToe/ticTacToe.md",
-          "id": "9c37f8f7-1089-4a35-be59-ec1952e6dd01",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498076
-          }
+          "id": "8e2b708a-94df-42a7-86ab-11321d9fdacc",
+          "state": "published"
         }
       ]
     },
     {
       "title": "HTTP service",
+      "externalRefs": {
+        "canvasModuleId": 393336
+      },
       "topics": [
         {
           "title": "Web servers",
           "path": "instruction/webServers/webServers/webServers.md",
-          "id": "6c296f2f-b2cc-4f7c-a1b9-0eb651e79a6a",
+          "id": "e88211b3-04c9-4b3c-85f6-8d45c3ce8468",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498077
-          }
+          "interactions": [
+            "db677385-51e3-43bb-bcfe-e74d1dc925d7",
+            "bfd0c3c9-fafb-4486-985a-1396f41ad55a"
+          ]
         },
         {
           "title": "Web Services Introduction",
           "path": "instruction/webServices/introduction/introduction.md",
-          "id": "47bb3426-96d8-4aad-a7f4-327e38fe817a",
+          "id": "a7579774-12fd-46f0-acb4-079134627322",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498078
-          }
+          "interactions": [
+            "24dca640-d993-41b1-a213-a01c4112b28e",
+            "6d266946-5690-4e6c-a425-8c4a55b69202"
+          ]
         },
         {
           "title": "URL",
           "path": "instruction/webServices/url/url.md",
-          "id": "1f896156-ffc2-42a0-9ee4-327e5bc47734",
+          "id": "69949350-7b2a-49a0-9ebb-cd7705153e96",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498079
-          }
+          "interactions": [
+            "51a73679-2c34-456e-ae07-f3915333f813",
+            "0880332e-43c3-4f19-9ff8-f4b9d3a4152e"
+          ]
         },
         {
           "title": "Ports",
           "path": "instruction/webServices/ports/ports.md",
-          "id": "606f0e47-ffdb-4b14-8613-e7bf8d409036",
+          "id": "2b4676b8-9887-49fe-bfc2-4697a8f7e86a",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498080
-          }
+          "interactions": [
+            "1d53c5a4-3138-4fbd-96e7-51c7bdbfbcb2",
+            "5a5d6266-c4cd-431b-b6ef-2513cdbeadd5"
+          ]
         },
         {
           "title": "HTTP",
           "path": "instruction/webServices/http/http.md",
-          "id": "0a8ac682-219d-424a-b4ce-9bf8fa848614",
+          "id": "3e4c1223-d3e3-485a-9e00-3bc2a7f71392",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498081
-          }
+          "interactions": [
+            "c99bb4e7-3120-4836-a32b-a97553c2c92e",
+            "1f39f38c-b426-4a18-b736-a26a7f6d9e6b"
+          ]
         },
         {
-          "title": "☑ Fetch",
+          "title": "Fetch",
+          "type": "instruction",
           "path": "instruction/webServices/fetch/fetch.md",
-          "id": "f0f35755-df2a-46e9-9bb3-17b1e419ef6a",
+          "id": "437f53a9-65b8-4139-afdb-ac604eddcc26",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498082
-          }
+          "interactions": [
+            "99869011-3a94-40f9-b48f-6e34c9127943"
+          ],
+          "description": ""
         },
         {
           "title": "Service design",
           "path": "instruction/webServices/design/design.md",
-          "id": "09b5987b-27f6-4a51-a906-9cf71fa0085c",
+          "id": "d68f9bbe-f7b0-4b8d-ba86-ce39660ab3d5",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498083
-          }
+          "interactions": [
+            "3f7e1c90-c61f-4500-96d2-131d359c625b",
+            "24fef0c8-9ae9-4b9f-97f1-40d287fabf80"
+          ]
         },
         {
           "title": "Node web service",
           "path": "instruction/webServices/nodeWebService/nodeWebService.md",
-          "id": "3c8e0f2b-b3a1-448e-9969-57b27d0b1839",
+          "id": "c391196d-cdbe-4fd3-ac0c-118ed25b2f35",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498084
-          }
+          "interactions": [
+            "d8fd3c86-0fdd-424c-8f9d-043201e81d2e"
+          ]
         },
         {
-          "title": "☑ Express",
+          "title": "Express",
+          "type": "instruction",
           "path": "instruction/webServices/express/express.md",
-          "id": "736b1203-4b6d-4053-a6da-578ee6f54598",
+          "id": "426345d8-1b55-4aed-9d93-a61812aa6269",
           "state": "published",
-          "interactions": [],
-          "commit": "67bdb2fbfca9dcdb1b18e8fba768d93b3c4d4330",
-          "externalRefs": {
-            "canvasPageId": 1498085
-          }
+          "interactions": [
+            "a2d00756-7ce5-4890-909b-5c9844027723",
+            "ee3c9493-9904-4ef9-b2f4-5e99bbda4d01",
+            "ea3c9493-9904-4ef9-b2f4-5e99bbda4d01",
+            "ed3c9493-9904-4ef9-b2f4-5e99bbda4d01"
+          ],
+          "description": ""
         },
         {
           "title": "Modules",
           "path": "instruction/javascript/modules/modules.md",
-          "id": "d61d28ac-e970-4ea2-a2bd-3a07a12b539f",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498086
-          }
+          "id": "01bbfb25-d0e0-4cb0-a114-33a69e48202e",
+          "state": "published"
         },
         {
           "title": "Service daemons - PM2",
           "path": "instruction/webServices/pm2/pm2.md",
-          "id": "b8823c62-825f-4302-b468-de5ec7b454bb",
+          "id": "a27de412-0d99-4ce1-8432-9b3350a8d341",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498087
-          }
+          "interactions": [
+            "bb981431-87f7-4c98-875f-e02787b2982f"
+          ]
         },
         {
           "title": "Troubleshoot 502",
           "path": "instruction/webServices/troubleshoot502/troubleshoot502.md",
-          "id": "4a791104-02b9-484b-a599-c97b466d352e",
+          "id": "c0148b16-5895-47a0-8f03-e6dcc584a515",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498088
-          }
+          "interactions": [
+            "f312ba3c-f0b5-40b7-8641-362f6fd032d8"
+          ]
         },
         {
           "title": "SOP and CORS",
           "path": "instruction/webServices/cors/cors.md",
-          "id": "735d935d-2217-4097-9f07-7f989002c794",
+          "id": "18ba2264-1ec1-41c5-85ef-18667dd71fcc",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498089
-          }
+          "interactions": [
+            "208c607c-f535-4a22-89d7-0b434ece34d1"
+          ]
         },
         {
           "title": "Authorization services",
           "path": "instruction/webServices/authorizationServices/authorizationServices.md",
-          "id": "ea403856-8bc0-402f-9f53-c982a86a4163",
+          "id": "2ad44fd2-deba-40e7-a0b3-d5fcdf15871d",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498090
-          }
+          "interactions": [
+            "defe3e58-3278-494d-90db-1ae1793e9979",
+            "1210a031-235a-4a65-a084-786dac9a4f75"
+          ]
         },
         {
           "title": "Account creation and login",
           "path": "instruction/webServices/login/login.md",
-          "id": "39a40701-dabc-4a51-ad0f-c539ae22ffe5",
+          "id": "bf3c6e69-dcd2-4ec1-9ebe-a65d1bcbeb01",
           "state": "published",
-          "interactions": [],
-          "commit": "afebbdce858481621958b58d12786e41cabb5c5b",
-          "externalRefs": {
-            "canvasPageId": 1498091
-          }
+          "interactions": [
+            "3b31bc21-3356-413e-a1e0-7619d22d641b"
+          ]
         },
         {
           "title": "Simon service",
           "path": "instruction/simon/simonService/simonService.md",
-          "id": "6b51e9ad-0bde-47b4-9c1d-61d5f88492d1",
+          "id": "06f2f825-ba58-405c-9569-92a868afce4e",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498092
-          }
+          "interactions": [
+            "312a7d56-8c0f-4e7b-8f69-e0b7c3ac25e9"
+          ]
         },
         {
           "title": "Simon service video",
           "type": "video",
           "path": "https://www.youtube.com/embed/lr6rmjUhOc0",
-          "id": "60904743-03e7-478f-ac08-12c2b1422675",
+          "id": "ce483d7b-d8e6-4be6-a7f2-cfe46f61ec57",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup Service",
+          "type": "project",
+          "points": 100,
           "path": "instruction/webServices/startupService/startupService.md",
-          "id": "b0ddeea9-629d-402f-a1cb-f8b02a1622e5",
+          "id": "3abe736d-a06a-4ac5-aabe-a0c5d9e4e4a2",
           "state": "published",
-          "interactions": [],
-          "commit": "031c66730fb2430527b91cb3f41172c4bbc45b87",
+          "interactions": [
+            "ba062a75-fe02-4b7f-9e05-326a8532fcc6"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498093
+            "canvasAssignmentId": 1373677
           }
         }
       ]
     },
     {
       "title": "Data and authentication services",
+      "externalRefs": {
+        "canvasModuleId": 393337
+      },
       "topics": [
         {
           "title": "Deployment",
           "path": "instruction/essentials/deployment/deployment.md",
-          "id": "1bbf412f-f1c1-4e96-915a-c0200ad3a146",
+          "id": "07bae28b-84f5-4464-b331-6c45092665f8",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498094
-          }
+          "interactions": [
+            "4a02626f-2fe6-47b4-b73c-777967832ec1",
+            "bb56649e-e767-4758-8b8e-310e4ea69026"
+          ]
         },
         {
           "title": "Storage services",
           "path": "instruction/webServices/storageServices/storageServices.md",
-          "id": "c7087398-83b3-4790-8adf-91358621afbd",
+          "id": "f95b3772-217e-486e-94bf-60ea3d8be8a9",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498095
-          }
+          "interactions": [
+            "0ec7e6ab-6316-4e0f-a654-5df1a6f0ceb2"
+          ]
         },
         {
           "title": "Uploading files",
           "path": "instruction/webServices/uploadingFiles/uploadingFiles.md",
-          "id": "141794e6-63c9-4110-affe-f37c560115c3",
+          "id": "31749e6d-1edd-4272-9640-3347f6cc8482",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498096
-          }
+          "interactions": [
+            "66ba8583-7045-4ef5-8dc0-497a9b582248"
+          ]
         },
         {
           "title": "☑ Data services",
           "path": "instruction/webServices/dataServices/dataServices.md",
-          "id": "c9ba6df5-c222-40c6-90c2-288ae6d93a7f",
+          "id": "741b24ae-2a81-4c5c-9ab7-4941b8644bc1",
           "state": "published",
-          "interactions": [],
-          "commit": "18deed7eb55cec24b7fe1222f0e1d3de219ee43a",
-          "externalRefs": {
-            "canvasPageId": 1498097
-          }
+          "interactions": [
+            "521eddff-0eae-4680-8bbd-09b08051ba9e"
+          ]
         },
         {
           "title": "Simon DB",
           "path": "instruction/simon/simonDb/simonDb.md",
-          "id": "f93cb773-ebab-4a47-8529-145767730d1d",
+          "id": "33486581-4c0a-4167-9364-43e1ca4e5b90",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498098
-          }
+          "interactions": [
+            "623ef50d-cf6e-42f6-b243-8d88770f028f"
+          ]
         },
         {
           "title": "Simon DB video",
           "type": "video",
           "path": "https://www.youtube.com/embed/f75muk9W-Jc",
-          "id": "46be2a6a-a3b3-4e9b-8b2a-990906e83e54",
+          "id": "38f2acd0-dfa7-445e-aa6e-6ff7b5356a0b",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup DB",
+          "type": "project",
+          "points": 100,
           "path": "instruction/webServices/startupDb/startupDb.md",
-          "id": "d7ee0985-d8a8-49b7-adbc-509c4d49ca16",
+          "id": "ae723843-89a4-4fae-9651-c9ffa9d79eb9",
           "state": "published",
+          "interactions": [
+            "90f3f025-d33e-4972-a341-57e3ebcb8991"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498099
+            "canvasAssignmentId": 1373678
           }
         },
         {
           "title": "Backend testing",
           "path": "instruction/webServices/backendTesting/backendTesting.md",
-          "id": "77b50f35-b134-4490-8867-f6dd6473688d",
+          "id": "9fe6b799-a83c-4c8d-913d-9427f63fe52d",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498100
-          }
+          "interactions": [
+            "f1d4d612-eb27-4943-b7cf-424168901cf6",
+            "5baa09a1-f104-45f1-89ed-fe7381aaf886"
+          ]
         },
         {
           "title": "Frontend testing",
           "path": "instruction/webServices/frontendTesting/frontendTesting.md",
-          "id": "efc7dfb0-31a5-45cf-890e-03c985cf5986",
+          "id": "9ad9df20-2df1-4274-96e8-771b1a3715e9",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498101
-          }
+          "interactions": [
+            "b6ca8658-e5f6-42e4-b6b3-62893ea9c57c"
+          ]
         }
       ]
     },
     {
       "title": "WebSocket",
+      "externalRefs": {
+        "canvasModuleId": 393338
+      },
       "topics": [
         {
           "title": "WebSocket",
           "path": "instruction/webServices/webSocket/webSocket/webSocket.md",
-          "id": "c65955b8-1b9d-4f65-9f94-095c98aea6d9",
+          "id": "2daf820c-fbf4-4cf6-a176-41b9ea459935",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498102
-          }
+          "interactions": [
+            "1c9ef4b5-ba34-4e52-a2d5-80ae6d426997"
+          ]
         },
         {
           "title": "Debugging WebSocket",
           "path": "instruction/webServices/webSocket/debugging/debugging.md",
-          "id": "12a6f7f0-978d-404a-bb91-02334146d441",
+          "id": "a0b49825-fd67-4b10-8aac-126d5ea6f498",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498103
-          }
+          "interactions": [
+            "0437a32d-6a2a-4150-8698-00c837280423"
+          ]
         },
         {
           "title": "WebSocket chat",
           "path": "instruction/webServices/webSocket/chat/chat.md",
-          "id": "b5b8b0aa-4a28-465b-8c37-55a48f8af456",
+          "id": "7d94fe22-b7ad-422c-ba77-6f3fb6be8ab7",
           "state": "published",
-          "interactions": [],
-          "commit": "f972215b92897ce0d38dbe3cfa82a646f591190a",
-          "externalRefs": {
-            "canvasPageId": 1498104
-          }
+          "interactions": [
+            "a135bbc5-88f3-4574-9ca3-91b033444c08"
+          ]
         },
         {
           "title": "Simon WebSocket",
           "path": "instruction/simon/simonWebSocket/simonWebSocket.md",
-          "id": "498a6c7c-fbd2-41e7-a184-cd1378a6d148",
+          "id": "bf85b9d9-3177-4d0b-a72f-f36f13d16e83",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498105
-          }
+          "interactions": [
+            "a63b9d78-fc1c-401b-8b13-480fa63cb778"
+          ]
         },
         {
           "title": "Simon WebSocket video",
           "type": "video",
           "path": "https://www.youtube.com/embed/oVO2VIG0zfI",
-          "id": "a13a749c-ac69-41f3-970f-4098b998868d",
+          "id": "5871210f-532b-471e-b26f-35c998941b35",
           "state": "published",
           "description": ""
         },
         {
           "title": "🚀 Startup WebSocket",
+          "type": "project",
+          "points": 100,
           "path": "instruction/webServices/startupWebSocket/startupWebSocket.md",
-          "id": "d643d1bf-8e94-4d28-88ae-720025a955db",
+          "id": "83386005-5844-4ba7-a92e-5e3f6b2d31ad",
           "state": "published",
+          "interactions": [
+            "ecdf0aea-adc2-49b2-a624-f8649aaf165f"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498106
+            "canvasAssignmentId": 1373679
           }
         }
       ]
@@ -1186,107 +1296,138 @@
         {
           "title": "Security",
           "path": "instruction/security/overview/overview.md",
-          "id": "d23d70ff-e5d7-4275-8d9b-6088cfcaded3",
+          "id": "7f873ab5-9526-4455-87b8-29e5f7dd5b6f",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498107
-          }
+          "interactions": [
+            "sec-rl-01",
+            "sec-sess-001"
+          ]
         },
         {
           "title": "OWASP top 10",
           "path": "instruction/security/owasp/owasp.md",
-          "id": "14dbf355-95cc-4ea8-aad9-36a6e4fc5d6a",
+          "id": "66d77268-2bff-4130-9a73-be52957aff74",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498108
-          }
+          "interactions": [
+            "1d29b77d-bf9a-48ea-8a99-42b7b521b216",
+            "e1e02026-17e9-4a8d-88c4-71fa503ed016",
+            "50b6fc38-1c88-4aa0-aa67-6a43240373f3",
+            "cce849da-d28f-461c-b92e-217cdf957cdc",
+            "577f4ed1-cc3d-413e-b972-43b954d21d2a",
+            "8c480d6c-024c-4c0b-bc6e-f3146e59e990",
+            "3d530df4-e733-4912-b715-870bc1685108",
+            "8d034b7e-4e3f-4264-8059-cfaf6ea1788d",
+            "3147b67f-cb2a-4475-9bb9-39002455e7c5",
+            "e7bd2a34-1962-45ca-9490-1afa507b8e2f",
+            "5bf7db24-6681-4c93-9c11-4c80b09a704a"
+          ]
         },
         {
           "title": "Security practice",
           "path": "instruction/security/practice/practice.md",
-          "id": "309ee255-e217-4630-81b1-625ed8de9e67",
+          "id": "6c73006a-548c-4698-be4c-ba27ed881784",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498109
-          }
+          "interactions": [
+            "0edff028-d213-489b-8d8e-e92e01e3daee"
+          ]
         }
       ]
     },
     {
       "title": "Assorted topics",
+      "externalRefs": {
+        "canvasModuleId": 393339
+      },
       "topics": [
         {
           "title": "TypeScript",
           "path": "instruction/webFrameworks/typeScript/typeScript.md",
-          "id": "858daf3b-9c04-4eea-9e92-7e4d9f2c1db1",
+          "id": "4c655e0b-ce2c-490a-b4a7-17e6e7808d4a",
           "state": "published",
-          "interactions": [],
-          "commit": "bf989d35e3e9632069be91fd8d513346bb482bb6",
-          "externalRefs": {
-            "canvasPageId": 1498110
-          }
+          "interactions": [
+            "6f48a958-b994-44f4-a682-230e7563ece9",
+            "98add419-6f1f-4941-8fb5-f0c980ee463b",
+            "46ce27c0-7d9e-409f-a1ad-57451d8f53a7",
+            "9a06ca74-cc17-4406-b983-df3566953b3c"
+          ]
         },
         {
           "title": "Performance monitoring",
           "path": "instruction/webFrameworks/performanceMonitoring/performanceMonditoring.md",
-          "id": "ef66652f-5fe5-4f17-9385-b457418a56e9",
+          "id": "fb55794d-fc0c-4e9f-af54-01ae994aa859",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498111
-          }
+          "interactions": [
+            "4ccf8c71-194b-4e81-b256-8f7011ae355a",
+            "8b71562e-1f85-446f-8814-add7c56e0fef",
+            "793a7bb2-75c5-44f4-a4a2-1ab5b0a1c8d5"
+          ]
         },
         {
           "title": "UX design",
           "path": "instruction/uxdesign/uxdesign.md",
-          "id": "eab7deb6-14c4-4173-bfb8-2b3833a3c6bd",
+          "id": "b3c86a3c-512e-4e5c-9442-da0628a3a18d",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498112
-          }
+          "interactions": [
+            "e1a5b678-044f-4e0b-9231-c604ac54f424",
+            "591a2b3a-020a-44e0-bd59-dd12d4fd9271",
+            "3d32eb56-a523-40ce-bf6a-3919754cd0d0",
+            "874ca32f-0894-4cf6-897f-276848f55620"
+          ]
         },
         {
           "title": "Search Engine Optimization",
           "path": "instruction/webFrameworks/seo/seo.md",
-          "id": "40622462-d284-4c1a-91d2-4b0224fabeba",
+          "id": "47bc9d82-7196-42c6-91c4-dce0e2f3cfe1",
           "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498113
-          }
+          "interactions": [
+            "a14b34c6-20f9-48a8-983e-a19908465697"
+          ]
         },
         {
           "title": "Device APIs",
           "path": "instruction/webFrameworks/device/device.md",
-          "id": "1ae99e06-660c-4a67-a4b3-1c640bf265bb",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498114
-          }
+          "id": "5df6e8ea-ab60-4346-9343-1aba366c93a6",
+          "state": "published"
         },
         {
           "title": "Progressive web applications",
           "path": "instruction/webFrameworks/pwa/pwa.md",
-          "id": "f4a4638a-1f62-497f-b566-0ea3629ead96",
+          "id": "105f9008-73f8-4f15-95ff-eb7d59057cb4",
+          "state": "published"
+        },
+        {
+          "title": "Demo day submission",
+          "type": "project",
+          "points": 0,
+          "path": "instruction/demo-day-submission/demo-day-submission.md",
+          "id": "27ab9b08-4dd9-4906-8fe9-507aa8d68db3",
           "state": "published",
+          "interactions": [
+            "ad1c7f8d-ce04-40de-9412-f092b40bcffa"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498115
+            "canvasAssignmentId": 1373680
           }
         },
         {
           "title": "Simon PWA",
           "path": "instruction/simon/simonPwa/simonPwa.md",
-          "id": "cd0cffae-c592-46b3-8701-bc6f27a6f306",
-          "state": "published",
-          "externalRefs": {
-            "canvasPageId": 1498116
-          }
+          "id": "2dafc42e-ce62-4804-9453-47f5ddd680d6",
+          "state": "published"
         },
         {
-          "title": "☑ Wrap up",
+          "title": "Wrap up",
+          "type": "instruction",
           "path": "instruction/webFrameworks/wrapUp/wrapUp.md",
-          "id": "a6d8d499-7c81-431a-8dca-19b22f10dc79",
+          "id": "9f5ce2b1-4812-4b5b-94e2-eef6257e01c1",
           "state": "published",
+          "interactions": [
+            "c979acf0-1bec-47a5-8660-5f49e74de47f"
+          ],
+          "description": "",
           "externalRefs": {
-            "canvasPageId": 1498117
+            "canvasPageId": 1583373
           }
         }
       ]

@@ -129,6 +129,16 @@ less other.txt # press `q` to exit less
 for i in {1..2}; do printf 'y' >> other.txt; done;
 ```
 
-_If your section of this course requires that you submit assignments for grading_: Submit in the Canvas assignment the text that results from running `cat other.txt`.
+
+```masteryls
+{"id":"17b331a2-c57e-4959-8b12-f9ea064e208b", "title":"Multiple choice", "type":"multiple-choice" }
+After running the above commands, what is the output of `cat other.txt`.
+
+- [ ] x12
+- [x] xxyy
+- [ ] 12yy
+- [ ] xyy
+```
+
 
 The better you get at working with the console the more efficient your programming will be.

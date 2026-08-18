@@ -1,5 +1,8 @@
 # Responsive design
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQJ2x2oqT5QpCBOjGfW_Pea9KEMHeAnwdRzpAer-8AUFITj3YPaR9bRWx8qNUpVWk-7VV7kWkx0KPiT/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
 📖 **Deeper dive reading**: [MDN Responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
 
 Modern web applications are expected to run well on a large variety of computing devices. This includes everything from desktops, to mobile phones, to shopping kiosks, to car dashboards. This ability to reconfigure the interface so the application accommodates and takes advantage of the screen's size and orientation is called `responsive design`.
@@ -73,7 +76,6 @@ If we modify the display property associated with each element with the followin
 
 ![CSS display](cssDisplay.jpg)
 
-You can experiment with different display property values with this [CodePen](https://codepen.io/leesjensen/pen/RwBOPjv).
 
 ## Viewport meta tag
 
@@ -98,7 +100,7 @@ aside {
 
 ![CSS float](cssFloat.gif)
 
-When the browser resizes, the text will flow around the floating element. You can use this [CodePen](https://codepen.io/leesjensen/pen/MWBRWPP) to experiment with `float`. Try changing the descriptor value to `none` or `left` and see what happens.
+When the browser resizes, the text will flow around the floating element.
 
 ## Media queries
 
@@ -114,7 +116,7 @@ We can use the `@media` selector to tell us which side of the screen (technicall
 }
 ```
 
-We can demonstrate the result of applying the media selector by using the browser's debugger and switching into phone and responsive mode. You can also use this [CodePen](https://codepen.io/leesjensen/pen/rNKZOva) and play with it yourself by simply resizing the browser's window.
+We can demonstrate the result of applying the media selector by using the browser's debugger and switching into phone and responsive mode.
 
 ![CSS Media orientation](cssMediaOrientation.gif)
 
@@ -130,7 +132,11 @@ You can also use media queries to make entire pieces of your application disappe
 
 ![CSS Media orientation](cssMediaDisappear.gif)
 
-Here is the [CodePen](https://codepen.io/leesjensen/pen/NWzLGmJ) for this example.
+
+```masteryls
+{"id":"e75c7257-bc32-4b55-9f35-bf535b7bc571", "title":"Responsive design", "type":"ai-web-page", "allowAiPrompt":false, "syncGrade":false, "autoGrade":false, "gradingCriteria":"background color of the section element is green when in portrait mode.", "height":500, "file":"responsive.html" }
+Resize the window to modify the height and width of the demo to view the impact of the responsive design. Modify the media query to change the background color of the section element to green when in portrait mode.
+```
 
 ## Grid and Flexbox
 

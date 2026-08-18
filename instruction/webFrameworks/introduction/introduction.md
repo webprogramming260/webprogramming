@@ -1,5 +1,8 @@
 # Web frameworks
 
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vShKKMiQHGQ9Z4gbi8LsffGStlrQeS5fZUdIn-0wsldW3petSXftCBEbu-OnLjpVzbVBVh-HkjiKhoj/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 📖 **Deeper dive reading**: [MDN Introduction to client-side frameworks](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Introduction)
 
 Web frameworks seek to make the job of writing web applications easier by providing tools for completing common application tasks. This includes things like modularizing code, creating single page applications, simplifying reactivity, and supporting diverse hardware devices.
@@ -8,11 +11,17 @@ Some frameworks take things beyond the standard web technologies (HTML, CSS, Jav
 
 There are lots of web frameworks to choose from and they evolve all the time. You can view the latest popularity poll at [StateOfJS](https://stateofjs.com).
 
-![web frameworks](stateofjs-webframeworks.jpg)
-
+![stateOfJs2025-frameworks.png](stateOfJs2025-frameworks.png)
 \- **Source**: _StateOfJS web framework poll_
 
 Each framework has advantages and disadvantages. Some are very prescriptive (opinionated) about how to do things, some have major institutional backing, and others have a strong open source community. Other factors you want to consider include how easy it is to learn, how it impacts productivity, how performant it is, how long it takes to build, and how actively the framework is evolving.
+
+
+```masteryls
+{"id":"9ad21eaa-cd4f-4e2f-8ede-ece0177ef6a5", "title":"Favorite Web Framework", "type":"essay" }
+Which Web Framework sounds most interesting to you and why?
+```
+
 
 ## Hello world examples
 

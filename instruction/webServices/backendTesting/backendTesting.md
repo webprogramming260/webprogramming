@@ -1,5 +1,9 @@
 # Backend testing
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRNMUt0hZHu0OSZqKIMuPUsel9sg_XqEaDq_7d60yKNwIN2IaI-L8WVhrGaLdheFGvkSYm35np6pUcI/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 Using test driven development (TDD) for testing service endpoints is a common industry practice. Testing services is usually easier than writing UI tests because it does not require a browser. However, it does still take effort to learn how to write tests that are effective and efficient. Making this a standard part of your development process will give you a significant advantage as you progress in your professional career.
 
 As demonstrated by the following [State of JS](https://2021.stateofjs.com/en-US/libraries/testing/) survey, there are lots of good testing packages that work well with Express driven services. We are going to look at the current champion [Jest](https://jestjs.io/).
@@ -166,6 +170,85 @@ Snapshots:   0 total
 Time:        0.237 s, estimated 1 s
 ```
 
+## Fundamentals of Jest Matchers
+
+Jest is a powerful JavaScript testing framework designed with a focus on simplicity and support for large-scale applications. At the core of every Jest test is the assertion—a statement that validates whether your code behaves as expected. In Jest, assertions are constructed using the `expect` function paired with a "matcher" method.
+
+The basic syntax follows a natural language pattern: `expect(actualValue).toBe(expectedValue)`. When Jest runs, it evaluates the expression inside `expect()`, compares it using the matcher, and reports a failure if the condition isn't met.
+
+```mermaid
+graph LR
+    A[Input Data] --> B[Function/Logic]
+    B --> C[Actual Result]
+    C --> D{expect...}
+    D --> E[Matcher: .toBe, .toEqual, etc.]
+    E --> F[Pass/Fail Report]
+
+    classDef default fill:#ffffff,stroke:#000000,color:#000000,stroke-width:1px;
+```
+
+### Common Matchers
+
+Jest provides a wide variety of matchers to handle different data types and scenarios. Understanding which matcher to use is critical for writing precise tests.
+
+- **Equality and Identity:**
+  - `.toBe(value)`: Uses `Object.is` to test exact equality. Ideal for primitives (strings, numbers, booleans).
+  - `.toEqual(value)`: Recursively checks every field of an object or array. This is known as "deep equality."
+- **Truthiness:**
+  - `.toBeNull()`: Matches only `null`.
+  - `.toBeUndefined()`: Matches only `undefined`.
+  - `.toBeDefined()`: The opposite of `toBeUndefined`.
+  - `.toBeTruthy()`: Matches anything that an `if` statement treats as true.
+  - `.toBeFalsy()`: Matches anything that an `if` statement treats as false.
+- **Numbers:**
+  - `.toBeGreaterThan(n)`, `.toBeLessThanOrEqual(n)`, etc.
+  - `.toBeCloseTo(n)`: Used for floating-point math to avoid rounding errors.
+
+```masteryls
+{"id":"f1d4d612-eb27-4943-b7cf-424168901cf6", "title":"Deep vs. Referential Equality", "type":"multiple-choice"}
+You are testing a function that returns a newly created array: `const getTags = () => ["node", "jest"];`. Which assertion will pass?
+
+- [ ] `expect(getTags()).toBe(["node", "jest"])`
+- [x] `expect(getTags()).toEqual(["node", "jest"])`
+- [ ] `expect(getTags()).toBeDefined(false)`
+- [ ] `expect(getTags()).toMatch(["node", "jest"])`
+```
+
+### Example: Testing a User Object
+
+When testing backend logic, you often deal with objects returned from a database or service. Notice the difference between `toBe` and `toEqual` in the example below:
+
+```javascript
+const getUser = (id) => {
+  return { id, username: 'dev_user', active: true };
+};
+
+test('user object should have correct properties', () => {
+  const data = getUser(1);
+
+  // This would FAIL because they are different object instances in memory
+  // expect(data).toBe({ id: 1, username: 'dev_user', active: true });
+
+  // This PASSES because it checks the content
+  expect(data).toEqual({ id: 1, username: 'dev_user', active: true });
+
+  // Checking specific properties
+  expect(data.active).toBeTruthy();
+  expect(data.username).toMatch(/dev/); // Regex support
+});
+```
+
+### Negating Matchers
+
+Any matcher can be reversed by adding `.not` before the matcher call. This is useful for ensuring that certain side effects or values are specifically avoided.
+
+```javascript
+test('registration should not allow short passwords', () => {
+  const passwordLength = 4;
+  expect(passwordLength).not.toBeGreaterThan(8);
+});
+```
+
 ## Basic testing methodology
 
 In a very real way testing code is no different than application code. When you are writing tests, you are simply writing a program whose purpose is to test another program. For this reason, you should practice the same craftsmanship with your testing code. It should be well designed, performant, and maintainable. Here are some characteristics of good tests:
@@ -310,3 +393,22 @@ You can use the VS Code Jest extension to visualize what tests are passing, auto
 ## Test driven development
 
 The great thing about test driven development (TDD) is that you can actually write your tests first and then write your code based upon the design represented by the tests. When your tests pass you know your code is complete. Additionally, when you make later modifications to your code you can simply run your tests again. If they pass then you can be confident that your code is still working without having to manually test everything yourself. With systems that have hundreds of endpoints and hundreds of thousands of lines of code, TDD becomes an indispensable part of the development process.
+
+## Exercises
+
+````masteryls
+{"id":"5baa09a1-f104-45f1-89ed-fe7381aaf886", "title":"Jest Object Equality", "type":"multiple-choice"}
+When writing a test for a backend service, you need to verify that a function returns a specific configuration object. Given the following test snippet, which Jest matcher should be used to ensure the test passes by checking the object's values rather than its referential identity?
+
+```javascript
+const config = { port: 8080, protocol: 'https' };
+const result = getConfig(); // Returns a new object: { port: 8080, protocol: 'https' }
+
+expect(result).______(config);
+```
+
+- [ ] `.toBe()`
+- [x] `.toEqual()`
+- [ ] `.toMatch()`
+- [ ] `.toContain()`
+````

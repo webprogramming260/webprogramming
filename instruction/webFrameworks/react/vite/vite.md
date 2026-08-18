@@ -6,7 +6,7 @@ In order to use most web frameworks you need to include a full web framework too
 
 For our toolchain we are going to use [Vite](https://vitejs.dev/). Vite bundles your code quickly, has great debugging support, and allows you to easily support JSX, TypeScript, and different CSS flavors. To get started with Vite, let's first build a simple web application. Later we will convert Simon over to React using Vite. This will teach you what you need to know in order to move your startup to React.
 
-We can use Vite to build our first React-based web application. Open your command console and run the following commands:
+To use Vite for our first React-based web application, open your command console and run the following commands:
 
 ```sh
 npm create vite@latest demovite -- --template react
@@ -93,6 +93,11 @@ After these changes, the application should look similar to this:
 
 ![React altered](reactAppAltered.png)
 
-_If your section of this course requires that you submit assignments for grading_: Submit a screen capture of the altered application to the Canvas assignment.
+
+```masteryls
+{"id":"d16e7f1e-e689-4862-bf06-7ceda139a4de", "title":"Vite + React", "type":"essay" }
+Insert the lines of code that you had to change to achieve the required modifications.
+```
+
 
 Don't forget to update your GitHub startup repository `notes.md` with all of the things you learned and want to remember.

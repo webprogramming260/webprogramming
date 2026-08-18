@@ -70,12 +70,22 @@ The **play** component is significantly more complex than the About. Here we wan
 There are also two JavaScript files that provide support for a simple delay between button pushes (delay.js), and the WebSocket messages that will come in the future.
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#ffffff",
+    "primaryBorderColor": "#000000",
+    "primaryTextColor": "#000000",
+    "lineColor": "#000000"
+  }
+}}%%
+
 classDiagram
   Play *-- Players
-  Players --> gameNotifier
+  Players --> GameNotifier
   Play *-- SimonGame
   SimonGame *-- SimonButton
-  SimonGame --> delay
+  SimonGame --> Delay
 ```
 
 For now, the `gameNotifier.js` will just employ a timer that injects random scores from other players. When we reach the WebSocket deliverable this will be replaced with actual messages that are sent from other players.
@@ -197,6 +207,16 @@ Once you play a few rounds you should see a nice table being generated.
 Like the play component, the **login** has child components that help it render differently based on the authentication state of the player.
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#ffffff",
+    "primaryBorderColor": "#000000",
+    "primaryTextColor": "#000000",
+    "lineColor": "#000000"
+  }
+}}%%
+
 classDiagram
   App --> Login
   Login *-- Authenticated
@@ -314,3 +334,11 @@ Get familiar with what the example code teaches.
 
 - Update your `startup` repository `notes.md` with what you learned.
 - Make sure your project is visible from your production environment (e.g. https://simon.yourdomain.click).
+
+
+```masteryls
+{"id":"3aff8d87-8a17-4b86-b2b4-1dfed2f63f9a", "title":"Simon React P2: Reactivity Deployed", "type":"url-submission", "syncGrade":false, "autoGrade":false, "validateUrl":true, "gradingCriteria":"The title contains 'Simon React'" }
+After you have deployed _Simon React P2: Reactivity_, verify that it is accessible by providing the URL.
+
+_Example: https://simon.yourdomain.click_
+```

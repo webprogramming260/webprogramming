@@ -17,7 +17,7 @@ One of the simplest ways to debug your JavaScript code is to insert `console.log
 ```html
 <body>
   <h1>Debugging</h1>
-  <script src="index.js"></script>
+  <script src="exampleCode/index.js"></script>
 </body>
 ```
 

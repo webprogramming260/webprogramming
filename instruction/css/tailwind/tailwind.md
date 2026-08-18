@@ -25,10 +25,15 @@ Tailwind works really well with web component frameworks because it encourages y
 Here is an example of a button that is styled with Tailwind.
 
 ```html
-<button className="bg-blue-400 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition-colors m-4">Get Started</button>
+<button class="bg-blue-400 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition-colors m-4">Get Started</button>
 ```
 
-![alt text](tailwindButton.gif)
+```masteryls
+{"id":"c24c897d-c66e-4c42-be1c-7807d2e6cf84", "title":"Web page", "type":"web-page", "height":50}
+<!-- Tailwind via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<button class="bg-blue-400 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition-colors m-1">Get Started</button>
+```
 
 ## Comparison to Bootstrap
 
@@ -53,19 +58,34 @@ With Bootstrap you use Bootstrap's card, card-body, card-tile, and card-text com
 With Tailwind there are no component level definitions. You simply work with class names that are similar to primitive CSS directives. You apply the class names directly in the HTML and not through CSS files.
 
 ```html
-<div class="max-w-sm rounded overflow-hidden">
-<div className="max-w-sm rounded bg-white overflow-hidden shadow-lg m-4 p-2">
-  <img className="w-full" src="https://picsum.photos/400/200" />
-  <div className="px-2 py-4">
-    <div className="font-bold text-xl mb-2">Card Title</div>
-    <p className="text-gray-700 text-base">Some quick example text.</p>
+<div class="max-w-sm rounded bg-red-800 overflow-hidden">
+  <div class="max-w-sm rounded bg-white overflow-hidden shadow-lg m-2 p-2">
+    <img class="w-full" src="https://picsum.photos/400/200" />
+    <div class="px-2 py-4">
+      <div class="font-bold text-xl mb-1">Card Title</div>
+      <p class="text-gray-500">Some quick example text.</p>
+    </div>
   </div>
 </div>
 ```
 
 The visual result is similar in either case.
 
-![example card](cardExample.png)
+
+```masteryls
+{"id":"b1716236-e043-40fc-8f6e-11e3d029f965", "title":"Web page", "type":"web-page", "height":300}
+<!-- Tailwind via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="max-w-sm rounded bg-red-800 overflow-hidden">
+  <div class="max-w-sm rounded bg-white overflow-hidden shadow-lg m-2 p-2">
+    <img class="w-full" src="https://picsum.photos/400/200" />
+    <div class="px-2 py-4">
+      <div class="font-bold text-xl mb-1">Card Title</div>
+      <p class="text-gray-500">Some quick example text.</p>
+    </div>
+  </div>
+</div>
+```
 
 However, because Bootstrap uses predefined component level classes, you will need to download the entire Bootstrap CSS framework file in order to render the card. With Tailwind, a custom CSS file is created dynamically for you that only contains the styling that you used.
 
@@ -82,9 +102,52 @@ You may be concerned about all of those "css declarations" being put directly on
 | **Learning curve** | Steep at first as you learn native CSS                | Easy to get started                                          |
 | **JS dependency**  | No JS (except if using plugins)                       | Depends on jQuery (Bootstrap ≤ 4) or native JS (Bootstrap 5) |
 
+
+```masteryls
+{"id":"34a35a7b-6a78-4f40-bf6d-1fef7be61963", "title":"Tailwind VS Bootstrap", "type":"teaching" }
+What should I prefer? Tailwind or Bootstrap?
+```
+
+
 ## Experimenting with Tailwind
 
-Tailwind requires a tool chain processor to convert the class names into a CSS stylesheet. You will include the necessary processor when you move your startup application to React. However, for now you can play with with Tailwind right now by creating a [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) application and then configuring Vite to support tailwind.
+There is no course requirement for you to use Tailwind, only that you use some css framework for some portion of your startup. However, it has become very popular and therefore might be worth experimenting with. We can use a content delivery network (CDN) to load Tailwind into a simple HTML page. Just note that it for production use you will want to use infrastructure that is described below, but that we will not cover until we introduce React.
+
+
+
+```masteryls
+{"id":"bfc61aa3-7da1-41f5-922b-630c5bcd4db4", "title":"Experiement with Tailwind", "type":"ai-web-page", "allowAiPrompt":true, "gradingCriteria":"There must be a green button", "height":250 }
+Take some time and play around with tailwind. Start with the provided example and then perhaps use the **AI assistance** to generate some different code. When you do, make sure you specify that you want to use Tailwind using the `https://cdn.tailwindcss.com` CDN content.
+
+Make sure you have a **green** button before you submit.
+
+~~~html
+<head>
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+  <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+    <h1 class="text-2xl font-bold text-blue-600 mb-4">
+      Hello Tailwind!
+    </h1>
+    <p class="text-gray-700">
+      This is a standalone HTML page using Tailwind CSS.
+    </p>
+    <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+      Click me
+    </button>
+  </div>
+
+</body>
+~~~
+```
+
+
+## Using Tailwind in a production application
+
+For production use, Tailwind requires a tool chain processor to convert the class names into a CSS stylesheet. You will include the necessary processor when you move your startup application to React. However, if your curiousity is triggered and you want to play with Tailwind right now, you need to start by creating a [Hello World React](../../webFrameworks/react/introduction/introduction.md#react-hello-world) application and then configuring Vite to support tailwind.
 
 The steps involved include creating the demo application, installing tailwind, configuring Vite to execute tailwind as part of the tool chain, adding a reference to the resulting CSS, and adding Tailwind class names to your HTML elements.
 

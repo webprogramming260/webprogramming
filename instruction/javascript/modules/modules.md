@@ -20,8 +20,9 @@ For example, the following imports the Express library that was installed using 
 
 ```
 const express = require('express');
-const DB = require('./database.js')
+const DB = require('./database.js');
 ```
+You can also omit the .js extension from the import and simply write `const DB = require('./database');`
 
 If you want to export something from your own code then you would use the `module.exports` global variable. For example, here is a simple module that exports a function that displays an alert.
 
@@ -50,6 +51,7 @@ In order to use ES Modules with Node.js you need to specify this in you package.
   }
 }
 ```
+The `"type": "module",` line is what specifies that you are using ES Modules.
 
 To import a module with ES modules you use the format:
 
@@ -84,6 +86,9 @@ import { alertDisplay } from './alert.js';
 
 alertDisplay('called from main.js');
 ```
+
+## Common JS and ES Module overrides
+Aside from the type field in the package.json, you can also specify that an individual file is using Common JS or ES Modules with the `.cjs` and `.mjs` extensions respectively. These extensions will override the global setting and allow that file to use the specified version of JavaScript Modules. This is common for plugins or modules that expect one format over the other such as [ESLint](https://eslint.org/).
 
 ## ES Modules in the browser
 

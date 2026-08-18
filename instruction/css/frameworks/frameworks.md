@@ -4,13 +4,13 @@ CSS frameworks provide functions and components that commonly appear in web appl
 
 Today, there are lots of different open source CSS frameworks available to choose from. Many of them contain the same types of functionality, but they all bring something a little different to the table.
 
-![css frameworks](cssStateOfCss.jpg)
+![cssFrameworksStateOfJs2025.png](cssFrameworksStateOfJs2025.png)
 
-\- **Source**: [_StateOfCSS CSS framework poll_](https://2021.stateofcss.com/en-US/technologies/css-frameworks)
+\- **Source**: [_StateOfCSS CSS framework poll_](https://2025.stateofcss.com/en-US/other-tools/#css_frameworks)
 
 ## Tailwind
 
-A new rising contender in the CSS framework space is [Tailwind CSS](https://tailwindcss.com/) and its associated component library [Tailwind UI](https://tailwindui.com/). In the 2024 StateOfCSS poll, Tailwind passed Bootstrap as the reigning champion with an  impressive 51% general usage ranking while Bootstrap dropped to 30%.
+A new rising contender in the CSS framework space is [Tailwind CSS](https://tailwindcss.com/) and its associated component library [Tailwind UI](https://tailwindui.com/). In the 2025 StateOfCSS poll, Tailwind passed Bootstrap as the reigning champion with an  impressive 51% general usage ranking while Bootstrap dropped to 30%.
 
 Tailwind takes a different approach than traditional CSS frameworks. Instead of using large, rich, CSS rulesets to compartmentalize styling and functionality, it uses smaller definitions that are applied specifically to individual HTML elements. This moves much of the CSS representation out of the CSS file and directly into the HTML.
 
@@ -27,7 +27,7 @@ You can learn how to use Tailwind in your application with the [Tailwind](../tai
 
 🔑 **Required reading**: [Getting started with Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
-The reigning champion for CSS frameworks is [Bootstrap](https://getbootstrap.com/). Bootstrap has been supported by an active and vibrant community for over a decade and contains many lessons learned from real world applications. The major downside of Bootstrap is its own success. Because it is so popular, Bootstrap defines the de facto look and feel of websites. This is great for user experience continuity, but it makes it difficult for a website to grab the attention of new users.
+The traditional champion for CSS frameworks is [Bootstrap](https://getbootstrap.com/). Bootstrap has been supported by an active and vibrant community for over a decade and contains many lessons learned from real world applications. The major downside of Bootstrap is its own success. Because it is so popular, Bootstrap defines the de facto look and feel of websites. This is great for user experience continuity, but it makes it difficult for a website to grab the attention of new users.
 
 ### Getting bootstrap
 
@@ -78,23 +78,37 @@ Once you have Bootstrap linked in your HTML files you can begin using the compon
 <button type="button">Plain</button>
 ```
 
-![CSS Bootstrap button](cssBootstrapBtn.png)
 
-This [CodePen](https://codepen.io/leesjensen/pen/JjZavjW) demonstrates the use of all the major Bootstrap components. Notice the rich diversity of functionality it provides and that it is fully responsive to changes in the viewport size. The image below only captures a few of the components.
+```masteryls
+{"id":"187a29b1-1d36-4a26-9d32-dd9bf197390b", "title":"Web page", "type":"web-page", "height":50}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<button type="button" class="btn btn-primary">Bootstrap</button>
 
-![Bootstrap components](cssBootstrapComponents.png)
+<button type="button">Plain</button>
+```
+
+
 
 ## ☑ Assignment
 
-Now that you have experience with Bootstrap you can build a simple home page using Bootstrap components. Fork this [CodePen](https://codepen.io/leesjensen/pen/wvXEmVQ) and experiment with it.
+Now that you have experience with Bootstrap you can build a simple home page using Bootstrap components.
+
+
+
+
+```masteryls
+{"id":"e790f0e1-a84b-4046-9149-c1cc0bbdb01f", "title":"Web page development", "type":"ai-web-page", "allowAiPrompt":false, "syncGrade":false, "autoGrade":false, "gradingCriteria":"Doesn't have a block title Typograph. Has an accordion component.", "height":500, "file":"bootstrap.html" }
+This demonstrates the use of all the major Bootstrap components. Notice the rich diversity of functionality it provides and that it is fully responsive to changes in the viewport size. The image below only captures a few of the components.
+
 
 Complete the following:
 
 1. Remove the block titled Typography
 1. Insert an accordion component
 
+```
+
 It should look like this when you are done.
 
 ![Bootstrap assignment](bootstrapAssignment.png)
 
-_If your section of this course requires that you submit assignments for grading_: Upload the URL of your CodePen to the Canvas assignment.

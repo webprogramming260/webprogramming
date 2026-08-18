@@ -33,7 +33,12 @@ The string object has several interesting functions associated with it. Here are
 | split()       | Split the string into an array on the given delimiter string |
 | startsWith()  | True if the string has a given prefix                        |
 | endsWith()    | True if the string has a given suffix                        |
+| includes()    | True if the string contains a given substring                |
+| slice()       | Extracts a section of a string and returns a new string      |
+| trim()        | Removes whitespace from both ends of a string                |
+| replace()     | Replaces a pattern with a replacement string                 |
 | toLowerCase() | Converts all characters to lowercase                         |
+| toUpperCase() | Converts all characters to uppercase                         |
 
 ```js
 const s = 'Example:조선글';
@@ -51,3 +56,80 @@ console.log(s.endsWith('조선글'));
 console.log(s.toLowerCase());
 // OUTPUT: example:조선글
 ```
+
+## Immutability
+In JavaScript, strings are **immutable**. Once a string is created, its individual characters cannot be changed. Any operation that appears to modify a string actually returns a completely new string.
+
+```javascript
+let text = "Hello";
+text[0] = "h"; // This will not change 'text'
+console.log(text); // Output: "Hello"
+
+text = text.toUpperCase(); // Creates a new string and reassigns it
+```
+
+## Template Literals
+JavaScript string can be created with the template literal systax. This uses backticks (`` ` ``) instead of single or double quotes. They provide two major advantages:
+- **String Interpolation:** You can embed JavaScript expressions inside `${}`.
+- **Multi-line Strings:** You can create strings that span multiple lines without using escape characters like `\n`.
+
+```javascript
+const user = "Alice";
+const message = `Welcome back, ${user}!
+You have 5 new notifications.`;
+```
+
+## Character Access
+There are two primary ways to access characters within a string:
+- **Bracket Notation:** `str[index]` returns the character at the specified index or `undefined` if the index is out of bounds.
+- **charAt():** `str.charAt(index)` returns the character or an empty string `""` if the index is out of bounds.
+
+
+## String Comparison
+Strings are compared based on **lexicographical order** (dictionary order) using Unicode values. Note that JavaScript is case-sensitive when comparing strings.
+
+```javascript
+console.log("apple" < "banana"); // true
+console.log("Z" < "a");          // true (Uppercase letters have lower Unicode values)
+```
+
+## The `length` Property
+The `.length` property returns the number of UTF-16 code units in the string. 
+
+```javascript
+const str = "JavaScript";
+console.log(str.length); // 10
+
+const arabicStr = "مرحبا";
+console.log(arabicStr.length); // 5
+```
+
+## Escape Sequences
+To include special characters in a string that would otherwise be interpreted as code, use the backslash (`\`) escape character:
+- `\'`: Single quote
+- `\"`: Double quote
+- `\\`: Backslash
+- `\n`: Newline
+- `\t`: Tab
+
+
+## Excercise
+
+````masteryls
+{"id":"afadc858-7b3b-4623-aabe-95b3ef2f242b", "title":"String Immutability and Method Behavior", "type":"multiple-choice"}
+Consider the following JavaScript code snippet:
+
+```js
+let school = "university";
+school[0] = "U";
+school.toUpperCase();
+let result = school.substring(0, 4);
+```
+
+What is the value of the variable `result` after this code executes?
+
+- [ ] "Univ"
+- [ ] "UNIV"
+- [x] "univ"
+- [ ] "Univer"
+````

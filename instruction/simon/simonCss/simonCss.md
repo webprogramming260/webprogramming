@@ -62,3 +62,12 @@ Get familiar with what the example code teaches.
 
 - Update your `startup` repository notes.md to record what you learned.
 - Make sure your project is visible from your production environment (e.g. https://simon.yourdomain.click).
+
+
+```masteryls
+{"id":"ac16c49d-eed4-4852-9843-c994c9542dfd", "title":"Simon CSS Deployed", "type":"url-submission", "syncGrade":false, "autoGrade":false, "validateUrl":true, "gradingCriteria":"The title contains 'Simon CSS'" }
+After you have deployed _Simon CSS_, verify that it is accessible by providing the URL.
+
+_Example: https://simon.yourdomain.click_
+```
+

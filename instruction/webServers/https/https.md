@@ -149,9 +149,16 @@ If you have not already leased a domain name then go back and review that instru
 
 Secure your web server communication by configuring Caddy to request a certificate from Let's Encrypt for you domain name.
 
-_If your section of this course requires that you submit assignments for grading_: Submit a URL for web server's hostname to the Canvas assignment.
-
 Don't forget to update your GitHub startup repository notes.md with all of the things you learned and want to remember.
+
+
+```masteryls
+{"id":"66953e86-234d-4c50-b2a2-d37afec943f0", "title":"HTTPS", "type":"url-submission", "gradingCriteria":"Contains the text `web programming 260`" }
+Submit the secure protocol version of your hostname.
+
+_Example: https://mydomain.click, and https://startup.mydomain.click_
+```
+
 
 ## Common problems
 

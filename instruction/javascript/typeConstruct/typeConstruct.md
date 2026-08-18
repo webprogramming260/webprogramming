@@ -1,4 +1,4 @@
-# JavaScript type and construct
+# JavaScript types, conditionals, and loops
 
 📖 **Deeper dive reading**: [MDN Data types and structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 
@@ -47,7 +47,7 @@ When dealing with a number variable, JavaScript supports standard mathematical o
 
 ## Type conversions
 
-JavaScript is a weakly typed language. That means that a variable always has a type, but the variable can change type when it is assigned a new value, or that types can be automatically converted based upon the context that they are used in. Sometimes the results of automatic conversions can be unexpected from programmers who are used to strongly typed languages. Consider the following examples.
+JavaScript is a dynamically typed language. That means that a variable always has a type, but the variable can change type when it is assigned a new value, or that types can be automatically converted based upon the context that they are used in. Sometimes the results of automatic conversions can be unexpected from programmers who are used to strongly typed languages. Consider the following examples.
 
 ```js
 2 + '3';
@@ -120,7 +120,7 @@ if (true && (!false || true)) {
 }
 ```
 
-### Loops
+## Loops
 
 JavaScript supports many common programming language looping constructs. This includes `for`, `for in`, `for of`, `while`, `do while`, and `switch`. Here are some examples.
 
@@ -211,3 +211,56 @@ while (true) {
 }
 // OUTPUT: 0 1
 ```
+
+## Exercises
+
+````masteryls
+{"id":"87c7299d-9eb3-4c1a-a14c-5686f805f141", "title":"Short-circuit Evaluation in JavaScript", "type":"multiple-choice"}
+Consider the following JavaScript code snippet:
+
+```js
+let a = 10;
+let b = 5;
+
+if (a > 5 || ++b > 10) {
+  a += 2;
+}
+```
+
+What are the final values of `a` and `b` after this code block has finished executing?
+
+- [ ] `a = 12, b = 6`
+- [x] `a = 12, b = 5`
+- [ ] `a = 10, b = 5`
+- [ ] `a = 10, b = 6`
+````
+
+
+```masteryls
+{"id":"d0dfb8f6-7b0b-45ed-b6ed-27b041440f7f", "title":"Strict vs. Loose Equality", "type":"essay"}
+In JavaScript, what is the result of evaluating the expressions `5 == "5"` and `5 === "5"`, and why?
+```
+
+````masteryls
+{"id":"45a11ede-ba2a-4c74-892f-0398d542214a", "title":"JavaScript for...in iteration", "type":"multiple-choice"}
+Consider the following JavaScript code snippet:
+
+```javascript
+const settings = {
+  theme: "dark",
+  notifications: true,
+  version: 1.2
+};
+
+for (let item in settings) {
+  console.log(item);
+}
+```
+
+What will be logged to the console during the execution of this loop?
+
+- [ ] The values associated with the keys: `"dark"`, `true`, and `1.2`
+- [x] The names of the enumerable properties (keys): `"theme"`, `"notifications"`, and `"version"`
+- [ ] The numeric index of each property: `0`, `1`, and `2`
+- [ ] Both the keys and values as arrays: `["theme", "dark"]`, `["notifications", true]`, and `["version", 1.2]`
+````

@@ -56,3 +56,76 @@ Alice
 Notice that you are able to see the round trip journey of the local storage values in the console output. If you want to see what values are currently set for your application, then open the `Application` tab of the dev tools and select `Storage > Local Storage` and then your domain name. With the dev tools you can add, view, update, and delete any local storage values.
 
 ![Local storage dev tools](localStorageDevTools.png)
+
+
+### Data Serialization
+`localStorage` can only store strings. To store complex data structures like objects or arrays, you must serialize them into a JSON string using `JSON.stringify()` when saving and deserialize them using `JSON.parse()` when retrieving.
+
+```javascript
+const user = { name: "Alice", theme: "dark" };
+
+// Saving an object
+localStorage.setItem("userProfile", JSON.stringify(user));
+
+// Retrieving an object
+const storedUser = JSON.parse(localStorage.getItem("userProfile"));
+```
+
+### Storage Limits and Error Handling
+Most modern browsers provide approximately **5MB** of storage per origin. If you exceed this limit, the browser will throw a `QuotaExceededError`. It is a best practice to use `try...catch` blocks when performing write operations to handle these scenarios gracefully.
+
+```javascript
+try {
+  localStorage.setItem("key", "large_data_string");
+} catch (e) {
+  if (e.name === 'QuotaExceededError') {
+    console.error("Storage limit reached!");
+  }
+}
+```
+
+### Security Considerations
+Data stored in `localStorage` is accessible by any JavaScript code running on the same origin. This makes it vulnerable to **Cross-Site Scripting (XSS)** attacks.
+*   **Never** store sensitive information such as passwords, personally identifiable information (PII), or session tokens (like JWTs) in `localStorage`.
+*   Always sanitize any data retrieved from `localStorage` before rendering it to the DOM to prevent script injection.
+
+### Synchronous Blocking
+`localStorage` operations are **synchronous**. This means that reading or writing large amounts of data blocks the main thread, which can lead to UI "jank" or lag. For high-performance applications requiring larger storage capacities, consider using **IndexedDB**, which is asynchronous.
+
+### The `storage` Event
+You can synchronize data across multiple tabs or windows from the same origin using the `storage` event. This event fires on every window **except** the one that performed the change.
+
+```javascript
+window.addEventListener('storage', (event) => {
+  console.log(`Key changed: ${event.key}`);
+  console.log(`New value: ${event.newValue}`);
+});
+```
+
+### Feature Detection
+Some users may have storage disabled or may be using a "Private/Incognito" mode that restricts access. Always verify availability before attempting to use the API.
+
+```javascript
+function isLocalStorageAvailable() {
+  try {
+    const testKey = "__test__";
+    localStorage.setItem(testKey, testKey);
+    localStorage.removeItem(testKey);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+```
+
+### LocalStorage vs. SessionStorage
+While both share the same API methods, they differ in persistence:
+*   **LocalStorage**: Persists even after the browser is closed and reopened.
+*   **SessionStorage**: Cleared when the specific page session ends (when the tab is closed). Use `sessionStorage` for temporary data that should not persist across sessions.
+
+
+```masteryls
+{"id":"0cc9e91e-e677-43a1-99e8-4e164e464b3b", "title":"Uses of localStorage", "type":"essay" }
+Describe good and bad uses for `localStorage` in application development.
+```
+

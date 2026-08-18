@@ -1,8 +1,8 @@
 # Progressive web application
 
-> [!IMPORTANT]
->
-> The information provided here is meant as extended course content. It will not be covered in class or appear on any test.
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRWScu4aN4cXtrd-Cq2gSXMXknM0ConjAET5wMWkWKP6ufkKNJDNE-Zu-_pWg7FjLv0noNkPK1BI2LH/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
 
 📖 **Deeper dive reading**:
 

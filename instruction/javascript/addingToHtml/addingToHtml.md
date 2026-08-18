@@ -19,7 +19,7 @@ function sayHello() {
 ```html
 <!-- external script -->
 <head>
-  <script src="index.js"></script>
+  <script src="/index.js"></script>
 </head>
 <body>
   <button onclick="sayHello()">Say Hello</button>
@@ -41,3 +41,9 @@ function sayHello() {
 ```
 
 Notice that we call the `sayHello` and `sayGoodbye` JavaScript functions from the HTML in the `onclick` attribute of the button element. Special attributes like `onclick` automatically create event listeners for different DOM events that call the code contained in the attribute's value. The code specified by the attribute value can be a simple call to a function or any JavaScript code.
+
+
+```masteryls
+{"id":"cb181c05-18c3-49a3-bdcf-f4755b53f56c", "title":"HTML in JavaScript", "type":"essay" }
+Explain the different ways you can include JavaScript in HTML.
+```

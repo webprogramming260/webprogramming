@@ -150,3 +150,24 @@ labeler(5);
 labeler('fish');
 // OUTPUT: string=fish
 ```
+
+
+## Experiment
+
+Use the **JavaScript Interpreter**, or the console pane in the browser debugger, to experiment with the different types of functions.
+
+
+```masteryls
+{"id":"e92239de-b212-437c-becf-f32950a9b985", "type":"web-page", "height":650, "file":"../introduction/javascriptPlayground.html" }
+```
+
+## Reflect
+
+```masteryls
+{"id":"f88669f7-c9c5-4250-bfb3-c58968294f8c", "title":"Functions", "type":"essay" }
+Demonstrate a simple JavaScript function for each of the following types:
+
+1. Simple function
+2. Anonymous function
+3. Inner function
+```

@@ -48,4 +48,12 @@ Get on the Discord server and review each of the channels and the TA area. Revie
 
 Figure out who your assigned TA is by reviewing the [TA schedule](https://docs.google.com/spreadsheets/d/1g1AMtgvyfSwMgp85QcwHuy0mVR-nN3bIGI6XNEJWB1U/edit?usp=sharing). TAs are assigned by an alphabetical range. Find the range that contains the first letter of your last name. Using their Discord ID, open Discord to send them a direct message (DM) to introduce yourself.
 
-_If your section of this course requires that you submit assignments for grading_: Submit in the Canvas assignment that you have completed this.
+
+```masteryls
+{"id":"c15f1685-7ab3-4a61-90cb-f959fb03b62a", "title":"Using discord", "type":"multiple-choice" }
+I have:
+
+- [x] Successfully joined the Discord server, looked over previous help requests, and know how to ask questions.
+- [ ] Not been able to get on Discord.
+```
+

@@ -60,3 +60,116 @@ function getScores() {
   }
 }
 ```
+
+
+## Custom Error Classes
+While JavaScript provides built-in error types (like `ReferenceError` or `TypeError`), creating custom error classes allows for more precise error handling and debugging. By extending the base `Error` class, you can include additional metadata or specific identifiers.
+
+```javascript
+class DatabaseError extends Error {
+  constructor(message, query) {
+    super(message);
+    this.name = "DatabaseError";
+    this.query = query; // Custom property
+  }
+}
+
+try {
+  throw new DatabaseError("Connection failed", "SELECT * FROM users");
+} catch (err) {
+  if (err instanceof DatabaseError) {
+    console.error(`Query failed: ${err.query}`);
+  }
+}
+```
+
+## Error Chaining with the `cause` Property
+The `cause` property allows you to wrap an original error inside a new one. This maintains the stack trace and context of the low-level error while providing a more high-level explanation.
+
+```javascript
+try {
+  try {
+    throw new Error("Low-level network failure");
+  } catch (lowLevelErr) {
+    // Wrap the error with context
+    throw new Error("Failed to fetch user profile", { cause: lowLevelErr });
+  }
+} catch (highLevelErr) {
+  console.log(highLevelErr.message); // "Failed to fetch user profile"
+  console.log(highLevelErr.cause.message); // "Low-level network failure"
+}
+```
+
+## Asynchronous Exception Handling
+Exceptions in asynchronous code cannot be caught by a standard `try...catch` block if the error occurs after the block has finished executing.
+
+### 1. Promises
+Errors in Promises are handled via the `.catch()` method. If a promise rejects and there is no `.catch()`, it results in an `unhandledrejection`.
+
+```javascript
+fetch("https://invalid-url.com")
+  .then(response => response.json())
+  .catch(err => console.error("Caught promise error:", err));
+```
+
+### 2. Async/Await
+When using `async/await`, you must wrap the `await` call in a `try...catch` block to handle rejections synchronously.
+
+```javascript
+async function loadData() {
+  try {
+    const data = await someAsyncFunction();
+  } catch (err) {
+    console.error("Caught async error:", err);
+  }
+}
+```
+
+## Re-throwing Exceptions
+Sometimes you need to catch an error to perform a specific action (like logging), but you still want the error to propagate up the call stack so the caller can handle it.
+
+```javascript
+function processData(data) {
+  try {
+    parse(data);
+  } catch (err) {
+    logErrorToService(err);
+    throw err; // Re-throwing the exception
+  }
+}
+```
+
+## Global Error Listeners
+In production environments, it is critical to catch errors that were missed by local `try...catch` blocks.
+
+*   **Browser:** Use the `error` and `unhandledrejection` events.
+*   **Node.js:** Use `uncaughtException` and `unhandledRejection` process events.
+
+```javascript
+// Browser example
+window.addEventListener("unhandledrejection", (event) => {
+  console.warn(`Unhandled promise rejection: ${event.reason}`);
+});
+
+// Node.js example
+process.on("uncaughtException", (err) => {
+  console.error("There was an uncaught error", err);
+  process.exit(1); // Mandatory retry/exit logic
+});
+```
+
+## Only Throw Error Objects
+While JavaScript allows you to throw any value (`throw "Error!";` or `throw 404;`), it is a best practice to only throw instances of the `Error` object (or its subclasses). Objects derived from `Error` automatically capture a stack trace, which is essential for identifying where the exception originated.
+
+| Practice | Example | Result |
+| :--- | :--- | :--- |
+| **Good** | `throw new Error("Message")` | Includes stack trace and name. |
+| **Bad** | `throw "Message"` | No stack trace; harder to debug. |
+
+## Exercises
+
+
+```masteryls
+{"id":"55009832-643e-4f31-949e-dde1cb3b6576", "title":"Teaching", "type":"teaching" }
+How do I use JavaScript exceptions correctly?
+```

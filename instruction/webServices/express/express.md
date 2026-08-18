@@ -24,14 +24,21 @@ You create an Express application by using NPM to install the Express package an
 ➜ npm install express
 ```
 
+Here is the very minimal usage of Express to create a service that listens on port 3000 and returns a 404 error for all requests.
+
+
 ```js
 const express = require('express');
 const app = express();
 
-app.listen(8080);
+app.listen(3000);
 ```
 
-With the `app` object you can now add HTTP routing and middleware functions to the application.
+With the `app` object in place and listening on port 3000, you are now ready to add the code that will power a real  web service.
+
+
+![express.jpg](express.jpg)
+
 
 ## Defining routes
 
@@ -60,7 +67,7 @@ app.get('/store/:storeName', (req, res, next) => {
 If we run our JavaScript using `node` we can see the result when we make an HTTP request using `curl`.
 
 ```sh
-➜ curl localhost:8080/store/orem
+➜ curl localhost:3000/store/orem
 {"name":"orem"}
 ```
 
@@ -181,7 +188,7 @@ app.get('/error', (req, res, next) => {
 Now if we use `curl` to call our error endpoint we can see that the response comes from the error middleware.
 
 ```sh
-➜ curl localhost:8080/error
+➜ curl localhost:3000/error
 {"type":"Error","message":"Trouble in river city"}
 ```
 
@@ -238,7 +245,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Listening to a network port
-const port = 8080;
+const port = 3000;
 app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
@@ -246,9 +253,9 @@ app.listen(port, function () {
 
 ## Debugging an Express web service
 
-Let's take a moment to talk about how you can debug a web service running with the Express package under Node.js. Using the code that you created above, set a breakpoint on the code inside the getStore endpoint callback and another breakpoint on the `app.listen` call. Start debugging by pressing `F5`. The debugger should stop on the `listen` call where you can inspect the `app` variable. Press `F5` again to continue running. Now open up your browser and set the location to `localhost:8080/store/provo`. This should hit the breakpoint on the endpoint. Take some time to inspect the `req` object. You should be able to see what the HTTP method is, what parameters are provided, and what the path currently is. Press `F5` to continue. Your browser should display the JSON object that you returned from your endpoint.
+Let's take a moment to talk about how you can debug a web service running with the Express package under Node.js. Using the code that you created above, set a breakpoint on the code inside the getStore endpoint callback and another breakpoint on the `app.listen` call. Start debugging by pressing `F5`. The debugger should stop on the `listen` call where you can inspect the `app` variable. Press `F5` again to continue running. Now open up your browser and set the location to `localhost:3000/store/provo`. This should hit the breakpoint on the endpoint. Take some time to inspect the `req` object. You should be able to see what the HTTP method is, what parameters are provided, and what the path currently is. Press `F5` to continue. Your browser should display the JSON object that you returned from your endpoint.
 
-Make another request from our browser, but this time include some query parameters. Something like `http://localhost:8080/store/orem?order=2`. Requesting that URL should cause your breakpoint to hit again where you can see the URL changes reflected in the req object.
+Make another request from our browser, but this time include some query parameters. Something like `http://localhost:3000/store/orem?order=2`. Requesting that URL should cause your breakpoint to hit again where you can see the URL changes reflected in the req object.
 
 Now, instead of pressing `F5` to continue, press `F11` to step into the `res.send` function. This will take you out of your code and into the Express code that handles sending a response. Because you installed the Express package using NPM, all of Express's source code is sitting in the `node_modules` directory. You can also set breakpoints there, examine variables, and step into functions. Debugging into popular packages is a great way to learn how to code by seeing how really good programmers do things. Take some time to walk around Holowaychuk's code and see if you can understand what it is doing.
 
@@ -295,19 +302,108 @@ Create a web service with Express using the following steps.
 1. Open another console window and use Curl to try out your web service by making requests to the endpoints.
 
    ```sh
-   curl localhost:8080
-   curl localhost:8080/error
-   curl localhost:8080/store/orem
-   curl -X PUT localhost:8080/st/orem
-   curl -X DELETE localhost:8080/store/orem
-   curl -X POST -c cookies.txt localhost:8080/cookie/express/tj
-   curl -b cookies.txt localhost:8080/cookie
+   curl localhost:3000
+   curl localhost:3000/error
+   curl localhost:3000/store/orem
+   curl -X PUT localhost:3000/st/orem
+   curl -X DELETE localhost:3000/store/orem
+   curl -X POST -c cookies.txt localhost:3000/cookie/express/tj
+   curl -b cookies.txt localhost:3000/cookie
    ```
 
 1. Develop a mental model in your head about what these commands are doing and how your service is responding. Perhaps creating a [sequence diagram](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIGVIE4DcQGMYCVIEcCukBnYAgKBIENVgB7BaAYVwXDMeYFoA+eZNSALmgBtAAoBVACoBdaAHois2pAC2JAHbVgMBCADmAC2DRqAMziIU6fuQAONgHQ3cwABQByecABUs-kSUAcuTKkG4ANAA6atAuCDhh0HEEAJTQALyciYT2BJBqACYuUQDe0Lg2+eRagnHYjuQIwQQ5NHFBIdAAvsnJANwkbOAAPEPs7DyWAtDFAETllVoz-DNKyjOdJEA) will help clarify the interaction if it is still unclear.
 
-   ![HTTP request](httpRequestSequenceDiagram.jpg)
+
+   ```mermaid
+    %%{init: {
+      "theme": "base",
+      "themeVariables": {
+        "primaryColor": "#ffffff",
+        "primaryTextColor": "#000000",
+        "primaryBorderColor": "#000000",
+        "lineColor": "#000000",
+        "textColor": "#000000"
+      }
+    }}%%
+
+    sequenceDiagram
+        title Service Requests
+
+        actor Curl
+        participant Service
+
+        Curl->>Service: [PUT] /st/orem
+
+        Note right of Service: app.put('/st*/:storeName',<br/> (req, res) => res.send(<br/>{ update: req.params.storeName }));
+
+        Service-->>Curl: {"update":"orem"}
+   ```
 
 1. Debug your application by setting breakpoints, inspecting variables, and walking through the code.
 
-_If your section of this course requires that you submit assignments for grading_: Submit the output from the curl commands to the Canvas assignment.
+
+```masteryls
+{"id":"a2d00756-7ce5-4890-909b-5c9844027723", "title":"Building an Express web service", "type":"multiple-select" }
+Mark all of the items that you completed in your development environment.
+
+- [x] I created the service using the provided source code.
+- [x] I made requests to the service using the browser.
+- [x] I made requests to the service using Curl.
+- [x] I attached VS Code as a debugger and stepped through the code.
+```
+
+
+## Exercises
+
+
+````masteryls
+{"id":"ee3c9493-9904-4ef9-b2f4-5e99bbda4d01", "title":"Anatomy of an Express web service", "type":"essay" }
+Explain what each line of this code is doing
+
+```js
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+
+app.use(cookieParser());
+
+app.post('/cookie/:name/:value', (req, res) => {
+  res.cookie(req.params.name, req.params.value);
+  res.send({ cookie: `${req.params.name}:${req.params.value}` });
+});
+
+app.get('/cookie', (req, res) => {
+  res.send({ cookie: req.cookies });
+});
+```
+````
+
+
+````masteryls
+{"id":"ea3c9493-9904-4ef9-b2f4-5e99bbda4d01", "title":"Anatomy of an Express web service", "type":"essay" }
+Explain what each line of this code is doing
+
+
+```js
+app.get('/error', (req, res, next) => {
+  throw new Error('Trouble in river city');
+});
+
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+```
+````
+
+````masteryls
+{"id":"ed3c9493-9904-4ef9-b2f4-5e99bbda4d01", "title":"Anatomy of an Express web service", "type":"essay" }
+Explain what each line of this code is doing
+
+
+```js
+const port = 3000;
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
+});
+```
+````

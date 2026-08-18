@@ -59,3 +59,17 @@ I’ll tell you something about German sausages, they’re the wurst
 ```
 
 This all means that you need to test the services you want to use before you include them in your application. Make sure they are responding with `*` or your calling origin. If they do not then you will not be able to use them.
+
+## Exercises
+
+
+```masteryls
+{"id":"208c607c-f535-4a22-89d7-0b434ece34d1", "title":"Definition of CORS", "type":"multiple-choice"}
+In the context of web security, what is Cross-Origin Resource Sharing (CORS)?
+
+- [ ] A browser-enforced security policy that strictly prevents a document or script loaded from one origin from interacting with a resource from another origin.
+- [x] A mechanism that uses HTTP headers to allow a server to indicate any origins other than its own from which a browser should permit loading resources.
+- [ ] A server-side authentication protocol designed to encrypt data packets when they are transmitted between different geographic data centers.
+- [ ] A client-side JavaScript library that automatically redirects unauthorized cross-domain requests to a secure proxy server to bypass browser restrictions.
+```
+

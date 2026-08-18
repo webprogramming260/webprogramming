@@ -356,3 +356,12 @@ You can find this complete example [here](https://github.com/webprogramming260/w
 1. Use the browser's debugger to view the WebSocket communication.
 
 ![WebSocket Chat](webSocketChat.png)
+
+
+```masteryls
+{"id":"a135bbc5-88f3-4574-9ca3-91b033444c08", "title":"WebSocket chat", "type":"multiple-select" }
+I have successfully done the following:
+
+- [x] Created, executed, and debugged a chat program that uses the WebSocket protocol
+```
+

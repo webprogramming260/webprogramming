@@ -1,8 +1,12 @@
 # PM2
 
+
 When you run a program from the console, the program will automatically terminate when you close the console or if the computer restarts. In order to keep programs running after a shutdown you need to register it as a `daemon`. The term daemon comes from the idea of something that is always there working in the background. Hopefully you only have good daemons running in your background.
 
 We want our web services to continue running as a daemon. We would also like an easy way to start and stop our services. That is what [Process Manager 2](https://pm2.keymetrics.io/docs/usage/quick-start/) (PM2) does.
+
+
+![pm2.jpg](pm2.jpg)
 
 PM2 is already installed on your production server as part of the AWS AMI that you selected when you launched your server. Additionally, the deployment scripts found with the Simon projects automatically modify PM2 to register and restart your web services. That means you should not need to do anything with PM2. However, if you run into problems such as your services not running, then here are some commands that you might find useful.
 
@@ -127,3 +131,12 @@ pm2 save
 ```
 
 If you run `pm2 ls` again you should see your web service listed. You can now access your subdomain in the browser and see the proper response. PM2 will keep running your service even after you exit your SSH session.
+
+## Exercises
+
+
+```masteryls
+{"id":"bb981431-87f7-4c98-875f-e02787b2982f", "title":"PM2", "type":"essay" }
+Use `ssh` to shell into your web server. Type the command: `pm2 ls` and paste the response below and describe what it means.
+```
+

@@ -73,16 +73,70 @@ There is a distinction between structure elements that are block vs inline. A bl
 
 ## ☑ Assignment
 
-Create a fork of this [CodePen](https://codepen.io/leesjensen/pen/GRGBqbw) do the following:
+```masteryls
+{"id":"a6fc521e-33ca-4116-bc6b-9a6507f58642", "title":"Web page development", "type":"ai-web-page", "syncGrade":false, "autoGrade":false, "allowAiPrompt":false, "gradingCriteria":"1. Replace the navigation div elements with anchor elements that have hyperlinks to BYU and FamilySearch. 2. Change the section `ul` element text to be apples, bananas, and oranges. 3. Add an img element to the `aside` element. Use the URL of an image on some other website as the `src` attribute. Use the width attribute to size it properly. 4. Add another row to the table with the text HTML, CSS, and JavaScript. 5. Add your name in a h1 element to the `header` element. 6. Add a hyperlink to the `footer` element to your GitHub repository.", "height":700 }
+do the following:
 
 1. Replace the navigation div elements with anchor elements that have hyperlinks to BYU and FamilySearch.
-1. Change the section `ul` element text to be "apples", "bananas", and "oranges".
-1. Add an img element to the `aside` element. Use the URL of an image on some other website as the `src` attribute. Use the width attribute to size it properly.
-1. Add another row to the table with the text HTML, CSS, and JavaScript.
-1. Add your name in a h1 element to the `header` element.
-1. Add a hyperlink to the `footer` element to your GitHub repository.
+2. Change the section `ul` element text to be "apples", "bananas", and "oranges".
+3. Add an img element to the `aside` element. Use the URL of an image on some other website as the `src` attribute. Use the width attribute to size it properly. If can't find an image try: https://shorturl.at/FF8tS.
+4. Add another row to the table with the text HTML, CSS, and JavaScript.
+5. Add your name in a h1 element to the `header` element.
+6. Add a hyperlink to the `footer` element to your GitHub repository.
 
-_If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
+~~~html
+<body>
+  <p>Body</p>
+  <header>
+    <p>Header - <span>Span</span></p>
+    <nav>
+      Navigation
+      <div>Div</div>
+      <div>Div</div>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <p>Section</p>
+      <ul>
+        <li>List</li>
+        <li>List</li>
+        <li>List</li>
+      </ul>
+    </section>
+    <section>
+      <p>Section</p>
+      <table>
+        <tr>
+          <th>Table</th>
+          <th>Table</th>
+          <th>Table</th>
+        </tr>
+        <tr>
+          <td>table</td>
+          <td>table</td>
+          <td>table</td>
+        </tr>
+      </table>
+    </section>
+    <aside>
+      <p>Aside</p>
+    </aside>
+  </main>
+
+  <footer>
+    <div>Footer - <span>Span</span></div>
+  </footer>
+</body>
+
+<style>
+  * {font-family: Arial;border: medium dashed #e3d5c2;padding: 0.25em;margin: 0.25em;}
+  html, p {border: none;}
+  span {border: medium dashed #b3a592;margin: 0.25em;}
+</style>
+~~~
+```
 
 ![HTML structure assignment](htmlStructureAssignment.png)
 

@@ -2,7 +2,16 @@
 
 📖 **Recommended reading**: [React.dev - Your First Component](https://react.dev/learn/your-first-component)
 
-React components allow you to modularize the functionality of your application. This allows the underlying code to directly represent the components that a user interacts with. It also enables code reuse as common application components often show up repeatedly.
+A React component is simply a JavaScript function that returns JSX. The JSX is converted into JavaScript by Babel and then rendered in browser. This makes it easy to combine HTML and JavaScript in your web application.
+
+```js
+function SimpleComponent() {
+  const who = 'world';
+  return <b>Hello {who}</b>;
+}
+```
+
+React components also allow you to modularize the functionality of your application. Components match well with the structural mental model of users. They also encourage code reuse because it is common for components to show up repeatedly.
 
 ## Rendering JSX
 
@@ -22,7 +31,7 @@ Notice that `Demo` is not a valid HTML element. The transpiler will replace this
 
 **React component**
 
-```js
+```jsx
 function Demo() {
   const who = 'world';
   return <b>Hello {who}</b>;
@@ -49,47 +58,29 @@ root.render(hello);
 <div>Hello</div>
 ```
 
-## Styling components
-
-If you don't want to directly style your components with inline CSS rule sets, you can reference and external CSS file and then reference the rules in your JSX just like you would normally do with HTML. For example, if you had a CSS file named `index.css` with the following styles.
-
-```css
-div {
-  font-family: sans-serif;
-}
-
-.code {
-  color: green;
-}
-```
-
-You could apply the style rules using importing the CSS. The styles will then apply as they would normally, with the exception that you need to use `className` attribute on an element instead of `class` because class is a keyword in JavaScript.
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-
-function App() {
-  return (
-    <div>
-      <pre className='code'>console.log(1+1);</pre>
-      <p>Simple math</p>
-    </div>
-  );
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-```
-
-This results in the following.
-
-![apply styles](applyStyles.png)
-
 ## Child components
 
 The JSX that a component returns may reference other components. This allows you to build up a complex tree of interrelated components. Consider the following application that has a header with navigational elements, main content, and a footer. The App component is the parent of all the other components.
+
+
+```mermaid
+graph TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000,stroke-width:1px;
+
+    App
+    
+    App --> Header
+    App --> Content
+    App --> Footer
+    
+    Header --> Link1[Link Home]
+    Header --> Link2[Link Users]
+    Header --> Link3[Link About]
+```
+
+With React you typically start with a single HTML element defined in `index.html` and then it is a tree of nested components all the way down.
+
+The following code demonstrates the component structure described above.
 
 #### index.jsx
 
@@ -200,20 +191,195 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
+## Styling components
+
+If you don't want to directly style your components with inline CSS rule sets, you can reference and external CSS file and then reference the rules in your JSX just like you would normally do with HTML. For example, if you had a CSS file named `index.css` with the following styles.
+
+```css
+div {
+  font-family: sans-serif;
+}
+
+.code {
+  color: green;
+}
+```
+
+You could apply the style rules using importing the CSS. The styles will then apply as they would normally, with the exception that you need to use `className` attribute on an element instead of `class` because class is a keyword in JavaScript.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+
+function App() {
+  return (
+    <div>
+      <pre className='code'>console.log(1+1);</pre>
+      <p>Simple math</p>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+This results in the following.
+
+```masteryls
+{"id":"484515fd-8066-4bae-988c-fb6cf13cfc21", "title":"Styling JSX", "type":"web-page", "height":80}
+<body>
+  <div id="root">... loading</div>
+
+  <style>
+  div {font-family: sans-serif;}
+  .code {color: green;}
+  </style>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function App() {
+      return (
+        <div>
+          <pre className='code'>console.log(1+1);</pre>
+          <p>Simple math</p>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+```
+
+### Dynamic Styling
+You can also use React state to control the styling of your components. 
+
+```jsx
+function ColorComponent() {
+  const [color, setColor] = useState('blue');
+
+  return <div style={{ color: color}}>{color}</div>
+}
+```
+
+The double curly bracket syntax looks a bit strange to start with, but if you consider that you are first escaping to JavaScript and then supplying an object that defines each of the style properties, it begins to make sense.
+
+
+```masteryls
+{"id":"cf497eee-ab3e-4a39-b2f3-f6f00a5eb6f6", "title":"Dynamic Styling Practice", "type":"ai-web-page", "allowAiPrompt":false, "gradingCriteria":"The background transitions on mouse enter", "height":100 }
+Examine the source code and see how React state is used to specify the style of the component element. See what happens when you move your cursor over the text. Then change it so background color changes instead of the text color.
+
+~~~html
+<body>
+  <div id="root">... loading</div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function App() {
+      const [hovered, setHovered] = useState(false);
+
+      return (
+        <div  style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+          <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={{
+              fontSize: 32,
+              transition: "color 2s",
+              color: hovered ? "hotpink" : "steelblue",
+            }}
+          >
+            JSX with Style!
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+~~~
+```
+
+
 ## Reactivity
 
-A component's properties and state are used by the React framework to determine the reactivity of the interface. Reactivity controls how a component reacts to actions taken by the user or events that happen within the application. Whenever a component's state or properties change, the `render` function for the component and all of its dependent component `render` functions are called.
+A component's properties and state serve as the "source of truth" that React uses to drive the **reactivity** of the interface. Reactivity is the process by which the UI automatically stays in sync with the underlying data. When a user interacts with the page or an event occurs, the data changes, and React ensures the UI reflects that change immediately.
+
+Whenever a component's state or properties are updated, React triggers a **re-render**. For functional components, this means React executes the component function again to determine what the new JSX should look like based on the updated values. This re-rendering process is recursive: by default, when a parent component re-renders, all of its nested child components are also re-evaluated to ensure the entire UI tree remains consistent.
+
+To keep this process efficient, React uses a "Virtual DOM." Instead of rebuilding the entire webpage's HTML from scratch—which would be slow—React compares the new JSX output with the previous version (a process called "diffing") and calculates the most efficient way to update the actual browser DOM. This ensures that only the specific elements that truly changed are modified, keeping the application fast and responsive.
 
 ## ☑ Assignment
 
-Create a fork of this [CodePen](https://codepen.io/leesjensen/pen/Yzvaver) and experiment.
 
-Try the following:
+```masteryls
+{"id":"cc76e021-8012-43be-bb3b-8427ee7aabbf", "title":"Components", "type":"ai-web-page", "allowAiPrompt":false, "gradingCriteria":"There exists a new property to the Demo component that provides the background color for the component. There exists a state variable that changes the color on a mouse over event.", "height":225 }
+Examine the provided source code and then modify it to:
 
 1. Add a new property to the Demo component that provides the background color for the component.
 2. Add another state variable that changes the color on a mouse over event.
 
-_If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
+~~~html
+<body>
+  <div id="root">... loading</div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    // Top level component that contains child components
+    function App() {
+      return (
+        <div>
+          Function Style Component: <Demo who="function" />
+        </div>
+      );
+    }
+
+    // Child component
+    function Demo(props) {
+      const [outlook, setOutlook] = React.useState("beautiful");
+
+      function changeOutlook() {
+        setOutlook(outlook === "exciting" ? "beautiful" : "exciting");
+      }
+
+      return (
+        <div className="component">
+          <p>
+            Hello {outlook} {props.who}
+          </p>
+          <button onClick={changeOutlook}>change</button>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+  <style>
+    * {font-family: Arial;padding: 0.5em;}
+    .component {border: solid thick #888;margin: 0.5em 0;width: %100;}
+  </style>
+</body>
+~~~
+```
+
 
 ### 🧧 Possible solution
 
@@ -250,7 +416,4 @@ function Demo(props) {
     </div>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
 ```

@@ -134,8 +134,34 @@ section:hover {
 }
 ```
 
+
+```masteryls
+{"id":"9bc25c74-548c-4430-b7e0-6cc8971a5cc4", "title":"CSS Child Combinators", "type":"multiple-choice"}
+Consider the following HTML snippet:
+
+**<div class="container">
+  <p>Paragraph 1</p>
+  <section>
+    <p>Paragraph 2</p>
+  </section>
+</div>**
+
+Which CSS selector will apply a style **only** to "Paragraph 1" while leaving "Paragraph 2" unaffected?
+
+- [ ] `.container p`
+- [x] `.container > p`
+- [ ] `.container section p`
+- [ ] `.container + p`
+```
+
+
 You can find out more about pseudo selectors on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes).
 
-## Example source
+## Experiment
 
-The example HTML and CSS for this instruction is available on [CodePen](https://codepen.io/leesjensen/pen/NWzByav). You are encouraged to fork and experiment with it.
+Experiment with the different selector types including the presets and selectors that you provide.
+
+```masteryls
+{"id":"57403bd5-8da2-4818-8262-0ef556c5a866", "title":"Selector demo", "type":"web-page", "height":750, "file":"exampleCode/selectorDemo.html"}
+
+```

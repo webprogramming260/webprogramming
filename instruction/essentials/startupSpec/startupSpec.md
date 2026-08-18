@@ -1,4 +1,4 @@
-# Startup deliverable - specification
+# Startup specification
 
 ![Overview](../../technologies.png)
 
@@ -22,9 +22,9 @@ Your startup application demonstrates your mastery of the instruction presented 
 
 Create an elevator pitch for your application. Something that would excite an investment firm if you happen to catch a ride up the elevator with one of their representatives. Or maybe just sound cool to your friends if they are your target audience. This should be no more than a paragraph in length.
 
-Then sketch out what the application looks like. You can use a tool like [NinjaMock.com](https://ninjamock.com/) to quickly produce a rough layout. Google docs, or plain old paper works fine too (just take pictures or screenshots for your submission).
+Then sketch out what the application looks like. You can use a tool like [figma](https://figma.com/) to quickly produce a rough layout or even a simple prototype. Google docs, or plain old paper works fine too (just take pictures or screenshots for your submission).
 
-![Ninja Mocks](essentialsNinjaMocks.png)
+![figmaWireframe.png](figmaWireframe.png)
 
 Here is an [example design](https://github.com/webprogramming260/startup-example/blob/main).
 
@@ -70,7 +70,6 @@ You only need to provide the specification for this deliverable. Do not include 
 
 Make sure you push your changes to the file so that it can be reviewed.
 
-Submit the URL for your GitHub startup repository to the Canvas assignment.
 
 ## Grading Rubric
 
@@ -84,6 +83,16 @@ Submit the URL for your GitHub startup repository to the Canvas assignment.
   - **CSS** - Styling and animating.
   - **React** - Componentization, routing, and user reactivity using the React framework and JavaScript.
   - **Web service** - Endpoints provided by your backend service that support authentication and application specific functionality. Also include a link to the 3rd party API you plan on using.
-  - **Database**: Store authentication and application data.
-  - **WebSocket**: Realtime information pushed from your backend to your frontend.
+  - **Database** - Store authentication and application data.
+  - **WebSocket** - Realtime information pushed from your backend to your frontend.
 - 30% - One or more rough sketches of your application. Images must be embedded in your `README.md`.
+
+```masteryls
+{"id":"6134acb2-3190-49b2-a22f-c31c1d9b51c2", "title":"Specification deliverable", "type":"url-submission", "urlPrompt":"Convert the user provided URL to create a URL that is the path to the raw GitHub content for the README.md file.", "syncGrade":true, "autoGrade":true, "gradingCriteria":"- the content contains a section named \"Specification Deliverable\"\n- In the \"Specification Deliverable\" section there is a checklist of rubric items.\n- Make sure that there is a clearly defined third party API that is going to be used by their startup\n- Create a score based on the number of checked items and the description of what was done for each item."}
+Update your README.md with clear descriptions  of what you did for each of the rubric items. Then that is done, submit the URL to your startup repository.
+
+_Example: https://github.com/myaccount/startup_
+
+**Note:** If you are updating your repository after initially submitting, you may need to way a few minutes before GitHub will return the version with your latest changes.
+```
+

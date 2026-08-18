@@ -1,5 +1,9 @@
 # Simon React Phase 1: Routing
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRk_0mViiT8YafpyaL1m4siAl2ilUoGpd14ZU0VrexiSHn1UpXIijSe3aPXUCWzlWpiDX-5FrCLj0dz/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 ![Simon](../simon.png)
 
 [🎥 Video tutorial](https://youtu.be/-Gv27DPUPbQ)
@@ -310,6 +314,19 @@ Our directory structure should look like the following at this point.
 
 ```
 
+## Rename the application
+
+Modify `index.html` to change the title of the application to be `Simon React P1: Routing`.
+
+```html
+  <head>
+    ...
+
+    <title>Simon React P1: Routing</title>
+  </head>
+```
+
+
 ## Create view components
 
 We now create React component files `login.jsx`, `play.jsx`, `scores.jsx`, and `about.jsx` to represent each of the application views. To begin with, these are just stubs that we will soon begin populating as we port code from the requisite `.html` files and which we will further develop with javascript functionality in part 2. We place each of the stubbed components in a separate directory (e.g. `src/login/login.jsx`) so that we can keep all of the component files together.
@@ -559,10 +576,6 @@ If you run the code in the debugger by running `npm run dev`, or deploy the code
 
 ## Simon React Phase 1 deliverable
 
-> [!IMPORTANT]
->
-> Do not attempt to port your startup to React until you have completed and deployed your port of Simon to React.
-
 Do the following as part of your mastery demonstration for this phase. This is a prerequisite for your work on the React version of your startup.
 
 1. Clone the [Simon CSS repository](https://github.com/webprogramming260/simon-css) to your development environment.
@@ -572,3 +585,15 @@ Do the following as part of your mastery demonstration for this phase. This is a
 1. Complete all of the steps given above to convert the CSS version over to a basic React version where your HTML and CSS are represented by **React components** and you have enabled **React routing**.
 1. Deploy the result to your simon production environment (simon.yourdomain) using the `deployReact.sh` deployment script from the [Simon React repository](https://github.com/webprogramming260/simon-react/blob/main/deployReact.sh).
 
+
+
+```masteryls
+{"id":"bc16c49e-eed4-4852-9843-c994c9542dfd", "title":"Simon React P1: Routing Deployed", "type":"url-submission", "syncGrade":false, "autoGrade":false, "validateUrl":true, "gradingCriteria":"The title contains 'Simon React P1: Routing'" }
+After you implemented and deployed the React router in the Simon CSS version, verify that it is accessible by providing the URL.
+
+_Example: https://simon.yourdomain.click_
+```
+
+> [!IMPORTANT]
+>
+> Do not attempt to port your startup to React until you have completed and deployed your port of Simon to React.

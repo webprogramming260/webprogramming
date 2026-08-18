@@ -124,10 +124,8 @@ console.log('done');
 
 ## ☑ Assignment
 
-Fork this [CodePen](https://codepen.io/leesjensen/pen/RwJJKwj) that uses promises and convert it to use `async`/`await`.
+```masteryls
+{"id":"ad1e6e3d-9473-41ae-83f9-c074b95dafab", "title":"Async Pizza", "type":"ai-web-page", "allowAiPrompt":false, "gradingCriteria":"The code must use async await functionality", "height":500, "file":"pizzaAsync.html" }
+This code uses promises to order pizzas. Take some time to experiment with it. Currently it that uses promises and convert it to use `async`/`await`. If you get stuck use the **Discuss** feature to make progress.
+```
 
-_If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
-
-### 🧧 Possible solution
-
-If you get stuck here is a [possible solution](https://codepen.io/leesjensen/pen/KKeevVg)

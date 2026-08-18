@@ -115,3 +115,13 @@ You should take serious thought about where you store your files. Putting files 
 1. If you have multiple application servers then you can't assume that the server you uploaded the data to is going to be the one you request a download from.
 
 Instead you want to use a dedicated storage service that has durability guarantees, is not tied to your compute capacity, and can be accessed by multiple application servers.
+
+
+
+## Exercises
+
+```masteryls
+{"id":"66ba8583-7045-4ef5-8dc0-497a9b582248", "title":"Storing files on your server", "type":"teaching" }
+Help me understand why I should not store user data files on my EC2 instance.
+```
+

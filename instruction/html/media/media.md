@@ -39,7 +39,12 @@ To include an audio file in your content you use the `audio` element and specify
 <audio controls src="testAudio.mp3"></audio>
 ```
 
-![Html Audio](htmlAudioImg.jpg)
+```masteryls
+{"id":"bec015a0-f052-489a-b45d-3d0e1960deb2", "title":"Web page", "type":"web-page", "height":50}
+<audio controls src="htmlAudio.mp3"></audio>
+```
+
+
 
 ### Video
 
@@ -73,7 +78,15 @@ SVG is an extremely powerful and widely supported way to render graphics inline 
 
 ![SVG demo](htmlSvg.jpg)
 
-When combined with JavaScript and CSS you can produce some amazing visualizations. Checkout this [CodePen](https://codepen.io/leesjensen/pen/mdKjMLY) for an example.
+When combined with JavaScript and CSS you can produce some amazing visualizations.
+
+
+```masteryls
+{"id":"531a1f8a-ab7e-4455-9625-8476ed004876", "title":"Web page", "type":"web-page", "height":300, "file":"svgDemo.html"}
+```
+
+
+> _Source: [CodePen](https://codepen.io/leesjensen/pen/mdKjMLY)_
 
 Consult the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG) if you are interested in learning more about SVG.
 
@@ -94,18 +107,47 @@ The `canvas` element was introduced to HTML in order to facilitate 2D drawing an
 </script>
 ```
 
-If you would like to see some examples of complex canvas renderings check out these examples on CodePen.
-
-- [Neon Hexagon](https://codepen.io/leesjensen/pen/QWxBMrE)
-- [Particles](https://codepen.io/leesjensen/pen/vYraJRP)
-- [Ribbons 2](https://codepen.io/leesjensen/pen/wvXxqja)
 
 ## ☑ Assignment
 
-This [CodePen](https://codepen.io/leesjensen/pen/OJEwgBa) demonstrates the different media elements. Fork the pen and do the following:
+
+```masteryls
+{"id":"5cdb3b2d-c448-4dfb-a6f3-3bf87946e906", "title":"Web page development", "type":"ai-web-page", "allowAiPrompt":false, "syncGrade":false, "autoGrade":false, "gradingCriteria":"Change the image to something besides htmlImage.jpg. Change the video to something else besides park.mp4. Change the canvas element to display a blue circle.", "height":1000 }
+This interaction demonstrates the different media elements.
 
 1. Change the image to something else.
-1. Change the video to something else.
-1. Change the canvas element to display a blue circle.
+2. Change the video to something else.
+3. Change the canvas element to display a blue circle.
 
-_If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
+
+
+~~~html
+<body>
+  <h2>Image</h2>
+  <img alt="Arches" src="htmlImage.jpg" />
+
+  <h2>Audio</h2>
+  <audio controls src="htmlAudio.mp3"></audio>
+
+  <h2>Video</h2>
+  <video controls width="300"> <source src="park.mp4" />
+  </video>
+
+  <h2>Canvas</h2>
+  <canvas id="canvasDemo" width="300" height="200" style="border: 1px solid #000000"></canvas>
+  <script>
+    const ctx = document.getElementById('canvasDemo').getContext('2d');
+    ctx.beginPath();
+    ctx.arc(150, 100, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
+    ctx.fill();
+    ctx.stroke();
+  </script>
+</body>
+
+<style>
+body { padding: 1em;}
+</style>
+~~~
+```

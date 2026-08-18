@@ -75,3 +75,14 @@ Get familiar with what this code teaches.
 
 - Update your `startup` repository notes.md with what you learned.
 - Make sure your project is visible from your production environment (e.g. https://simon.yourdomain.click).
+
+
+
+
+```masteryls
+{"id":"a63b9d78-fc1c-401b-8b13-480fa63cb778", "title":"Simon WebSocket", "type":"url-submission", "syncGrade":false, "autoGrade":false, "validateUrl":true, "gradingCriteria":"The title contains 'Simon WebSocket'" }
+After you have deployed _Simon WebSocket_, verify that it is accessible by providing the URL.
+
+_Example: https://simon.yourdomain.click_
+```
+

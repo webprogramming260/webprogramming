@@ -213,3 +213,12 @@ When you launch a device it connects the browser interface to a physical device 
 ![BrowserStack iPhone](javaScriptBrowserStackIPhone.png)
 
 BrowserStack offers free trials if you would like to see how your startup application works on a specific device.
+
+## Exercises
+
+
+```masteryls
+{"id":"b6ca8658-e5f6-42e4-b6b3-62893ea9c57c", "title":"Frontend testing", "type":"essay" }
+Explain why frontend testing is more difficult than backend testing.
+```
+

@@ -1,5 +1,7 @@
 # A brief history of web programming
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTH-bV3HnNGM375RepGzTnIfT_XOMspYktpP_TjbkHqooV5x_vGqJrZ-eoUXb4YfHnxXv0EGwhMaD-b/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 Having a basic knowledge of the history of web programming helps you to understand why we have the assortment of technologies that you will be working with. There have been three distinct phases that make up this history.
 
 1. The formation of the internet that supports the communication of web applications.
@@ -111,6 +113,23 @@ The first decade of JavaScript was turbulent as each of the major browser vendor
 In 2009 Ryan Dahl created Node.js as the first successful application for deploying JavaScript outside of a browser. This changed the mindset of JavaScript as purely a browser technology to one that is leveraged across an entire technology stack.
 
 Other important milestones in the history of JavaScript include the 2013 standardization of the common object notation JSON, a typed variant named TypeScript in 2012, and the introduction of numerous transpilers for converting other languages into compatible ECMAScript.
+
+## Experimentation
+
+Use AI to build yourself a little web application that uses all three of the primary web technologies: HTML, CSS, and JavaScript.
+
+
+```masteryls
+{"id":"1383742c-41c4-458c-9af8-76c6be90b28d", "title":"Playing around", "type":"ai-web-page", "height":500 }
+Interactively create an HTML page from your prompt. Use the **AI assistance** tool to have AI generate something for you, or modify the **Source code** directly. Press `Submit` when you are done.
+
+~~~html
+  <body style="margin:0;display:grid;place-items:center;min-height:100vh;background:radial-gradient(circle at 20% 20%,#22d3aa,#004949);color:#ecfeff;font-family:ui-monospace,monospace;">
+    <h1 style="font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.06em;">Hello, curious learner.</h1>
+  </body>
+~~~
+```
+
 
 ## What's next?
 

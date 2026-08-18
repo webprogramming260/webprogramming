@@ -193,6 +193,16 @@ Do the following steps to set up your `Startup application repository` in GitHub
    cd startup
    ```
 
+
+```masteryls
+{"id":"4134acb2-3190-49b2-a22f-c31c1d9b51c2", "title":"GitHub repo URL", "type":"url-submission",  "validateUrl":true }
+My GitHub repository URL is:
+
+_Example: https://github.com/myaccount/startup_
+```
+
+
+
 ### Practice using Git
 
 1. Open up the repository directory in VS Code and modify the `README.md` and `notes.md` file. Commit your changes, and push them to GitHub.
@@ -205,6 +215,12 @@ Your notes file is meant as a place to remember all the things you have learned 
 
 1. Read the GitHub documentation about the basics of [writing markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 1. Access the file in your repository called `notes.md`. You can use the contents of this file on any exam. As you modify your `notes.md` file throughout the class. Make sure that you keep it organized and clean. You can add multiple `.md` files and reference them from your `notes.md` file in order make it easier to organize your content.
-1. Make your first notes in your `notes.md` file about what you learned from this assignment. Commit and push your notes to GitHub.
+1. Make your first notes in your `notes.md` file by adding the text "**I love web programming**" somewhere in the file. Commit and push your notes to GitHub.
 
-_If your section of this course requires that you submit assignments for grading_: Submit in the Canvas assignment the URL of your GitHub startup repository.
+
+```masteryls
+{"id":"eb260e82-1162-494d-9d9c-21ed68b68d16", "title":"Modifying notes.md", "type":"url-submission", "validateUrl":true, "gradingCriteria":"The page contains the text 'I love web programming'" }
+I have modified my notes.md file with the required text and the URL to my modified **notes.md** file is:
+
+_Example: https://github.com/byucsstudent/startup/blob/main/notes.md_
+```

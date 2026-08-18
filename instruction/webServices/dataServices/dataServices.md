@@ -1,5 +1,9 @@
 # Data services
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS0tVQvGq1TOVkwKlB3IdfftppmDPJ4mO4GXozQjradxxzjZocRC4y5fq9pefgYf09R2yaf0Fq68h-P/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+---
+
 - [🎥 MongoDB Atlas setup](https://youtu.be/f75muk9W-Jc)
 
 Web applications commonly need to store application and user data persistently. The data can be many things, but it is usually a representation of complex interrelated objects. This includes things like a user profile, organizational structure, game play information, usage history, billing information, peer relationship, library catalog, and so forth.
@@ -329,4 +333,13 @@ beds: 1
 
 First, set up your MongoDB Atlas database service. Then use the instructions above. Run the example program for testing that you have things set up correctly.
 
-_If your section of this course requires that you submit assignments for grading_: Submit the hostname for your Atlas database cluster to the Canvas assignment.
+
+```masteryls
+{"id":"521eddff-0eae-4680-8bbd-09b08051ba9e", "title":"MonogDB setup", "type":"multiple-select" }
+I have completed the following:
+
+- [x] Created my MongoDB Atlas account
+- [x] Created the example data service in my development environment
+- [x] Configured my dbConfig.json file
+- [x] Ran and debugged the data service code
+```

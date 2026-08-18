@@ -110,24 +110,74 @@ Here is what the finished application looks like.
 
 ![CSS flex](cssFlex.gif)
 
-You can experiment with this on [CodePen](https://codepen.io/leesjensen/pen/MWOVYpZ).
-
 ## ☑ Assignment
 
-Now it is your turn to build a fully responsive application. Create a CodePen that has a:
+
+```masteryls
+{"id":"6332b90a-e5af-423d-9d1c-27e3ac6ef8aa", "title":"Flex exercise", "type":"ai-web-page", "allowAiPrompt":false "height":500, "syncGrade":false, "autoGrade":false, "gradingCriteria":"A fixed header with evenly spaced menu text on the left. A main content body with the text centered. A footer with the text centered"}
+
+Now it is your turn to build a fully responsive application. Starting with some basic HTML, modify it so that it has:
 
 1. A fixed header with evenly spaced menu text on the left
-1. A main content body with the text centered
-1. A footer with the text centered
+2. A main content body with the text centered
+3. A footer with the text centered
+
+Use the height resize slider to change the size of the page. This will cause the responsive elements to engage.
+
+~~~html
+<header>
+  <div>home</div>
+  <div>play</div>
+  <div>about</div>
+</header>
+<main>
+  <div>login</div>
+  <div>password</div>
+</main>
+<footer>GitHub</footer>
+
+<style>
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  font-size: 20px;
+  background: hsl(223, 57%, 38%);
+  color: white;
+}
+
+main {
+  font-size: 30px;
+}
+
+div {
+  padding: 0 0.5em;
+}
+
+footer {
+  background: hsl(180, 30%, 15%);
+  color: white;
+
+  display: flex;
+}
+</style>
+~~~
+```
+
+
 
 Here is an example of what you are attempting:
 
 ![Responsive Assignment](responsiveAssignment.gif)
 
-_If your section of this course requires that you submit assignments for grading_: Submit your CodePen URL to the Canvas assignment.
-
-Don't forget to update your GitHub startup repository notes.md with all of the things you learned and want to remember.
-
-### 🧧 Possible solution
-
-If you get stuck here is a [possible solution](https://codepen.io/leesjensen/pen/abamMqL).

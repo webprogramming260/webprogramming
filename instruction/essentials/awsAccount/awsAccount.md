@@ -37,9 +37,41 @@ Make sure you monitor your billing by selecting the **Billing and cost managemen
 
 ![Cost management](costManagement.png)
 
+## Billing alerts
+
+> [!IMPORTANT]
+>
+> You want to create an alert for your billing so that you don't get surprised when you accidentally start incurring cost.
+
+Billing alerts help protect your from incurring unnecessary cost. For your fiscal safety you are **highly encouraged** to create alerts that will save you from spending more that you have anticipated.
+
+By default, AWS will create _Free Tier alerts_ for you. These will email you whenever you come within a certain percentage threshold of your allocated free tier resource.
+
+Additionally, you can create your own billing alerts that will notify you for other cases. For example, you can create an alert whenever you spend more than $10 in a 30-day period.
+
+To learn more about billing alerts refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html) on this subject.
+
+### Budgets
+
+It is easy to set up an alert that will track your spending and send you a notification if things are out of line with your budget. To create a budget, access the AWS dashboard and navigate to `Billing and Cost Management > Budgets`. Then create new budget **Monthly Budget**. Give it a name and the amount that you are expecting to spend over the month. Provide your email address and press `Create Budget`.
+
+When your spending exceeds your budget, alerts will display on the Budget display and you will receive an email from AWS warning you that you are over budget.
+
+### Cost anomaly detector
+
+The **Cost Anomaly Detection Monitor** provides notifications for when your spending looks like it is out of the normal. This allows you to specify a dollar amount that will trigger an email message if that amount is above existing averages.
+
+To create a monitor, access the AWS dashboard and navigate to `Billing and Cost Management > Cost Anomaly Detection`. Choose the option to `Create monitor` and then provide the desired parameters.
+
+
 ## ☑ Assignment
 
+
+```masteryls
+{"id":"95f8915a-4870-461b-8c54-711a5b44ebf8", "title":"AWS Accunt setup", "type":"multiple-choice" }
 1. Create your AWS [account](https://signin.aws.amazon.com/signup).
 2. Create a browser bookmark for your AWS browser console page that contains your account ID. That way you will be able to access your account quickly.
 
-_If your section of this course requires that you submit assignments for grading_: Submit in the Canvas assignment that you have completed this.
+- [x] I have created my AWS account and set up billing alerts.
+- [ ] I am withdrawing from this course.
+```
