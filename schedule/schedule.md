@@ -2,7 +2,7 @@
 
 [BYU Academic Calendar](https://academiccalendar.byu.edu/)
 
-| Week | Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Module | Due | Topics Covered | Slides |
+| Week | Date | Module | Due | Topics Covered | Slides |
 | :--: | ---- | ------ | --- | -------------- | ------ |
 | 1 | Wed/Thurs <br> Sep 2/3 | `Intro` |  | [Introduction](../instruction/essentials/introduction/introduction.md)</br>[AWS account](../instruction/essentials/awsAccount/awsAccount.md)</br>[Startup application](../instruction/essentials/startup/startup.md)</br>[Demo day submission](../instruction/webFrameworks/demoDay/demoDay.md)</br>[Let's play Simon](../instruction/essentials/simon/simon.md)</br>[Git](../instruction/essentials/git/git.md)</br>[GitHub](../instruction/essentials/gitHub/gitHub.md)</br>[🚀 Startup Specification](../instruction/essentials/startupSpec/startupSpec.md) | [Course Introduction](../instruction/essentials/introduction/introduction.md) |
 | 2 | Mon/Tue <br> Sep 7/8 |  | [🚀 Startup Spec](../instruction/essentials/startupSpec/startupSpec.md) | [Asking questions](../instruction/essentials/askingQuestions/askingQuestions.md)</br>[Discord](../instruction/essentials/discord/discord.md)</br>[The Console](../instruction/essentials/console/console.md)</br>[Editors](../instruction/essentials/editors/editors.md)</br>[History of the web](../instruction/essentials/history/history.md)</br>[Demonstration](../instruction/essentials/demo/demo.md) | [History of the web](../instruction/essentials/history/history.md) |
