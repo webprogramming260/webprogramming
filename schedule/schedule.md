@@ -28,7 +28,7 @@
 | 12 | Mon/Tue <br> Nov 16/17 |  |  | [TypeScript](../instruction/webFrameworks/typeScript/typeScript.md)</br>[Performance monitoring](../instruction/webFrameworks/performanceMonitoring/performanceMonditoring.md) | [TypeScript](../instruction/webFrameworks/typeScript/typeScript.md) |
 |  | Wed/Thu <br> Nov 17/18 | `Security` |  | [Security](../instruction/security/overview/overview.md)</br>[OWASP top 10](../instruction/security/owasp/owasp.md) | [Security](../instruction/security/overview/overview.md) |
 |  | Nov 23-27 |  |  | Thanksgiving Holiday |  |
-| 13 | Mon/Tue <br> Nov 30/Dec 1 |  |  | [Security practice](../instruction/security/practice/practice.md) | [Security practice](../instruction/security/practice/practice.md) |
+| 13 | Mon/Tue <br> Nov 30/Dec 1 &nbsp;&nbsp;&nbsp;|  |  | [Security practice](../instruction/security/practice/practice.md) | [Security practice](../instruction/security/practice/practice.md) |
 |  | Wed/Thu <br> Dec 2/3 |  | [🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [UX design](../instruction/uxdesign/uxdesign.md) | [UX sesign](../instruction/uxdesign/uxdesign.md) |
 | 14 | Mon/Tue <br> Dec 7/8 | `Topics` |  | [Progressive web applications](../instruction/webFrameworks/pwa/pwa.md)</br>[Simon PWA](../instruction/simon/simonPwa/simonPwa.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [Progressive web applications](../instruction/webFrameworks/pwa/pwa.md) |
 |  | Wed/Thu <br> Dec 9/10 |  | 🎉 Demo Day | [Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) | [☑ Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) |
