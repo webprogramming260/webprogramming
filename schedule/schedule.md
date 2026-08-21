@@ -31,7 +31,7 @@
 | 13 | Mon/Tue <br> Nov 30/Dec 1 |  |  | [Security practice](../instruction/security/practice/practice.md) | [Security practice](../instruction/security/practice/practice.md) |
 |  | Wed/Thu <br> Dec 2/3 |  | [🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [UX design](../instruction/uxdesign/uxdesign.md) | [UX sesign](../instruction/uxdesign/uxdesign.md) |
 | 14 | Mon/Tue <br> Dec 7/8 | `Topics` |  | [Progressive web applications](../instruction/webFrameworks/pwa/pwa.md)</br>[Simon PWA](../instruction/simon/simonPwa/simonPwa.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [Progressive web applications](../instruction/webFrameworks/pwa/pwa.md) |
-| 15 | Wed/Thu <br> Dec 9/10 |  | 🎉 Demo Day | [Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) | [☑ Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) |
+|  | Wed/Thu <br> Dec 9/10 |  | 🎉 Demo Day | [Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) | [☑ Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) |
 |  | Thu Dec 10 |  |  | _Last day of class_</br>**No assignments accepted after this day** |  |
 
 ## Special days
