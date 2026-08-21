@@ -1,4 +1,4 @@
-# Summer 2026 Schedule
+# 📅 Summer 2026 Schedule
 
 [BYU Academic Calendar](https://academiccalendar.byu.edu/)
 
