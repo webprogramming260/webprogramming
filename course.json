@@ -15,7 +15,8 @@
         "path": "schedule/schedule.md",
         "default": true,
         "state": "published",
-        "startDate": "2026-09-01"
+        "startDate": "2026-09-01",
+        "endDate": "2026-09-21"
       },
       {
         "id": "144c7d47-63e1-4e38-b3bb-17f0ae5f6898",
