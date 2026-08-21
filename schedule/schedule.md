@@ -41,4 +41,4 @@
 - **Nov 23-27**: Holiday
 - **Nov 24**: Withdraw deadline
 - **Dec 10**: Last day of class
-- **Dec 172**: Last day of finals
+- **Dec 17**: Last day of finals
