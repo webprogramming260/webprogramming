@@ -1,11 +1,6 @@
 {
   "title": "Web Programming",
   "links": {},
-  "externalRefs": {
-    "canvasCourseId": "36027",
-    "canvasScheduleFileId": "7491e895-8aab-400d-9b9b-1dcdfdf78b65",
-    "canvasMasteryAssignmentId": 1373840
-  },
   "schedule": {
     "id": "7db53081-d129-4698-8e24-8d449cfc9f3f",
     "files": [
@@ -32,9 +27,6 @@
   "modules": [
     {
       "title": "Course info",
-      "externalRefs": {
-        "canvasModuleId": 393330
-      },
       "topics": [
         {
           "title": "Home",
@@ -43,10 +35,7 @@
           "state": "published",
           "interactions": [
             "ef2f9d20-99b5-4adc-ab98-3a6536234103"
-          ],
-          "externalRefs": {
-            "canvasPageId": 1583371
-          }
+          ]
         },
         {
           "title": "Syllabus",
@@ -55,18 +44,12 @@
           "state": "published",
           "interactions": [
             "cae08349-d561-4c4b-9a84-208fab172b36"
-          ],
-          "externalRefs": {
-            "canvasPageId": 1583372
-          }
+          ]
         }
       ]
     },
     {
       "title": "Development essentials",
-      "externalRefs": {
-        "canvasModuleId": 393331
-      },
       "topics": [
         {
           "title": "Course Introduction",
@@ -176,10 +159,7 @@
           "interactions": [
             "6134acb2-3190-49b2-a22f-c31c1d9b51c2"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373671
-          }
+          "description": ""
         },
         {
           "title": "Asking questions",
@@ -229,9 +209,6 @@
     },
     {
       "title": "Web server setup",
-      "externalRefs": {
-        "canvasModuleId": 393332
-      },
       "topics": [
         {
           "title": "Technology stack",
@@ -310,18 +287,12 @@
           "interactions": [
             "6edadab4-91ee-46f0-952e-469f42dc841e"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373672
-          }
+          "description": ""
         }
       ]
     },
     {
       "title": "HTML",
-      "externalRefs": {
-        "canvasModuleId": 393333
-      },
       "topics": [
         {
           "title": "HTML introduction",
@@ -406,18 +377,12 @@
           "interactions": [
             "6c137756-4306-431c-bec8-bc44706cff71"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373673
-          }
+          "description": ""
         }
       ]
     },
     {
       "title": "CSS",
-      "externalRefs": {
-        "canvasModuleId": 393334
-      },
       "topics": [
         {
           "title": "CSS introduction",
@@ -571,18 +536,12 @@
           "interactions": [
             "b249b114-0510-4280-bd69-06e557e7bbd4"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373674
-          }
+          "description": ""
         }
       ]
     },
     {
       "title": "JavaScript & Web frameworks",
-      "externalRefs": {
-        "canvasModuleId": 393335
-      },
       "topics": [
         {
           "title": "JavaScript introduction",
@@ -714,10 +673,7 @@
             "b6e9b25c-9338-43dc-af83-3801ef95c8f9",
             "8a3b15ea-b4cf-4a2c-a151-3e2c8c27ecd5"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373675
-          }
+          "description": ""
         },
         {
           "title": "JavaScript Console",
@@ -852,10 +808,7 @@
           "interactions": [
             "fe301f80-87fe-4afd-86af-492a6de0167f"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373676
-          }
+          "description": ""
         },
         {
           "title": "Promises",
@@ -947,9 +900,6 @@
     },
     {
       "title": "HTTP service",
-      "externalRefs": {
-        "canvasModuleId": 393336
-      },
       "topics": [
         {
           "title": "Web servers",
@@ -1124,18 +1074,12 @@
           "interactions": [
             "ba062a75-fe02-4b7f-9e05-326a8532fcc6"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373677
-          }
+          "description": ""
         }
       ]
     },
     {
       "title": "Data and authentication services",
-      "externalRefs": {
-        "canvasModuleId": 393337
-      },
       "topics": [
         {
           "title": "Deployment",
@@ -1201,10 +1145,7 @@
           "interactions": [
             "90f3f025-d33e-4972-a341-57e3ebcb8991"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373678
-          }
+          "description": ""
         },
         {
           "title": "Backend testing",
@@ -1229,9 +1170,6 @@
     },
     {
       "title": "WebSocket",
-      "externalRefs": {
-        "canvasModuleId": 393338
-      },
       "topics": [
         {
           "title": "WebSocket",
@@ -1287,10 +1225,7 @@
           "interactions": [
             "ecdf0aea-adc2-49b2-a624-f8649aaf165f"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373679
-          }
+          "description": ""
         }
       ]
     },
@@ -1339,9 +1274,6 @@
     },
     {
       "title": "Assorted topics",
-      "externalRefs": {
-        "canvasModuleId": 393339
-      },
       "topics": [
         {
           "title": "TypeScript",
@@ -1409,10 +1341,7 @@
           "interactions": [
             "ad1c7f8d-ce04-40de-9412-f092b40bcffa"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasAssignmentId": 1373680
-          }
+          "description": ""
         },
         {
           "title": "Simon PWA",
@@ -1429,10 +1358,7 @@
           "interactions": [
             "c979acf0-1bec-47a5-8660-5f49e74de47f"
           ],
-          "description": "",
-          "externalRefs": {
-            "canvasPageId": 1583373
-          }
+          "description": ""
         }
       ]
     }
