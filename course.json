@@ -3,7 +3,7 @@
   "links": {},
   "externalRefs": {
     "canvasCourseId": "35087",
-    "canvasScheduleFileId": "b8ed86f3-648b-4250-8530-30647d03c383",
+    "canvasScheduleFileId": "6cdd48cc-6ca1-40bc-9a74-c2fbfa3f8f3a",
     "canvasMasteryAssignmentId": 1457571
   },
   "schedule": {
@@ -69,7 +69,7 @@
     {
       "title": "Development essentials",
       "externalRefs": {
-        "canvasModuleId": 417330
+        "canvasModuleId": 417339
       },
       "topics": [
         {
@@ -182,7 +182,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462215
+            "canvasAssignmentId": 1462234
           }
         },
         {
@@ -234,7 +234,7 @@
     {
       "title": "Web server setup",
       "externalRefs": {
-        "canvasModuleId": 417331
+        "canvasModuleId": 417340
       },
       "topics": [
         {
@@ -316,7 +316,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462216
+            "canvasAssignmentId": 1462235
           }
         }
       ]
@@ -324,7 +324,7 @@
     {
       "title": "HTML",
       "externalRefs": {
-        "canvasModuleId": 417332
+        "canvasModuleId": 417341
       },
       "topics": [
         {
@@ -412,7 +412,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462217
+            "canvasAssignmentId": 1462236
           }
         }
       ]
@@ -420,7 +420,7 @@
     {
       "title": "CSS",
       "externalRefs": {
-        "canvasModuleId": 417333
+        "canvasModuleId": 417342
       },
       "topics": [
         {
@@ -577,7 +577,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462218
+            "canvasAssignmentId": 1462237
           }
         }
       ]
@@ -585,7 +585,7 @@
     {
       "title": "JavaScript & Web frameworks",
       "externalRefs": {
-        "canvasModuleId": 417334
+        "canvasModuleId": 417343
       },
       "topics": [
         {
@@ -720,7 +720,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462219
+            "canvasAssignmentId": 1462238
           }
         },
         {
@@ -858,7 +858,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462220
+            "canvasAssignmentId": 1462239
           }
         },
         {
@@ -952,7 +952,7 @@
     {
       "title": "HTTP service",
       "externalRefs": {
-        "canvasModuleId": 417335
+        "canvasModuleId": 417344
       },
       "topics": [
         {
@@ -1130,7 +1130,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462221
+            "canvasAssignmentId": 1462240
           }
         }
       ]
@@ -1138,7 +1138,7 @@
     {
       "title": "Data and authentication services",
       "externalRefs": {
-        "canvasModuleId": 417336
+        "canvasModuleId": 417345
       },
       "topics": [
         {
@@ -1207,7 +1207,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462222
+            "canvasAssignmentId": 1462241
           }
         },
         {
@@ -1234,7 +1234,7 @@
     {
       "title": "WebSocket",
       "externalRefs": {
-        "canvasModuleId": 417337
+        "canvasModuleId": 417346
       },
       "topics": [
         {
@@ -1293,7 +1293,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462223
+            "canvasAssignmentId": 1462242
           }
         }
       ]
@@ -1344,7 +1344,7 @@
     {
       "title": "Assorted topics",
       "externalRefs": {
-        "canvasModuleId": 417338
+        "canvasModuleId": 417347
       },
       "topics": [
         {
@@ -1415,7 +1415,7 @@
           ],
           "description": "",
           "externalRefs": {
-            "canvasAssignmentId": 1462224
+            "canvasAssignmentId": 1462243
           }
         },
         {
