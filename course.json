@@ -13,7 +13,7 @@
         "id": "7491e895-8aab-400d-9b9b-1dcdfdf78b65",
         "title": "📅 Winter 2026 Schedule",
         "path": "schedule/schedule.md",
-        "default": true,
+        "default": false,
         "state": "published",
         "startDate": "2026-09-01",
         "endDate": "2026-12-21"
@@ -38,7 +38,7 @@
         "id": "6cdd48cc-6ca1-40bc-9a74-c2fbfa3f8f3a",
         "title": "📅 Fall 2026 TTh Schedule",
         "path": "schedule/fall-2026-tth-schedule.md",
-        "default": false,
+        "default": true,
         "state": "published"
       }
     ]
