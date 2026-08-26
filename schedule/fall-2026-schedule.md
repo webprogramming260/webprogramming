@@ -1,4 +1,4 @@
-# 📅 Fall 2026 Schedule
+# 📅 Fall 2026 MW Schedule
 
 [BYU Academic Calendar](https://academiccalendar.byu.edu/)
 
