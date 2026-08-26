@@ -27,19 +27,17 @@
 |  | Wed Nov 11, 2026 | `WebSocket` |  | [WebSocket](../instruction/webServices/webSocket/webSocket/webSocket.md)</br>[Debugging WebSocket](../instruction/webServices/webSocket/debugging/debugging.md)</br>[WebSocket chat](../instruction/webServices/webSocket/chat/chat.md)</br>[Simon WebSocket](../instruction/simon/simonWebSocket/simonWebSocket.md)</br>[🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md) | [WebSocket](../instruction/webServices/webSocket/webSocket/webSocket.md) |
 | 12 | Mon Nov 16, 2026 |  | [🚀 Startup DB](../instruction/webServices/startupDb/startupDb.md) | **In class DB/WebSocket help session** |  |
 |  | Wed Nov 18, 2026 |  |  | [TypeScript](../instruction/webFrameworks/typeScript/typeScript.md)</br>[Performance monitoring](../instruction/webFrameworks/performanceMonitoring/performanceMonditoring.md) | [TypeScript](../instruction/webFrameworks/typeScript/typeScript.md) |
-| 13 | Mon Nov 23, 2026 | `Security` |  | [Security](../instruction/security/overview/overview.md)</br>[OWASP top 10](../instruction/security/owasp/owasp.md) | [Security](../instruction/security/overview/overview.md) |
-|  | Wed Nov 25, 2026 |  |  | [Security practice](../instruction/security/practice/practice.md) | [Security practice](../instruction/security/practice/practice.md) |
-| 14 | Mon Nov 30, 2026 |  | [🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [UX design](../instruction/uxdesign/uxdesign.md) | [UX sesign](../instruction/uxdesign/uxdesign.md) |
-|  | Wed Dec 2, 2026 | `Topics` |  | [Progressive web applications](../instruction/webFrameworks/pwa/pwa.md)</br>[Simon PWA](../instruction/simon/simonPwa/simonPwa.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [Progressive web applications](../instruction/webFrameworks/pwa/pwa.md) |
-| 15 | Mon Dec 7, 2026 |  | 🎉 Demo Day | [Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) | [☑ Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) |
-|  | Tue Dec 8, 2026 |  |  | _Last day of class_</br>**No assignments accepted after this day** |  |
+| 13 | Mon Nov 30, 2026 | `Security` |  | [Security](../instruction/security/overview/overview.md)</br>[OWASP top 10](../instruction/security/owasp/owasp.md) | [Security](../instruction/security/overview/overview.md) |
+|  | Wed Dec 2, 2026 |  |  | [Security practice](../instruction/security/practice/practice.md) | [Security practice](../instruction/security/practice/practice.md) |
+| 14 | Mon Dec 7, 2026 |  | [🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md)</br>[Demo day submission](../instruction/demo-day-submission/demo-day-submission.md) | [UX design](../instruction/uxdesign/uxdesign.md) | [UX sesign](../instruction/uxdesign/uxdesign.md) |
+|  | Wed Dec 9, 2026 |  | 🎉 Demo Day | [Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) | [☑ Wrap up](../instruction/webFrameworks/wrapUp/wrapUp.md) |
+| 15 | Thu Dec 10, 2026 |  |  | _Last day of class_</br>**No assignments accepted after this day** |  |
 
 ## Special days
 
-- **Jan 7**: First day of class
-- **Jan 14**: Drop deadline
-- **Jan 19**: Holiday
-- **Feb 16**: Holiday (Monday class on 17th)
-- **Apr 1**: Withdraw deadline
-- **Apr 15**: Last day of class
-- **Apr 22**: Last day of finals
+- Wed Sep 2, 2026: First day of class
+- Thu Sep 10, 2026: Drop deadline
+- Mon Nov 23, 2026: Thanksgiving
+- Tue Nov 24, 2026: Withdraw deadline
+- Thu Dec 10, 2026: Last day of class
+- Thu Dec 17, 2026: Last day of finals
