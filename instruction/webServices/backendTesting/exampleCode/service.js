@@ -3,9 +3,11 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
+const csurf = require('csurf');
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(csurf({ cookie: true }));
 
 app.post('/api/auth', async (req, res) => {
   if (await getUser('email', req.body.email)) {
