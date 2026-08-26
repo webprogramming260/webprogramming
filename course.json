@@ -33,6 +33,12 @@
         "path": "schedule/fall-2026-schedule.md",
         "default": false,
         "state": "published"
+      },
+      {
+        "id": "6cdd48cc-6ca1-40bc-9a74-c2fbfa3f8f3a",
+        "title": "📅 Fall 2026 TTh Schedule",
+        "path": "schedule/fall-2026-tth-schedule.md",
+        "default": false
       }
     ]
   },
