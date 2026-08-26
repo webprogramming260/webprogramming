@@ -29,9 +29,10 @@
       },
       {
         "id": "b8ed86f3-648b-4250-8530-30647d03c383",
-        "title": "Fall 2026 Schedule",
+        "title": "📅 Fall 2026 Schedule",
         "path": "schedule/fall-2026-schedule.md",
-        "default": false
+        "default": false,
+        "state": "published"
       }
     ]
   },
