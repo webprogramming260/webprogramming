@@ -32,7 +32,9 @@
         "title": "📅 Fall 2026 MW Schedule",
         "path": "schedule/fall-2026-schedule.md",
         "default": false,
-        "state": "published"
+        "state": "published",
+        "startDate": "2026-09-02",
+        "endDate": "2026-12-10"
       },
       {
         "id": "6cdd48cc-6ca1-40bc-9a74-c2fbfa3f8f3a",
