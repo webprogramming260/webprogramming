@@ -77,6 +77,15 @@
           }
         },
         {
+          "title": "Late policy",
+          "path": "instruction/essentials/latePolicy/latePolicy.md",
+          "id": "297e8bbb-24b0-44f0-8b1d-cec497a23a29",
+          "state": "published",
+          "interactions": [
+            "a819fd43-c894-4945-b851-3b513d659573"
+          ]
+        },
+        {
           "title": "Asking questions",
           "path": "instruction/essentials/askingQuestions/askingQuestions.md",
           "id": "0150c66e-d356-4d5b-87f2-3edec7bc8763",
@@ -114,15 +123,6 @@
             "95f8915a-4870-461b-8c54-711a5b44ebf8"
           ],
           "description": ""
-        },
-        {
-          "title": "Late policy",
-          "path": "instruction/essentials/latePolicy/latePolicy.md",
-          "id": "297e8bbb-24b0-44f0-8b1d-cec497a23a29",
-          "state": "published",
-          "interactions": [
-            "a819fd43-c894-4945-b851-3b513d659573"
-          ]
         },
         {
           "title": "Startup application",
