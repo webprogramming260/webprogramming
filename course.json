@@ -65,6 +65,15 @@
           }
         },
         {
+          "title": "Asking questions",
+          "path": "instruction/essentials/askingQuestions/askingQuestions.md",
+          "id": "0150c66e-d356-4d5b-87f2-3edec7bc8763",
+          "state": "published",
+          "interactions": [
+            "9f35a1b4-8968-4829-b951-bd7a1ad2ee08"
+          ]
+        },
+        {
           "title": "Syllabus",
           "path": "instruction/syllabus/syllabus.md",
           "id": "2a2c0a38-93b4-4e6c-987f-630bf4fc9a2c",
@@ -196,15 +205,6 @@
           "externalRefs": {
             "canvasAssignmentId": 1462250
           }
-        },
-        {
-          "title": "Asking questions",
-          "path": "instruction/essentials/askingQuestions/askingQuestions.md",
-          "id": "0150c66e-d356-4d5b-87f2-3edec7bc8763",
-          "state": "published",
-          "interactions": [
-            "9f35a1b4-8968-4829-b951-bd7a1ad2ee08"
-          ]
         },
         {
           "title": "Discord",
