@@ -13,9 +13,9 @@ This course uses [MasteryLS](https://masteryls.com) for learning the content. To
 
 1. Navigate to [MasteryLS](https://masteryls.com).
 1. Register for an account. Use your BYU email address so that your grades can be recorded in Canvas. This will send you a one-time password to your BYU email to complete the registration.
-1. Click on the **Web Programming v2** course for enrollment.
-1. Click on the newly enrolled **Web Programming v2** course to start learning.
-1. Read the [Learner Tutorial](https://github.com/leesjensen/masteryls/blob/main/docs/learnerTutorial.md) on how to use MasteryLS.
+1. Click on the **CS 260 Web Programming** course for enrollment.
+1. Click on the newly enrolled **CS 260 Web Programming** course to start learning.
+1. Watch the [Learner Tutorial](https://www.youtube.com/watch?v=N4cw-R6S4fM) on how to use MasteryLS.
 
 ## Outcomes
 
