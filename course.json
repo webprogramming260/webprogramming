@@ -77,21 +77,21 @@
           }
         },
         {
-          "title": "Late policy",
-          "path": "instruction/essentials/latePolicy/latePolicy.md",
-          "id": "297e8bbb-24b0-44f0-8b1d-cec497a23a29",
-          "state": "published",
-          "interactions": [
-            "a819fd43-c894-4945-b851-3b513d659573"
-          ]
-        },
-        {
           "title": "Asking questions",
           "path": "instruction/essentials/askingQuestions/askingQuestions.md",
           "id": "0150c66e-d356-4d5b-87f2-3edec7bc8763",
           "state": "published",
           "interactions": [
             "9f35a1b4-8968-4829-b951-bd7a1ad2ee08"
+          ]
+        },
+        {
+          "title": "Late policy",
+          "path": "instruction/essentials/latePolicy/latePolicy.md",
+          "id": "297e8bbb-24b0-44f0-8b1d-cec497a23a29",
+          "state": "published",
+          "interactions": [
+            "a819fd43-c894-4945-b851-3b513d659573"
           ]
         }
       ]
