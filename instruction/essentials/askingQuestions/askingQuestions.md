@@ -6,10 +6,12 @@
 
 - [Discord](https://discord.com) ([Invite](https://discord.gg/d6Q5RsxHXz))
 - [TA Office](https://docs.google.com/spreadsheets/d/1g1AMtgvyfSwMgp85QcwHuy0mVR-nN3bIGI6XNEJWB1U) (1156 TMCB)
-- [Professor Jensen](https://cs.byu.edu/department/directories/faculty-directory/lee-jensen/) - Office hours through [Calendly](https://calendly.com/lee-cs/30min)
+- [Dr. Clement](https://cs.byu.edu/department/directories/faculty-directory/mark-clement/)
+- [John Christiansen](https://discord.com)
 <!--
 - [Dr. Ventura](https://cs.byu.edu/department/directories/faculty-directory/dan-ventura/)
 - [Dr. Clement](https://cs.byu.edu/department/directories/faculty-directory/mark-clement/)
+- [Professor Jensen](https://cs.byu.edu/department/directories/faculty-directory/lee-jensen/) - Office hours through [Calendly](https://calendly.com/lee-cs/30min)
   -->
 
 | Who        | How                 | Where                  | When                            |
