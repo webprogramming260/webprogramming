@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Playground Lab</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+        --danger: #9f2d2d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1220px, 96vw);
+        margin: 20px auto;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 12px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      p {
+        margin: 0 0 8px;
+        line-height: 1.35;
+      }
+
+      .control {
+        margin: 8px 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .preset-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .preset-btn,
+      .action-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover,
+      .action-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .preset-btn.active,
+      .action-btn.primary {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
+      .formula {
+        margin: 6px 0;
+        font-family: 'Courier New', monospace;
+        background: #eff7f3;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 6px;
+        color: #2b4e40;
+        font-size: 0.8rem;
+      }
+
+      .status {
+        margin-top: 8px;
+        border: 1px solid #d4e7dd;
+        border-radius: 8px;
+        background: #f8fcfa;
+        padding: 8px;
+        font-size: 0.84rem;
+      }
+
+      .status.error {
+        border-color: #e7c0c0;
+        background: #fff4f4;
+        color: var(--danger);
+      }
+
+      .lab {
+        padding: 12px;
+      }
+
+      .canvas-wrap {
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        min-height: 500px;
+        padding: 12px;
+      }
+
+      .canvas-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        background: #f3faf7;
+        color: #35584a;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+      }
+
+      .toolbar-title {
+        font-weight: 700;
+      }
+
+      .stage {
+        border-radius: 10px;
+        border: 1px solid #d1e2da;
+        min-height: 380px;
+        background-image: linear-gradient(90deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px), linear-gradient(0deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px);
+        background-size: 24px 24px;
+        overflow: auto;
+        padding: 12px;
+      }
+
+      .editor {
+        width: 100%;
+        min-height: 220px;
+        resize: vertical;
+        border: 1px solid #c8ddd2;
+        border-radius: 8px;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.88rem;
+        line-height: 1.4;
+        color: #1f4438;
+        background: #ffffff;
+      }
+
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .timeout-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: auto;
+        font-size: 0.82rem;
+        color: #35584a;
+      }
+
+      .timeout-input {
+        width: 88px;
+        border: 1px solid #c8ddd2;
+        border-radius: 999px;
+        padding: 5px 10px;
+        font: inherit;
+        color: #1f4438;
+        background: #ffffff;
+      }
+
+      .output-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .output-card {
+        border: 1px solid #cde0d7;
+        border-radius: 8px;
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .output-card.preview-card {
+        grid-column: 1 / -1;
+      }
+
+      .output-head {
+        margin: 0;
+        padding: 8px 10px;
+        border-bottom: 1px solid #dbece4;
+        background: #f5fbf8;
+        font-size: 0.82rem;
+        color: #35584a;
+        font-weight: 700;
+      }
+
+      .output-body {
+        margin: 0;
+        min-height: 120px;
+        max-height: 280px;
+        overflow: auto;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        color: #22483b;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .preview-frame {
+        display: block;
+        width: 100%;
+        min-height: 220px;
+        border: 0;
+        background: #ffffff;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .canvas-wrap {
+          min-height: 420px;
+        }
+
+        .output-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="canvas-wrap">
+        <div class="canvas-toolbar">
+          <h1 class="toolbar-title">JavaScript Interpreter</h1>
+          <span id="runTimeLabel">No run yet</span>
+        </div>
+
+        <div class="stage">
+          <textarea id="editor" class="editor" spellcheck="false">console.log("Code executed!");</textarea>
+          <div class="control-row">
+            <button class="action-btn primary" id="runBtn" type="button">Run code</button>
+            <button class="action-btn" id="clearBtn" type="button">Clear output</button>
+            <button class="action-btn" id="resetBtn" type="button">Reset editor</button>
+            <label class="timeout-wrap" for="timeoutInput">
+              Timeout (ms)
+              <input id="timeoutInput" class="timeout-input" type="number" min="100" step="100" value="5000" />
+            </label>
+          </div>
+
+          <div class="output-grid">
+            <section class="output-card">
+              <h2 class="output-head">Result</h2>
+              <pre class="output-body" id="resultOutput">(nothing yet)</pre>
+            </section>
+
+            <section class="output-card">
+              <h2 class="output-head">Console</h2>
+              <pre class="output-body" id="consoleOutput">(no logs yet)</pre>
+            </section>
+
+            <section class="output-card preview-card">
+              <h2 class="output-head">Sandbox Preview</h2>
+              <iframe id="previewFrame" class="preview-frame" sandbox="allow-scripts" title="Sandbox preview"></iframe>
+            </section>
+          </div>
+        </div>
+        <div class="status" id="statusBox">Ready to run.</div>
+      </div>
+    </main>
+
+    <script>
+      const runBtn = document.getElementById('runBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const editor = document.getElementById('editor');
+      const timeoutInput = document.getElementById('timeoutInput');
+      const resultOutput = document.getElementById('resultOutput');
+      const consoleOutput = document.getElementById('consoleOutput');
+      const statusBox = document.getElementById('statusBox');
+      const runTimeLabel = document.getElementById('runTimeLabel');
+      const previewFrame = document.getElementById('previewFrame');
+
+      const defaultCode = editor.value;
+      const DEFAULT_TIMEOUT_MS = 5000;
+      const SCRIPT_OPEN = '<scr' + 'ipt>';
+      const SCRIPT_CLOSE = '</scr' + 'ipt>';
+      const BODY_CLOSE = '</bo' + 'dy>';
+      const HTML_CLOSE = '</ht' + 'ml>';
+      let activeRunId = 0;
+
+      function formatValue(value) {
+        if (value === undefined) {
+          return 'undefined';
+        }
+        if (typeof value === 'string') {
+          return value;
+        }
+        try {
+          return JSON.stringify(value, null, 2);
+        } catch (error) {
+          return String(value);
+        }
+      }
+
+      function setStatus(text, isError) {
+        statusBox.textContent = text;
+        statusBox.classList.toggle('error', Boolean(isError));
+      }
+
+      function getRunTimeoutMs() {
+        const value = Number(timeoutInput.value);
+        if (!Number.isFinite(value) || value < 100) {
+          return DEFAULT_TIMEOUT_MS;
+        }
+        return Math.round(value);
+      }
+
+      function setDefaultOutputs() {
+        resultOutput.textContent = '(nothing yet)';
+        consoleOutput.textContent = '(no logs yet)';
+        runTimeLabel.textContent = 'No run yet';
+      }
+
+      function resetPreviewFrame() {
+        previewFrame.srcdoc = ['<!doctype html>', '<html lang="en">', '<head>', '<meta charset="UTF-8">', '<style>', 'body { margin: 0; padding: 16px; font-family: Trebuchet MS, Segoe UI, sans-serif; color: #29473a; background: #f8fcfa; }', 'p { margin: 0; }', '</style>', '</head>', '<body>', '<p>Sandbox output will appear here.</p>', BODY_CLOSE, HTML_CLOSE].join('\n');
+      }
+
+      function escapeUserCode(code) {
+        return JSON.stringify(code).split('<').join('\\u003c');
+      }
+
+      function buildSandboxPage(code, runId) {
+        const sandboxScript = [
+          '(function () {',
+          '  const runId = ' + JSON.stringify(runId) + ';',
+          '  const source = ' + escapeUserCode(code) + ';',
+          '  const logs = [];',
+          '  const activeTimers = new Map();',
+          '  let nextTimerToken = 1;',
+          '  let pendingTasks = 0;',
+          '  let executionFinished = false;',
+          '  let executionFailed = false;',
+          '  let responseSent = false;',
+          '  let result;',
+          "  let errorMessage = '';",
+          '  const nativeSetTimeout = window.setTimeout.bind(window);',
+          '  const nativeClearTimeout = window.clearTimeout.bind(window);',
+          '  const nativeSetInterval = window.setInterval.bind(window);',
+          '  const nativeClearInterval = window.clearInterval.bind(window);',
+          '',
+          '  function serializeError(error) {',
+          '    return error && error.message ? error.message : String(error);',
+          '  }',
+          '',
+          '  function postResponse(payload) {',
+          "    parent.postMessage(Object.assign({ runId: runId }, payload), '*');",
+          '  }',
+          '',
+          '  function pushLog(level, args) {',
+          '    const text = args.map(function (item) {',
+          '      try {',
+          "        return typeof item === 'string' ? item : JSON.stringify(item);",
+          '      } catch (error) {',
+          '        return String(item);',
+          '      }',
+          "    }).join(' ');",
+          "    logs.push(level + ': ' + text);",
+          '  }',
+          '',
+          '  function maybeSendResponse() {',
+          '    if (responseSent || !executionFinished || pendingTasks > 0) {',
+          '      return;',
+          '    }',
+          '    responseSent = true;',
+          '    if (executionFailed) {',
+          '      postResponse({ ok: false, error: errorMessage, logs: logs });',
+          '    } else {',
+          '      postResponse({ ok: true, result: result, logs: logs });',
+          '    }',
+          '  }',
+          '',
+          '  function finishTask() {',
+          '    pendingTasks = Math.max(0, pendingTasks - 1);',
+          '    maybeSendResponse();',
+          '  }',
+          '',
+          '  function reserveTask(kind, nativeId) {',
+          '    const token = nextTimerToken++;',
+          '    activeTimers.set(token, { kind: kind, nativeId: nativeId });',
+          '    pendingTasks += 1;',
+          '    return token;',
+          '  }',
+          '',
+          '  function releaseTask(token) {',
+          '    if (!activeTimers.has(token)) {',
+          '      return null;',
+          '    }',
+          '    const entry = activeTimers.get(token);',
+          '    activeTimers.delete(token);',
+          '    finishTask();',
+          '    return entry;',
+          '  }',
+          '',
+          '  const capturedConsole = {',
+          "    log: function () { pushLog('log', Array.from(arguments)); },",
+          "    info: function () { pushLog('info', Array.from(arguments)); },",
+          "    warn: function () { pushLog('warn', Array.from(arguments)); },",
+          "    error: function () { pushLog('error', Array.from(arguments)); }",
+          '  };',
+          '',
+          '  window.console = capturedConsole;',
+          '',
+          '  window.setTimeout = function (callback, delay) {',
+          '    const args = Array.prototype.slice.call(arguments, 2);',
+          '    let token;',
+          '    const nativeId = nativeSetTimeout(function () {',
+          '      activeTimers.delete(token);',
+          '      try {',
+          '        callback.apply(window, args);',
+          '      } catch (error) {',
+          '        executionFailed = true;',
+          '        errorMessage = serializeError(error);',
+          '      } finally {',
+          '        finishTask();',
+          '      }',
+          '    }, delay);',
+          "    token = reserveTask('timeout', nativeId);",
+          '    return token;',
+          '  };',
+          '',
+          '  window.clearTimeout = function (token) {',
+          '    const entry = releaseTask(token);',
+          '    if (entry) {',
+          '      nativeClearTimeout(entry.nativeId);',
+          '      return;',
+          '    }',
+          '    nativeClearTimeout(token);',
+          '  };',
+          '',
+          '  window.setInterval = function (callback, delay) {',
+          '    const args = Array.prototype.slice.call(arguments, 2);',
+          '    let token;',
+          '    const nativeId = nativeSetInterval(function () {',
+          '      try {',
+          '        callback.apply(window, args);',
+          '      } catch (error) {',
+          '        executionFailed = true;',
+          '        errorMessage = serializeError(error);',
+          '        window.clearInterval(token);',
+          '      }',
+          '    }, delay);',
+          "    token = reserveTask('interval', nativeId);",
+          '    return token;',
+          '  };',
+          '',
+          '  window.clearInterval = function (token) {',
+          '    const entry = releaseTask(token);',
+          '    if (entry) {',
+          '      nativeClearInterval(entry.nativeId);',
+          '      return;',
+          '    }',
+          '    nativeClearInterval(token);',
+          '  };',
+          '',
+          '  nativeSetTimeout(async function () {',
+          '    try {',
+          '      const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;',
+          "      const fn = new AsyncFunction('console', source);",
+          '      result = await fn(capturedConsole);',
+          '      executionFinished = true;',
+          '      maybeSendResponse();',
+          '    } catch (error) {',
+          '      executionFinished = true;',
+          '      executionFailed = true;',
+          '      errorMessage = serializeError(error);',
+          '      maybeSendResponse();',
+          '    }',
+          '  }, 0);',
+          '}());',
+        ].join('\n');
+
+        return ['<!doctype html>', '<html lang="en">', '<head>', '<meta charset="UTF-8">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<style>', 'body { margin: 0; padding: 16px; min-height: 100vh; font-family: Trebuchet MS, Segoe UI, sans-serif; color: #153124; background: #ffffff; }', '</style>', '</head>', '<body>', SCRIPT_OPEN, sandboxScript, SCRIPT_CLOSE, BODY_CLOSE, HTML_CLOSE].join('\n');
+      }
+
+      function runUserCode(code, timeoutMs) {
+        return new Promise((resolve) => {
+          activeRunId += 1;
+          const runId = activeRunId;
+          const started = performance.now();
+
+          previewFrame.srcdoc = buildSandboxPage(code, runId);
+
+          const timerId = window.setTimeout(function () {
+            if (runId !== activeRunId) {
+              return;
+            }
+            window.removeEventListener('message', handleMessage);
+            resetPreviewFrame();
+            resolve({
+              ok: false,
+              timedOut: true,
+              logs: [],
+              elapsed: Math.round(performance.now() - started),
+              runId: runId,
+            });
+          }, timeoutMs);
+
+          function handleMessage(event) {
+            if (!event.data || event.data.runId !== runId) {
+              return;
+            }
+            if (event.source !== previewFrame.contentWindow) {
+              return;
+            }
+
+            window.removeEventListener('message', handleMessage);
+            window.clearTimeout(timerId);
+            resolve({
+              ok: event.data.ok,
+              result: event.data.result,
+              error: event.data.error,
+              logs: event.data.logs || [],
+              elapsed: Math.round(performance.now() - started),
+              runId: runId,
+            });
+          }
+
+          window.addEventListener('message', handleMessage);
+        });
+      }
+
+      async function executeCode() {
+        setStatus('Running JavaScript...', false);
+        const timeoutMs = getRunTimeoutMs();
+
+        const result = await runUserCode(editor.value, timeoutMs);
+        if (result.runId !== activeRunId) {
+          return;
+        }
+
+        runTimeLabel.textContent = result.elapsed + ' ms';
+
+        if (result.timedOut) {
+          resultOutput.textContent = '(timed out)';
+          consoleOutput.textContent = '(execution timed out after ' + timeoutMs + ' ms)';
+          setStatus('Execution timed out. Try simplifying or removing long loops.', true);
+          return;
+        }
+
+        consoleOutput.textContent = result.logs.length > 0 ? result.logs.join('\n') : '(no logs yet)';
+
+        if (result.ok) {
+          resultOutput.textContent = formatValue(result.result);
+          setStatus('Execution finished successfully.', false);
+        } else {
+          resultOutput.textContent = '(error)';
+          setStatus('Execution error: ' + result.error, true);
+        }
+      }
+
+      runBtn.addEventListener('click', function () {
+        executeCode();
+      });
+
+      clearBtn.addEventListener('click', function () {
+        activeRunId += 1;
+        setDefaultOutputs();
+        resetPreviewFrame();
+        setStatus('Output cleared.', false);
+      });
+
+      resetBtn.addEventListener('click', function () {
+        editor.value = defaultCode;
+        setStatus('Editor reset to default example.', false);
+      });
+
+      timeoutInput.value = String(DEFAULT_TIMEOUT_MS);
+      setDefaultOutputs();
+      resetPreviewFrame();
+    </script>
+  </body>
+</html>

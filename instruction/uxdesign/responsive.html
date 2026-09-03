@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Interface Lab</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1220px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.4rem;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 0 0 10px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin: 12px 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      input[type='range'],
+      select {
+        width: 100%;
+      }
+
+      .preset-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .preset-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .preset-btn.active {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
+      select {
+        border: 1px solid #bed4c9;
+        border-radius: 8px;
+        padding: 8px;
+        background: #ffffff;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .formula {
+        margin: 8px 0;
+        font-family: 'Courier New', monospace;
+        background: #eff7f3;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 8px;
+        color: #2b4e40;
+      }
+
+      .status {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .chip {
+        background: var(--accent-soft);
+        border: 1px solid #bfe7da;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+
+      .chip b {
+        color: var(--accent);
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .lab {
+        padding: 12px;
+        position: relative;
+      }
+
+      .canvas-wrap {
+        position: relative;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        min-height: 620px;
+      }
+
+      .canvas {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #d1e2da;
+        box-shadow: 0 2px 8px rgba(11, 65, 52, 0.08);
+        overflow: auto;
+      }
+
+      .canvas-toolbar {
+        padding: 10px;
+        border-bottom: 1px solid #d9ebe3;
+        background: #f3faf7;
+        color: #35584a;
+        font-size: 0.9rem;
+      }
+
+      .watch-cycle {
+        display: none;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        z-index: 3;
+        border: 1px solid #0f766e;
+        border-radius: 999px;
+        background: #0f766e;
+        color: #ffffff;
+        font-size: 0.74rem;
+        font-weight: 700;
+        padding: 6px 10px;
+        box-shadow: 0 3px 8px rgba(4, 52, 43, 0.2);
+      }
+
+      .demo-grid {
+        display: grid;
+        gap: 12px;
+        padding: 12px;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px;
+      }
+
+      .hero {
+        grid-column: span 8;
+      }
+
+      .sidebar {
+        grid-column: span 4;
+      }
+
+      .showcase {
+        grid-column: span 6;
+      }
+
+      .item-grid {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: repeat(auto-fit, minmax(94px, 1fr));
+      }
+
+      .item {
+        border: 1px solid #cbe1d5;
+        background: #eff9f5;
+        border-radius: 8px;
+        min-height: 56px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: #1f5142;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .media-wrap {
+        border: 1px solid #c9ddd1;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .resize-handle {
+        position: absolute;
+        top: 50%;
+        right: 4px;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 96px;
+        border-radius: 8px;
+        border: 1px solid #9ec8bc;
+        background: linear-gradient(180deg, #d9f1e8, #bde7d9);
+        cursor: ew-resize;
+        display: grid;
+        place-items: center;
+      }
+
+      .resize-handle::before {
+        content: '';
+        width: 5px;
+        height: 42px;
+        border-radius: 3px;
+        background: repeating-linear-gradient(180deg, #3d7e6b, #3d7e6b 4px, transparent 4px, transparent 8px);
+      }
+
+      .canvas.bp-medium .hero,
+      .canvas.bp-medium .sidebar,
+      .canvas.bp-medium .showcase,
+      .canvas.bp-small .hero,
+      .canvas.bp-small .sidebar,
+      .canvas.bp-small .showcase {
+        grid-column: span 12;
+      }
+
+      .canvas.bp-small .demo-grid {
+        padding: 10px;
+      }
+
+      .canvas.bp-small .card {
+        padding: 10px;
+      }
+
+      .canvas.bp-small .item-grid {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+      }
+
+      .canvas.watch-mode {
+        overflow: hidden;
+      }
+
+      .canvas.watch-mode .watch-cycle {
+        display: inline-block;
+      }
+
+      .canvas.watch-mode .demo-grid {
+        display: block;
+        height: calc(100% - 44px);
+        padding: 8px;
+        padding-bottom: 44px;
+      }
+
+      .canvas.watch-mode .card {
+        display: none;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      .canvas.watch-mode .card.active-watch {
+        display: block;
+      }
+
+      .canvas.watch-mode .item-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .canvas.watch-mode .hero.active-watch {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .canvas.watch-mode .hero.active-watch .item-grid {
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+        align-content: start;
+        padding-right: 2px;
+      }
+
+      .canvas.watch-mode .item {
+        min-height: 32px;
+        font-size: 0.72rem;
+        border-radius: 6px;
+      }
+
+      .canvas-wrap.watch-mode .resize-handle {
+        display: none;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .canvas-wrap {
+          min-height: 560px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>Responsive Interface Lab</h1>
+        <p>Interactively test fluid grids, media-query behavior, and flexible media in a resizable container.</p>
+
+        <div class="control">
+          <label for="itemCount">Grid items: <span class="value" id="itemCountValue">12</span></label>
+          <input id="itemCount" type="range" min="4" max="36" value="12" step="1" />
+        </div>
+
+        <div class="control">
+          <label for="mqMode">Media query simulation</label>
+          <select id="mqMode">
+            <option value="auto">Auto (from container width)</option>
+            <option value="large">Force large</option>
+            <option value="medium">Force medium</option>
+            <option value="small">Force small</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="containerWidth">Container width: <span class="value" id="containerWidthValue">980 px</span></label>
+          <input id="containerWidth" type="range" min="240" max="1100" value="980" step="1" />
+        </div>
+
+        <div class="control">
+          <label for="containerHeight">Container height: <span class="value" id="containerHeightValue">620 px</span></label>
+          <input id="containerHeight" type="range" min="240" max="980" value="620" step="1" />
+        </div>
+
+        <div class="control">
+          <label>Device presets</label>
+          <div class="preset-row" id="presetRow">
+            <button class="preset-btn" type="button" data-width="320" data-height="320">Watch</button>
+            <button class="preset-btn" type="button" data-width="390" data-height="760">Phone</button>
+            <button class="preset-btn" type="button" data-width="768" data-height="900">Tablet</button>
+            <button class="preset-btn active" type="button" data-width="980" data-height="620">Desktop</button>
+          </div>
+        </div>
+
+        <div class="formula">Auto breakpoint rule: small <= 600px, medium <= 900px, large > 900px</div>
+
+        <div class="status">
+          <div class="chip"><b>Window:</b> <span id="windowSize">-</span></div>
+          <div class="chip"><b>Canvas:</b> <span id="canvasSize">-</span></div>
+          <div class="chip"><b>Active breakpoint:</b> <span id="activeBreakpoint">-</span></div>
+        </div>
+
+        <p class="hint">Resize width with the slider or drag handle, and resize height with the height slider.</p>
+      </aside>
+
+      <section class="lab">
+        <div class="canvas-wrap">
+          <div class="canvas" id="canvas">
+            <div class="canvas-toolbar" id="canvasToolbar">Responsive preview</div>
+            <button class="watch-cycle" id="watchCycle" type="button" aria-label="Cycle watch panel">Next: Queries</button>
+            <section class="demo-grid" aria-label="Responsive demo layout">
+              <article class="card hero">
+                <h2>Fluid Grid</h2>
+                <p>Items below auto-flow using <b>repeat(auto-fit, minmax(...))</b>.</p>
+                <div class="item-grid" id="itemGrid"></div>
+              </article>
+
+              <aside class="card sidebar">
+                <h2>Media Queries</h2>
+                <p>The same content layout shifts based on active breakpoint mode.</p>
+                <p class="hint">In medium/small modes, cards stack to one column.</p>
+              </aside>
+
+              <article class="card showcase">
+                <h2>Flexible Image</h2>
+                <div class="media-wrap">
+                  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Laptop and tablet showing responsive web layouts" />
+                </div>
+              </article>
+            </section>
+          </div>
+          <button class="resize-handle" id="resizeHandle" type="button" aria-label="Resize responsive canvas"></button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const itemCount = document.getElementById('itemCount');
+      const itemCountValue = document.getElementById('itemCountValue');
+      const mqMode = document.getElementById('mqMode');
+      const containerWidth = document.getElementById('containerWidth');
+      const containerWidthValue = document.getElementById('containerWidthValue');
+      const containerHeight = document.getElementById('containerHeight');
+      const containerHeightValue = document.getElementById('containerHeightValue');
+
+      const windowSize = document.getElementById('windowSize');
+      const canvasSize = document.getElementById('canvasSize');
+      const activeBreakpoint = document.getElementById('activeBreakpoint');
+      const canvasToolbar = document.getElementById('canvasToolbar');
+      const presetRow = document.getElementById('presetRow');
+
+      const canvas = document.getElementById('canvas');
+      const canvasWrap = document.querySelector('.canvas-wrap');
+      const itemGrid = document.getElementById('itemGrid');
+      const resizeHandle = document.getElementById('resizeHandle');
+      const watchCycle = document.getElementById('watchCycle');
+
+      const watchPanels = ['hero', 'sidebar', 'showcase'];
+      const watchPanelNames = {
+        hero: 'Grid',
+        sidebar: 'Queries',
+        showcase: 'Image',
+      };
+      let watchPanelIndex = 0;
+
+      const MIN_WIDTH = Number(containerWidth.min);
+      const MAX_WIDTH = Number(containerWidth.max);
+      const MIN_HEIGHT = Number(containerHeight.min);
+      const MAX_HEIGHT = Number(containerHeight.max);
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(value, max));
+      }
+
+      function inferBreakpoint(width) {
+        if (width <= 600) {
+          return 'small';
+        }
+        if (width <= 900) {
+          return 'medium';
+        }
+        return 'large';
+      }
+
+      function renderItems() {
+        const count = Number(itemCount.value);
+        itemCountValue.textContent = String(count);
+        itemGrid.innerHTML = '';
+
+        for (let i = 1; i <= count; i += 1) {
+          const item = document.createElement('div');
+          item.className = 'item';
+          item.textContent = 'Item ' + i;
+          itemGrid.appendChild(item);
+        }
+      }
+
+      function setWatchPanel(panelName) {
+        const cards = canvas.querySelectorAll('.card');
+        cards.forEach((card) => {
+          card.classList.toggle('active-watch', card.classList.contains(panelName));
+        });
+
+        watchPanelIndex = watchPanels.indexOf(panelName);
+        if (watchPanelIndex < 0) {
+          watchPanelIndex = 0;
+        }
+
+        const nextIndex = (watchPanelIndex + 1) % watchPanels.length;
+        const nextPanel = watchPanels[nextIndex];
+        watchCycle.textContent = 'Next: ' + watchPanelNames[nextPanel];
+      }
+
+      function cycleWatchPanel() {
+        const nextIndex = (watchPanelIndex + 1) % watchPanels.length;
+        setWatchPanel(watchPanels[nextIndex]);
+      }
+
+      function applyWatchMode(width, height) {
+        const isWatch = width <= 340 && height <= 360;
+        canvas.classList.toggle('watch-mode', isWatch);
+        canvasWrap.classList.toggle('watch-mode', isWatch);
+
+        if (isWatch) {
+          setWatchPanel(watchPanels[watchPanelIndex]);
+        } else {
+          const cards = canvas.querySelectorAll('.card');
+          cards.forEach((card) => card.classList.remove('active-watch'));
+        }
+
+        return isWatch;
+      }
+
+      function applyBreakpoint() {
+        const width = Math.round(canvas.getBoundingClientRect().width);
+        const height = Math.round(canvas.getBoundingClientRect().height);
+        const mode = mqMode.value === 'auto' ? inferBreakpoint(width) : mqMode.value;
+        const isWatch = applyWatchMode(width, height);
+
+        canvas.classList.remove('bp-small', 'bp-medium', 'bp-large');
+        canvas.classList.add('bp-' + mode);
+
+        activeBreakpoint.textContent = mode + (mqMode.value === 'auto' ? ' (auto)' : ' (forced)');
+        canvasSize.textContent = width + ' x ' + height + ' px';
+        canvasToolbar.textContent = 'Responsive preview - ' + mode + ' breakpoint' + (isWatch ? ' - watch mode' : '');
+      }
+
+      function setCanvasSize(width, height) {
+        const clamped = clamp(width, MIN_WIDTH, MAX_WIDTH);
+        const clampedHeight = clamp(height, MIN_HEIGHT, MAX_HEIGHT);
+        canvas.style.width = clamped + 'px';
+        canvas.style.height = clampedHeight + 'px';
+        containerWidth.value = String(clamped);
+        containerHeight.value = String(clampedHeight);
+        containerWidthValue.textContent = clamped + ' px';
+        containerHeightValue.textContent = clampedHeight + ' px';
+        applyBreakpoint();
+
+        const buttons = presetRow.querySelectorAll('.preset-btn');
+        buttons.forEach((button) => {
+          button.classList.toggle('active', Number(button.dataset.width) === clamped && Number(button.dataset.height) === clampedHeight);
+        });
+      }
+
+      function updateWindowSize() {
+        windowSize.textContent = window.innerWidth + ' x ' + window.innerHeight;
+      }
+
+      let dragging = false;
+      let dragStartX = 0;
+      let dragStartWidth = 0;
+
+      resizeHandle.addEventListener('pointerdown', (event) => {
+        dragging = true;
+        dragStartX = event.clientX;
+        dragStartWidth = canvas.getBoundingClientRect().width;
+        resizeHandle.setPointerCapture(event.pointerId);
+      });
+
+      resizeHandle.addEventListener('pointermove', (event) => {
+        if (!dragging) {
+          return;
+        }
+
+        const delta = event.clientX - dragStartX;
+        setCanvasSize(dragStartWidth + delta, Number(containerHeight.value));
+      });
+
+      function endDrag(event) {
+        if (dragging) {
+          dragging = false;
+          if (event) {
+            resizeHandle.releasePointerCapture(event.pointerId);
+          }
+        }
+      }
+
+      resizeHandle.addEventListener('pointerup', endDrag);
+      resizeHandle.addEventListener('pointercancel', endDrag);
+
+      itemCount.addEventListener('input', renderItems);
+      mqMode.addEventListener('change', applyBreakpoint);
+
+      presetRow.addEventListener('click', (event) => {
+        const button = event.target.closest('.preset-btn');
+        if (!button) {
+          return;
+        }
+
+        mqMode.value = 'auto';
+        setCanvasSize(Number(button.dataset.width), Number(button.dataset.height));
+      });
+
+      watchCycle.addEventListener('click', () => {
+        cycleWatchPanel();
+      });
+
+      containerWidth.addEventListener('input', () => {
+        setCanvasSize(Number(containerWidth.value), Number(containerHeight.value));
+      });
+
+      containerHeight.addEventListener('input', () => {
+        setCanvasSize(Number(containerWidth.value), Number(containerHeight.value));
+      });
+
+      window.addEventListener('resize', () => {
+        updateWindowSize();
+        applyBreakpoint();
+      });
+
+      renderItems();
+      setCanvasSize(Number(containerWidth.value), Number(containerHeight.value));
+      updateWindowSize();
+    </script>
+  </body>
+</html>

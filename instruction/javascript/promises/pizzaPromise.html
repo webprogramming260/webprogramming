@@ -1,0 +1,104 @@
+<body>
+  <h1>Promises</h1>
+  <p>This demonstrates the use of promises to order pizzas.</p>
+
+  <button onclick="pickupPizza()">Pickup Pizza</button>
+
+  <h2>Orders</h2>
+  <ol id="orders"></ol>
+</body>
+
+<script>
+  function pickupPizza() {
+    const order = createOrder();
+
+    // Promise
+    placeOrder(order)
+      .then((order) => serveOrder(order))
+      .catch((order) => {
+        orderFailure(order);
+      });
+  }
+
+  function createOrder() {
+    // Make the order and associate it with a new HTML element
+    const id = Math.floor(Math.random() * 10000);
+    const orderElement = document.createElement('li');
+    const order = { element: orderElement, id: id };
+
+    // Insert the order into the HTML list
+    orderElement.innerHTML = `<span>[${order.id}] 😋 <i>Waiting</i> ...</span>`;
+    const orders = document.getElementById('orders');
+    orders.appendChild(orderElement);
+
+    return order;
+  }
+
+  function placeOrder(order) {
+    return new Promise((resolve, reject) => {
+      doWork(order, 1000, 3000, resolve, reject, `cashier too busy`);
+    });
+  }
+
+  function doWork(order, min, max, resolve, reject, errMsg) {
+    let workTime = Math.random() * (max - min) + min;
+    setTimeout(() => {
+      workTime = Math.round(workTime);
+      if (workTime < max * 0.85) {
+        resolve(order);
+      } else {
+        order.error = errMsg;
+        reject(order);
+      }
+    }, workTime);
+  }
+
+  function serveOrder(order) {
+    order.element.innerHTML = `<span>[${order.id}] 🍕 <b>Served</b>!</span>`;
+  }
+
+  function orderFailure(order) {
+    order.element.innerHTML = `<span> [${order.id}] 😠 <b class='failure'>Failure</b>! ${order.error}</span>`;
+  }
+</script>
+
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1em;
+  }
+
+  h1 {
+    border-bottom: solid thin black;
+  }
+
+  li i {
+    color: rgb(2, 0, 148);
+  }
+
+  li b {
+    color: green;
+  }
+
+  .failure {
+    color: rgb(128, 0, 0);
+  }
+
+  button {
+    margin: 0.5em 0;
+    background-color: #0a66c2;
+    border: 0;
+    border-radius: 100px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    min-height: 35px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  button:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, 0.7);
+  }
+</style>

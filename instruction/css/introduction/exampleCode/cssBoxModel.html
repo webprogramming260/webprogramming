@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Box Model Lab</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+        --layer-margin: #c58a56;
+        --layer-border: #e2c17e;
+        --layer-padding: #c3d68c;
+        --layer-content: #84b7c7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1220px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 12px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 0 0 8px;
+        line-height: 1.35;
+      }
+
+      .control {
+        margin: 8px 0;
+      }
+
+      .control-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 8px 0;
+      }
+
+      .control-row.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .control-row .control {
+        margin: 0;
+      }
+
+      .control.compact label {
+        font-size: 0.8rem;
+        line-height: 1.2;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      input[type='range'],
+      select {
+        width: 100%;
+      }
+
+      .preset-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .preset-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .preset-btn.active {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
+      select {
+        border: 1px solid #bed4c9;
+        border-radius: 8px;
+        padding: 6px;
+        background: #ffffff;
+        font-size: 0.9rem;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .formula {
+        margin: 6px 0;
+        font-family: 'Courier New', monospace;
+        background: #eff7f3;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 6px;
+        color: #2b4e40;
+        font-size: 0.8rem;
+      }
+
+      .lab {
+        padding: 12px;
+      }
+
+      .canvas-wrap {
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        min-height: 500px;
+        padding: 12px;
+      }
+
+      .canvas-toolbar {
+        padding: 10px;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        background: #f3faf7;
+        color: #35584a;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+      }
+
+      .stage {
+        position: relative;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        border: 1px solid #d1e2da;
+        min-height: 360px;
+        background-image: linear-gradient(90deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px), linear-gradient(0deg, rgba(70, 130, 112, 0.07) 1px, transparent 1px);
+        background-size: 24px 24px;
+        overflow: auto;
+      }
+
+      .legend {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        color: #33574a;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #d4e7dd;
+        border-radius: 999px;
+        padding: 4px 8px;
+      }
+
+      .swatch {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+      }
+
+      .layer-margin {
+        background: var(--layer-margin);
+      }
+
+      .layer-border {
+        background: var(--layer-border);
+      }
+
+      .layer-padding {
+        background: var(--layer-padding);
+      }
+
+      .layer-content {
+        background: var(--layer-content);
+      }
+
+      .margin-box {
+        display: inline-block;
+        background: var(--layer-margin);
+        border-radius: 4px;
+      }
+
+      .demo-box {
+        background: var(--layer-border);
+        border-style: solid;
+        border-color: #c35b00;
+      }
+
+      .padding-box {
+        width: 100%;
+        height: 100%;
+        background: var(--layer-padding);
+      }
+
+      .content-box {
+        width: 100%;
+        height: 100%;
+        background: var(--layer-content);
+        border: 1px dashed #7b9db7;
+        border-radius: 2px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-weight: 700;
+        color: #27495f;
+        font-size: 0.9rem;
+      }
+
+      .axis {
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        width: 180px;
+        font-size: 0.76rem;
+        color: #32584b;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #d4e7dd;
+        border-radius: 8px;
+        padding: 8px;
+      }
+
+      .axis-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 3px 0;
+      }
+
+      .axis-row span:last-child {
+        font-weight: 700;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .canvas-wrap {
+          min-height: 420px;
+        }
+
+        .axis {
+          width: 158px;
+        }
+
+        .control-row,
+        .control-row.three {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>CSS Box Model Lab</h1>
+        <p>Adjust each box-model layer and watch how total rendered size changes in real time.</p>
+
+        <div class="control">
+          <label for="boxSizing">box-sizing</label>
+          <select id="boxSizing">
+            <option value="content-box">content-box</option>
+            <option value="border-box">border-box</option>
+          </select>
+        </div>
+
+        <div class="control-row">
+          <div class="control compact">
+            <label for="contentWidth">Width: <span class="value" id="contentWidthValue">260 px</span></label>
+            <input id="contentWidth" type="range" min="80" max="420" value="260" step="1" />
+          </div>
+
+          <div class="control compact">
+            <label for="contentHeight">Height: <span class="value" id="contentHeightValue">120 px</span></label>
+            <input id="contentHeight" type="range" min="50" max="280" value="120" step="1" />
+          </div>
+        </div>
+
+        <div class="control-row three">
+          <div class="control compact">
+            <label for="paddingSize">Padding: <span class="value" id="paddingSizeValue">24 px</span></label>
+            <input id="paddingSize" type="range" min="0" max="80" value="24" step="1" />
+          </div>
+
+          <div class="control compact">
+            <label for="borderSize">Border: <span class="value" id="borderSizeValue">10 px</span></label>
+            <input id="borderSize" type="range" min="0" max="40" value="10" step="1" />
+          </div>
+
+          <div class="control compact">
+            <label for="marginSize">Margin: <span class="value" id="marginSizeValue">18 px</span></label>
+            <input id="marginSize" type="range" min="0" max="90" value="18" step="1" />
+          </div>
+        </div>
+
+        <div class="control">
+          <label>Quick presets</label>
+          <div class="preset-row" id="presetRow">
+            <button class="preset-btn active" type="button" data-boxsizing="content-box" data-width="260" data-height="160" data-padding="24" data-border="10" data-margin="18">Balanced</button>
+            <button class="preset-btn" type="button" data-boxsizing="content-box" data-width="280" data-height="160" data-padding="40" data-border="14" data-margin="10">Thick Shell</button>
+            <button class="preset-btn" type="button" data-boxsizing="border-box" data-width="260" data-height="160" data-padding="24" data-border="10" data-margin="24">Border Box</button>
+            <button class="preset-btn" type="button" data-boxsizing="content-box" data-width="180" data-height="120" data-padding="12" data-border="4" data-margin="48">Spaced Out</button>
+          </div>
+        </div>
+
+        <div class="formula" id="formulaText">total width = width + 2 x (padding + border + margin)</div>
+      </aside>
+
+      <section class="lab">
+        <div class="canvas-wrap">
+          <div class="canvas-toolbar" id="canvasToolbar">Live box model preview</div>
+
+          <div class="stage">
+            <div class="legend">
+              <div class="legend-item"><span class="swatch layer-margin"></span>Margin</div>
+              <div class="legend-item"><span class="swatch layer-border"></span>Border</div>
+              <div class="legend-item"><span class="swatch layer-padding"></span>Padding</div>
+              <div class="legend-item"><span class="swatch layer-content"></span>Content</div>
+            </div>
+
+            <div class="axis" id="axisInfo">
+              <div class="axis-row"><span>box-sizing</span><span>content-box</span></div>
+              <div class="axis-row"><span>Horizontal extras</span><span>0 px</span></div>
+              <div class="axis-row"><span>Vertical extras</span><span>0 px</span></div>
+            </div>
+
+            <div class="margin-box" id="marginBox">
+              <div class="demo-box" id="demoBox">
+                <div class="padding-box" id="paddingBox">
+                  <div class="content-box" id="contentBox">Content area</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const boxSizing = document.getElementById('boxSizing');
+      const contentWidth = document.getElementById('contentWidth');
+      const contentHeight = document.getElementById('contentHeight');
+      const paddingSize = document.getElementById('paddingSize');
+      const borderSize = document.getElementById('borderSize');
+      const marginSize = document.getElementById('marginSize');
+
+      const contentWidthValue = document.getElementById('contentWidthValue');
+      const contentHeightValue = document.getElementById('contentHeightValue');
+      const paddingSizeValue = document.getElementById('paddingSizeValue');
+      const borderSizeValue = document.getElementById('borderSizeValue');
+      const marginSizeValue = document.getElementById('marginSizeValue');
+
+      const formulaText = document.getElementById('formulaText');
+      const canvasToolbar = document.getElementById('canvasToolbar');
+      const axisInfo = document.getElementById('axisInfo');
+
+      const marginBox = document.getElementById('marginBox');
+      const demoBox = document.getElementById('demoBox');
+      const paddingBox = document.getElementById('paddingBox');
+      const contentBox = document.getElementById('contentBox');
+      const presetRow = document.getElementById('presetRow');
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(value, max));
+      }
+
+      function toPx(value) {
+        return String(value) + ' px';
+      }
+
+      function updateDemo() {
+        const sizing = boxSizing.value;
+        const widthProp = Number(contentWidth.value);
+        const heightProp = Number(contentHeight.value);
+        const padding = Number(paddingSize.value);
+        const border = Number(borderSize.value);
+        const margin = Number(marginSize.value);
+
+        contentWidthValue.textContent = toPx(widthProp);
+        contentHeightValue.textContent = toPx(heightProp);
+        paddingSizeValue.textContent = toPx(padding);
+        borderSizeValue.textContent = toPx(border);
+        marginSizeValue.textContent = toPx(margin);
+
+        let contentW;
+        let contentH;
+        let borderW;
+        let borderH;
+
+        if (sizing === 'content-box') {
+          contentW = widthProp;
+          contentH = heightProp;
+          borderW = widthProp + 2 * (padding + border);
+          borderH = heightProp + 2 * (padding + border);
+          formulaText.textContent = 'content-box total = width + 2 x (padding + border + margin)';
+        } else {
+          borderW = widthProp;
+          borderH = heightProp;
+          contentW = clamp(widthProp - 2 * (padding + border), 0, 2000);
+          contentH = clamp(heightProp - 2 * (padding + border), 0, 2000);
+          formulaText.textContent = 'border-box total = width + 2 x margin (padding and border are inside width)';
+        }
+
+        const outerW = borderW + 2 * margin;
+        const outerH = borderH + 2 * margin;
+
+        marginBox.style.padding = margin + 'px';
+        demoBox.style.boxSizing = sizing;
+        demoBox.style.width = widthProp + 'px';
+        demoBox.style.height = heightProp + 'px';
+        demoBox.style.borderWidth = border + 'px';
+
+        paddingBox.style.boxSizing = 'border-box';
+        paddingBox.style.padding = padding + 'px';
+
+        contentBox.textContent = Math.round(contentW) + ' x ' + Math.round(contentH) + ' content';
+
+        canvasToolbar.textContent = 'Live box model preview - ' + sizing;
+
+        axisInfo.innerHTML = '<div class="axis-row"><span>box-sizing</span><span>' + sizing + '</span></div>' + '<div class="axis-row"><span>Horizontal extras</span><span>' + 2 * (padding + border + margin) + ' px</span></div>' + '<div class="axis-row"><span>Vertical extras</span><span>' + 2 * (padding + border + margin) + ' px</span></div>';
+
+        const buttons = presetRow.querySelectorAll('.preset-btn');
+        buttons.forEach((button) => {
+          button.classList.toggle('active', button.dataset.boxsizing === sizing && Number(button.dataset.width) === widthProp && Number(button.dataset.height) === heightProp && Number(button.dataset.padding) === padding && Number(button.dataset.border) === border && Number(button.dataset.margin) === margin);
+        });
+      }
+
+      function applyPreset(button) {
+        boxSizing.value = button.dataset.boxsizing;
+        contentWidth.value = button.dataset.width;
+        contentHeight.value = button.dataset.height;
+        paddingSize.value = button.dataset.padding;
+        borderSize.value = button.dataset.border;
+        marginSize.value = button.dataset.margin;
+        updateDemo();
+      }
+
+      [boxSizing, contentWidth, contentHeight, paddingSize, borderSize, marginSize].forEach((control) => {
+        control.addEventListener('input', updateDemo);
+        control.addEventListener('change', updateDemo);
+      });
+
+      presetRow.addEventListener('click', (event) => {
+        const button = event.target.closest('.preset-btn');
+        if (!button) {
+          return;
+        }
+        applyPreset(button);
+      });
+
+      updateDemo();
+    </script>
+  </body>
+</html>
+

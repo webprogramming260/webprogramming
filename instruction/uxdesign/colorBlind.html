@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Blindness Impact Demo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #f4f7fb;
+        --ink: #1f2937;
+        --panel: #ffffff;
+        --stroke: #d7deea;
+        --soft: #eef3fc;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: var(--ink);
+      }
+
+      .container {
+        width: min(1080px, 94vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .stage-wrap {
+        background: var(--panel);
+        border: 1px solid var(--stroke);
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin-bottom: 12px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      select,
+      input[type='range'] {
+        width: 100%;
+      }
+
+      select {
+        border: 1px solid #c5d2e5;
+        border-radius: 8px;
+        background: #fff;
+        padding: 7px 9px;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .hint {
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .wiki-link {
+        font-size: 0.82rem;
+        color: #64748b;
+        text-decoration: none;
+      }
+
+      .wiki-link:hover {
+        color: #475569;
+        text-decoration: underline;
+      }
+
+      .stats {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #dbe5f5;
+        border-radius: 8px;
+        background: #f8fbff;
+      }
+
+      .stats h2 {
+        margin: 0 0 8px;
+        font-size: 0.98rem;
+      }
+
+      .stats-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .stats-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .stats-row span:first-child {
+        color: #475569;
+      }
+
+      .stats-row span:last-child {
+        font-weight: 700;
+      }
+
+      .stats-note {
+        margin-top: 8px;
+        font-size: 0.82rem;
+        color: #475569;
+      }
+
+      .stage-wrap {
+        padding: 12px;
+      }
+
+      .stage {
+        min-height: 580px;
+        border-radius: 8px;
+        border: 2px dashed #bac7dc;
+        background: linear-gradient(135deg, #f8fbff, #edf3ff);
+        padding: 14px;
+      }
+
+      .compare-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .view {
+        border: 1px solid #d5deed;
+        border-radius: 10px;
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .view-title {
+        margin: 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+        background: #eef4ff;
+        border-bottom: 1px solid #d8e3f8;
+        padding: 8px 10px;
+      }
+
+      .scene {
+        padding: 12px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .segment h3 {
+        margin: 0 0 6px;
+        font-size: 0.95rem;
+      }
+
+      .traffic {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .light {
+        border-radius: 8px;
+        border: 1px solid rgba(15, 23, 42, 0.2);
+        color: #0f172a;
+        font-weight: 700;
+        min-height: 52px;
+        display: grid;
+        place-items: center;
+      }
+
+      .red {
+        background: #ef4444;
+      }
+
+      .yellow {
+        background: #facc15;
+      }
+
+      .green {
+        background: #22c55e;
+      }
+
+      .map {
+        height: 72px;
+        border-radius: 8px;
+        background: #f8fafc;
+        border: 1px solid #d6e0f0;
+        position: relative;
+      }
+
+      .route {
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        height: 8px;
+        border-radius: 999px;
+      }
+
+      .route-a {
+        top: 18px;
+        background: #ef4444;
+      }
+
+      .route-b {
+        top: 34px;
+        background: #10b981;
+      }
+
+      .route-c {
+        top: 50px;
+        background: #2563eb;
+      }
+
+      .badge-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        border-radius: 999px;
+        padding: 4px 9px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #0f172a;
+        border: 1px solid rgba(15, 23, 42, 0.18);
+      }
+
+      .badge.error {
+        background: #fca5a5;
+      }
+
+      .badge.success {
+        background: #86efac;
+      }
+
+      .badge.info {
+        background: #93c5fd;
+      }
+
+      .good-example {
+        border: 1px solid #c8d7f0;
+        border-radius: 8px;
+        background: #f7fbff;
+        padding: 8px;
+      }
+
+      .good-row {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      .good-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .icon-x {
+        background: #ef4444;
+      }
+
+      .icon-check {
+        background: #16a34a;
+      }
+
+      .icon-i {
+        background: #2563eb;
+      }
+
+      .simulated {
+        filter: none;
+      }
+
+      .footer-note {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        color: #334155;
+      }
+
+      @media (max-width: 920px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .compare-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stage {
+          min-height: 520px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <h1>Color Blindness Demo</h1>
+        <p>
+          See how the same interface can become harder to interpret when hue differences collapse under common color-vision deficiencies.
+          <a class="wiki-link" href="https://en.wikipedia.org/wiki/Color_blindness" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+        </p>
+
+        <div class="control">
+          <label for="mode">Vision simulation</label>
+          <select id="mode">
+            <option value="normal">Normal vision</option>
+            <option value="protanopia">Protanopia (red weak/absent)</option>
+            <option value="deuteranopia" selected>Deuteranopia (green weak/absent)</option>
+            <option value="tritanopia">Tritanopia (blue-yellow confusion)</option>
+            <option value="achromatopsia">Achromatopsia (near grayscale)</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="severity">Simulation strength: <span class="value" id="severityOut">100%</span></label>
+          <input id="severity" type="range" min="0" max="100" value="100" step="5" />
+        </div>
+
+        <p class="hint" id="status">Left panel stays unchanged. Right panel applies the selected simulation matrix.</p>
+
+        <section class="stats" aria-label="Population statistics">
+          <h2 id="statsTitle">Population impact</h2>
+          <div class="stats-row"><span>Estimated prevalence</span><span id="statsPrevalence">-</span></div>
+          <div class="stats-row"><span>Approx. global count</span><span id="statsCount">-</span></div>
+          <p class="stats-note">Approximate values from commonly cited vision-health references; exact rates vary by ancestry and sex.</p>
+        </section>
+      </section>
+
+      <section class="stage-wrap">
+        <div class="stage">
+          <div class="compare-grid">
+            <article class="view">
+              <h2 class="view-title">Reference View<br />Normal vision</h2>
+              <div class="scene" id="referenceScene"></div>
+            </article>
+
+            <article class="view">
+              <h2 class="view-title" id="simTitle">Simulated View<br />Deuteranopia</h2>
+              <div class="scene simulated" id="simScene"></div>
+            </article>
+          </div>
+
+          <p class="footer-note">Try toggling between simulations. Notice how "error/success" colors can become similar, especially without text or icon cues.</p>
+        </div>
+      </section>
+    </main>
+
+    <template id="sceneTemplate">
+      <section class="segment">
+        <h3>Traffic Status Chips</h3>
+        <div class="traffic">
+          <div class="light red">Stop</div>
+          <div class="light yellow">Wait</div>
+          <div class="light green">Go</div>
+        </div>
+      </section>
+
+      <section class="segment">
+        <h3>Route Map (Color-Only Risk)</h3>
+        <div class="map">
+          <div class="route route-a" title="Route A"></div>
+          <div class="route route-b" title="Route B"></div>
+          <div class="route route-c" title="Route C"></div>
+        </div>
+      </section>
+
+      <section class="segment">
+        <h3>Status Badges</h3>
+        <div class="badge-row">
+          <span class="badge error">Error</span>
+          <span class="badge success">Success</span>
+          <span class="badge info">Info</span>
+        </div>
+      </section>
+
+      <section class="segment good-example">
+        <h3>Improved Version (Redundant Cues)</h3>
+        <div class="good-row">
+          <span class="icon icon-x">X</span>
+          <span>Payment failed</span>
+        </div>
+        <div class="good-row">
+          <span class="icon icon-check">OK</span>
+          <span>Backup complete</span>
+        </div>
+        <div class="good-row">
+          <span class="icon icon-i">i</span>
+          <span>New update available</span>
+        </div>
+      </section>
+    </template>
+
+    <script>
+      const mode = document.getElementById('mode');
+      const severity = document.getElementById('severity');
+      const severityOut = document.getElementById('severityOut');
+      const referenceScene = document.getElementById('referenceScene');
+      const simScene = document.getElementById('simScene');
+      const simTitle = document.getElementById('simTitle');
+      const status = document.getElementById('status');
+      const statsTitle = document.getElementById('statsTitle');
+      const statsPrevalence = document.getElementById('statsPrevalence');
+      const statsCount = document.getElementById('statsCount');
+      const sceneTemplate = document.getElementById('sceneTemplate');
+
+      const MATRICES = {
+        normal: [
+          [1, 0, 0],
+          [0, 1, 0],
+          [0, 0, 1],
+        ],
+        protanopia: [
+          [0.567, 0.433, 0],
+          [0.558, 0.442, 0],
+          [0, 0.242, 0.758],
+        ],
+        deuteranopia: [
+          [0.625, 0.375, 0],
+          [0.7, 0.3, 0],
+          [0, 0.3, 0.7],
+        ],
+        tritanopia: [
+          [0.95, 0.05, 0],
+          [0, 0.433, 0.567],
+          [0, 0.475, 0.525],
+        ],
+        achromatopsia: [
+          [0.299, 0.587, 0.114],
+          [0.299, 0.587, 0.114],
+          [0.299, 0.587, 0.114],
+        ],
+      };
+
+      const STATS = {
+        normal: {
+          title: 'Population impact: Normal color vision',
+          prevalence: '~91-92% of all people',
+          count: '~7.3+ billion people',
+        },
+        protanopia: {
+          title: 'Population impact: Protanopia',
+          prevalence: '~1% of males, very rare in females',
+          count: '~35-40 million people',
+        },
+        deuteranopia: {
+          title: 'Population impact: Deuteranopia',
+          prevalence: '~1-1.5% of males, very rare in females',
+          count: '~40-60 million people',
+        },
+        tritanopia: {
+          title: 'Population impact: Tritanopia',
+          prevalence: '<0.1% of people',
+          count: '<8 million people',
+        },
+        achromatopsia: {
+          title: 'Population impact: Achromatopsia',
+          prevalence: '~1 in 30,000',
+          count: '~250,000-300,000 people',
+        },
+      };
+
+      function updateStats(modeKey) {
+        const entry = STATS[modeKey] || STATS.normal;
+        statsTitle.textContent = entry.title;
+        statsPrevalence.textContent = entry.prevalence;
+        statsCount.textContent = entry.count;
+      }
+
+      function mountScenes() {
+        referenceScene.innerHTML = '';
+        simScene.innerHTML = '';
+        referenceScene.appendChild(sceneTemplate.content.cloneNode(true));
+        simScene.appendChild(sceneTemplate.content.cloneNode(true));
+      }
+
+      function clamp(value) {
+        return Math.min(255, Math.max(0, Math.round(value)));
+      }
+
+      function mixMatrix(identity, target, amount) {
+        const mixed = [];
+        for (let row = 0; row < 3; row += 1) {
+          mixed[row] = [];
+          for (let col = 0; col < 3; col += 1) {
+            mixed[row][col] = identity[row][col] * (1 - amount) + target[row][col] * amount;
+          }
+        }
+        return mixed;
+      }
+
+      function applyMatrixToColor(rgb, matrix) {
+        const r = rgb[0];
+        const g = rgb[1];
+        const b = rgb[2];
+
+        return [clamp(r * matrix[0][0] + g * matrix[0][1] + b * matrix[0][2]), clamp(r * matrix[1][0] + g * matrix[1][1] + b * matrix[1][2]), clamp(r * matrix[2][0] + g * matrix[2][1] + b * matrix[2][2])];
+      }
+
+      function parseRgbString(input) {
+        const match = input.match(/\d+(?:\.\d+)?/g);
+        if (!match || match.length < 3) {
+          return null;
+        }
+        return [Number(match[0]), Number(match[1]), Number(match[2])];
+      }
+
+      function recolorElementTree(root, matrix) {
+        const allNodes = [root, ...root.querySelectorAll('*')];
+
+        allNodes.forEach((node) => {
+          const styles = getComputedStyle(node);
+
+          const bg = parseRgbString(styles.backgroundColor);
+          if (bg && styles.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+            const out = applyMatrixToColor(bg, matrix);
+            node.style.backgroundColor = 'rgb(' + out[0] + ', ' + out[1] + ', ' + out[2] + ')';
+          }
+
+          const text = parseRgbString(styles.color);
+          if (text) {
+            const outText = applyMatrixToColor(text, matrix);
+            node.style.color = 'rgb(' + outText[0] + ', ' + outText[1] + ', ' + outText[2] + ')';
+          }
+
+          const border = parseRgbString(styles.borderTopColor);
+          if (border) {
+            const outBorder = applyMatrixToColor(border, matrix);
+            node.style.borderColor = 'rgb(' + outBorder[0] + ', ' + outBorder[1] + ', ' + outBorder[2] + ')';
+          }
+        });
+      }
+
+      function updateSimulation() {
+        const selected = mode.value;
+        const amount = Number(severity.value) / 100;
+        severityOut.textContent = String(severity.value) + '%';
+
+        mountScenes();
+
+        const identity = MATRICES.normal;
+        const target = MATRICES[selected] || identity;
+        const mixedMatrix = mixMatrix(identity, target, amount);
+
+        recolorElementTree(simScene, mixedMatrix);
+
+        const label = mode.options[mode.selectedIndex].textContent;
+        const disabilityName = label.split(' (')[0];
+        simTitle.innerHTML = 'Simulated View<br />' + disabilityName;
+        status.textContent = 'Simulation mode: ' + label + ' at ' + severity.value + '% strength.';
+        updateStats(selected);
+      }
+
+      mode.addEventListener('change', updateSimulation);
+      severity.addEventListener('input', updateSimulation);
+
+      updateSimulation();
+    </script>
+  </body>
+</html>

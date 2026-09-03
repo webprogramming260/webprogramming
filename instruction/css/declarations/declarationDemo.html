@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Declaration Demo</title>
+    <style>
+      :root {
+        --bg: #f2f7f4;
+        --panel: #ffffff;
+        --ink: #153124;
+        --muted: #4a6558;
+        --line: #c9ddd1;
+        --accent: #0e7c66;
+        --accent-soft: #e2f4ee;
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #dff3eb 0, transparent 30%), radial-gradient(circle at 90% 85%, #cfeae3 0, transparent 35%), var(--bg);
+      }
+
+      .page {
+        width: min(1220px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 10px rgba(21, 49, 36, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+        align-self: start;
+        position: sticky;
+        top: 14px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.4rem;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.02rem;
+      }
+
+      p {
+        margin: 0 0 10px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin: 12px 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      select,
+      button {
+        font-family: inherit;
+      }
+
+      select {
+        width: 100%;
+        border: 1px solid #bed4c9;
+        border-radius: 8px;
+        padding: 8px;
+        background: #ffffff;
+      }
+
+      input[type='text'] {
+        width: 100%;
+        border: 1px solid #bed4c9;
+        border-radius: 8px;
+        padding: 8px;
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .value-grid {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .value-btn {
+        border: 1px solid #b7d5ca;
+        background: #f4fbf8;
+        color: #15574c;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .value-btn:hover {
+        background: #e8f7f2;
+      }
+
+      .value-btn.active {
+        background: #0f766e;
+        border-color: #0f766e;
+        color: #ffffff;
+      }
+
+      .custom-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+      }
+
+      .custom-apply-btn {
+        border: 1px solid #0f766e;
+        background: #0f766e;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .custom-apply-btn:hover {
+        background: #0d695f;
+        border-color: #0d695f;
+      }
+
+      .formula {
+        margin: 8px 0;
+        font-family: 'Courier New', monospace;
+        background: #eff7f3;
+        border: 1px solid #d9ebe3;
+        border-radius: 8px;
+        padding: 8px;
+        color: #2b4e40;
+      }
+
+      .status {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .chip {
+        background: var(--accent-soft);
+        border: 1px solid #bfe7da;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+
+      .chip b {
+        color: var(--accent);
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .lab {
+        padding: 12px;
+      }
+
+      .canvas {
+        border-radius: 10px;
+        border: 2px dashed #b9cfd0;
+        background: #f7fbf9;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .canvas-toolbar {
+        padding: 10px;
+        border-bottom: 1px solid #d9ebe3;
+        background: #f3faf7;
+        color: #35584a;
+        font-size: 0.9rem;
+      }
+
+      .demo-grid {
+        display: grid;
+        gap: 12px;
+        padding: 12px;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px;
+      }
+
+      .playground {
+        grid-column: span 12;
+      }
+
+      .demo-area {
+        border: 1px solid #c9ddd1;
+        border-radius: 8px;
+        background: #f8fcfa;
+        padding: 14px;
+        min-height: 420px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: auto;
+      }
+
+      #target {
+        width: 220px;
+        min-height: 90px;
+        padding: 1rem;
+        margin: 0 auto;
+        border: 2px solid #0f766e;
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px rgba(14, 124, 102, 0.25);
+        background-color: #d9f4ed;
+        color: #123a2f;
+        font-size: 1rem;
+        text-align: center;
+        display: block;
+        line-height: 1.35;
+      }
+
+      #contextNote {
+        border: 1px solid #d3e6dd;
+        background: #eef8f4;
+        border-radius: 8px;
+        padding: 8px;
+        max-height: 84px;
+        font-size: 0.92rem;
+        display: none;
+      }
+
+      #positionSpacer {
+        display: none;
+        min-height: 220px;
+        border: 1px dashed #a9cabc;
+        border-radius: 8px;
+        background: repeating-linear-gradient(180deg, #eef8f4, #eef8f4 18px, #e5f3ee 18px, #e5f3ee 36px);
+        color: #3e6658;
+        font-size: 0.84rem;
+        padding: 10px;
+      }
+
+      .spotlight {
+        border: 1px solid #cfe2da;
+        border-radius: 8px;
+        background: #f1f9f6;
+        padding: 10px;
+        flex: 1;
+        min-height: 120px;
+      }
+
+      .spotlight h3 {
+        margin: 0 0 6px;
+        font-size: 0.94rem;
+      }
+
+      .spotlight code {
+        display: block;
+        font-size: 0.84rem;
+        color: #35584a;
+        background: #e9f5f0;
+        border: 1px solid #d3e8df;
+        border-radius: 6px;
+        padding: 4px 6px;
+        margin-bottom: 4px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .playground {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>Declaration Playground</h1>
+        <p>Choose a CSS declaration and then switch values to see how the same element changes.</p>
+
+        <div class="control">
+          <label for="propertySelect">CSS property</label>
+          <select id="propertySelect" aria-label="Choose CSS property"></select>
+        </div>
+
+        <div class="control">
+          <label>Values</label>
+          <div class="value-grid" id="valueGrid"></div>
+        </div>
+
+        <div class="control">
+          <label for="customValue">Custom value</label>
+          <div class="custom-row">
+            <input id="customValue" type="text" placeholder="e.g. 2rem, hsl(220 60% 45%), rotate(15deg)" />
+            <button id="applyCustomValue" class="custom-apply-btn" type="button">Apply</button>
+          </div>
+        </div>
+
+        <div class="formula" id="rulePreview">#target { border-radius: 10px; }</div>
+
+        <div class="status">
+          <div class="chip"><b>Property:</b> <span id="activeProperty">-</span></div>
+          <div class="chip"><b>Value:</b> <span id="activeValue">-</span></div>
+          <div class="chip"><b>Type:</b> <span id="valueType">-</span></div>
+        </div>
+      </aside>
+
+      <section class="lab">
+        <div class="canvas">
+          <div class="canvas-toolbar">Interactive CSS declarations and values</div>
+
+          <section class="demo-grid">
+            <article class="card playground">
+              <h2>Live Element Preview</h2>
+              <p>Each update applies directly to the same target box.</p>
+              <div class="demo-area">
+                <div id="target">
+                  <span id="targetLabel">CSS declarations in action</span>
+                </div>
+                <div id="positionSpacer">Scroll area for position demos. Use this area to observe offset and sticky behavior while scrolling the preview panel.</div>
+                <div id="contextNote"></div>
+                <section class="spotlight">
+                  <h3 id="spotlightTitle">Property spotlight: border-radius</h3>
+                  <div id="spotlightExamples"></div>
+                </section>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const propertySelect = document.getElementById('propertySelect');
+      const valueGrid = document.getElementById('valueGrid');
+      const customValue = document.getElementById('customValue');
+      const applyCustomValue = document.getElementById('applyCustomValue');
+      const target = document.getElementById('target');
+      const rulePreview = document.getElementById('rulePreview');
+      const activeProperty = document.getElementById('activeProperty');
+      const activeValue = document.getElementById('activeValue');
+      const valueType = document.getElementById('valueType');
+      const spotlightTitle = document.getElementById('spotlightTitle');
+      const spotlightExamples = document.getElementById('spotlightExamples');
+      const targetLabel = document.getElementById('targetLabel');
+      const positionSpacer = document.getElementById('positionSpacer');
+      const contextNote = document.getElementById('contextNote');
+
+      const declarationMap = {
+        'background-color': {
+          type: 'color',
+          values: ['#d9f4ed', '#fdd835', '#0ea5e9', '#312e81'],
+        },
+        'border-radius': {
+          type: 'unit',
+          values: ['0', '10px', '1.6rem', '50%'],
+        },
+        'box-shadow': {
+          type: 'effect',
+          values: ['none', '2px 2px 8px rgba(14, 124, 102, 0.35)', '0 12px 24px rgba(10, 69, 55, 0.25)', 'inset 0 0 0 4px rgba(15, 118, 110, 0.3)'],
+        },
+        color: {
+          type: 'color',
+          values: ['#0f172a', '#dc2626', '#1d4ed8', '#7c2d12'],
+        },
+        width: {
+          type: 'unit',
+          values: ['140px', '220px', '60%', '100%'],
+        },
+        margin: {
+          type: 'unit',
+          values: ['0', '0 auto', '1.2rem 0 0 auto', '2rem auto 0 0'],
+        },
+        padding: {
+          type: 'unit',
+          values: ['0.4rem', '1rem', '1.6rem', '2rem 0.6rem'],
+        },
+        opacity: {
+          type: 'number',
+          values: ['1', '0.75', '0.5', '0.25'],
+        },
+        transform: {
+          type: 'transform-function',
+          values: ['none', 'rotate(-10deg)', 'scale(1.25)', 'translateX(60px)'],
+        },
+        filter: {
+          type: 'filter-function',
+          values: ['none', 'grayscale(100%)', 'blur(2px)', 'contrast(220%)'],
+        },
+        cursor: {
+          type: 'keyword',
+          values: ['default', 'pointer', 'grab', 'not-allowed'],
+        },
+        'font-size': {
+          type: 'unit',
+          values: ['0.8rem', '1rem', '1.6rem', '2.4rem'],
+        },
+        'text-align': {
+          type: 'keyword',
+          values: ['left', 'center', 'right', 'justify'],
+        },
+        overflow: {
+          type: 'keyword',
+          values: ['visible', 'hidden', 'auto', 'scroll'],
+        },
+        display: {
+          type: 'keyword',
+          values: ['block', 'inline', 'flex', 'none'],
+        },
+        position: {
+          type: 'keyword',
+          values: ['static', 'relative', 'absolute', 'sticky'],
+        },
+      };
+
+      const baseTargetStyle = {
+        width: '220px',
+        minHeight: '90px',
+        padding: '1rem',
+        margin: '0 auto',
+        border: '2px solid #0f766e',
+        borderRadius: '10px',
+        boxShadow: '2px 2px 8px rgba(14, 124, 102, 0.25)',
+        backgroundColor: '#d9f4ed',
+        color: '#123a2f',
+        fontSize: '1rem',
+        textAlign: 'center',
+        display: 'block',
+        lineHeight: '1.35',
+        opacity: '1',
+        transform: 'none',
+        filter: 'none',
+        position: 'static',
+        top: 'auto',
+        left: 'auto',
+        right: 'auto',
+        bottom: 'auto',
+        zIndex: 'auto',
+        overflow: 'visible',
+        height: 'auto',
+      };
+
+      const helperNotes = {
+        overflow: 'Overflow demo: this property controls how extra content behaves when the box is smaller than its content.',
+        position: 'Position demo: compare in-flow placement (static), offset movement (relative), removed flow placement (absolute), and top pinning while scrolling (sticky).',
+        display: 'Display demo: block keeps box layout, inline collapses box behavior, flex reflows content, and none removes the element.',
+        'text-align': 'Text-align demo: longer text makes left, center, right, and justify much easier to compare.',
+        transform: 'Transform demo: rotate, scale, and translate change geometry without affecting normal document flow.',
+      };
+
+      const spotlightMap = {
+        'background-color': ['#0ea5e9', 'rgb(251 191 36)', 'hsl(268 72% 35%)', 'cornsilk'],
+        color: ['#dc2626', 'rgb(37 99 235)', 'hsl(142 76% 24%)', 'rebeccapurple'],
+        'border-radius': ['8px', '1rem', '50%', '2rem 0.5rem'],
+        width: ['180px', '65%', '22rem', '60vw'],
+        margin: ['0', '0 auto', '1rem 0 0 auto', '2vh 4vw'],
+        padding: ['0.5rem', '12px 24px', '2vh 1.5vw', '1em 2ch'],
+        opacity: ['1', '0.75', '.5', '.25'],
+        transform: ['translateX(40px)', 'rotate(-12deg)', 'scale(1.2)', 'skewX(12deg)'],
+        filter: ['blur(2px)', 'grayscale(100%)', 'contrast(180%)', 'hue-rotate(90deg)'],
+        'box-shadow': ['none', '0 10px 20px rgba(0, 0, 0, 0.25)', 'inset 0 0 0 4px #0f766e', '6px 6px 0 #14532d'],
+        cursor: ['default', 'pointer', 'grab', 'not-allowed'],
+        'font-size': ['14px', '1rem', '1.8em', '6vmin'],
+        'text-align': ['left', 'center', 'right', 'justify'],
+        overflow: ['visible', 'hidden', 'auto', 'scroll'],
+        display: ['block', 'inline', 'flex', 'none'],
+        position: ['static', 'relative', 'absolute', 'sticky'],
+      };
+
+      let selectedProperty = 'border-radius';
+      let selectedValue = '10px';
+
+      function toLabel(propertyName) {
+        return propertyName.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+      }
+
+      function applyRule(propertyName, value) {
+        Object.entries(baseTargetStyle).forEach(([prop, propValue]) => {
+          target.style[prop] = propValue;
+        });
+
+        targetLabel.textContent = 'CSS declarations in action';
+        positionSpacer.style.display = 'none';
+        contextNote.style.display = 'none';
+        contextNote.textContent = '';
+
+        target.style.setProperty(propertyName, value);
+
+        if (propertyName === 'overflow') {
+          target.style.height = '74px';
+          targetLabel.textContent = 'Overflow sample text wraps across multiple lines to make clipping and scroll behavior obvious.';
+        }
+
+        if (propertyName === 'text-align') {
+          targetLabel.textContent = 'Text alignment is easiest to compare with a longer sentence inside this box.';
+        }
+
+        if (propertyName === 'display') {
+          if (value === 'flex') {
+            target.style.alignItems = 'center';
+            target.style.justifyContent = 'center';
+          }
+
+          if (value === 'inline') {
+            targetLabel.textContent = 'Inline ignores width and vertical margin, so the box shape changes.';
+          }
+
+          if (value === 'none') {
+            targetLabel.textContent = 'Display none hides this element completely.';
+          }
+        }
+
+        if (propertyName === 'position') {
+          positionSpacer.style.display = 'block';
+
+          if (value === 'relative') {
+            target.style.top = '20px';
+            target.style.left = '34px';
+          }
+
+          if (value === 'absolute') {
+            target.style.top = '116px';
+            target.style.left = '42px';
+            target.style.zIndex = '3';
+            target.style.width = '260px';
+          }
+
+          if (value === 'sticky') {
+            target.style.top = '0';
+            target.style.width = '100%';
+            target.style.margin = '0';
+            target.style.zIndex = '2';
+            targetLabel.textContent = 'Sticky pins this bar to the top while the preview scrolls.';
+          }
+        }
+
+        if (helperNotes[propertyName]) {
+          contextNote.textContent = helperNotes[propertyName];
+          contextNote.style.display = 'block';
+        }
+
+        rulePreview.textContent = '#target { ' + propertyName + ': ' + value + '; }';
+        activeProperty.textContent = propertyName;
+        activeValue.textContent = value;
+        valueType.textContent = declarationMap[propertyName].type;
+        renderSpotlight(propertyName);
+      }
+
+      function renderValueButtons(propertyName) {
+        valueGrid.innerHTML = '';
+
+        declarationMap[propertyName].values.forEach((value) => {
+          const button = document.createElement('button');
+          button.className = 'value-btn' + (value === selectedValue ? ' active' : '');
+          button.type = 'button';
+          button.textContent = value;
+          button.addEventListener('click', () => {
+            selectedValue = value;
+            renderValueButtons(propertyName);
+            applyRule(propertyName, value);
+          });
+          valueGrid.appendChild(button);
+        });
+      }
+
+      function applyCustomDeclarationValue() {
+        const userValue = customValue.value.trim();
+        if (!userValue) {
+          return;
+        }
+
+        selectedValue = userValue;
+        renderValueButtons(selectedProperty);
+        applyRule(selectedProperty, userValue);
+      }
+
+      function renderPropertyOptions() {
+        const properties = Object.keys(declarationMap);
+
+        properties.forEach((propertyName) => {
+          const option = document.createElement('option');
+          option.value = propertyName;
+          option.textContent = toLabel(propertyName);
+          propertySelect.appendChild(option);
+        });
+
+        propertySelect.value = selectedProperty;
+      }
+
+      function renderSpotlight(propertyName) {
+        const info = declarationMap[propertyName];
+        const spotlightValues = spotlightMap[propertyName] || (info ? info.values : []);
+        if (!info) {
+          spotlightTitle.textContent = 'Property spotlight';
+          spotlightExamples.innerHTML = '';
+          return;
+        }
+
+        spotlightTitle.textContent = 'Property spotlight: ' + propertyName;
+        spotlightExamples.innerHTML = '';
+
+        spotlightValues.forEach((value) => {
+          const snippet = document.createElement('code');
+          snippet.textContent = '#target { ' + propertyName + ': ' + value + '; }';
+          spotlightExamples.appendChild(snippet);
+        });
+      }
+
+      propertySelect.addEventListener('change', () => {
+        selectedProperty = propertySelect.value;
+        selectedValue = declarationMap[selectedProperty].values[0];
+        customValue.placeholder = 'Custom ' + selectedProperty + ' value';
+        renderValueButtons(selectedProperty);
+        applyRule(selectedProperty, selectedValue);
+      });
+
+      applyCustomValue.addEventListener('click', () => {
+        applyCustomDeclarationValue();
+      });
+
+      customValue.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          applyCustomDeclarationValue();
+        }
+      });
+
+      renderPropertyOptions();
+      customValue.placeholder = 'Custom ' + selectedProperty + ' value';
+      renderValueButtons(selectedProperty);
+      applyRule(selectedProperty, selectedValue);
+    </script>
+  </body>
+</html>

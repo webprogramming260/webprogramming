@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitts's Law Demo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+      }
+
+      .container {
+        width: min(1000px, 94vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .stage-wrap {
+        background: #ffffff;
+        border: 1px solid #d7deea;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin-bottom: 12px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      input[type='range'] {
+        width: 100%;
+      }
+
+      input[type='number'] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #c6d0e1;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .equation {
+        padding: 10px;
+        background: #f1f5fb;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        margin-bottom: 12px;
+        line-height: 1.35;
+      }
+
+      .results {
+        display: grid;
+        gap: 6px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 8px;
+        background: #f8fbff;
+        border: 1px solid #e0e8f5;
+        border-radius: 6px;
+      }
+
+      .stage-wrap {
+        padding: 12px;
+      }
+
+      .stage {
+        position: relative;
+        height: 560px;
+        border-radius: 8px;
+        border: 2px dashed #bac7dc;
+        background: linear-gradient(135deg, #f8fbff, #edf3ff);
+        overflow: hidden;
+        cursor: crosshair;
+      }
+
+      .target {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #f97316;
+        box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
+        border: 2px solid #ffffff;
+        cursor: pointer;
+      }
+
+      .w-line {
+        position: absolute;
+        left: 3px;
+        right: 3px;
+        top: 50%;
+        height: 0;
+        border-top: 2px solid #ffffff;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      .w-line::before,
+      .w-line::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        width: 0;
+        height: 10px;
+        border-left: 2px solid #ffffff;
+      }
+
+      .w-line::before {
+        left: 0;
+      }
+
+      .w-line::after {
+        right: 0;
+      }
+
+      .start-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #0b63ce;
+        border: 2px solid #ffffff;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+
+      .hint {
+        color: #475569;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+
+      @media (max-width: 860px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .stage {
+          height: 460px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <h1>Fitts's Law Demo <a style="font-size: 10px" href="https://en.wikipedia.org/wiki/Fitts%27s_law" target="_blank" rel="noopener noreferrer">Wikipedia</a></h1>
+        <p>Click anywhere in the interaction area to set a start point, then click the orange target.</p>
+        <p>
+          <code>MT = a + b log2(1 + D/W)</code>
+        </p>
+
+        <div class="control">
+          <label for="size">Target width W: <span class="value" id="sizeValue">40 px</span></label>
+          <input id="size" type="range" min="24" max="180" value="40" step="1" />
+        </div>
+
+        <div class="control">
+          <label>Mouse constants (fixed)</label>
+          <div>a = <span class="value" id="aConst">100</span> ms, b = <span class="value" id="bConst">150</span> ms/bit</div>
+        </div>
+
+        <div class="equation" id="equation">MT = a + b * log2(1 + D/W)</div>
+
+        <div class="results">
+          <div class="row"><span>Distance D</span><span id="distanceOut">0 px</span></div>
+          <div class="row"><span>Width W</span><span id="widthOut">40 px</span></div>
+          <div class="row"><span>Index of Difficulty (ID)</span><span id="idOut">0.000 bits</span></div>
+          <div class="row"><span>Predicted MT</span><span id="mtOut">100.0 ms</span></div>
+          <div class="row"><span>Measured MT</span><span id="measuredOut">-</span></div>
+        </div>
+
+        <p class="hint" id="status">No target shown. Click a start position in the interaction area to begin or repeat.</p>
+      </section>
+
+      <section class="stage-wrap">
+        <div class="stage" id="stage" aria-label="Fitts law interaction area">
+          <div class="target" id="target" title="Click target" hidden>
+            <div class="w-line" aria-hidden="true"></div>
+          </div>
+          <div class="start-dot" id="startDot" hidden></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const stage = document.getElementById('stage');
+      const target = document.getElementById('target');
+      const startDot = document.getElementById('startDot');
+
+      const sizeSlider = document.getElementById('size');
+      const sizeValue = document.getElementById('sizeValue');
+      const A = 200;
+      const B = 150;
+
+      const distanceOut = document.getElementById('distanceOut');
+      const widthOut = document.getElementById('widthOut');
+      const idOut = document.getElementById('idOut');
+      const mtOut = document.getElementById('mtOut');
+      const measuredOut = document.getElementById('measuredOut');
+      const equation = document.getElementById('equation');
+      const status = document.getElementById('status');
+
+      let startPoint = null;
+      let startTimestamp = null;
+      let targetX = 0;
+      let targetY = 0;
+      let waitingForTargetClick = false;
+      let movementStartPoint = null;
+      const MOVEMENT_THRESHOLD_PX = 6;
+
+      function getStageRect() {
+        return stage.getBoundingClientRect();
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(value, max));
+      }
+
+      function setTargetPosition(x, y) {
+        const size = Number(sizeSlider.value);
+        const rect = getStageRect();
+
+        targetX = clamp(x, 0, rect.width - size);
+        targetY = clamp(y, 0, rect.height - size);
+
+        target.style.width = size + 'px';
+        target.style.height = size + 'px';
+        target.style.left = targetX + 'px';
+        target.style.top = targetY + 'px';
+      }
+
+      function centerTarget() {
+        const size = Number(sizeSlider.value);
+        const rect = getStageRect();
+        const x = (rect.width - size) / 2;
+        const y = (rect.height - size) / 2;
+        setTargetPosition(x, y);
+      }
+
+      function moveTargetRandom() {
+        const size = Number(sizeSlider.value);
+        const rect = getStageRect();
+        const x = Math.random() * (rect.width - size);
+        const y = Math.random() * (rect.height - size);
+        setTargetPosition(x, y);
+        updateCalculation();
+      }
+
+      function targetCenter() {
+        const size = Number(sizeSlider.value);
+        return {
+          x: targetX + size / 2,
+          y: targetY + size / 2,
+        };
+      }
+
+      function updateCalculation() {
+        const W = Number(sizeSlider.value);
+        const a = A;
+        const b = B;
+
+        sizeValue.textContent = W + ' px';
+        widthOut.textContent = W.toFixed(0) + ' px';
+
+        let D = 0;
+        const center = targetCenter();
+        if (startPoint) {
+          const dx = center.x - startPoint.x;
+          const dy = center.y - startPoint.y;
+          D = Math.sqrt(dx * dx + dy * dy);
+        }
+
+        const ID = Math.log2(1 + D / W);
+        const MT = a + b * ID;
+
+        distanceOut.textContent = D.toFixed(1) + ' px';
+        idOut.textContent = ID.toFixed(3) + ' bits';
+        mtOut.textContent = MT.toFixed(1) + ' ms';
+
+        equation.textContent = 'MT = ' + a.toFixed(1) + ' + ' + b.toFixed(1) + ' * log2(1 + ' + D.toFixed(1) + '/' + W.toFixed(1) + ') = ' + MT.toFixed(1) + ' ms';
+      }
+
+      stage.addEventListener('click', (event) => {
+        if (event.target === target) {
+          return;
+        }
+
+        if (waitingForTargetClick) {
+          status.textContent = 'Click the orange target to finish this round.';
+          return;
+        }
+
+        const rect = getStageRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        startPoint = { x, y };
+
+        startDot.hidden = false;
+        startDot.style.left = x + 'px';
+        startDot.style.top = y + 'px';
+
+        measuredOut.textContent = '-';
+        moveTargetRandom();
+        target.hidden = false;
+        waitingForTargetClick = true;
+        startTimestamp = null;
+        movementStartPoint = { x, y };
+        status.textContent = 'Step 2: Move the mouse toward the orange target, then click it.';
+
+        updateCalculation();
+      });
+
+      stage.addEventListener('mousemove', (event) => {
+        if (!waitingForTargetClick || startTimestamp !== null || !movementStartPoint) {
+          return;
+        }
+
+        const rect = getStageRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const dx = x - movementStartPoint.x;
+        const dy = y - movementStartPoint.y;
+        const movementDistance = Math.sqrt(dx * dx + dy * dy);
+
+        if (movementDistance >= MOVEMENT_THRESHOLD_PX) {
+          startTimestamp = performance.now();
+        }
+      });
+
+      target.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        if (!startPoint) {
+          status.textContent = 'No target shown. Click a start position in the interaction area to begin or repeat.';
+          return;
+        }
+
+        if (!waitingForTargetClick) {
+          status.textContent = 'Click in the interaction area to start a new round.';
+          return;
+        }
+
+        const elapsed = startTimestamp === null ? 0 : performance.now() - startTimestamp;
+        measuredOut.textContent = elapsed.toFixed(1) + ' ms';
+        waitingForTargetClick = false;
+        movementStartPoint = null;
+        status.textContent = 'Round complete. Click a start position in the interaction area to begin or repeat.';
+
+        setTimeout(() => {
+          if (!waitingForTargetClick) {
+            target.hidden = true;
+          }
+        }, 300);
+      });
+
+      sizeSlider.addEventListener('input', () => {
+        const currentCenterX = targetCenter().x;
+        const currentCenterY = targetCenter().y;
+        const size = Number(sizeSlider.value);
+
+        setTargetPosition(currentCenterX - size / 2, currentCenterY - size / 2);
+        updateCalculation();
+      });
+
+      window.addEventListener('resize', () => {
+        setTargetPosition(targetX, targetY);
+        updateCalculation();
+      });
+
+      centerTarget();
+      target.hidden = true;
+      updateCalculation();
+    </script>
+  </body>
+</html>

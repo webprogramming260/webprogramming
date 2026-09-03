@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Affordance Demo</title>
+    <style>
+      :root {
+        --bg1: #f7fbff;
+        --bg2: #e8f3ff;
+        --ink: #1b2a3a;
+        --primary: #1368d6;
+        --primary-dark: #0b4c9f;
+        --ok: #157347;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+      }
+
+      .card {
+        width: min(92vw, 440px);
+        padding: 1.5rem;
+        border-radius: 16px;
+        background: #ffffff;
+        box-shadow: 0 10px 25px rgba(19, 104, 214, 0.14);
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 0.4rem;
+        font-size: 1.3rem;
+      }
+
+      p {
+        margin: 0 0 1rem;
+        line-height: 1.4;
+      }
+
+      .action-btn {
+        border: 0;
+        border-radius: 12px;
+        padding: 0.85rem 1.1rem;
+        min-width: 200px;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #ffffff;
+        background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+        box-shadow:
+          0 6px 0 #083b7a,
+          0 10px 18px rgba(11, 76, 159, 0.35);
+        cursor: pointer;
+        transition:
+          transform 120ms ease,
+          box-shadow 120ms ease,
+          filter 120ms ease;
+      }
+
+      .action-btn:hover {
+        filter: brightness(1.5);
+      }
+
+      .action-btn:focus-visible {
+        outline: 3px solid #9ac7ff;
+        outline-offset: 3px;
+      }
+
+      .action-btn:active {
+        transform: translateY(4px);
+        box-shadow:
+          0 2px 0 #083b7a,
+          0 6px 10px rgba(11, 76, 159, 0.25);
+      }
+
+      .action-btn[disabled] {
+        cursor: wait;
+        opacity: 0.95;
+      }
+
+      .feedback {
+        min-height: 1.3rem;
+        margin-top: 0.85rem;
+        font-weight: 600;
+      }
+
+      .feedback.done {
+        color: var(--ok);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Affordance, Signifiers, and Feedback</h1>
+      <p>The raised shape, gradient, and pointer cursor indicate this is clickable.</p>
+
+      <button class="action-btn" id="submitBtn" type="button">Complete Action</button>
+
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+    </main>
+
+    <script>
+      const submitBtn = document.getElementById('submitBtn');
+      const feedback = document.getElementById('feedback');
+
+      submitBtn.addEventListener('click', () => {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+        feedback.classList.remove('done');
+        feedback.textContent = 'Working on it...';
+
+        setTimeout(() => {
+          submitBtn.textContent = 'Done';
+          feedback.textContent = 'Success! Your action has been completed.';
+          feedback.classList.add('done');
+
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Complete Action';
+            feedback.textContent = '';
+            feedback.classList.remove('done');
+          }, 1800);
+        }, 1400);
+      });
+    </script>
+  </body>
+</html>

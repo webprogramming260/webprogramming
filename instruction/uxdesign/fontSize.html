@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography UX Demo</title>
+    <style>
+      :root {
+        --scale: 0.5;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.45;
+        margin: 16px;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 14px;
+        background: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .scale-control {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: center;
+        background-color: rgb(236, 236, 236);
+        max-width: 560px;
+        margin: 24px auto 18px auto;
+        padding: 10px 16px 8px 16px;
+        border-radius: 8px;
+        border: thin solid #ccc;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.17);
+      }
+
+      .scale-control label {
+        margin-bottom: 0;
+      }
+
+      .scale-control input[type='range'] {
+        width: 200px;
+        margin: 0 0 0 12px;
+      }
+
+      .container h1 {
+        font-size: calc(72px * var(--scale));
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+
+      .container h2 {
+        font-size: calc(42px * var(--scale));
+        margin-bottom: 8px;
+      }
+
+      .container h3 {
+        font-size: calc(32px * var(--scale));
+        margin-bottom: 8px;
+      }
+
+      .container h4 {
+        font-size: calc(26px * var(--scale));
+        margin-bottom: 8px;
+      }
+
+      .container h5 {
+        font-size: calc(22px * var(--scale));
+        margin-bottom: 8px;
+      }
+
+      .container h6 {
+        font-size: calc(18px * var(--scale));
+        margin-bottom: 8px;
+      }
+
+      .container p {
+        font-size: calc(18px * var(--scale));
+        margin-bottom: 8px;
+      }
+
+      .container .secondary-text {
+        font-size: calc(16px * var(--scale));
+        color: #666;
+      }
+
+      .container label {
+        font-size: calc(18px * var(--scale));
+        font-weight: bold;
+      }
+
+      .container input {
+        width: 20em;
+        font-size: calc(18px * var(--scale));
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .container button {
+        display: block;
+        font-size: calc(18px * var(--scale));
+        padding: 8px 14px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 520px) {
+        body {
+          margin: 10px;
+        }
+
+        .container {
+          padding: 12px;
+        }
+
+        .container h1 {
+          font-size: calc(72px * var(--scale));
+        }
+
+        .container h2 {
+          font-size: calc(42px * var(--scale));
+        }
+
+        .container h3 {
+          font-size: calc(32px * var(--scale));
+        }
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scale-control">
+      <label for="scaleSlider">Scale: <span id="scaleValue">50%</span></label>
+      <input id="scaleSlider" type="range" min="30" max="100" step="5" value="50" />
+    </div>
+    <div class="container">
+      <h1>Page Title (72px)</h1>
+      <h2>Main Section Title (42px)</h2>
+      <h3>Subsection Title (32px)</h3>
+
+      <p>Main body text (18px) - This is the standard size for easy reading on screens.</p>
+      <p class="secondary-text">Secondary text (16px) - This text is slightly smaller to indicate less emphasis.</p>
+
+      <label for="input">Form Input (18px):</label>
+      <input type="text" id="input" placeholder="Type here (18px)..." />
+
+      <button>Submit (18px)</button>
+    </div>
+
+    <script>
+      const scaleSlider = document.getElementById('scaleSlider');
+      const scaleValue = document.getElementById('scaleValue');
+      const root = document.documentElement;
+
+      function updateScale() {
+        const percent = Number(scaleSlider.value);
+        root.style.setProperty('--scale', String(percent / 100));
+        scaleValue.textContent = percent + '%';
+      }
+
+      scaleSlider.addEventListener('input', updateScale);
+      updateScale();
+    </script>
+  </body>
+</html>

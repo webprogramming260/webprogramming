@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functional Animation Lab</title>
+    <style>
+      :root {
+        --bg-1: #f5f8f6;
+        --bg-2: #e6efe9;
+        --panel: #ffffff;
+        --ink: #14231b;
+        --muted: #4d5f55;
+        --brand: #0f766e;
+        --brand-2: #f59e0b;
+        --line: #d8e2dc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 12% 12%, #ffffff 0%, transparent 46%), linear-gradient(145deg, var(--bg-1), var(--bg-2));
+      }
+
+      .page {
+        width: min(1200px, 96vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .lab {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+        position: sticky;
+        top: 16px;
+        align-self: start;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.45rem;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 0 0 10px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .formula {
+        margin: 8px 0 12px;
+        padding: 8px 10px;
+        border-radius: 9px;
+        border: 1px solid #d0ddd6;
+        background: #f8fbf9;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        color: #203127;
+      }
+
+      .key-points {
+        border: 1px solid #d7e3dc;
+        border-radius: 10px;
+        background: #f9fcfa;
+        padding: 10px;
+      }
+
+      .key-points ul {
+        margin: 0;
+        padding-left: 18px;
+        color: #476156;
+      }
+
+      .key-points li {
+        margin-bottom: 5px;
+      }
+
+      .key-points li:last-child {
+        margin-bottom: 0;
+      }
+
+      .lab {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .module {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+        background: #fcfefd;
+      }
+
+      .module-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .pill {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #07524a;
+        background: #e7fbf7;
+        border: 1px solid #bcebe2;
+        border-radius: 999px;
+        padding: 2px 8px;
+      }
+
+      .controls {
+        margin: 10px 0;
+        display: grid;
+        grid-template-columns: 1fr 140px 98px;
+        gap: 8px;
+        align-items: center;
+      }
+
+      select,
+      button,
+      input[type='range'] {
+        width: 100%;
+      }
+
+      select,
+      button {
+        border-radius: 9px;
+        border: 1px solid #b7d5ca;
+        padding: 7px 9px;
+        font-weight: 700;
+      }
+
+      button {
+        background: #f4fbf8;
+        color: #15574c;
+        cursor: pointer;
+      }
+
+      #releasePull {
+        width: 140px;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      button:hover {
+        background: #e8f7f2;
+      }
+
+      input[type='range'] {
+        accent-color: var(--brand);
+      }
+
+      .duration-label {
+        font-size: 0.88rem;
+        color: #476156;
+      }
+
+      .demo-box {
+        border: 1px dashed #b8c8bf;
+        border-radius: 10px;
+        padding: 12px;
+        min-height: 118px;
+        background: linear-gradient(180deg, #ffffff, #f5faf7);
+      }
+
+      .easing-track {
+        position: relative;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid #d2ddd7;
+        background: #f1f7f4;
+      }
+
+      .easing-track::before,
+      .easing-track::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        width: 1px;
+        height: 30px;
+        background: #c7d5cd;
+      }
+
+      .easing-track::before {
+        left: 20%;
+      }
+
+      .easing-track::after {
+        left: 80%;
+      }
+
+      .runner {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #0f766e, #14b8a6);
+        border: 2px solid #ffffff;
+        box-shadow: 0 2px 8px rgba(15, 118, 110, 0.35);
+      }
+
+      .timing-stack {
+        display: grid;
+        gap: 8px;
+      }
+
+      .timing-button-row {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .timing-row {
+        display: grid;
+        grid-template-columns: 86px 1fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .timing-row button {
+        border-radius: 999px;
+        font-size: 0.82rem;
+      }
+
+      .toast-zone {
+        border: 1px solid #d6e1db;
+        border-radius: 10px;
+        background: #f7fcfa;
+        min-height: 62px;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        padding: 8px;
+      }
+
+      .toast {
+        width: fit-content;
+        border-radius: 999px;
+        padding: 5px 10px;
+        background: #0f766e;
+        color: #ffffff;
+        font-size: 0.84rem;
+        font-weight: 700;
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      .pull-area {
+        border: 1px solid #c4d4cb;
+        border-radius: 10px;
+        background: #fbfefc;
+        overflow: hidden;
+        padding: 0;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pull-header {
+        min-height: 48px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: #28574a;
+        background: linear-gradient(180deg, #eaf8f3, #f6fdfa);
+        margin-top: 0;
+        transition: margin-top 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(15, 118, 110, 0.24);
+        border-top-color: #0f766e;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 6px;
+        animation: spin 900ms linear infinite;
+        vertical-align: middle;
+      }
+
+      .feed {
+        flex: 1;
+        padding: 0;
+        display: flex;
+      }
+
+      .compress-wrap {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        min-height: 0;
+      }
+
+      .compress-card {
+        width: 100%;
+        flex: 1;
+        border-radius: 0;
+        border: 1px solid #b8d8cb;
+        background: rgb(227, 246, 236);
+        display: grid;
+        place-items: center;
+        color: #255247;
+        font-weight: 700;
+        box-shadow: 0 3px 8px rgba(10, 60, 52, 0.12);
+      }
+
+      .small-note {
+        margin-top: 8px;
+        font-size: 0.82rem;
+        color: #5f7067;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+
+        .controls {
+          grid-template-columns: 1fr;
+        }
+
+        .timing-row {
+          grid-template-columns: 1fr;
+        }
+
+        .timing-button-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="panel">
+        <h1>Functional Animation Lab</h1>
+        <p>Animation in web design should never be arbitrary. Motion should explain logic, direct attention, or provide feedback.</p>
+        <div class="formula">Effective Motion = Easing + Intentional Duration + Clear Feedback</div>
+        <p>Linear motion feels robotic because real objects accelerate and decelerate. Use easing to make interactions feel natural and less jarring.</p>
+        <p>Most interface transitions feel best in the <strong>200-400ms</strong> range. Too slow can feel sluggish, too fast can be missed.</p>
+        <div class="key-points">
+          <ul>
+            <li>Easing mimics physics and improves perceived quality.</li>
+            <li>Timing controls comprehension and task speed.</li>
+            <li>Pull-to-refresh teaches behavior through motion sequence.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="lab">
+        <article class="module">
+          <div class="module-head">
+            <h2>Easing: Robotic vs Organic</h2>
+            <span class="pill" id="easingPill">ease-in-out</span>
+          </div>
+          <p>Run the same movement with different timing curves. Notice how linear starts/stops abruptly while easing has believable momentum.</p>
+          <div class="controls">
+            <select id="easingSelect">
+              <option value="linear">linear</option>
+              <option value="ease-in">ease-in</option>
+              <option value="ease-out">ease-out</option>
+              <option value="ease-in-out" selected>ease-in-out</option>
+              <option value="cubic-bezier(0.16, 1, 0.3, 1)">custom spring-like</option>
+            </select>
+            <label class="duration-label" for="easingDuration">Duration: <span id="easingDurationOut">280</span>ms</label>
+            <button id="playEasing" type="button">Play</button>
+          </div>
+          <input id="easingDuration" type="range" min="100" max="700" step="10" value="280" />
+          <div class="demo-box">
+            <div class="easing-track" id="easingTrack">
+              <div class="runner" id="runner"></div>
+            </div>
+            <p class="small-note" id="easingStatus">Recommended zone: 200-400ms for common UI transitions.</p>
+          </div>
+        </article>
+
+        <article class="module">
+          <div class="module-head">
+            <h2>Timing: The Goldilocks Zone</h2>
+            <span class="pill" id="timingPill">250ms</span>
+          </div>
+          <p>Trigger the same toast feedback at different durations to feel when motion is too fast, too slow, or just right.</p>
+          <div class="demo-box timing-stack">
+            <div class="timing-button-row">
+              <button type="button" class="timing-btn" data-duration="80">80ms</button>
+              <button type="button" class="timing-btn" data-duration="350">350ms</button>
+              <button type="button" class="timing-btn" data-duration="500">500ms</button>
+              <button type="button" class="timing-btn" data-duration="1000">1000ms</button>
+              <button type="button" class="timing-btn" data-duration="2000">2000ms</button>
+            </div>
+            <div class="toast-zone"><div class="toast" id="timingToast">Saved changes</div></div>
+            <p class="small-note" id="timingStatus">Press a button to compare temporal feel.</p>
+          </div>
+        </article>
+
+        <article class="module">
+          <div class="module-head">
+            <h2>Pull-to-Refresh Sequence</h2>
+            <span class="pill" id="pullPill">idle</span>
+          </div>
+          <p>This pattern combines anticipation (drag), feedback (spinner), and completion (snap back), teaching interaction without extra text.</p>
+          <button id="releasePull" type="button">Release</button>
+          <label class="duration-label" for="pullRange">Compression distance: <span id="pullOut">0</span>px</label>
+          <input id="pullRange" type="range" min="0" max="120" value="0" />
+          <label class="duration-label" for="refreshDuration">Refresh: <span id="refreshOut">320</span>ms</label>
+          <input id="refreshDuration" type="range" min="180" max="700" value="320" step="10" />
+          <div class="demo-box pull-area">
+            <div class="pull-header" id="pullHeader">Adjust pull distance to compress</div>
+            <div class="feed">
+              <div class="compress-wrap">
+                <div class="compress-card" id="compressCard">Content panel</div>
+              </div>
+            </div>
+          </div>
+          <p class="small-note" id="pullStatus">Drag the pull distance, then release to play the full sequence.</p>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const easingSelect = document.getElementById('easingSelect');
+      const easingDuration = document.getElementById('easingDuration');
+      const easingDurationOut = document.getElementById('easingDurationOut');
+      const playEasing = document.getElementById('playEasing');
+      const runner = document.getElementById('runner');
+      const easingTrack = document.getElementById('easingTrack');
+      const easingPill = document.getElementById('easingPill');
+      const easingStatus = document.getElementById('easingStatus');
+
+      const timingButtons = document.querySelectorAll('.timing-btn');
+      const timingToast = document.getElementById('timingToast');
+      const timingPill = document.getElementById('timingPill');
+      const timingStatus = document.getElementById('timingStatus');
+
+      const pullRange = document.getElementById('pullRange');
+      const pullOut = document.getElementById('pullOut');
+      const releasePull = document.getElementById('releasePull');
+      const pullHeader = document.getElementById('pullHeader');
+      const compressCard = document.getElementById('compressCard');
+      const pullPill = document.getElementById('pullPill');
+      const pullStatus = document.getElementById('pullStatus');
+      const refreshDuration = document.getElementById('refreshDuration');
+      const refreshOut = document.getElementById('refreshOut');
+
+      const COMPRESS_BASE = [227, 246, 236];
+      const COMPRESS_DARK = [106, 152, 132];
+
+      function interpolateChannel(start, end, t) {
+        return Math.round(start + (end - start) * t);
+      }
+
+      function describeDuration(ms) {
+        if (ms < 100) {
+          return 'Too fast: users often miss this feedback.';
+        }
+        if (ms > 500) {
+          return 'Too slow: interaction can feel heavy or delayed.';
+        }
+        if (ms >= 200 && ms <= 400) {
+          return 'Goldilocks zone: visible without interrupting flow.';
+        }
+        return 'Borderline range: test with real users and task context.';
+      }
+
+      function playEasingDemo() {
+        const duration = Number(easingDuration.value);
+        const easing = easingSelect.value;
+
+        easingDurationOut.textContent = String(duration);
+        easingPill.textContent = easing;
+        easingStatus.textContent = describeDuration(duration);
+
+        const max = easingTrack.clientWidth - runner.clientWidth - 8;
+        runner.style.transition = 'none';
+        runner.style.transform = 'translateX(0px)';
+
+        // Restart transition from a stable origin.
+        requestAnimationFrame(() => {
+          runner.style.transition = 'transform ' + duration + 'ms ' + easing;
+          runner.style.transform = 'translateX(' + max + 'px)';
+        });
+      }
+
+      function playTimingDemo(duration) {
+        timingPill.textContent = String(duration) + 'ms';
+        timingStatus.textContent = describeDuration(duration);
+
+        timingToast.style.transition = 'none';
+        timingToast.style.opacity = '0';
+        timingToast.style.transform = 'translateY(6px)';
+
+        requestAnimationFrame(() => {
+          timingToast.style.transition = 'opacity ' + duration + 'ms ease, transform ' + duration + 'ms ease';
+          timingToast.style.opacity = '1';
+          timingToast.style.transform = 'translateY(0px)';
+        });
+
+        window.setTimeout(
+          () => {
+            const fade = Math.max(120, Math.floor(duration * 0.8));
+            timingToast.style.transition = 'opacity ' + fade + 'ms ease, transform ' + fade + 'ms ease';
+            timingToast.style.opacity = '0';
+            timingToast.style.transform = 'translateY(-4px)';
+          },
+          Math.max(300, duration + 120),
+        );
+      }
+
+      function updatePullPreview() {
+        const pull = Number(pullRange.value);
+        const refreshMs = Number(refreshDuration.value);
+        const maxPull = Number(pullRange.max);
+        pullOut.textContent = String(pull);
+        refreshOut.textContent = String(refreshMs);
+
+        const eased = Math.min(maxPull, pull);
+        pullHeader.style.transition = 'none';
+        pullHeader.style.marginTop = eased + 'px';
+
+        const compressionRatio = 1 - Math.min(1, pull / maxPull);
+        const darkenAmount = 1 - compressionRatio;
+        const r = interpolateChannel(COMPRESS_BASE[0], COMPRESS_DARK[0], darkenAmount);
+        const g = interpolateChannel(COMPRESS_BASE[1], COMPRESS_DARK[1], darkenAmount);
+        const b = interpolateChannel(COMPRESS_BASE[2], COMPRESS_DARK[2], darkenAmount);
+
+        compressCard.style.transition = 'none';
+        compressCard.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+
+        if (pull === 0) {
+          pullHeader.textContent = 'Adjust pull distance to compress';
+          pullPill.textContent = 'idle';
+        } else {
+          pullHeader.textContent = 'Release to refresh';
+          pullPill.textContent = 'armed';
+        }
+      }
+
+      function releasePullDemo() {
+        const refreshMs = Number(refreshDuration.value);
+
+        pullPill.textContent = 'refreshing';
+        pullHeader.innerHTML = 'Refreshing<span class="spinner" aria-hidden="true"></span>';
+        pullHeader.style.transition = 'margin-top ' + refreshMs + 'ms cubic-bezier(0.34, 1.25, 0.64, 1)';
+        pullHeader.style.marginTop = '0px';
+
+        compressCard.style.transition = 'background-color ' + refreshMs + 'ms ease';
+        compressCard.style.backgroundColor = 'rgb(' + COMPRESS_BASE[0] + ', ' + COMPRESS_BASE[1] + ', ' + COMPRESS_BASE[2] + ')';
+
+        pullRange.value = '0';
+        pullStatus.textContent = 'Feedback: panel expands and lightens as refresh runs (' + refreshMs + 'ms).';
+
+        window.setTimeout(() => {
+          pullPill.textContent = 'complete';
+          pullHeader.textContent = 'Updated just now';
+          pullStatus.textContent = 'Completion: returned to resting state.';
+
+          window.setTimeout(() => {
+            updatePullPreview();
+            pullPill.textContent = 'idle';
+            pullHeader.textContent = 'Adjust pull distance to compress';
+            pullStatus.textContent = 'Drag the pull distance, then release to play the full sequence.';
+          }, 900);
+        }, refreshMs);
+      }
+
+      easingSelect.addEventListener('change', playEasingDemo);
+      easingDuration.addEventListener('input', playEasingDemo);
+      playEasing.addEventListener('click', playEasingDemo);
+
+      timingButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          playTimingDemo(Number(button.dataset.duration));
+        });
+      });
+
+      pullRange.addEventListener('input', updatePullPreview);
+      refreshDuration.addEventListener('input', updatePullPreview);
+      releasePull.addEventListener('click', releasePullDemo);
+
+      updatePullPreview();
+      playEasingDemo();
+    </script>
+  </body>
+</html>

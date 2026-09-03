@@ -1,0 +1,34 @@
+<body>
+  <div class="container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+</body>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 1em;
+  }
+  .card {
+    border: #333 solid thick;
+    border-radius: 1em;
+  }
+
+  .card:nth-child(odd) {
+    background: hsl(220, 25%, 70%);
+  }
+
+  .card:nth-child(even) {
+    background: hsl(420, 25%, 70%);
+  }
+</style>

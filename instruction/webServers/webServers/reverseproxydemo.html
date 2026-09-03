@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse Proxy Visual Demo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+      }
+
+      .container {
+        width: min(1100px, 94vw);
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 16px;
+      }
+
+      .panel,
+      .stage-wrap {
+        background: #ffffff;
+        border: 1px solid #d7deea;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+        line-height: 1.45;
+      }
+
+      .control {
+        margin-bottom: 12px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      input[type='text'],
+      input[type='number'] {
+        width: 100%;
+        border: 1px solid #c5d2e5;
+        border-radius: 8px;
+        padding: 7px 9px;
+        font-family: 'Courier New', monospace;
+      }
+
+      input[type='range'] {
+        width: 100%;
+      }
+
+      .flow-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .flow-line {
+        stroke-width: 3;
+        stroke-linecap: round;
+        opacity: 0.9;
+      }
+
+      .flow-line.inbound {
+        stroke: #0f766e;
+      }
+
+      .flow-line.outbound {
+        stroke: #1d4ed8;
+      }
+
+      .flow-line.flash {
+        animation: line-flash var(--duration, 420ms) ease-out forwards;
+      }
+
+      .value {
+        font-weight: 700;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        margin-bottom: 14px;
+      }
+
+      button {
+        border: 1px solid #bfd1ec;
+        background: #e8f0ff;
+        color: #1f2937;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      button:hover {
+        background: #dce9ff;
+      }
+
+      .equation {
+        padding: 10px;
+        background: #f1f5fb;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+        line-height: 1.4;
+        white-space: pre-line;
+      }
+
+      .results {
+        display: grid;
+        gap: 6px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 6px 8px;
+        background: #f8fbff;
+        border: 1px solid #e0e8f5;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+
+      .row strong {
+        font-weight: 400;
+        color: #0044b3;
+      }
+
+      .stage-wrap {
+        padding: 12px;
+      }
+
+      .stage {
+        min-height: 620px;
+        border-radius: 8px;
+        border: 2px dashed #bac7dc;
+        background: linear-gradient(135deg, #f8fbff, #edf3ff);
+        padding: 12px;
+      }
+
+      .diagram {
+        position: relative;
+        height: 470px;
+        border-radius: 10px;
+        border: 1px solid #d5deed;
+        background: radial-gradient(circle at 20% 20%, #ffffff 0%, #f5f9ff 60%, #eef5ff 100%);
+        overflow: hidden;
+      }
+
+      .lane-label {
+        position: absolute;
+        top: 8px;
+        font-size: 0.78rem;
+        color: #4b5a73;
+        font-weight: 700;
+      }
+
+      .lane-label.left {
+        left: 24px;
+      }
+
+      .lane-label.center {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .lane-label.right {
+        right: 24px;
+      }
+
+      .node {
+        position: absolute;
+        border-radius: 10px;
+        border: 1px solid #c6d4e9;
+        background: #ffffff;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+        padding: 9px 10px;
+        width: 170px;
+      }
+
+      .node h3 {
+        margin: 0 0 4px;
+        font-size: 0.9rem;
+      }
+
+      .node .meta {
+        margin: 0;
+        font-size: 0.74rem;
+        color: #51607b;
+        line-height: 1.35;
+      }
+
+      .client {
+        left: 20px;
+        top: 190px;
+        width: 180px;
+      }
+
+      .gateway {
+        left: calc(50% - 95px);
+        top: 190px;
+        width: 190px;
+        border-color: #87a8de;
+        background: #f4f8ff;
+      }
+
+      .service-column {
+        position: absolute;
+        right: 16px;
+        top: 42px;
+        width: 210px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .service {
+        position: relative;
+        border-radius: 8px;
+        border: 1px solid #c6d4e9;
+        background: #ffffff;
+        padding: 8px;
+        min-height: 54px;
+      }
+
+      .service h4 {
+        margin: 0 0 2px;
+        font-size: 0.84rem;
+      }
+
+      .service p {
+        margin: 0;
+        font-size: 0.74rem;
+        color: #51607b;
+      }
+
+      .service.active {
+        border-color: #5684cf;
+        box-shadow: inset 0 0 0 1px #5684cf;
+      }
+
+      @keyframes line-flash {
+        0% {
+          opacity: 0;
+        }
+
+        20% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .log {
+        margin-top: 10px;
+        height: 110px;
+        overflow: auto;
+        border: 1px solid #d5deed;
+        border-radius: 8px;
+        background: #ffffff;
+        padding: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.74rem;
+        line-height: 1.35;
+      }
+
+      .hint {
+        font-size: 0.85rem;
+        color: #52607a;
+      }
+
+      @media (max-width: 980px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .stage {
+          min-height: 560px;
+        }
+
+        .diagram {
+          height: 430px;
+        }
+
+        .client {
+          left: 12px;
+          width: 160px;
+        }
+
+        .gateway {
+          left: calc(50% - 85px);
+          width: 170px;
+        }
+
+        .service-column {
+          right: 10px;
+          width: 185px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <h1>Reverse Proxy Demo</h1>
+        <p>A public gateway on port 443 receives requests and routes them to internal services on ports 3000-3xxx. Host subdomains decide where each request goes.</p>
+
+        <div class="control">
+          <label for="domain">Base domain</label>
+          <input id="domain" type="text" value="example.com" />
+        </div>
+
+        <div class="control">
+          <label for="serviceCount">Internal services: <span class="value" id="serviceCountValue">5</span></label>
+          <input id="serviceCount" type="range" min="1" max="5" step="1" value="5" />
+        </div>
+
+        <div class="control">
+          <label for="requestRate">Request rate (req/s): <span class="value" id="rateValue">6</span></label>
+          <input id="requestRate" type="range" min="1" max="25" step="1" value="6" />
+        </div>
+
+        <div class="actions">
+          <button id="toggleRun" type="button">Start</button>
+        </div>
+
+        <div class="equation" id="gatewayConfig">Gateway route mapping will appear here.</div>
+
+        <div class="results" id="stats"></div>
+      </section>
+
+      <section class="stage-wrap">
+        <div class="stage">
+          <div class="diagram" id="diagram" aria-label="Reverse proxy routing visualization">
+            <svg class="flow-svg" id="flowSvg" aria-hidden="true"></svg>
+            <div class="lane-label left">Clients</div>
+            <div class="lane-label center">Gateway</div>
+            <div class="lane-label right">Private Network</div>
+
+            <article class="node client" id="clientNode">
+              <h3>Random Clients</h3>
+              <p class="meta">Requests with Host headers</p>
+            </article>
+
+            <article class="node gateway" id="gatewayNode">
+              <h3>example.com</h3>
+              <p class="meta">Reverse Proxy :443</p>
+              <p class="meta">TLS termination + subdomain routing</p>
+            </article>
+
+            <div class="service-column" id="serviceColumn"></div>
+          </div>
+
+          <p class="hint">Flashing green lines show inbound traffic to port 443. Flashing blue lines show forwarding to internal services on ports 3001+.</p>
+          <div class="log" id="log" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const serviceCountInput = document.getElementById('serviceCount');
+      const requestRateInput = document.getElementById('requestRate');
+      const domainInput = document.getElementById('domain');
+      const serviceCountValue = document.getElementById('serviceCountValue');
+      const rateValue = document.getElementById('rateValue');
+      const toggleRun = document.getElementById('toggleRun');
+      const serviceColumn = document.getElementById('serviceColumn');
+      const gatewayNode = document.getElementById('gatewayNode');
+      const clientNode = document.getElementById('clientNode');
+      const diagram = document.getElementById('diagram');
+      const flowSvg = document.getElementById('flowSvg');
+      const stats = document.getElementById('stats');
+      const log = document.getElementById('log');
+      const gatewayConfig = document.getElementById('gatewayConfig');
+
+      const subdomainPool = ['api', 'app', 'auth', 'media', 'admin', 'search', 'docs', 'billing', 'chat', 'files', 'images', 'notify'];
+
+      const state = {
+        running: false,
+        timer: null,
+        services: [],
+        totalRequests: 0,
+        activeTransmissions: 0,
+      };
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function safeDomain(value) {
+        const normalized = value.trim().toLowerCase();
+        if (!normalized) {
+          return 'example.com';
+        }
+        return normalized.replace(/[^a-z0-9.-]/g, '');
+      }
+
+      function buildServices(count) {
+        const list = [];
+        for (let i = 0; i < count; i += 1) {
+          list.push({
+            id: i + 1,
+            subdomain: subdomainPool[i % subdomainPool.length],
+            port: 3001 + i,
+            requests: 0,
+          });
+        }
+        state.services = list;
+      }
+
+      function renderServices() {
+        const domain = safeDomain(domainInput.value);
+        serviceColumn.innerHTML = '';
+        state.services.forEach((service) => {
+          const el = document.createElement('article');
+          el.className = 'service';
+          el.id = 'service-' + service.id;
+          el.innerHTML = '<h4>' + service.subdomain + '.' + domain + '</h4>' + '<p>Internal service : ' + service.port + '</p>' + '<p>Handled: <span id="service-count-' + service.id + '">' + service.requests + '</span></p>';
+          serviceColumn.appendChild(el);
+        });
+      }
+
+      function updateLabels() {
+        serviceCountValue.textContent = serviceCountInput.value;
+        rateValue.textContent = requestRateInput.value;
+        const domain = safeDomain(domainInput.value);
+        gatewayNode.querySelector('h3').textContent = domain;
+      }
+
+      function updateGatewayConfig() {
+        const domain = safeDomain(domainInput.value);
+        const lines = [];
+        state.services.forEach((service) => {
+          lines.push('  ' + service.subdomain + '.' + domain + '  ->  127.0.0.1:' + service.port);
+        });
+        gatewayConfig.textContent = lines.join('\n');
+      }
+
+      function updateStats() {
+        stats.innerHTML = '';
+        const rows = [
+          ['Gateway listener', 'HTTPS :443'],
+          ['Internal services', state.services.length + ' (ports 3001-' + (3000 + state.services.length) + ')'],
+          ['Current request rate', requestRateInput.value + ' req/s'],
+          ['Total routed', String(state.totalRequests)],
+          ['Transmissions in flight', String(state.activeTransmissions)],
+        ];
+
+        rows.forEach((row) => {
+          const item = document.createElement('div');
+          item.className = 'row';
+          item.innerHTML = '<span>' + row[0] + '</span><strong>' + row[1] + '</strong>';
+          stats.appendChild(item);
+        });
+      }
+
+      function logLine(text) {
+        const now = new Date();
+        const stamp = now.toLocaleTimeString();
+        const line = document.createElement('div');
+        line.textContent = '[' + stamp + '] ' + text;
+        log.prepend(line);
+        while (log.children.length > 26) {
+          log.removeChild(log.lastChild);
+        }
+      }
+
+      function centerPoint(element) {
+        const bounds = element.getBoundingClientRect();
+        const diagramBounds = diagram.getBoundingClientRect();
+        return {
+          x: bounds.left - diagramBounds.left + bounds.width / 2,
+          y: bounds.top - diagramBounds.top + bounds.height / 2,
+        };
+      }
+
+      function edgePoint(element, side) {
+        const bounds = element.getBoundingClientRect();
+        const diagramBounds = diagram.getBoundingClientRect();
+        const y = bounds.top - diagramBounds.top + bounds.height / 2;
+        if (side === 'left') {
+          return { x: bounds.left - diagramBounds.left, y };
+        }
+        if (side === 'right') {
+          return { x: bounds.left - diagramBounds.left + bounds.width, y };
+        }
+        return centerPoint(element);
+      }
+
+      function highlightService(serviceId) {
+        document.querySelectorAll('.service').forEach((el) => el.classList.remove('active'));
+        const active = document.getElementById('service-' + serviceId);
+        if (active) {
+          active.classList.add('active');
+          setTimeout(() => active.classList.remove('active'), 450);
+        }
+      }
+
+      function createTransmission(start, end, className, duration, onDone) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', String(start.x));
+        line.setAttribute('y1', String(start.y));
+        line.setAttribute('x2', String(end.x));
+        line.setAttribute('y2', String(end.y));
+        line.setAttribute('class', 'flow-line ' + className + ' flash');
+        line.style.setProperty('--duration', duration + 'ms');
+        flowSvg.appendChild(line);
+
+        state.activeTransmissions += 1;
+        updateStats();
+
+        line.addEventListener('animationend', () => {
+          line.remove();
+          state.activeTransmissions = Math.max(0, state.activeTransmissions - 1);
+          updateStats();
+          if (onDone) {
+            onDone();
+          }
+        });
+      }
+
+      function routeRequest() {
+        if (state.services.length === 0) {
+          return;
+        }
+
+        const domain = safeDomain(domainInput.value);
+        const target = state.services[Math.floor(Math.random() * state.services.length)];
+        const host = target.subdomain + '.' + domain;
+
+        state.totalRequests += 1;
+        target.requests += 1;
+
+        const targetNode = document.getElementById('service-' + target.id);
+        const targetCount = document.getElementById('service-count-' + target.id);
+        if (targetCount) {
+          targetCount.textContent = String(target.requests);
+        }
+
+        updateStats();
+        highlightService(target.id);
+
+        const clientPoint = edgePoint(clientNode, 'right');
+        const gatewayInPoint = edgePoint(gatewayNode, 'left');
+        const gatewayOutPoint = edgePoint(gatewayNode, 'right');
+        const servicePoint = edgePoint(targetNode, 'left');
+
+        logLine('Host ' + host + ' reached :443 and routed to :' + target.port);
+
+        createTransmission(clientPoint, gatewayInPoint, 'inbound', 420, () => {
+          createTransmission(gatewayOutPoint, servicePoint, 'outbound', 420);
+        });
+      }
+
+      function setRateLoop() {
+        if (state.timer) {
+          clearInterval(state.timer);
+          state.timer = null;
+        }
+
+        if (!state.running) {
+          return;
+        }
+
+        const rate = clamp(Number(requestRateInput.value), 1, 25);
+        const intervalMs = Math.max(40, Math.round(1000 / rate));
+        state.timer = setInterval(routeRequest, intervalMs);
+      }
+
+      function rebuild() {
+        const count = clamp(Number(serviceCountInput.value), 1, 5);
+        buildServices(count);
+        renderServices();
+        updateLabels();
+        updateGatewayConfig();
+        updateStats();
+      }
+
+      serviceCountInput.addEventListener('input', () => {
+        rebuild();
+      });
+
+      requestRateInput.addEventListener('input', () => {
+        updateLabels();
+        updateStats();
+        setRateLoop();
+      });
+
+      domainInput.addEventListener('input', () => {
+        updateLabels();
+        renderServices();
+        updateGatewayConfig();
+      });
+
+      toggleRun.addEventListener('click', () => {
+        state.running = !state.running;
+        toggleRun.textContent = state.running ? 'Pause' : 'Resume';
+        setRateLoop();
+      });
+
+      window.addEventListener('resize', () => {
+        updateStats();
+      });
+
+      rebuild();
+      setRateLoop();
+      logLine('Gateway listening on :443. Routing based on request Host subdomain.');
+    </script>
+  </body>
+</html>
