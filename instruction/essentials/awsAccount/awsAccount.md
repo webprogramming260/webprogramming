@@ -2,7 +2,7 @@
 
 Before we get started with anything else, you need to create an account with Amazon Web Services (AWS). You want to do this as soon as possible as you will need it for much of the work in this course and it might take some time to authorize your account.
 
-There are lots of other great vendors out there, but AWS is by far the leader in the space and so it is good for you to get experience with them. Follow these instructions on how to create an [account with AWS](https://signin.aws.amazon.com/signup). When you create your account make sure you remember your account ID so that you can use it when you log in to the AWS browser console.
+There are lots of other great vendors out there, but AWS is by far the leader in the space and so it is good for you to get experience with them. Follow these instructions on how to create an [account with AWS](https://signin.aws.amazon.com/signup?request_type=register). When you create your account make sure you remember your account ID so that you can use it when you log in to the AWS browser console.
 
 ## What is this going to cost you?
 
