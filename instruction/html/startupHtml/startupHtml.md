@@ -77,9 +77,8 @@ Doing this will make this deliverable of your startup available from `https://st
 1. Periodically commit and push your code to GitHub.
 1. Periodically update your startup repository's notes.md file to reflect what you have learned and want to remember.
 1. Push your final version of your project to GitHub.
-1. Deploy your startup application to your production environment (your server).
+1. Deploy your startup application to your production environment (your server). This should be on the startup subdomain (e.g. startup.yourdomain.click).
 1. Make sure your application is available from your production environment.
-1. Upload the URL to your startup application to the Canvas assignment.
 
 ## Grading Rubric
 
@@ -87,6 +86,7 @@ Doing this will make this deliverable of your startup available from `https://st
 - **Prerequisite**: A link to your GitHub startup repository prominently displayed on your application's home page
 - **Prerequisite**: Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the [voter app](https://github.com/webprogramming260/startup-example) as an example.
 - **Prerequisite**: Enough Git commits to fully prove your ownership of your code. This usually means dozens of commits spread across multiple days of the deliverable development period. Failure to do this may result in the rejection of your submission.
+- **Prerequisite**: Your startup is available on your _startup_ subdomain (e.g. startup.yourdomain.click).
 - Properly structured HTML
   - 20% HTML pages for each component of your application
   - 10% Proper use of HTML tags including BODY, NAV, MAIN, HEADER, FOOTER
