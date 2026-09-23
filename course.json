@@ -1,9 +1,10 @@
 {
-  "title": "Web Programming",
+  "title": "CS 260 Web Programming",
   "links": {},
   "externalRefs": {
     "canvasCourseId": "35087",
-    "canvasScheduleFileId": "6cdd48cc-6ca1-40bc-9a74-c2fbfa3f8f3a"
+    "canvasScheduleFileId": "6cdd48cc-6ca1-40bc-9a74-c2fbfa3f8f3a",
+    "canvasMasteryAssignmentId": 1503897
   },
   "schedule": {
     "id": "7db53081-d129-4698-8e24-8d449cfc9f3f",
