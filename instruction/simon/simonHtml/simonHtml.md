@@ -128,7 +128,7 @@ _Example: https://simon.yourdomain.click_
 
 
 ```masteryls
-{"id":"83677e81-fe42-4657-be14-d4537d10f7d9", "title":"Essay", "type":"essay", "syncGrade":true, "autoGrade":false }
+{"id":"83677e81-fe42-4657-be14-d4537d10f7d9", "title":"Deployment script", "type":"essay", "syncGrade":true, "autoGrade":false }
 How did your deployment go? Explain what the `deployFiles.sh` script is doing.
 ```
 
