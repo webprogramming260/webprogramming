@@ -153,6 +153,8 @@ Character classes shortcuts allow you to create more readable and concise patter
 | `\s` | `[ \f\n\r\t\v...]` | Any whitespace (space, tab, line break) |
 | `\S` | `[^ \f\n\r\t\v...]` | Any non-whitespace |
 
+Quantifiers and anchors control how much of a string a pattern matches. `{n}` matches exactly *n* of the previous item, and `?` makes the previous item or group optional. `^` and `$` anchor the pattern to the start and end of the string. The alternation operator `|` has the lowest precedence, so `^a|b$` means "`^a` or `b$`". Wrap alternatives in a group, such as `^(a|b)$`, when they should share the anchors.
+
 
 ## Exercises
 
@@ -162,8 +164,29 @@ Character classes shortcuts allow you to create more readable and concise patter
 Which of the following regular expressions correctly matches a standard US Zip Code, supporting both the 5-digit format (e.g., `12345`) and the 9-digit "Zip+4" format (e.g., `12345-6789`)?
 
 - [ ] `^\d{5}-\d{4}$`
+  Good effort. This pattern correctly matches the 9-digit "Zip+4" format.
+
+  It *requires* the `-` and four extra digits, though, so a plain 5-digit code like `12345` won't match.
+
+  Reread the lesson's explanation of how to make part of a pattern optional.
+
 - [x] `^\d{5}(-\d{4})?$`
+  **Correct!** `\d{5}` matches the first five digits, and the group `(-\d{4})` matches the dash and four digits.
+
+  The `?` makes that group optional, and `^` and `$` make sure the whole string matches. This pattern of a required part followed by an optional group shows up often in validation.
+
 - [ ] `^\d{5}|\d{4}$`
+  You're thinking about alternation with `|`, which is a reasonable approach.
+
+  `|` has the lowest precedence, though, so this means "`^\d{5}`" *or* "`\d{4}$`." It would match strings like `12345abc` or `abc1234`.
+
+  Revisit the lesson's explanation of anchors and alternation.
+
 - [ ] `^\d{5}(\d{4})?$`
+  You correctly made the extra digits optional, which is half the solution.
+
+  This pattern leaves out the dash, though. It would match `123456789` but not `12345-6789`.
+
+  Look again at the "Zip+4" example in the question.
 ```
 

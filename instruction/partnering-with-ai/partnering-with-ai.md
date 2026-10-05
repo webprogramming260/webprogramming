@@ -93,9 +93,30 @@ According to our AI policy, you must be able to explain every line of code you s
 Under the 'Partner' level AI policy, which of the following scenarios is considered an acceptable use of AI in this course?
 
 - [ ] Asking the AI to generate the entire project and submitting it immediately because it works.
+  Good effort. AI can generate working code quickly.
+
+  Submitting code you don't understand goes against the Partner policy, though. You're responsible for every line you submit.
+
+  Reread *The Partner Mindset* and *Ownership and Accountability*.
+
 - [ ] Using AI to write a function, then tweaking what it generated so it looks like you wrote it yourself.
+  You're right that adapting generated code takes some effort.
+
+  Disguising AI output as your own work misrepresents who did the work, though. Partnering means being open about how you used AI and understanding what you submit.
+
+  Revisit the *Ownership and Accountability* section.
+
 - [x] Using AI to suggest an approach for a database schema, then asking it to explain why it chose certain data types before implementing it.
+  **Exactly right!** You used AI as a collaborator, then made sure you understood its reasoning before building on it.
+
+  Asking *why* turns AI from a code generator into a tutor. It also prepares you to explain and defend your design, which is what the Partner mindset expects.
+
 - [ ] Telling the instructor that you don't know how a specific part of your code works because "I didn't write that part."
+  Good effort. Honesty about what you understand is a good instinct.
+
+  "I didn't write that part" isn't acceptable under the Partner policy, though. You're expected to understand and be accountable for all of your code, whoever produced the first draft.
+
+  Reread the *Ownership and Accountability* section.
 ```
 
 ## Developing your own AI fluency

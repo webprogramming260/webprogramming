@@ -28,9 +28,30 @@ For this course we will implement our own authentication using a simple email/pa
 In the context of identity and access management (IAM), what is the primary functional difference between **authentication** and **authorization**?
 
 - [ ] Authentication determines the specific resources a user can access, while authorization verifies the user's claim of identity through credentials.
+  Good effort. You're right that one checks credentials and one controls access.
+
+  The two are swapped here, though.
+
+  Reread the lesson's descriptions of authentication and authorization.
+
 - [x] Authentication verifies *who* a user is, while authorization determines *what* that authenticated user is allowed to do or access.
+  **Correct!** Authentication answers "Who are you?", for example by logging in with a password.
+
+  Authorization answers "What are you allowed to do?", for example whether you can view an admin page. Authentication always comes first, because you can't decide what someone may do until you know who they are.
+
 - [ ] Authentication is the process of auditing user actions in a log, while authorization is the process of encrypting sensitive data.
+  You're thinking about security tasks, which is the right area.
+
+  Auditing and encryption are separate security functions, though. Neither one defines authentication or authorization.
+
+  Revisit the lesson's definitions.
+
 - [ ] Authentication refers to the physical security of a data center, while authorization refers to the digital firewall rules protecting a network.
+  Good effort. Physical and network security are both important.
+
+  These terms are about *users* and what they can do, though, not about buildings or firewalls.
+
+  Reread the lesson's definitions of authentication and authorization.
 ```
 
 

@@ -174,13 +174,34 @@ When implementing these controls, it is important to provide feedback to the cli
 *   **Logging and Alerting:** Monitor when rate limits are being hit frequently. A spike in `429` errors on a login endpoint is a strong indicator of an ongoing brute-force attack.
 
 ```masteryls
-{"id":"sec-rl-01", "title":"Identifying Rate Limiting Behavior", "type":"multiple-choice"}
+{"id":"74d34e13-00cc-413e-943d-36dca0435f65", "title":"Identifying Rate Limiting Behavior", "type":"multiple-choice"}
 A security administrator notices that an API is allowing small bursts of 10 requests per second, even though the sustained limit is set to 2 requests per second. Which algorithm is likely being used?
 
 - [ ] Fixed Window Counter
+  Good effort. Fixed windows are a common rate-limiting approach.
+
+  A fixed window counts requests in blocks of time, though, such as one minute. It doesn't explain a burst limit that's higher than a steady rate that refills over time.
+
+  Reread *Common Rate Limiting Algorithms* and look for the one built around accumulated capacity.
+
 - [x] Token Bucket
+  **Correct!** In a token bucket, tokens are added at a steady rate (here, 2 per second), and each request spends one.
+
+  If a client has been quiet, tokens pile up, up to the bucket's size, so it can send a short burst of 10 requests. Over time it can't exceed the refill rate. This makes token buckets friendly to normal, bursty user behavior while still preventing abuse.
+
 - [ ] Static Throttling
+  You're thinking about throttling, which is the right general topic.
+
+  "Static throttling" isn't one of the algorithms the lesson describes, though, and a fixed cap wouldn't allow bursts above the sustained rate.
+
+  Revisit *Common Rate Limiting Algorithms*.
+
 - [ ] Strict Leaky Bucket
+  You're close. A leaky bucket also uses the idea of a bucket.
+
+  A leaky bucket processes requests at a *constant* rate and smooths bursts out, though. It wouldn't let 10 requests through in a single second when the rate is 2 per second.
+
+  Compare the token bucket and leaky bucket descriptions in the lesson.
 ```
 
 
@@ -264,13 +285,34 @@ app.post('/login', (req, res) => {
 ```
 
 ```masteryls
-{"id":"sec-sess-001", "title":"Identifying Secure Cookie Flags", "type":"multiple-choice"}
+{"id":"9fd7590f-fb79-4bce-981b-e956c1903af6", "title":"Identifying Secure Cookie Flags", "type":"multiple-choice"}
 An attacker successfully executes a Cross-Site Scripting (XSS) attack on a web application and attempts to steal the user's session cookie via `document.cookie`. Which cookie attribute would have prevented the attacker's script from accessing the session token?
 
 - [ ] The `Secure` attribute
+  Good effort. `Secure` is an important cookie attribute.
+
+  It only ensures that the cookie is sent over HTTPS, though. It doesn't stop JavaScript running on the page from reading it.
+
+  Reread *Key Cookie Security Attributes*.
+
 - [x] The `HttpOnly` attribute
+  **Exactly right!** `HttpOnly` hides the cookie from JavaScript, so `document.cookie` can't read it.
+
+  The browser still sends the cookie with requests, so the session keeps working, but an injected script can't steal the token. Session cookies should almost always be `HttpOnly`, along with `Secure` and an appropriate `SameSite` setting.
+
 - [ ] The `SameSite=Strict` attribute
+  You're thinking about cross-site protections, which is the right general area.
+
+  `SameSite` controls whether the cookie is sent with requests from other sites, which helps against CSRF, though. It doesn't hide the cookie from scripts running on your own page.
+
+  Revisit *Key Cookie Security Attributes*.
+
 - [ ] The `Domain` attribute
+  Good effort. The `Domain` attribute does limit where a cookie goes.
+
+  It controls which hosts receive the cookie, though, not whether JavaScript can read it.
+
+  Reread *Key Cookie Security Attributes* and look for the attribute that blocks script access.
 ```
 
 

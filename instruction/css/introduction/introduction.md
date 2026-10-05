@@ -131,7 +131,7 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
 
 
 ```masteryls
-{"id":"a9ebc5d9-f459-4d83-ac6a-6d3e4e284204", "title":"CSS box model", "type":"web-page", "height":600 "file":"exampleCode/cssBoxModel.html"}
+{"id":"a9ebc5d9-f459-4d83-ac6a-6d3e4e284204", "title":"CSS box model", "type":"web-page", "height":600, "file":"exampleCode/cssBoxModel.html"}
 ```
 
 By default, the width and height of an element is defined by the width and height of the content box. You can change the `box-sizing` CSS property from the default value of `content-box` to `border-box` in order to redefine the width and height to also include the padding and the border. This often makes it easier to style elements when their visual size matches their actual size.
@@ -142,9 +142,30 @@ By default, the width and height of an element is defined by the width and heigh
 In the CSS box model, every HTML element is treated as a rectangular box. Which of the following correctly identifies the four components of this box, ordered from the innermost layer to the outermost layer?
 
 - [ ] Content, Border, Padding, Margin
+  You've got the right four layers and the correct innermost and outermost ones.
+
+  Padding and border are swapped, though. Padding is the space *inside* the border, between the border and the content.
+
+  Reread *The box model* section and its diagram.
+
 - [x] Content, Padding, Border, Margin
+  **Exactly right!** From the inside out: content, then padding, then border, then margin.
+
+  Padding adds space inside the border, so it takes the element's background color. Margin adds space outside the border, separating the element from its neighbors. Knowing which one to adjust saves a lot of trial and error when spacing a layout.
+
 - [ ] Content, Padding, Margin, Outline
+  Good effort. You have the first two layers in the right order.
+
+  Outline isn't part of the box model, though. It's drawn outside the border without taking up any space. The outermost box model layer is the margin, and the border sits between the padding and the margin.
+
+  Revisit *The box model* section.
+
 - [ ] Text, Spacing, Border, Margin
+  You're thinking about the right kind of structure, layers of space around content.
+
+  CSS uses specific names for these layers, though, and "text" and "spacing" aren't among them.
+
+  Reread *The box model* section and notice the four names it uses.
 ```
 
 

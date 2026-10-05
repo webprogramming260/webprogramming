@@ -16,9 +16,30 @@ The key with a tech stack is the realization that there is no one answer to the 
 In software development, what is the best definition of a technology stack?
 
 - [ ] A physical arrangement of server hardware and networking cables within a data center.
+  Good effort. Hardware is part of where an application runs.
+
+  A technology stack describes *software*, though: the languages, frameworks, and tools you build with, not how servers are physically arranged.
+
+  Reread the lesson's description of the technologies that make up a stack.
+
 - [x] The combination of programming languages, frameworks, libraries, and tools used to build and run an application.
+  **Correct!** A technology stack is the set of technologies that work together to build and run an application.
+
+  In this course, the stack includes React for the frontend, Caddy as the web server on AWS, Node.js for web services, and MongoDB for data. Each layer builds on the ones below it, which is where the name "stack" comes from.
+
 - [ ] A chronological list of all version updates and code commits made during a project's lifecycle.
+  You're thinking about a project's history, which version control tracks.
+
+  That's a commit log, though, not a technology stack.
+
+  Revisit the lesson's definition of a technology stack.
+
 - [ ] The hierarchical structure of an IT department, ranging from junior developers to the CTO.
+  Good effort. "Stack" can suggest a hierarchy of some kind.
+
+  In software, though, it refers to layers of technology, not layers of an organization's staff.
+
+  Reread the lesson's description of the technology stack used in this course.
 ```
 
 

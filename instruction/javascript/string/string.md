@@ -113,7 +113,7 @@ To include special characters in a string that would otherwise be interpreted as
 - `\t`: Tab
 
 
-## Excercise
+## Exercise
 
 ````masteryls
 {"id":"afadc858-7b3b-4623-aabe-95b3ef2f242b", "title":"String Immutability and Method Behavior", "type":"multiple-choice"}
@@ -129,7 +129,28 @@ let result = school.substring(0, 4);
 What is the value of the variable `result` after this code executes?
 
 - [ ] "Univ"
+  Good effort. It looks like `school[0] = "U"` should capitalize the first letter.
+
+  Strings are immutable, though, so that assignment silently does nothing.
+
+  Reread the *Immutability* section.
+
 - [ ] "UNIV"
+  You noticed the call to `toUpperCase()`, which looks like it changes the string.
+
+  It returns a *new* string, though, and that result is never saved, so `school` doesn't change.
+
+  Revisit the *Immutability* section.
+
 - [x] "univ"
+  **Correct!** Neither of the first two lines changes `school`.
+
+  Assigning to an index doesn't modify a string, and `toUpperCase()` returns a new string that's thrown away. So `substring(0, 4)` works on the original `"university"`. To keep a change, save it: `school = school.toUpperCase();`.
+
 - [ ] "Univer"
+  Good effort. You may have counted the characters differently.
+
+  `substring(0, 4)` returns the characters at indexes 0 through 3, which is four characters, and the string is still all lowercase.
+
+  Reread the *String functions* and *Immutability* sections.
 ````

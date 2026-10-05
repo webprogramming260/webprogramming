@@ -5,7 +5,7 @@ Learning HTML is more than memorizing a list of tags; it is about building a rob
 ## Anatomy of a web page's structure
 
 ```masteryls
-{"id":"cd76a31c-c450-4d5a-a777-c8e86643971f", "title":"Structural elements", "type":"web-page" "height":500 }
+{"id":"cd76a31c-c450-4d5a-a777-c8e86643971f", "title":"Structural elements", "type":"web-page", "height":500 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -293,7 +293,28 @@ This exploratory approach leads to two major outcomes: **Curiosity** and **Creat
 What is the primary difference between the HTML code you write and the Document Object Model (DOM)?
 
 - [ ] The HTML code is used for mobile devices, while the DOM is only used for desktop browsers.
+  Good effort. Different devices do display pages differently.
+
+  The DOM isn't device-specific, though. Every browser, on every device, builds a DOM from the HTML it loads.
+
+  Reread the lesson's description of the DOM.
+
 - [ ] There is no difference; the DOM is simply another name for the text file you save with a .html extension.
+  It's understandable to think of them as the same, since the DOM starts out matching your HTML.
+
+  They're different things, though. The HTML file is text, while the DOM is a live structure in the browser's memory that JavaScript can change without touching the file.
+
+  Revisit the lesson's explanation of how the browser uses your HTML.
+
 - [x] The HTML code is a static blueprint, while the DOM is the live, in-memory tree representation of that structure created by the browser.
+  **Exactly right!** The browser reads your HTML and builds a tree of objects in memory: the DOM.
+
+  When JavaScript adds an element or changes its text, it changes the DOM, and the page updates immediately, even though your `.html` file never changes. That's the foundation for every interactive web application, including React.
+
 - [ ] The DOM refers only to the CSS styling, while HTML refers only to the text content.
+  Good effort. HTML and CSS do play different roles.
+
+  The DOM represents the document's *structure*, though, the elements and their content, not just its styling.
+
+  Reread the lesson's description of the DOM.
 ```

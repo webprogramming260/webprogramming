@@ -193,9 +193,30 @@ export default function App() {
 What is the primary problem that the useContext hook is designed to solve in React applications?
 
 - [ ] It is used to fetch data from external APIs asynchronously.
+  Good effort. Fetching data is a common task in React components.
+
+  That's usually done with `useEffect`, though, not `useContext`.
+
+  Reread *The Problem: Prop Drilling*.
+
 - [ ] It replaces the useState hook for managing local component state.
+  You're right that both hooks deal with data.
+
+  `useState` manages a component's *own* state, though. `useContext` shares data across many components and doesn't replace `useState`.
+
+  Revisit the *useContext hook* section.
+
 - [x] It prevents "prop drilling" by allowing components to access global data without intermediate props.
+  **Exactly right!** Without context, you'd pass data like the current user or theme through every component in between, even ones that don't use it.
+
+  With `useContext`, any component in the tree can read that shared value directly. That keeps intermediate components simpler and less coupled.
+
 - [ ] It is used to directly manipulate the browser's DOM elements.
+  Good effort. Some hooks do work with DOM elements.
+
+  That's what `useRef` is for, though. `useContext` is about sharing data between components.
+
+  Reread the *useContext hook* section.
 ```
 
 ## useMemo hook
@@ -267,7 +288,28 @@ While it might be tempting to wrap everything in `useMemo`, it comes with its ow
 What happens if you provide an empty dependency array `[]` to the useMemo hook?
 
 - [ ] The calculation runs on every single render.
+  Good effort. That's what happens when you leave out the dependency array.
+
+  An empty array means "no dependencies," though, so the value never needs to be recalculated.
+
+  Reread the *useMemo hook* section.
+
 - [ ] The hook returns `undefined` because there are no dependencies to track.
+  You're right to wonder what happens with nothing to track.
+
+  The calculation still runs once and returns its value, though. With no dependencies, there's simply never a reason to run it again.
+
+  Revisit the *useMemo hook* section.
+
 - [x] The calculation runs only once during the initial mount and the cached result is returned for all subsequent renders.
+  **Correct!** With `[]`, nothing can trigger a recalculation, so React computes the value once on mount and reuses it.
+
+  This is useful for expensive values that never change. If the calculation uses props or state, though, list them as dependencies, or the cached value will become stale.
+
 - [ ] React will throw a runtime error because at least one dependency is required.
+  Good effort. React does have rules about dependency arrays.
+
+  An empty array is perfectly valid, though, and it's commonly used.
+
+  Reread *Best Practices and Pitfalls* in the useMemo section.
 ```

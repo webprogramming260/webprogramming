@@ -117,6 +117,8 @@ const array = [...uniqueNumbers];
 // Result: [1, 2, 3]
 ```
 
+Spreading also works on iterators, such as the result of `String.matchAll()`. Each item that `matchAll()` produces is a match array containing the full match, followed by any capture groups, with extra properties such as `index` and `input`. Spreading the iterator collects all of those match arrays into a single array.
+
 ## Exercises
 
 
@@ -131,7 +133,28 @@ const matches = [...input.matchAll(regex)];
 ```
 
 - [ ] A flat array of strings containing only the full matches: `["Ref10", "Ref20", "Ref30"]`
+  Good effort. That's what `match()` with the `g` flag returns.
+
+  `matchAll()` returns richer results, though, and spreading them keeps all of that detail.
+
+  Reread the lesson's explanation of spreading the results of `matchAll()`.
+
 - [x] An array of match arrays, where each sub-array contains the full match, any capture groups, and properties like `index` and `input`
+  **Correct!** Spreading the iterator collects each match into an array, and each match is itself an array.
+
+  Each match array holds the full match (`"Ref10"`) and its capture groups (`"10"`), along with properties like `index`. That's why `matchAll()` is useful when you need the captured parts and not just the matched text.
+
 - [ ] A single string containing all matches concatenated together: `"Ref10Ref20Ref30"`
+  Good effort. The spread operator does combine things in some situations.
+
+  Spreading into an array literal (`[...]`) produces an array, though, not a single combined string.
+
+  Revisit the lesson's examples of spreading iterables.
+
 - [ ] A nested object where the keys are the integer capture groups and the values are the spread-out character sequences
+  You're right that capture groups are involved.
+
+  The result is an array of arrays, though, not an object keyed by group number.
+
+  Reread the lesson's explanation of what `matchAll()` produces.
 ````

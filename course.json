@@ -652,7 +652,7 @@
           "id": "f706ca9d-1aad-469c-a549-4edaa7b581fa",
           "state": "published",
           "interactions": [
-            "toolchain-concept-check"
+            "9121b92a-1f66-49da-8253-b69df2e34941"
           ]
         },
         {
@@ -781,7 +781,7 @@
           "id": "a6483266-226b-482a-8f35-1c1878ad544e",
           "state": "published",
           "interactions": [
-            "dyn-obj-001"
+            "c447ba36-a82f-4e04-aa36-8a02a07e52ec"
           ]
         },
         {
@@ -1319,8 +1319,8 @@
           "id": "7f873ab5-9526-4455-87b8-29e5f7dd5b6f",
           "state": "published",
           "interactions": [
-            "sec-rl-01",
-            "sec-sess-001"
+            "74d34e13-00cc-413e-943d-36dca0435f65",
+            "9fd7590f-fb79-4bce-981b-e956c1903af6"
           ]
         },
         {
@@ -1373,7 +1373,7 @@
         },
         {
           "title": "Performance monitoring",
-          "path": "instruction/webFrameworks/performanceMonitoring/performanceMonditoring.md",
+          "path": "instruction/webFrameworks/performanceMonitoring/performanceMonitoring.md",
           "id": "fb55794d-fc0c-4e9f-af54-01ae994aa859",
           "state": "published",
           "interactions": [

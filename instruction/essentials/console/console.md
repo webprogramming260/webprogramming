@@ -135,9 +135,30 @@ for i in {1..2}; do printf 'y' >> other.txt; done;
 After running the above commands, what is the output of `cat other.txt`.
 
 - [ ] x12
+  Good effort. Tracing file contents through a series of commands takes careful attention.
+
+  The `for` loop's `printf` writes the letter `y`, though, not the loop number. `{1..2}` only controls how many times the loop runs.
+
+  Trace each command that writes to `other.txt`, one at a time.
+
 - [x] xxyy
+  **Correct!** `other.txt` starts as a copy of `test.txt`, which contains `x`.
+
+  The `>>` operator then appends another `x`, and the loop appends `y` twice. Tracking `>` (overwrite) versus `>>` (append) is key to reading shell scripts.
+
 - [ ] 12yy
+  You noticed that the loop writes two `y` characters, which is the trickiest part.
+
+  The loop prints `y` each time, though, not the numbers. Also look at what `other.txt` contains before the loop runs.
+
+  Trace each command that writes to `other.txt`.
+
 - [ ] xyy
+  Good effort. You correctly followed the copy and the loop.
+
+  You missed one step, though. Before `test.txt` was removed, its contents were appended to `other.txt` with `>>`.
+
+  Look again at the `cat test.txt >> other.txt` command.
 ```
 
 

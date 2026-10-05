@@ -46,9 +46,30 @@ When selecting a strategy, consider the following trade-offs:
 A team wants to release a high-risk database migration. They decide to spin up a completely separate production-ready environment, verify it, and then switch the router to point to the new environment. Which strategy are they using?
 
 - [ ] Canary Deployment
+  Good effort. Canary deployments also reduce risk.
+
+  A canary sends a *small portion* of traffic to the new version first and gradually increases it, though. This team switched all traffic at once to a separate, complete environment.
+
+  Reread the lesson's descriptions of each deployment technique.
+
 - [x] Blue-Green Deployment
+  **Exactly right!** In a blue-green deployment, a complete copy of production (green) is prepared and verified while the current version (blue) keeps serving users.
+
+  Switching the router moves all traffic at once, and switching it back is an instant rollback. That makes blue-green a good fit for high-risk changes.
+
 - [ ] Rolling Update
+  You're thinking about gradual, low-risk releases, which is the right concern here.
+
+  A rolling update replaces servers one batch at a time *within the same environment*, though. This team built a completely separate environment.
+
+  Revisit the lesson's comparison of deployment techniques.
+
 - [ ] A/B Testing
+  Good effort. A/B testing does involve running two versions at the same time.
+
+  Its purpose is to compare how users respond to different versions, though, not to safely release a migration.
+
+  Reread the lesson's description of A/B testing.
 ```
 
 ## Deploying Simon and your startup

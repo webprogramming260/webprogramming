@@ -68,8 +68,29 @@ This all means that you need to test the services you want to use before you inc
 In the context of web security, what is Cross-Origin Resource Sharing (CORS)?
 
 - [ ] A browser-enforced security policy that strictly prevents a document or script loaded from one origin from interacting with a resource from another origin.
+  Good effort. That's a solid description of a related browser policy.
+
+  It describes the **Same Origin Policy**, though. CORS is the mechanism that safely *relaxes* that policy.
+
+  Reread the lesson's explanation of how CORS relates to the Same Origin Policy.
+
 - [x] A mechanism that uses HTTP headers to allow a server to indicate any origins other than its own from which a browser should permit loading resources.
+  **Exactly right!** The server uses headers such as `Access-Control-Allow-Origin` to tell the browser which other origins may use its responses.
+
+  The browser enforces the rule, but the server decides who's allowed. That's why fixing a CORS error usually means changing the server's headers, not the frontend code.
+
 - [ ] A server-side authentication protocol designed to encrypt data packets when they are transmitted between different geographic data centers.
+  You're thinking about security in transit, which matters.
+
+  CORS doesn't encrypt anything, though. It's about which origins the browser permits to read a response.
+
+  Revisit the lesson's description of CORS.
+
 - [ ] A client-side JavaScript library that automatically redirects unauthorized cross-domain requests to a secure proxy server to bypass browser restrictions.
+  Good effort. Proxies can help work around CORS restrictions.
+
+  CORS itself isn't a library or a proxy, though. It's a standard built into browsers and HTTP.
+
+  Reread the lesson's description of CORS.
 ```
 

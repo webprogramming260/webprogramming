@@ -112,7 +112,7 @@ You can also use the ternary operator. This provides a compact `if else` represe
 a === 1 ? console.log(1) : console.log('not 1');
 ```
 
-You can use boolean operations in the expression to create complex predicates. Common boolean operators include `&&` (and), `||` (or), and `!` (not).
+You can use boolean operations in the expression to create complex predicates. Common boolean operators include `&&` (and), `||` (or), and `!` (not). These operators **short-circuit**: if the left side of `||` is true, or the left side of `&&` is false, the result is already known, so JavaScript doesn't evaluate the right side at all.
 
 ```js
 if (true && (!false || true)) {
@@ -230,9 +230,30 @@ if (a > 5 || ++b > 10) {
 What are the final values of `a` and `b` after this code block has finished executing?
 
 - [ ] `a = 12, b = 6`
+  You correctly figured out that the `if` body runs and `a` becomes 12.
+
+  `++b` never runs, though. Because `a > 5` is already true, `||` doesn't evaluate its right side.
+
+  Reread the lesson's explanation of short-circuit evaluation.
+
 - [x] `a = 12, b = 5`
+  **Correct!** `a > 5` is true, so the whole `||` expression is already true.
+
+  JavaScript skips the right side, so `++b` never runs and `b` stays 5. Then the body adds 2 to `a`. Be careful about putting side effects, like `++`, in the right side of `||` or `&&`, because they might not happen.
+
 - [ ] `a = 10, b = 5`
+  You correctly noticed that `b` isn't changed.
+
+  The `if` body does run, though, because `a > 5` is true. So `a` becomes 12.
+
+  Trace the condition again, starting with `a > 5`.
+
 - [ ] `a = 10, b = 6`
+  Good effort. Tracing increment operators in conditions is tricky.
+
+  Both values are wrong here, though. The condition is true, so `a` changes, and `||` short-circuits, so `b` doesn't.
+
+  Reread the lesson's explanation of short-circuit evaluation.
 ````
 
 
@@ -260,7 +281,28 @@ for (let item in settings) {
 What will be logged to the console during the execution of this loop?
 
 - [ ] The values associated with the keys: `"dark"`, `true`, and `1.2`
+  Good effort. Getting values is a common goal when looping over an object.
+
+  `for in` gives you the property *names*, though. To get the values, you'd use `settings[item]` or `Object.values()`.
+
+  Reread the *for in* section.
+
 - [x] The names of the enumerable properties (keys): `"theme"`, `"notifications"`, and `"version"`
+  **Correct!** `for in` iterates over an object's property names.
+
+  To work with the values as well, use `settings[item]` inside the loop. And to loop over an *array's* values, prefer `for of`, which avoids the confusion of getting indexes as strings.
+
 - [ ] The numeric index of each property: `0`, `1`, and `2`
+  You're thinking of how `for in` behaves with arrays, where the keys are indexes.
+
+  This is a plain object, though, so its keys are the property names.
+
+  Revisit the *for in* section and its example.
+
 - [ ] Both the keys and values as arrays: `["theme", "dark"]`, `["notifications", true]`, and `["version", 1.2]`
+  Good effort. Getting key-value pairs is useful.
+
+  That's what `Object.entries()` provides, though, not `for in`.
+
+  Reread the *for in* section.
 ````

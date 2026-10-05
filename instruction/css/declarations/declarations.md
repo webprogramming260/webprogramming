@@ -19,6 +19,7 @@ CSS rule declarations specify a property and value to assign when the rule selec
 | float              | direction                          | `right`             | Places the element to the left or right in the flow                            |
 | flex               |                                    |                     | Flex layout. Used for responsive design                                        |
 | font               | family size style                  | `Arial 1.2em bold`  | Defines the text font using shorthand                                          |
+| font-weight        | [normal/bold/100-900]              | `700`               | Sets the thickness of the text characters                                      |
 | grid               |                                    |                     | Grid layout. Used for responsive design                                        |
 | height             | unit                               | `.25em`             | Sets the height of the box                                                     |
 | margin             | unit                               | `5px 5px 0 0`       | Sets the margin spacing                                                        |
@@ -41,9 +42,30 @@ CSS rule declarations specify a property and value to assign when the rule selec
 In a CSS declaration, which property and value pair is correctly used to change the thickness of text characters?
 
 - [ ] `text-weight: bold;`
+  Good effort. `bold` is a valid weight value, and "weight" is the right idea.
+
+  There's no `text-weight` property in CSS, though. The thickness of text is controlled by a property in the `font` family of properties.
+
+  Look at the font-related rows in the lesson's table of common properties.
+
 - [x] `font-weight: 700;`
+  **Correct!** `font-weight` controls how thick text characters appear.
+
+  It accepts keywords like `normal` and `bold`, or numbers from 100 to 900, where 400 is normal and 700 is bold. Numbers give you finer control when a font supports several weights.
+
 - [ ] `font-style: heavy;`
+  You're close. `font-style` is a real property in the same family.
+
+  It controls whether text is italic or normal, though, not how thick it is. `heavy` also isn't a valid value for it.
+
+  Reread the font-related rows in the lesson's property table.
+
 - [ ] `text-thickness: 2px;`
+  Good effort. A pixel value seems like a sensible way to describe thickness.
+
+  There's no `text-thickness` property for character weight, though. Character thickness uses a font property with keyword or numeric weight values.
+
+  Revisit the lesson's table of common properties.
 ```
 
 

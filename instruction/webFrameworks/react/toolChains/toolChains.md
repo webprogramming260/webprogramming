@@ -6,11 +6,11 @@ A toolchain is a collection of distinct software development tools that are link
 
 In a typical compiled language environment (like C, C++, or Rust), the toolchain manages the transition from human-readable text to machine-executable instructions. A standard toolchain generally includes the following components:
 
-*   **Compiler:** Translates high-level source code into assembly language or intermediate representation.
-*   **Assembler:** Converts assembly code into machine-level object files (binary data).
-*   **Linker:** Combines multiple object files and external libraries into a single executable or shared library.
-*   **Debugger:** Allows developers to observe the execution of the program to identify and fix logic errors.
-*   **Build Automation (e.g., Make, Cargo):** Orchestrates the execution of the various tools in the correct order.
+- **Compiler:** Translates high-level source code into assembly language or intermediate representation.
+- **Assembler:** Converts assembly code into machine-level object files (binary data).
+- **Linker:** Combines multiple object files and external libraries into a single executable or shared library.
+- **Debugger:** Allows developers to observe the execution of the program to identify and fix logic errors.
+- **Build Automation (e.g., Make, Cargo):** Orchestrates the execution of the various tools in the correct order.
 
 The following diagram illustrates the flow of data through a standard compilation toolchain:
 
@@ -35,17 +35,34 @@ gcc -o my_application main.c utils.c -lm
 In this example, `gcc` acts as a "compiler driver." It ensures that `main.c` and `utils.c` are compiled and then linked with the math library (`-lm`) to produce the final file `my_application`. Without a cohesive toolchain, a developer would have to manually manage dozens of temporary files and complex memory addresses, a process that is both error-prone and incredibly time-consuming.
 
 ```masteryls
-{
-  "id": "toolchain-concept-check",
-  "title": "Defining the Toolchain",
-  "type": "multiple-choice"
-}
+{ "id": "9121b92a-1f66-49da-8253-b69df2e34941",  "title": "Defining the Toolchain",  "type": "multiple-choice" }
 Which of the following best describes the fundamental characteristic of a software toolchain?
 
 - [ ] A single, monolithic application that handles all coding tasks from UI design to deployment.
+  Good effort. Some tools try to do everything at once.
+
+  A toolchain is the opposite, though: separate, specialized tools linked together, each doing one job well.
+
+  Reread the list of pieces in a web application toolchain.
+
 - [x] A suite of specialized tools where the output of one stage serves as the input for the next stage in a pipeline.
+  **Exactly right!** Each tool in a chain does one job and hands its output to the next.
+
+  In this course's chain, the transpiler turns JSX into JavaScript, the bundler packages it, and the minifier shrinks it. You can swap any one tool without replacing the whole chain.
+
 - [ ] A cloud-based repository used exclusively for storing and versioning source code files.
+  You're right that a code repository is part of the chain.
+
+  It's just one link, though. A toolchain connects many tools, from linting and transpiling to bundling and deployment.
+
+  Revisit the list of toolchain pieces in the lesson.
+
 - [ ] A hardware interface used to connect a development computer to a production server.
+  Good effort. Connecting development to production is part of the process.
+
+  A toolchain is made of *software* tools, though, not hardware.
+
+  Reread the lesson's description of web application toolchains.
 ```
 
 ## Web application toolchains

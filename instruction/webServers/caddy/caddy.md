@@ -89,9 +89,30 @@ These diagrams show that traffic flows the same way, but with the forward proxy 
 Which of the following best describes **Caddy** and its primary distinguishing feature in a modern web infrastructure?
 
 - [ ] A proprietary load balancer and hardware firewall designed for enterprise data centers.
+  Good effort. Caddy does route traffic.
+
+  It's open-source software that runs on ordinary servers, though, not proprietary hardware.
+
+  Reread the introduction to the Caddy lesson.
+
 - [ ] A specialized Python-based static site generator that compiles Markdown into optimized HTML.
+  You're thinking about static sites, which Caddy can serve.
+
+  Caddy isn't a site generator, though, and it isn't written in Python.
+
+  Revisit the introduction to the Caddy lesson.
+
 - [ ] A distributed key-value store used primarily for service discovery and secret management.
+  Good effort. Distributed key-value stores are useful infrastructure.
+
+  Caddy is a web server, though, not a data store.
+
+  Reread the introduction to the Caddy lesson.
+
 - [x] An open-source, extensible web server written in Go that provides automatic HTTPS by default.
+  **Correct!** Caddy is written in Go, and it automatically obtains and renews TLS certificates from Let's Encrypt.
+
+  That makes HTTPS work with almost no configuration. In this course, it also serves your static files and acts as a reverse proxy for your services.
 ```
 
 
@@ -100,9 +121,30 @@ Which of the following best describes **Caddy** and its primary distinguishing f
 In the context of web architecture and Caddy configuration, what is the primary functional difference between a reverse proxy and a forward proxy?
 
 - [ ] A reverse proxy is used by clients to bypass local firewalls, while a forward proxy is used by servers to hide their internal IP addresses.
+  Good effort. You've picked up the idea of hiding IP addresses and bypassing restrictions.
+
+  The roles are reversed, though. Clients use *forward* proxies, and servers use *reverse* proxies.
+
+  Reread the *Forward Proxy* and *Reverse Proxy* sections.
+
 - [x] A reverse proxy sits in front of one or more web servers to intercept and route incoming requests from the internet, while a forward proxy sits in front of clients to manage and filter outgoing requests to the internet.
+  **Exactly right!** A reverse proxy represents the *servers*, and a forward proxy represents the *clients*.
+
+  Caddy acts as a reverse proxy for you, receiving every request on port 443 and routing it to the right service. A forward proxy, like a corporate web filter, does the opposite for users going out to the internet.
+
 - [ ] Caddy only supports reverse proxying for HTTPS traffic, whereas forward proxying is required for legacy HTTP/1.1 connections.
+  You're thinking about protocol support, which matters.
+
+  The difference between these proxies isn't about HTTP versions, though. It's about which side of the connection they act for.
+
+  Revisit the *Proxy comparison table*.
+
 - [ ] A forward proxy is used to distribute load across multiple backend instances, while a reverse proxy is used exclusively for encrypting traffic via TLS.
+  Good effort. Load balancing and TLS are both proxy features.
+
+  Load balancing across backend instances is a *reverse* proxy job, though. Forward proxies sit in front of clients.
+
+  Reread the *Proxy comparison table*.
 ```
 
 

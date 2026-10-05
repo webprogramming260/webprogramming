@@ -57,7 +57,7 @@ console.log(obj, json, objFromJson);
 // {a: 2, b: 'crockford'}
 ```
 
-Note that in this example, JSON cannot represent the JavaScript `undefined` object and so it gets dropped when converting from JavaScript to JSON.
+Note that in this example, JSON cannot represent the JavaScript `undefined` object and so it gets dropped when converting from JavaScript to JSON. Properties whose values are functions are dropped in the same way. (Inside an array, `undefined` and function values are converted to `null` instead.)
 
 
 ## JSON vs. JavaScript Objects
@@ -116,9 +116,30 @@ For production environments, it is essential to validate the structure of JSON d
 When using `JSON.stringify()` to convert a JavaScript object into a JSON string, what happens if the object contains a property with a value of `undefined` or a function?
 
 - [ ] The conversion throws a `TypeError` because `undefined` and functions are not valid JSON data types.
+  Good effort. It's true that `undefined` and functions aren't valid JSON types.
+
+  `JSON.stringify()` doesn't throw for them, though. It handles them quietly.
+
+  Reread the lesson's example that converts an object containing `undefined`.
+
 - [ ] The properties are preserved, but their values are converted to `null` to maintain the object's structure.
+  You're close. Converting to `null` does happen in one case: inside *arrays*.
+
+  For object properties, though, the lesson's example shows something different happening to the key.
+
+  Look at the lesson's example output for the property `c: undefined`.
+
 - [x] The properties are omitted entirely from the resulting JSON string.
+  **Correct!** Properties with `undefined` or function values are left out of the JSON string entirely.
+
+  This can cause subtle bugs, because data you expected to send just disappears. If a value needs to be sent explicitly as empty, use `null`, which JSON *can* represent.
+
 - [ ] The values are converted into their string representations (e.g., `"undefined"` or the function's source code).
+  Good effort. Converting values to strings is one way you might expect it to work.
+
+  `JSON.stringify()` doesn't write `"undefined"` or a function's source code into the output, though.
+
+  Reread the lesson's example and note what happens to the `undefined` value.
 ```
 
 

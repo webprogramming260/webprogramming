@@ -184,9 +184,30 @@ Here, performance is acceptable in the United States and Europe but poor in Asia
 According to best practices in performance monitoring and the principle of avoiding premature optimization, when is it most appropriate to invest resources into optimizing a specific section of code?
 
 - [ ] Immediately after writing the initial logic to ensure the most efficient implementation is committed to the codebase
+  Good effort. Writing efficient code from the start sounds responsible.
+
+  Optimizing before you know where the slow parts are wastes effort and often makes code harder to read, though. That's the definition of premature optimization.
+
+  Reread the *Premature optimization* section.
+
 - [x] Once performance monitoring data identifies a specific bottleneck that significantly impacts user experience or system stability
+  **Correct!** Measure first, then optimize what the data shows matters.
+
+  Performance tools like the Chrome Performance tab and Lighthouse reveal the real bottlenecks, which are often not where you'd guess. Your effort then goes where users will actually notice the difference.
+
 - [ ] Whenever a developer identifies an algorithm that could theoretically be replaced by one with a better Big O complexity, regardless of current load
+  You're right that Big O helps compare algorithms.
+
+  A better complexity class only matters if that code is actually a bottleneck under real load, though. For small inputs, a "worse" algorithm can be faster and simpler.
+
+  Revisit the *Premature optimization* section.
+
 - [ ] During the final phase of every development cycle to ensure that all new functions meet a generic, pre-defined execution time threshold
+  Good effort. Consistent performance standards are useful.
+
+  Optimizing everything to meet a generic threshold spends effort where it may not matter, though. Optimization should be driven by measured impact.
+
+  Reread the *Premature optimization* section.
 ```
 
 ```masteryls
@@ -199,8 +220,35 @@ You are coding a new component for a complex application. What performance consi
 A developer is monitoring a recursive function that calculates the nth Fibonacci number by calling itself twice for each non-base case. Which Big O notation best describes the growth rate of this operation?
 
 - [ ] O(1)
+  Good effort. O(1) means constant time.
+
+  This function's work grows dramatically as `n` grows, though, so it can't be constant.
+
+  Reread the *Common Big O values* table.
+
 - [ ] O(n)
+  You're right that the work grows with `n`.
+
+  Each call makes *two* more calls, though, so the work roughly doubles every time `n` increases by one. That's much faster growth than linear.
+
+  Revisit the *Common Big O values* table.
+
 - [ ] O(log n)
+  Good effort. O(log n) describes algorithms that cut the problem in half each step.
+
+  This function does the opposite. It *doubles* the work at each level.
+
+  Reread the *Common Big O values* table.
+
 - [ ] O(n^2)
+  You're thinking about fast-growing complexity, which is the right direction.
+
+  O(n²) grows quickly, but doubling the calls at every level of recursion grows even faster.
+
+  Revisit the *Common Big O values* table and its Fibonacci example.
+
 - [x] O(2^n)
+  **Correct!** Each call branches into two more, so the number of calls roughly doubles each time `n` increases.
+
+  Calculating the 50th Fibonacci number this way takes billions of calls. Caching results with memoization brings it down to O(n), a good example of why understanding complexity matters.
 ```

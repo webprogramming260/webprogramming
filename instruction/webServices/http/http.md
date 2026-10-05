@@ -179,9 +179,30 @@ HTTP continually evolves in order to increase performance and support new types 
 Which of the following statements best describes the "stateless" nature of the HTTP protocol?
 
 - [ ] The server maintains a continuous, open connection with the client to track the user's progress through a website.
+  Good effort. Tracking a user's progress is something many applications do.
+
+  HTTP itself doesn't keep a continuous connection to do that, though. Applications add state on top of HTTP, for example with cookies.
+
+  Reread the lesson's discussion of HTTP being stateless.
+
 - [x] Each request is treated as an independent transaction, and the server does not inherently retain information from previous requests.
+  **Exactly right!** Each request stands on its own.
+
+  The server doesn't automatically remember previous requests. That's why web applications use cookies or tokens to tell the server who you are on every request.
+
 - [ ] Data transmitted via HTTP is encrypted by default to ensure that the state of the communication cannot be intercepted.
+  You're thinking about secure communication, which is important.
+
+  Plain HTTP isn't encrypted, though. That's what HTTPS adds. "Stateless" is about memory between requests, not encryption.
+
+  Revisit the lesson's discussion of statelessness.
+
 - [ ] The protocol requires the client to provide a unique session ID in the standard IP header of every packet sent to the server.
+  Good effort. Session IDs are a common way to track users.
+
+  They're sent at the HTTP level, usually in cookies or headers, though, not in IP packet headers, and HTTP doesn't require them.
+
+  Reread the *Cookies* section.
 ```
 
 ```masteryls
@@ -189,7 +210,28 @@ Which of the following statements best describes the "stateless" nature of the H
 A web developer is building an API. When a user attempts to access an administrative endpoint while logged in with a standard user account, which HTTP status code should the server return to indicate that the user's identity is recognized but they lack the necessary permissions?
 
 - [ ] 401 Unauthorized
+  Good effort. 401 is a closely related status code.
+
+  It means the request wasn't authenticated, for example because the token was missing or invalid, though. This user *is* logged in.
+
+  Reread the *Status codes* table.
+
 - [x] 403 Forbidden
+  **Correct!** 403 means "I know who you are, but you're not allowed to do this."
+
+  Use 401 when the user isn't authenticated, and 403 when they're authenticated but not authorized. Getting this right helps clients decide whether to send users to log in or show them a permission error.
+
 - [ ] 405 Method Not Allowed
+  You're thinking about request problems, which is the right category.
+
+  405 means the HTTP *method* isn't supported for that URL, though, such as sending a `DELETE` to a read-only endpoint.
+
+  Revisit the *Status codes* table.
+
 - [ ] 422 Unprocessable Entity
+  Good effort. 422 is a real client error code.
+
+  It means the request data was well-formed but invalid, though, such as a missing required field. It isn't about permissions.
+
+  Reread the *Status codes* table.
 ```

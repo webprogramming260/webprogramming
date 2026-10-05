@@ -85,9 +85,30 @@ console.timeEnd('pop');
 Which of the following operations is generally the most computationally expensive for a large JavaScript array?
 
 - [ ] Accessing an element by its index (e.g., `arr[500]`)
+  Good effort. With a large array, it's reasonable to suspect that reaching deep into it is slow.
+
+  Accessing an element by index is actually very fast, though, because JavaScript can jump straight to that position.
+
+  Reread the lesson's discussion of re-indexing overhead.
+
 - [ ] Adding an element to the end of the array using `.push()`
+  You're right to think about operations that change the array's size.
+
+  Adding to the *end* with `push` is fast, though, because no existing elements need to move.
+
+  Revisit the lesson's explanation of which operations are slow and why.
+
 - [x] Removing the first element of the array using `.shift()`
+  **Correct!** `shift()` removes the first element, so every remaining element must move down one index.
+
+  For an array with a million elements, that's a million moves, which is O(n) work. If you often remove items from the front of a large list, consider a different data structure.
+
 - [ ] Removing the last element of the array using `.pop()`
+  Good effort. Removing elements can be costly in some cases.
+
+  Removing from the *end* with `pop` is fast, though, because the other elements stay where they are.
+
+  Reread the lesson's discussion of re-indexing overhead.
 ```
 
 ## ☑ Assignment

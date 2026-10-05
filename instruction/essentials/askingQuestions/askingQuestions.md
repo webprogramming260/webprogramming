@@ -45,7 +45,14 @@ Remember that TAs are _assistants_. They are more than willing to assist you as 
 When I need help during this course:
 
 - [x] I know where to go and how to prepare to be successful
+  **You're well prepared!** Knowing where to go, and how to describe your problem clearly, makes it much easier for TAs and classmates to help you.
+
+  Remember the lesson's advice: try to solve the problem yourself first, and when you ask, explain what you tried and what happened.
+
 - [ ] I still am unclear about what I should do
+  Thanks for being honest. Recognizing that you're unsure is the first step toward getting help.
+
+  Reread the lesson's guidance on who to ask and how to ask a good question, and make sure you've joined the course Discord. If anything is still unclear, ask there or in class. Someone else probably has the same question.
 ```
 
 

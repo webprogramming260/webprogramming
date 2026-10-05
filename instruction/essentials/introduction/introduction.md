@@ -60,7 +60,14 @@ The class should have the energy of a startup. We are on the cutting edge of tec
 We often send out critical notifications for the course using the Canvas email announcements. Log into the Canvas course and check to make sure you have the correct email address and notification setting associated with your user.
 
 
-- [x] My email address is associated with Canvas and that I frequently check for notifications.
+- [x] My email address is associated with Canvas and I frequently check for notifications.
+  **Great!** Canvas announcements are how you'll hear about deadline changes and other important course updates.
+
+  Now that your email and notification settings are correct, make checking announcements part of your weekly routine so nothing catches you by surprise.
+
 - [ ] I want to stay in the dark and miss important notifications.
+  We appreciate the humor, but missing announcements can really cost you in this course.
+
+  Take two minutes now: log into Canvas, confirm your email address, and turn on notifications for announcements. You'll be glad you did the first time a deadline or assignment detail changes.
 ```
 

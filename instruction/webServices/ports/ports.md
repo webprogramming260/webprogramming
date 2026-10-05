@@ -63,9 +63,30 @@ This ensures that when the server sends data back, it knows exactly which specif
 By default, which port does a web server use to listen for standard, unencrypted HTTP traffic?
 
 - [ ] 21
+  Good effort. 21 is a well-known port.
+
+  It's used for FTP, though, not HTTP.
+
+  Reread the lesson's table of common ports.
+
 - [x] 80
+  **Correct!** Port 80 is the default for unencrypted HTTP.
+
+  When a URL doesn't include a port, the browser uses 80 for `http://` and 443 for `https://`.
+
 - [ ] 443
+  You're close. 443 is the other common web port.
+
+  It's used for *encrypted* HTTPS traffic, though, not plain HTTP.
+
+  Revisit the lesson's table of common ports.
+
 - [ ] 3389
+  Good effort. 3389 is a real service port.
+
+  It's used for Remote Desktop, though, not web traffic.
+
+  Reread the lesson's table of common ports.
 ```
 
 ```masteryls
@@ -73,7 +94,28 @@ By default, which port does a web server use to listen for standard, unencrypted
 Which port number is used by default for secure web traffic encrypted via TLS/SSL (HTTPS)?
 
 - [ ] 80
+  Good effort. 80 is the default web port.
+
+  It's for unencrypted HTTP, though. Secure traffic uses a different default.
+
+  Reread the lesson's table of common ports.
+
 - [x] 443
+  **Correct!** Port 443 is the default for HTTPS.
+
+  That's the port Caddy listens on for your application, routing requests to your services on other ports behind it.
+
 - [ ] 22
+  You're thinking about secure protocols, which is the right idea.
+
+  Port 22 is for SSH, though, which you use to log into your server, not for HTTPS web traffic.
+
+  Revisit the lesson's table of common ports.
+
 - [ ] 8080
+  Good effort. 8080 is common in development.
+
+  It isn't the default port for HTTPS, though. It's often used for local or alternate HTTP servers.
+
+  Reread the lesson's table of common ports.
 ```

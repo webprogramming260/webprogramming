@@ -44,7 +44,7 @@ Since it is so easy to build web services it is common to find multiple web serv
 
 Every web server allows for access to multiple services by referring to a different **port number** for each service. Think of a port as a house address on a given street, and the server as the street. In the example above, the _JavaScript_ web service was assigned port 80. A user could then talk to the image service on port 3000 and the file service on port 3002. However, this makes it difficult for the user of the services to remember what port number matches which service.
 
-To resolve this we introduce a service gateway, or sometimes called a reverse proxy, that is itself a simple web service that listens on the common HTTPS port 443. The gateway then looks at the request URL and maps it to the other services running on a different ports.
+To resolve this we introduce a service gateway, or sometimes called a reverse proxy, that is itself a simple web service that listens on the common HTTPS port 443. The gateway then looks at the request URL and maps it to the other services running on different ports. Because every request passes through it, a reverse proxy is also a natural place to balance load across multiple copies of a service, handle TLS encryption (SSL termination) so the services behind it don't have to, and cache common responses.
 
 
 ```masteryls
@@ -68,9 +68,30 @@ The idea of microservices naturally evolved into the world of `serverless` funct
 When a client (such as a web browser) initiates a connection to a web server, what is the primary responsibility of the server software during the resulting transaction?
 
 - [ ] Resolving the human-readable domain name into a numeric IP address via the Domain Name System (DNS)
+  Good effort. DNS is the first step in reaching a server.
+
+  DNS resolution happens before the browser connects to the web server, though, and it's handled by DNS servers.
+
+  Reread the lesson's description of what a web server does.
+
 - [x] Processing the incoming HTTP request and returning the requested resource or an appropriate status code
+  **Correct!** A web server receives an HTTP request and sends back a response: a file, generated data, or a status code like 404.
+
+  Everything else in a web application builds on this simple request-response pattern.
+
 - [ ] Rendering the HTML, CSS, and JavaScript into a visual interface for the end user to interact with
+  You're thinking about how pages appear, which is the end goal.
+
+  Rendering happens in the *browser*, though, on the client side, not on the web server.
+
+  Revisit the lesson's description of the web server's role.
+
 - [ ] Managing the physical routing of data packets across the global internet backbone to the user's ISP
+  Good effort. Packets do have to travel across networks.
+
+  Routers and ISPs handle that, though, not web server software.
+
+  Reread the lesson's description of web servers.
 ```
 
 ```masteryls
@@ -78,7 +99,28 @@ When a client (such as a web browser) initiates a connection to a web server, wh
 In a professional web server architecture, what is the primary role of a **reverse proxy**?
 
 - [ ] It acts on behalf of the client to hide the client's IP address from the public internet and filter outgoing traffic.
+  Good effort. Hiding a client's IP address is a real proxy function.
+
+  That's what a *forward* proxy does, though, acting on behalf of clients.
+
+  Reread the lesson's description of a service gateway, or reverse proxy.
+
 - [x] It sits in front of backend servers to intercept incoming requests, providing load balancing, SSL termination, and caching.
+  **Exactly right!** Because every request passes through it, a reverse proxy is the natural place to handle shared concerns.
+
+  It can balance load across servers, handle HTTPS encryption so the services behind it don't have to, and cache common responses. In this course, Caddy plays that role for your services.
+
 - [ ] It is a specialized database engine used to store session data to ensure high availability across multiple geographic regions.
+  You're thinking about high availability, which reverse proxies do help with.
+
+  A reverse proxy isn't a database, though. It forwards requests to services.
+
+  Revisit the lesson's description of a reverse proxy.
+
 - [ ] It serves as a recursive DNS resolver that translates domain names into IP addresses for the client's browser.
+  Good effort. DNS resolution is part of reaching a server.
+
+  A reverse proxy works with HTTP requests that have already reached it, though. It doesn't translate domain names.
+
+  Reread the lesson's description of a reverse proxy.
 ```

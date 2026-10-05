@@ -90,7 +90,7 @@ function Timer() {
 const myTimer = new Timer();
 ```
 
-### Closure exmple
+### Closure example
 
 Closure can be tricky to wrap your head around, but just remember that a closure includes a function and its creation scope.
 
@@ -144,9 +144,30 @@ person.sayHi(); // Output: "Hi, I am undefined"
 What is the primary difference in how arrow functions handle the `this` keyword compared to regular functions?
 
 - [ ] Arrow functions bind `this` to the object that calls the function at runtime.
+  Good effort. That's how regular functions handle `this`.
+
+  A regular function's `this` depends on how it's called, but arrow functions behave differently.
+
+  Reread the *Lexical `this` and Scoping* section.
+
 - [x] Arrow functions inherit `this` from the scope in which they were defined.
+  **Exactly right!** An arrow function doesn't have its own `this`. It uses the `this` from the scope where it was written.
+
+  That's why arrow functions work so well as callbacks inside methods and React components. `this` keeps referring to the surrounding object instead of changing based on who calls the callback.
+
 - [ ] Arrow functions always set `this` to the global window object.
+  You're thinking about the global object, which is where `this` sometimes ends up for regular functions.
+
+  Arrow functions don't always use the global object, though. Their `this` depends on where they're defined.
+
+  Revisit the *Lexical `this` and Scoping* section.
+
 - [ ] Arrow functions allow you to manually rebind `this` using the .bind() method.
+  Good effort. `.bind()` is how you control `this` for regular functions.
+
+  It has no effect on an arrow function's `this`, though, because an arrow function's `this` is fixed by where it was defined.
+
+  Reread the *Lexical `this` and Scoping* section, which explains why `.bind(this)` was needed before arrow functions.
 ```
 
 ## Using arrow functions with React

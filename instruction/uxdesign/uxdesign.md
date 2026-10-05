@@ -538,13 +538,34 @@ Another common example of a legal wall is an application that requires the accep
 ## Exercises
 
 ```masteryls
-{8bd04a4c-d49f-48d0-b334-93f1f9264df9:"Applying Fitts's Law", "type":"multiple-choice"}
+{"id":"8bd04a4c-d49f-48d0-b334-93f1f9264df9", "title":"Applying Fitts's Law", "type":"multiple-choice"}
 According to Fitts's Law, which of the following changes would most effectively improve the usability of a primary Call-to-Action (CTA) button?
 
 - [x] Increasing the clickable area of the button and placing it closer to the user's expected cursor path.
+  **Correct!** Fitts's Law says the time to reach a target depends on its size and distance.
+
+  A bigger button that's closer to where the user's cursor or thumb already is gets clicked faster and with fewer misses. That's why primary actions are usually large and placed where users naturally look next.
+
 - [ ] Increasing the white space (padding) between the button and the user's focus area.
+  Good effort. Whitespace can help a button stand out.
+
+  Increasing the *distance* between the button and where the user is focused makes it slower to reach, though, which is the opposite of what Fitts's Law recommends.
+
+  Reread the *Fitts's Law* section.
+
 - [ ] Changing the button's color to a low-contrast shade to make it less distracting.
+  You're thinking about visual design, which does affect usability.
+
+  Fitts's Law is about the size and distance of targets, though, not color. Low contrast would also make the button harder to see.
+
+  Revisit the *Fitts's Law* section.
+
 - [ ] Making the button smaller to ensure it doesn't interfere with the surrounding text content.
+  Good effort. Avoiding clutter is a reasonable goal.
+
+  Making the button smaller makes it *harder* to hit, though. Fitts's Law favors larger targets for important actions.
+
+  Reread the *Fitts's Law* section.
 ```
 
 ```masteryls
@@ -552,9 +573,30 @@ According to Fitts's Law, which of the following changes would most effectively 
 In UX design, what is the primary purpose of "functional animation" as opposed to decorative animation?
 
 - [ ] To keep the user's attention on the screen for as long as possible by using constant motion
+  Good effort. Animation does draw attention.
+
+  Constant motion distracts and tires users, though. Functional animation is purposeful and brief.
+
+  Reread the *Animation* section.
+
 - [ ] To hide slow back-end processing speeds by distracting the user with complex visual effects
+  You're right that animation can make waiting feel shorter.
+
+  Using it to *distract* from slow performance isn't its purpose, though. Functional animation communicates what's happening, such as showing progress honestly.
+
+  Revisit the *Animation* section.
+
 - [x] To explain state changes, provide feedback, and reduce the user's cognitive load
+  **Exactly right!** Functional animation shows users what changed and why.
+
+  A panel sliding in shows where it came from, and a button that briefly animates confirms the click. Because it explains changes visually, users don't have to work as hard to understand what happened.
+
 - [ ] To ensure that the website meets the minimum requirements for modern CSS framework compliance
+  Good effort. Frameworks do provide animation tools.
+
+  Animation isn't a compliance requirement, though. Its value comes from what it communicates to users.
+
+  Reread the *Animation* section.
 ```
 
 ```masteryls
@@ -562,9 +604,30 @@ In UX design, what is the primary purpose of "functional animation" as opposed t
 To meet the WCAG 2.1 Success Criterion 1.4.3 (Contrast Minimum) at the **Level AA** standard, what is the minimum required contrast ratio for standard-sized body text (less than 18pt or 14pt bold)?
 
 - [ ] 3:1
+  Good effort. 3:1 is a real WCAG threshold.
+
+  It applies to *large* text at Level AA, though, not to standard body text.
+
+  Reread the *Contrast ratios* section.
+
 - [x] 4.5:1
+  **Correct!** Level AA requires at least 4.5:1 for normal-sized text.
+
+  Large text can use 3:1, and the stricter Level AAA requires 7:1. Checking your colors with a contrast checker early saves redesign work later.
+
 - [ ] 7:1
+  You're close. 7:1 is a WCAG contrast requirement.
+
+  It's the stricter **Level AAA** standard, though, not AA.
+
+  Revisit the *Contrast ratios* section.
+
 - [ ] 2.1:1
+  Good effort. Contrast is measured as a ratio like this.
+
+  2.1:1 is below every WCAG threshold, though, and would be hard for many users to read.
+
+  Reread the *Contrast ratios* section.
 ```
 
 ```masteryls
@@ -572,9 +635,30 @@ To meet the WCAG 2.1 Success Criterion 1.4.3 (Contrast Minimum) at the **Level A
 When designing a web interface, how does the strategic application of whitespace (negative space) primarily impact a user's interaction with the content?
 
 - [ ] It minimizes the overall page length to ensure all content remains "above the fold" for faster access.
+  Good effort. Keeping key content visible is a valid concern.
+
+  Whitespace usually makes a page *longer*, though. Its value is in making content easier to understand.
+
+  Reread the *Space* section.
+
 - [x] It enhances readability and visual hierarchy by defining relationships between elements and reducing cognitive overload.
+  **Exactly right!** Whitespace groups related items and separates unrelated ones.
+
+  It shows users what belongs together and what matters most. Pages with generous spacing feel calmer and are easier to scan, even when they contain the same content.
+
 - [ ] It acts as a technical buffer to ensure that high-resolution images do not overlap during browser window resizing.
+  You're thinking about layout behavior, which matters.
+
+  Preventing overlap is the job of the layout system, such as flexbox or grid, though. Whitespace is a design tool for clarity.
+
+  Revisit the *Space* section.
+
 - [ ] It is used to intentionally slow down the user's scanning speed to increase the "time on page" metric for SEO purposes.
+  Good effort. Time on page is a metric some sites track.
+
+  Deliberately slowing users down frustrates them, though. Good whitespace helps users find what they need *faster*.
+
+  Reread the *Space* section.
 ```
 
 ```masteryls

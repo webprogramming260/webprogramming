@@ -121,9 +121,30 @@ To effectively implement access control, developers should follow the principle 
 A user logs into a banking application and discovers that by changing the 'account_id' parameter in the URL from '12345' to '12346', they can view the transaction history of a completely different customer. Which specific type of Broken Access Control does this represent?
 
 - [ ] Vertical Privilege Escalation
+  Good effort. Vertical escalation is a form of broken access control.
+
+  It means gaining *higher* privileges, though, such as a regular user reaching admin functions. Here, the user accessed another customer's data at the same privilege level.
+
+  Reread the lesson's description of horizontal and vertical escalation.
+
 - [x] Horizontal Privilege Escalation
+  **Correct!** The user moved *sideways* to another account at the same privilege level.
+
+  This is a classic Insecure Direct Object Reference (IDOR). The fix is for the server to check that the logged-in user owns `account_id` on every request, not just that the user is logged in.
+
 - [ ] Administrative Impersonation
+  You're thinking about impersonation, which is a real concern.
+
+  The user didn't pose as an administrator, though. They accessed another regular customer's data by changing an ID.
+
+  Revisit the *Insecure Direct Object References (IDOR)* section.
+
 - [ ] Context-dependent Access Bypass
+  Good effort. That sounds like a plausible category.
+
+  The lesson describes this scenario with a more specific, standard term, though, based on whether the user moves up in privilege or across to a peer.
+
+  Reread the *Common Failure Modes* section of A01.
 ```
 
 ## A02 - Security Misconfiguration
@@ -208,9 +229,30 @@ To effectively prevent security misconfigurations, organizations should implemen
 A developer deploys a new REST API to a production environment. During testing, an attacker sends a request with an invalid data type, and the API returns a '500 Internal Server Error' response containing a full Java stack trace, including the database driver version and internal file paths. Which OWASP category does this best represent?
 
 - [ ] A01: Broken Access Control
+  Good effort. Access control failures are serious.
+
+  The attacker didn't reach anything they weren't allowed to access, though. The problem is that the server revealed internal details it should have hidden.
+
+  Reread the *A02 - Security Misconfiguration* section.
+
 - [x] A02: Security Misconfiguration
-- [ ] A03: Injection
+  **Correct!** Returning stack traces, versions, and file paths is a misconfiguration.
+
+  The API should log those details internally and return a generic error to the client. Detailed errors give attackers a map of your system, so production servers should always disable debug output.
+
+- [ ] A05: Injection
+  You're right that the attacker sent bad input, which is how injection attacks often start.
+
+  Nothing was injected and executed, though. The server simply revealed too much about itself when it failed.
+
+  Revisit the *A02 - Security Misconfiguration* section.
+
 - [ ] A07: Identification and Authentication Failures
+  Good effort. Authentication failures are a major OWASP category.
+
+  This scenario doesn't involve logging in or credentials, though. The problem is how the server responds to an error.
+
+  Reread the *A02 - Security Misconfiguration* section.
 ```
 
 ## A03 - Software Supply Chain Failures
@@ -270,15 +312,35 @@ To mitigate risks, developers should avoid using floating versions (e.g., `^1.2.
 3.  **Digital Signatures:** Ensure that all artifacts, including code commits and container images, are signed and verified before being deployed.
 4.  **Vulnerability Disclosure Programs:** Monitor the security advisories of the third-party projects you consume.
 
-
 ```masteryls
 {"id":"50b6fc38-1c88-4aa0-aa67-6a43240373f3", "title":"Identifying Supply Chain Risks", "type":"multiple-choice"}
 A developer notices that their build system automatically downloads the "latest" version of a popular logging library every time the CI/CD pipeline runs. Which of the following best describes the primary security risk in this scenario?
 
 - [ ] The build will fail if the library's server goes offline, causing a Denial of Service.
+  Good effort. Depending on an outside server is a real reliability risk.
+
+  The bigger *security* risk is in what gets downloaded, though, not whether the download succeeds.
+
+  Reread the *Key Risk Factors* in the supply chain section.
+
 - [ ] The library might use too much memory, leading to performance bottlenecks in production.
+  You're thinking about the costs of a dependency, which is reasonable.
+
+  Performance is a quality concern, though, not the primary security risk of pulling in whatever version is newest.
+
+  Revisit the *A03 - Software Supply Chain Failures* section.
+
 - [x] An attacker could hijack the library maintainer's account and push a malicious "latest" version that is automatically integrated into the app.
+  **Exactly right!** Automatically pulling "latest" means any new release, including a malicious one, goes straight into your build.
+
+  Pinning exact versions, or commit hashes, and using lock files lets you choose and review when to upgrade. That's the practice the lesson recommends.
+
 - [ ] Using the latest version ensures that all previous security patches are applied, making this the most secure approach.
+  Good effort. Staying up to date with security patches is important.
+
+  Upgrading *automatically and without review* is the risky part, though. A compromised release would be pulled in just as quickly as a real patch.
+
+  Reread *Practical Example: Pinning Dependencies*.
 ```
 
 ## A04 – Cryptographic Failures
@@ -365,9 +427,30 @@ async function secureStore(password) {
 A developer is building a login system. Which of the following scenarios represents a "Cryptographic Failure" according to the OWASP Top 10?
 
 - [ ] Using AES-256 to encrypt user session tokens stored in a secure cookie.
+  Good effort. Encrypting tokens is a cryptographic practice.
+
+  AES-256 is a strong, modern algorithm, though, and this use of it is appropriate.
+
+  Reread *Common Cryptographic Pitfalls* and look for what makes a choice a *failure*.
+
 - [ ] Implementing TLS 1.3 for all communications between the client and the server.
+  You're right that TLS involves cryptography.
+
+  TLS 1.3 is the current best practice for encrypting data in transit, though, not a failure.
+
+  Revisit the *A04 – Cryptographic Failures* section.
+
 - [x] Storing user passwords using the SHA-1 hashing algorithm without a salt.
+  **Correct!** SHA-1 is deprecated, and it's a fast general-purpose hash, which is the wrong tool for passwords.
+
+  Without a salt, identical passwords produce identical hashes, so attackers can crack many at once with precomputed tables. Passwords should use a slow, salted algorithm like bcrypt or Argon2, as shown in the lesson's password hashing example.
+
 - [ ] Using a hardware security module (HSM) to manage and rotate encryption keys.
+  Good effort. Key management is an important part of cryptography.
+
+  Using a hardware security module to manage and rotate keys is a strong practice, though, not a failure.
+
+  Reread *Remediation Strategies* in the cryptographic failures section.
 ```
 
 ## A05 - Injection
@@ -433,9 +516,30 @@ To effectively mitigate injection risks, developers should adopt a "defense in d
 Which of the following techniques is considered the most effective primary defense against SQL Injection?
 
 - [ ] Manually stripping out single quotes and semicolons from user input strings.
+  Good effort. Filtering dangerous characters seems like it should work.
+
+  Blacklisting characters is fragile, though. Attackers find encodings and patterns you didn't think of, and you may break legitimate input like the name O'Brien.
+
+  Reread *Prevention Strategies* in the injection section.
+
 - [x] Using prepared statements with parameterized queries.
+  **Exactly right!** With parameterized queries, the SQL structure is fixed before any user data is added.
+
+  User input is always treated as data, never as code, so it can't change what the query does. That's why it's the primary defense, and the lesson's secure code example uses it.
+
 - [ ] Changing the database admin password to a complex, 20-character string.
+  You're right that strong passwords matter for databases.
+
+  A strong admin password doesn't stop SQL injection, though. The attack runs *through* your application's own database connection.
+
+  Revisit *The Injection Workflow*.
+
 - [ ] Running the web server on a non-standard port to hide the database structure.
+  Good effort. Reducing what attackers can see is a reasonable idea.
+
+  Changing ports is security through obscurity, though. Injection happens through normal application input, regardless of which port the server uses.
+
+  Reread *Prevention Strategies* in the injection section.
 ```
 
 ## A06 - Insecure Design
@@ -496,9 +600,30 @@ The client should only send the `coupon_code` and `item_ids`. The server must pe
 A developer creates a web application where the password recovery system asks for the user's "Favorite Color" to reset their credentials. The code is bug-free and sanitizes all inputs. Why is this considered Insecure Design?
 
 - [ ] It is not insecure design; if the code is bug-free, the application is secure.
+  Good effort. Bug-free code is important.
+
+  Perfect code can still implement a weak idea, though. Insecure design is about flaws in the plan itself.
+
+  Reread *Design Flaws vs. Implementation Flaws*.
+
 - [ ] It is an implementation flaw because the developer should have used a different database.
+  You're right that the choice of database is a design decision.
+
+  The database isn't the issue here, though. The problem is the recovery mechanism itself.
+
+  Revisit *Design Flaws vs. Implementation Flaws*.
+
 - [x] It is a design flaw because the mechanism (security questions) is fundamentally weak and predictable, regardless of code quality.
+  **Correct!** A favorite color is easy to guess or find on social media, and there are only a few common answers.
+
+  No amount of careful coding can fix that. The mechanism itself is weak. Fixing insecure design means rethinking the approach, for example by sending a time-limited reset link to a verified email.
+
 - [ ] It is a vulnerability only if the developer forgot to use HTTPS.
+  Good effort. HTTPS is important for protecting data in transit.
+
+  Even over HTTPS, though, an attacker can simply guess the answer. The weakness is in the design of the recovery question itself.
+
+  Reread *Key Defensive Principles* in the insecure design section.
 ```
 
 ## A07 - Identification and Authentication Failures
@@ -577,9 +702,30 @@ app.post('/api/login', loginLimiter, (req, res) => {
 A security auditor notices that an application allows users to stay logged in indefinitely, even after closing the browser tab, and does not require a password change for over two years. Which aspect of A07 is most directly violated?
 
 - [ ] Lack of Multi-Factor Authentication (MFA)
+  Good effort. MFA is an important defense against account takeover.
+
+  The auditor's findings are about how long sessions last and how passwords are managed, though, not about a missing second factor.
+
+  Reread *Common Vulnerabilities* in the A07 section.
+
 - [ ] Insecure Credential Storage
+  You're thinking about how credentials are protected, which is part of A07.
+
+  Nothing in the scenario says how passwords are stored, though. The findings are about session lifetime and password age.
+
+  Revisit *Common Vulnerabilities* in the A07 section.
+
 - [x] Insecure Session Management and Weak Password Policy
+  **Exactly right!** Sessions that never expire mean a stolen token, or an unattended device, keeps working indefinitely.
+
+  Combined with weak password policies, that greatly widens the window for attackers. Sessions should time out and be invalidated on logout, as the A07 best practices checklist describes.
+
 - [ ] Exposure of Sensitive System Metadata
+  Good effort. Exposing system metadata is a real vulnerability.
+
+  It belongs to security misconfiguration, though, and nothing in this scenario reveals system details.
+
+  Reread the A07 section's list of common vulnerabilities.
 ```
 
 ## A08: Software and Data Integrity Failures
@@ -658,9 +804,30 @@ function loadSecureSession(sessionJson, providedMac) {
 Which of the following scenarios best describes a Software and Data Integrity Failure?
 
 - [ ] A user bypasses a login screen by entering ' OR 1=1 -- into the username field.
+  Good effort. That's a well-known attack.
+
+  `' OR 1=1 --` is SQL **injection**, though, not an integrity failure.
+
+  Reread the *A08: Software and Data Integrity Failures* section.
+
 - [x] An application downloads a plugin from a third-party server and executes it without checking its digital signature.
+  **Correct!** Running code without verifying that it's authentic means you can't tell whether it was tampered with.
+
+  If the third-party server is compromised, the malicious plugin runs with your application's full permissions. Checking a digital signature or hash before executing confirms that the code is exactly what its publisher released.
+
 - [ ] An attacker uses a brute-force script to guess a user's password.
+  You're thinking about attacks on accounts, which is a real concern.
+
+  Brute-forcing passwords is an authentication failure (A07), though, not an integrity failure.
+
+  Revisit the *A08: Software and Data Integrity Failures* section.
+
 - [ ] A web server returns a 404 error page that includes the server's internal version number.
+  Good effort. Leaking version numbers is a security problem.
+
+  It's a *misconfiguration* (A02), though. It doesn't involve trusting unverified code or data.
+
+  Reread the *Key Risk Areas* in the A08 section.
 ```
 
 ## A09 - Security Logging and Alerting Failures
@@ -760,9 +927,30 @@ To mitigate logging and alerting failures, organizations should adopt a "detect 
 A security auditor notices that an application logs every "File Upload" event, but the logs only contain the filename and a timestamp. Which of the following best describes why this is a Logging Failure?
 
 - [ ] The logs are being generated too frequently, causing "log bloat."
+  Good effort. Too much logging can be a problem.
+
+  Logging each upload once isn't excessive, though. The issue is what the log entry is *missing*.
+
+  Reread *Common Logging Failures*.
+
 - [x] The logs lack sufficient context (such as User ID or Source IP) to identify who performed the action.
+  **Exactly right!** A log that can't tell you *who* did something is of little use during an investigation.
+
+  Security-relevant events should record the user ID, source IP, timestamp, action, and outcome, while leaving out sensitive data like passwords. Then you can trace an incident back to its source.
+
 - [ ] File uploads are not considered security-relevant events.
+  You're right to ask which events matter for security.
+
+  File uploads *are* security-relevant, though. They're a common way to deliver malicious files.
+
+  Revisit *Common Logging Failures*.
+
 - [ ] Logs should only be generated for failed events, not successful ones.
+  Good effort. Failed events are important to log.
+
+  Successful events matter too, though. A successful upload of a malicious file, or a successful login by an attacker, is exactly what you need a record of.
+
+  Reread *Best Practices for Remediation* in the logging section.
 ```
 
 ## A10 - Mishandling of Exceptional Conditions
@@ -852,15 +1040,35 @@ To defend against the mishandling of exceptional conditions, organizations shoul
 3.  **Fail-Safe Defaults:** Ensure that if a security-sensitive function fails, it defaults to the most restrictive state (e.g., `access_denied = true`).
 4.  **Standardized Response Codes:** Return consistent HTTP status codes and messages to prevent side-channel attacks like timing analysis or account enumeration.
 
-
 ```masteryls
 {"id":"e7bd2a34-1962-45ca-9490-1afa507b8e2f", "title":"Identifying Secure Exception Handling", "type":"multiple-choice"}
 An application's payment processing module encounters an unexpected timeout while communicating with a 3rd-party API. Which response demonstrates the most secure handling of this exceptional condition?
 
 - [ ] The application displays the API endpoint URL and the timeout duration to the user so they can report it to support.
+  Good effort. Helping users report problems is a good goal.
+
+  Showing internal endpoint URLs and timing details reveals your system's internals to anyone who can trigger the error, though.
+
+  Reread the *Secure vs. Insecure Error Flow* in the exceptional conditions section.
+
 - [x] The application logs the full technical error internally and displays a generic "Transaction pending" message with a unique correlation ID to the user.
+  **Correct!** Engineers get the full details in the logs, and the user gets a safe message plus a correlation ID that support can use to find the log entry.
+
+  Saying "pending" instead of "success" or "failed" is also honest, because the outcome really is unknown after a timeout.
+
 - [ ] The application catches the exception and, to ensure a smooth user experience, proceeds as if the payment was successful.
+  You're thinking about the user experience, which matters.
+
+  Assuming success when the outcome is unknown is a dangerous "fail open" response, though. It could deliver goods without payment, or charge customers twice.
+
+  Revisit *Common Failure Scenarios* in the exceptional conditions section.
+
 - [ ] The application returns a 500 Internal Server Error including the raw Java stack trace to help the user understand why the payment failed.
+  Good effort. Transparency can be valuable.
+
+  Raw stack traces leak internal details to attackers and don't help users, though.
+
+  Reread *Code Example: Handling Database Failures* and notice what the user sees.
 ```
 
 ## Exercises

@@ -209,9 +209,30 @@ Jest provides a wide variety of matchers to handle different data types and scen
 You are testing a function that returns a newly created array: `const getTags = () => ["node", "jest"];`. Which assertion will pass?
 
 - [ ] `expect(getTags()).toBe(["node", "jest"])`
+  Good effort. `toBe` is the most common matcher.
+
+  It checks whether two values are the *same object*, though. Two separately created arrays are never the same object, even when their contents match.
+
+  Reread the *Common Matchers* section.
+
 - [x] `expect(getTags()).toEqual(["node", "jest"])`
+  **Correct!** `toEqual` compares contents, which is called deep equality.
+
+  Each call to `getTags()` creates a new array, so you need to compare what's inside, not the object identity. Use `toEqual` for arrays and objects, and `toBe` for primitives like numbers and strings.
+
 - [ ] `expect(getTags()).toBeDefined(false)`
+  You're thinking about checking whether the result exists.
+
+  `toBeDefined()` doesn't take an argument, though, and it wouldn't verify the array's contents anyway.
+
+  Revisit the *Common Matchers* section.
+
 - [ ] `expect(getTags()).toMatch(["node", "jest"])`
+  Good effort. `toMatch` is a real Jest matcher.
+
+  It's for testing strings against a regular expression or substring, though, not for comparing arrays.
+
+  Reread the *Common Matchers* section.
 ```
 
 ### Example: Testing a User Object
@@ -408,7 +429,28 @@ expect(result).______(config);
 ```
 
 - [ ] `.toBe()`
+  Good effort. `toBe` is often the first matcher people reach for.
+
+  It checks for the *same object*, though, and `getConfig()` returns a new one, so the test would fail.
+
+  Reread *Example: Testing a User Object*.
+
 - [x] `.toEqual()`
+  **Correct!** `toEqual` recursively compares every property's value.
+
+  Because `getConfig()` returns a new object, deep equality is what you want to check. This comes up constantly when testing data returned from services and databases.
+
 - [ ] `.toMatch()`
+  You're thinking of pattern matching.
+
+  `toMatch` checks strings against a pattern, though, not objects.
+
+  Revisit the *Common Matchers* section.
+
 - [ ] `.toContain()`
+  Good effort. `toContain` is useful for collections.
+
+  It checks whether an array or string *includes* an item, though. It doesn't compare two whole objects.
+
+  Reread the *Common Matchers* section.
 ````

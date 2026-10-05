@@ -210,13 +210,34 @@ console.log(paladin.level); // Output: undefined
 While dynamic manipulation offers immense power, it should be used with caution. Over-reliance on dynamic properties can lead to "hidden classes" issues in engine optimization and can make code harder to debug, as the object's shape is no longer guaranteed by its class definition.
 
 ```masteryls
-{"id":"dyn-obj-001", "title":"Dynamic Property Assignment", "type":"multiple-choice"}
+{"id":"c447ba36-a82f-4e04-aa36-8a02a07e52ec", "title":"Dynamic Property Assignment", "type":"multiple-choice"}
 What happens in a dynamic language like JavaScript when you assign a value to a property that was not defined in the class constructor?
 
 - [ ] The program throws a "PropertyNotDefined" runtime error.
+  Good effort. Many languages, such as Java, would reject this.
+
+  JavaScript is dynamic, though. Objects aren't locked to the properties defined in their class, and no error is thrown.
+
+  Reread the *Dynamic Object Manipulation* section.
+
 - [ ] The value is ignored and the object remains unchanged.
+  You're right to wonder whether an undefined property can be set at all.
+
+  The assignment isn't ignored, though. JavaScript adds the property and stores the value.
+
+  Revisit the *Dynamic Object Manipulation* section.
+
 - [x] The engine creates the property on that specific instance and assigns the value.
+  **Correct!** JavaScript simply adds the new property to that one object.
+
+  Other instances of the same class aren't affected. This flexibility is useful for data with an unpredictable shape, but it also means a typo in a property name silently creates a new property instead of raising an error.
+
 - [ ] The property is added to the Class blueprint, affecting all existing and future instances.
+  Good effort. You're thinking about how classes and instances relate.
+
+  The property is added only to the one object you assigned it to, though, not to the class. Other instances don't see it.
+
+  Reread the *Key Concepts in Dynamic Manipulation* section.
 ```
 
 

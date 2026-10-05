@@ -38,9 +38,30 @@ You will sometimes hear the use of URN or URI when talking about web resources. 
 In the URL `https://www.example.com/shop/search?category=books#top`, which component is specifically used to pass data parameters to the server-side application?
 
 - [ ] The anchor/fragment ID (`#top`)
+  Good effort. The fragment is part of the URL.
+
+  It points to a location within the page, though, and browsers don't send it to the server.
+
+  Reread the lesson's table of URL parts.
+
 - [x] The query string (`?category=books`)
+  **Correct!** The query string, after `?`, holds key-value pairs such as `category=books`.
+
+  The server reads these to filter, search, or customize its response. Multiple parameters are separated with `&`.
+
 - [ ] The path (`/shop/search`)
+  You're close. The path does tell the server something.
+
+  The path identifies *which* resource you want, though. Additional parameters come in a separate part of the URL.
+
+  Revisit the lesson's table of URL parts.
+
 - [ ] The protocol (`https`)
+  Good effort. The protocol is the first part of every URL.
+
+  It only says *how* to communicate, such as with `https`. It doesn't carry data.
+
+  Reread the lesson's table of URL parts.
 ```
 
 

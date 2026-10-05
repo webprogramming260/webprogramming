@@ -54,6 +54,13 @@ Figure out who your assigned TA is by reviewing the [TA schedule](https://docs.g
 I have:
 
 - [x] Successfully joined the Discord server, looked over previous help requests, and know how to ask questions.
+  **You're connected!** Discord is where you'll find help, announcements, and classmates working on the same problems.
+
+  Reading previous help requests first often answers your question right away, and it shows you how to ask a clear question when you need to.
+
 - [ ] Not been able to get on Discord.
+  Thanks for letting us know. Getting on Discord early is important, because much of the course's help happens there.
+
+  Try the invitation link in the lesson again, and check whether your browser or Discord app blocked it. If it still doesn't work, contact a TA or the instructor directly so they can help you get connected.
 ```
 

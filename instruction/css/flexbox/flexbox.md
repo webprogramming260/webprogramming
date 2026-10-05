@@ -114,7 +114,7 @@ Here is what the finished application looks like.
 
 
 ```masteryls
-{"id":"6332b90a-e5af-423d-9d1c-27e3ac6ef8aa", "title":"Flex exercise", "type":"ai-web-page", "allowAiPrompt":false "height":500, "syncGrade":false, "autoGrade":false, "gradingCriteria":"A fixed header with evenly spaced menu text on the left. A main content body with the text centered. A footer with the text centered"}
+{"id":"6332b90a-e5af-423d-9d1c-27e3ac6ef8aa", "title":"Flex exercise", "type":"ai-web-page", "allowAiPrompt":false, "height":500, "syncGrade":false, "autoGrade":false, "gradingCriteria":"A fixed header with evenly spaced menu text on the left. A main content body with the text centered. A footer with the text centered"}
 
 Now it is your turn to build a fully responsive application. Starting with some basic HTML, modify it so that it has:
 

@@ -68,10 +68,17 @@ To create a monitor, access the AWS dashboard and navigate to `Billing and Cost 
 
 
 ```masteryls
-{"id":"95f8915a-4870-461b-8c54-711a5b44ebf8", "title":"AWS Accunt setup", "type":"multiple-choice" }
+{"id":"95f8915a-4870-461b-8c54-711a5b44ebf8", "title":"AWS Account setup", "type":"multiple-choice" }
 1. Create your AWS [account](https://signin.aws.amazon.com/signup).
 2. Create a browser bookmark for your AWS browser console page that contains your account ID. That way you will be able to access your account quickly.
 
 - [x] I have created my AWS account and set up billing alerts.
+  **Great, your AWS account is ready!** Bookmarking the console page with your account ID will save you time every time you deploy.
+
+  Billing alerts are especially important. They warn you before an unexpected charge becomes a surprise on your bill.
+
 - [ ] I am withdrawing from this course.
+  Thanks for letting us know. An AWS account is required to deploy your work in this course, so it can't be skipped.
+
+  If something is blocking you, such as a payment-method problem, reach out to a TA or the instructor before you decide to withdraw. Many setup issues have simple solutions.
 ```

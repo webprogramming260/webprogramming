@@ -144,9 +144,30 @@ The downside of that flexibility is that the client now has significant power to
 When designing a service architecture, which of the following accurately describes a key difference in how RPC, REST, and GraphQL handle data retrieval and interaction?
 
 - [ ] REST is primarily action-oriented and focuses on executing remote procedures, while RPC is resource-oriented and uses standard HTTP verbs to manage state.
+  Good effort. You've recognized that one style is action-oriented and one is resource-oriented.
+
+  The two are swapped, though.
+
+  Reread the *RPC* and *REST* sections.
+
 - [x] GraphQL allows the client to define the specific shape of the response to prevent over-fetching, whereas REST typically returns fixed data structures from resource-specific endpoints.
+  **Correct!** In GraphQL, the client's query describes exactly which fields it needs, and the server returns that shape.
+
+  REST endpoints return whatever the resource provides, which can mean extra data or several round trips. The trade-off is that GraphQL gives clients more power to make expensive requests.
+
 - [ ] RPC relies on a single unified endpoint and a query language to fetch data, while GraphQL requires a unique URL for every individual resource type.
+  You're thinking about endpoints, which is a key difference between these styles.
+
+  You have it reversed, though. GraphQL uses a single endpoint and a query language.
+
+  Revisit the *GraphQL* section.
+
 - [ ] REST is designed specifically for high-performance internal microservices using binary protocols, while GraphQL and RPC are restricted to text-based JSON over HTTP/1.1.
+  Good effort. Performance and data formats are real design considerations.
+
+  REST is typically text-based HTTP with JSON, though, and it isn't limited to internal services.
+
+  Reread the *REST* section.
 ```
 
 ```masteryls

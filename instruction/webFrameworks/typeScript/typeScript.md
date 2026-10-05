@@ -450,9 +450,30 @@ This will only include typescript package when you are developing and will not d
 In TypeScript, which of the following is the correct syntax to define a **tuple** that must contain exactly two elements: a `string` followed by a `number`?
 
 - [ ] `let user: (string, number) = ["Alice", 30];`
+  Good effort. Parentheses are used for grouping in TypeScript.
+
+  Tuple types use square brackets, though, which mirror how array literals look.
+
+  Reread the lesson's tuple example.
+
 - [x] `let user: [string, number] = ["Alice", 30];`
+  **Correct!** `[string, number]` describes an array with exactly two elements: first a string, then a number.
+
+  TypeScript checks both the length and the type of each position, so `["Alice", "30"]` or `[30, "Alice"]` would cause a compile error.
+
 - [ ] `let user: Array<string, number> = ["Alice", 30];`
+  You're thinking about generic array types, which is a related idea.
+
+  `Array<T>` takes a single type parameter, though, and it can't describe a fixed length or order.
+
+  Revisit the lesson's tuple example.
+
 - [ ] `let user: string | number[] = ["Alice", 30];`
+  Good effort. Union types are part of TypeScript.
+
+  This declares a value that's either a `string` or an array of numbers, though, not a two-element tuple.
+
+  Reread the *Unions* section and the lesson's tuple example.
 ```
 
 
@@ -461,9 +482,30 @@ In TypeScript, which of the following is the correct syntax to define a **tuple*
 What is the primary consequence of using the `any` type for a variable in TypeScript?
 
 - [ ] It forces the TypeScript compiler to perform exhaustive runtime type checks to ensure the variable's value matches its usage.
+  Good effort. Runtime checks would be useful.
+
+  TypeScript doesn't add runtime checks for any type, though, and with `any` it doesn't even check at compile time.
+
+  Reread *The `unknown` vs. `any` Types*.
+
 - [ ] It functions identically to the `unknown` type, requiring a type guard or type assertion before any properties on the variable can be accessed.
+  You're right that `any` and `unknown` are related.
+
+  That description fits `unknown`, though, which is the *safe* alternative. `any` lets you do anything without checks.
+
+  Revisit *The `unknown` vs. `any` Types*.
+
 - [ ] It restricts the variable so that it can only be assigned to other variables that are also explicitly typed as `any`.
+  Good effort. You're thinking about how `any` affects assignments.
+
+  `any` doesn't restrict assignments, though. It can be assigned to and from almost anything.
+
+  Reread *The `unknown` vs. `any` Types*.
+
 - [x] It effectively opts out of type checking for that variable, allowing you to access non-existent properties or call arbitrary methods without a compiler error.
+  **Exactly right!** `any` turns off type checking for that value.
+
+  Typos and wrong method calls compile without complaint and fail at runtime instead. Prefer `unknown` when you don't know a type, so TypeScript makes you check it first.
 ```
 
 
@@ -472,9 +514,30 @@ What is the primary consequence of using the `any` type for a variable in TypeSc
 In TypeScript, how does the behavior of reverse mapping (looking up a member name by its value) differ between numeric enums and string enums?
 
 - [ ] Both numeric and string enums automatically generate reverse mappings in the compiled JavaScript to ensure consistency.
+  Good effort. Consistency would be nice.
+
+  String enums don't get reverse mappings, though, so the two kinds of enum behave differently.
+
+  Reread the *Enum* section.
+
 - [x] Numeric enums generate a reverse mapping from value to name, whereas string enums do not support reverse mapping at all.
+  **Correct!** For numeric enums, TypeScript generates lookups in both directions, so `Color[0]` gives `"Red"`.
+
+  String enums only map names to values, because a string value could collide with a member name. If you need reverse lookups with string enums, you'll have to build them yourself.
+
 - [ ] String enums support reverse mapping only if the values are identical to the member names, while numeric enums always support it.
+  You're thinking carefully about edge cases.
+
+  Matching names and values don't enable reverse mapping for string enums, though.
+
+  Revisit the *Enum* section.
+
 - [ ] Reverse mapping is a feature exclusive to `const enum` declarations to improve runtime lookup performance.
+  Good effort. `const enum` is a real TypeScript feature.
+
+  `const enum` values are inlined at compile time, though, so there's no runtime object to do a reverse lookup on at all.
+
+  Reread the *Enum* section.
 ```
 
 
@@ -498,7 +561,28 @@ const staff: Employee = {
 ```
 
 - [x] It compiles successfully because TypeScript automatically merges multiple interface declarations with the same name into a single definition.
+  **Correct!** TypeScript merges interfaces with the same name into one.
+
+  `Employee` requires both `name` and `id`, so this object type-checks. Declaration merging lets libraries and your own code add properties to an existing interface.
+
 - [ ] It results in a compiler error: "Duplicate identifier 'Employee'" because interfaces cannot be redefined in the same scope.
+  Good effort. Most languages would reject a duplicate definition.
+
+  Interfaces are special in TypeScript, though. Duplicate declarations are merged instead of rejected.
+
+  Reread the *Declaration merging* section.
+
 - [ ] It compiles, but the `staff` object only requires the `id` property because the second declaration overwrites the first.
+  You're thinking about how later definitions might override earlier ones.
+
+  Interfaces *combine*, though. They don't replace each other, so both properties are required.
+
+  Revisit the *Declaration merging* section.
+
 - [ ] It results in a runtime error because interfaces are not converted to JavaScript objects and cannot be merged at execution time.
+  You're right that interfaces don't exist in the compiled JavaScript.
+
+  That's why there's nothing to merge at runtime, though. Merging happens entirely at compile time.
+
+  Reread the *Declaration merging* section.
 ````

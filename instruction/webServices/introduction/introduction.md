@@ -27,9 +27,30 @@ In following instruction we will discuss how to use fetch, HTTP, and URLs, and b
 In a modern web architecture, how does a front-end application typically interact with a web service to display dynamic data without reloading the entire page?
 
 - [ ] By establishing a direct connection to the back-end SQL database to execute queries via the browser.
+  Good effort. Getting data from a database is the end goal.
+
+  Browsers shouldn't connect directly to databases, though. That would expose credentials and bypass your business logic.
+
+  Reread the lesson's description of how the frontend calls web service endpoints.
+
 - [x] By sending asynchronous HTTP requests to API endpoints and processing the returned data, such as JSON.
+  **Correct!** The frontend calls an endpoint with `fetch`, receives JSON, and updates the DOM.
+
+  Only part of the page changes, so the experience feels fast and smooth. This request-and-update cycle is the core of every application you'll build in this course.
+
 - [ ] By using the SMTP protocol to request formatted text files from the web server's file system.
+  You're thinking about protocols, which is the right layer to consider.
+
+  SMTP is for email, though, not for fetching web data.
+
+  Revisit the lesson's description of endpoints and `fetch`.
+
 - [ ] By downloading the entire back-end application logic to run data processing locally on the client's hardware.
+  Good effort. Some processing does happen in the browser.
+
+  Downloading the entire backend would expose your logic and data, though, and defeat the purpose of having a service.
+
+  Reread the lesson's description of how the frontend and backend divide the work.
 ```
 
 ```masteryls
@@ -37,7 +58,28 @@ In a modern web architecture, how does a front-end application typically interac
 In the context of a web service architecture, what is the primary responsibility of the back-end application?
 
 - [ ] Rendering the user interface and handling client-side animations within the web browser
+  Good effort. Rendering and animation are important parts of a web application.
+
+  They happen on the *frontend*, in the browser, though.
+
+  Reread the lesson's description of what the backend web service provides.
+
 - [x] Processing incoming requests, executing business logic, and managing data persistence
+  **Exactly right!** The backend receives requests, applies the application's rules, and stores and retrieves data.
+
+  Keeping this logic on the server protects your data and gives every client the same trustworthy behavior.
+
 - [ ] Managing the physical network infrastructure and hardware cooling systems in a data center
+  You're thinking about infrastructure, which a backend runs on.
+
+  Managing hardware and cooling is the data center's job, though, not the application's.
+
+  Revisit the lesson's description of the backend.
+
 - [ ] Translating domain names into IP addresses through the Domain Name System (DNS)
+  Good effort. DNS is part of how requests reach a server.
+
+  It's a separate service, though, not the responsibility of your backend application.
+
+  Reread the lesson's description of the backend web service.
 ```

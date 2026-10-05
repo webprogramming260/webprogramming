@@ -666,5 +666,6 @@ After experimenting with the above code, check all the boxes that you completed.
 - [x] I coded up the login **backend** in my development environment.
 - [x] I coded up the login **frontend** in my development environment.
 - [x] I set breakpoints and successfully debugged the **backend**.
-- [x] I set breakpoints and successfully debugged the **frontend**.```
+- [x] I set breakpoints and successfully debugged the **frontend**.
+```
 

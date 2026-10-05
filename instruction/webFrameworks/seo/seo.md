@@ -25,7 +25,7 @@ You want to make sure that you provide both textual and video content. Also make
 
 ## Authoritative links
 
-The success of the Google Page Rank algorithm is founded on determining how authoritative an application is. The more websites that point to your application the higher its search ranking will be. If you can get an influencer to link to your content, or get links from other authoritative applications you will see a significant bump in your ranking.
+The success of the Google Page Rank algorithm is founded on determining how authoritative an application is. The more websites that point to your application the higher its search ranking will be. If you can get an influencer to link to your content, or get links from other authoritative applications you will see a significant bump in your ranking. These links from other websites, called **backlinks**, are an *off-page* ranking factor because they come from outside your own site, unlike *on-page* factors such as your content, keywords, and internal links.
 
 You also want to be an authority to yourself. This includes links from other applications that you own, and internal application links. Making sure that you have multiple paths to key content from within your application will help the Google crawler find the content and value its authority.
 
@@ -133,8 +133,29 @@ Once your ownership of the domain name is verified, the Google Search Console wi
 Which of the following practices is considered a primary "off-page" SEO factor that significantly impacts a website's perceived authority and search engine ranking?
 
 - [ ] Optimizing internal linking structures to guide users to high-value pages
+  Good effort. Internal links do help SEO.
+
+  They're an *on-page* factor, though, because you control them within your own site.
+
+  Reread the *Authoritative links* section.
+
 - [ ] Ensuring that the website’s CSS and JavaScript files are minified for speed
+  You're right that speed affects ranking.
+
+  Minifying files is a technical, on-site improvement, though, not an off-page factor.
+
+  Revisit the *Authoritative links* section.
+
 - [x] Acquiring high-quality, relevant backlinks from reputable external websites
+  **Correct!** Backlinks from respected sites act like votes of confidence.
+
+  Search engines treat them as evidence that your content is valuable. Because they come from *other* sites, they're the main off-page ranking factor, and they're hard to fake.
+
 - [ ] Increasing the keyword density within the meta description to over 5%
+  Good effort. Keywords do matter for SEO.
+
+  Keyword stuffing can actually *hurt* rankings, though, and meta descriptions are part of your own page, which makes them on-page.
+
+  Reread the *Authoritative links* section.
 ```
 

@@ -135,24 +135,47 @@ section:hover {
 ```
 
 
-```masteryls
+````masteryls
 {"id":"9bc25c74-548c-4430-b7e0-6cc8971a5cc4", "title":"CSS Child Combinators", "type":"multiple-choice"}
 Consider the following HTML snippet:
 
-**<div class="container">
+```html
+<div class="container">
   <p>Paragraph 1</p>
   <section>
     <p>Paragraph 2</p>
   </section>
-</div>**
+</div>
+```
 
 Which CSS selector will apply a style **only** to "Paragraph 1" while leaving "Paragraph 2" unaffected?
 
 - [ ] `.container p`
+  Good effort. This selector does select "Paragraph 1."
+
+  It's a **descendant** combinator, though, so it matches any `p` *anywhere* inside `.container`, including "Paragraph 2" inside the `section`.
+
+  Look at the lesson's combinator table for one that matches only direct children.
+
 - [x] `.container > p`
+  **Correct!** The `>` child combinator matches only elements that are *direct* children.
+
+  "Paragraph 1" is directly inside the `div`, but "Paragraph 2" is inside the `section`, so it's a grandchild and isn't selected. Use `>` when you want styles to stop at one level instead of cascading down the whole tree.
+
 - [ ] `.container section p`
+  You're thinking about targeting by structure, which is the right approach.
+
+  This selector targets the *other* paragraph, though. It matches only `p` elements inside a `section` inside `.container`, which is "Paragraph 2."
+
+  Revisit the combinator table in the lesson.
+
 - [ ] `.container + p`
-```
+  Good effort. `+` is a real combinator.
+
+  It's the **adjacent sibling** combinator, though. It matches a `p` that comes immediately *after* `.container` at the same level, not one inside it.
+
+  Reread the combinator table and compare the child and sibling combinators.
+````
 
 
 You can find out more about pseudo selectors on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes).
