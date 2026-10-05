@@ -129,7 +129,16 @@ In order to demonstrate original authorship, you must:
 {"id":"cae08349-d561-4c4b-9a84-208fab172b36", "title":"Acknowledgement", "type":"multiple-select" }
 
 
+
 - [x] I have read this syllabus
+  **Thanks for reading!** The syllabus spells out how the course is graded, what each deliverable is worth, and how course policies work.
+
+  Bookmark it. When a question comes up about deadlines, grading, or expectations, the answer is often already here.
+
+- [ ] I'm going to skip this for now and then have a hard time later.
+  We appreciate your honesty, and the syllabus does have a lot to take in.
+
+  Take a few minutes to go through it now, though. Knowing how deliverables are weighted and how the course policies work can save you from losing points later. Start with the grading table, and then skim the rest.
 ```
 
 
