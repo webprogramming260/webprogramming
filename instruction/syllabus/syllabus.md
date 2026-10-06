@@ -114,7 +114,7 @@ In order to demonstrate original authorship, you must:
 
 **Requirements**
 - You must understand all submitted work
-- You must be able to explain any part on request. If you cannot explain your work, you may fail the class.
+- You must be able to defend your code.
 
 **Prompt Guidance**: Use prompts that support collaboration with explanation:
 - “Help me implement this function step by step and explain each part.”
