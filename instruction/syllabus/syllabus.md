@@ -113,7 +113,7 @@ In order to demonstrate original authorship, you must:
 - AI-assisted debugging and refinement
 
 **Requirements**
-- You must understand all submitted work
+- You must conceptually understand all submitted work
 - You must be able to defend your code.
 
 **Prompt Guidance**: Use prompts that support collaboration with explanation:
