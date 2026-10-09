@@ -1144,6 +1144,13 @@
           "externalRefs": {
             "canvasAssignmentId": 1462256
           }
+        },
+        {
+          "title": "Using Public APIs",
+          "type": "instruction",
+          "path": "instruction/using-public-apis/using-public-apis.md",
+          "id": "f29e4994-0db2-4706-bbc0-f4358bb0ddad",
+          "description": "Students will learn how to use fetch to access public APIs that are available for free \n"
         }
       ]
     },
