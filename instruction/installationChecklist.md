@@ -81,6 +81,8 @@ spoon.WindowHalfsAndThirds:bindHotkeys(spoon.WindowHalfsAndThirds.defaultHotkeys
 
 Copy in WindowHalfsAndThirds to ~/.hammerspoon/Spoons
 
+Enahble accessibility for Hammerspoon so it can handle keystrokes
+
 ### VSCode extensions
 
 GitHub Copilot GitLens Code Spell Checker ESLint GitHub Actions - Meh Go - If you are doing GO Jest - If you are in 329 Playwright Test for VSCode - If you are in 329 Live Server Markdown Preview Mermaid Support Tailwind CSS IntelliSense
