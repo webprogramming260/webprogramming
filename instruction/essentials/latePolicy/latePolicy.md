@@ -19,11 +19,11 @@ Grace days allow you to submit a deliverable past the assigned due date for full
 Each student begins the semester with **two grace days**.
 To encourage you to stay ahead and to provide a buffer for life's surprises, such as illness, emergencies, or even a "powder day", you can earn additional grace days.
 
-You earn **one grace day** for every day (excluding Sundays) that a deliverable is submitted early, provided the submission receives a score of **100%**.
+You earn **one grace day** for every day (excluding Sundays) that a deliverable is submitted early, provided the submission receives a score of **100%**. You can only earn a maximum of **five** grace days per deliverable.
 
 You can view your available balance in the `Grace Days` assignment in Canvas.
 
-### Using Gracer Days
+### Using Grace Days
 
 The grader applies grace days to every late submission, including those that earn only partial credit. If you resubmit a deliverable, the grace days are calculated for the last day you submitted.
 
