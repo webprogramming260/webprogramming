@@ -1,5 +1,3 @@
-# 📅 Fall 2026 MW Schedule
-
 [BYU Academic Calendar](https://academiccalendar.byu.edu/)
 
 | Week | Date | Module | Due | Topics Covered | Slides |
@@ -30,7 +28,7 @@
 |  | Wed Oct 28, 2026 |  |  | [Deployment](../instruction/essentials/deployment/deployment.md)</br>[Uploading files](../instruction/webServices/uploadingFiles/uploadingFiles.md)</br>[Storage services](../instruction/webServices/storageServices/storageServices.md) | [Deployment](../instruction/essentials/deployment/deployment.md) |
 | 10 | Mon Nov 2, 2026 | `DB` |  | [Data services](../instruction/webServices/dataServices/dataServices.md) | [☑ Data services](../instruction/webServices/dataServices/dataServices.md) |
 |  | Wed Nov 4, 2026 |  |  | [Simon DB](../instruction/simon/simonDb/simonDb.md)</br>[🚀 Startup DB](../instruction/webServices/startupDb/startupDb.md) | [Simon DB](../instruction/simon/simonDb/simonDb.md) |
-|  | Sat Nov 4, 6 |  | [🚀 Startup Service](../instruction/webServices/startupService/startupService.md) |  |  |
+|  | Sat Nov 7, 2026 |  | [🚀 Startup Service](../instruction/webServices/startupService/startupService.md) |  |  |
 | 11 | Mon Nov 9, 2026 |  |  | [Backend testing](../instruction/webServices/backendTesting/backendTesting.md)</br>[Frontend testing](../instruction/webServices/frontendTesting/frontendTesting.md) | [Backend testing](../instruction/webServices/backendTesting/backendTesting.md) |
 |  | Wed Nov 11, 2026 | `WebSocket` |  | [WebSocket](../instruction/webServices/webSocket/webSocket/webSocket.md)</br>[Debugging WebSocket](../instruction/webServices/webSocket/debugging/debugging.md)</br>[WebSocket chat](../instruction/webServices/webSocket/chat/chat.md)</br>[Simon WebSocket](../instruction/simon/simonWebSocket/simonWebSocket.md)</br>[🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md) | [WebSocket](../instruction/webServices/webSocket/webSocket/webSocket.md) |
 | 12 | Mon Nov 16, 2026 |  |  | **In class DB/WebSocket help session** |  |
