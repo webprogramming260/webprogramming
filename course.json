@@ -93,6 +93,13 @@
           "interactions": [
             "a819fd43-c894-4945-b851-3b513d659573"
           ]
+        },
+        {
+          "title": "Inspiration",
+          "type": "embedded",
+          "path": "https://class.cs260.click/#/l",
+          "id": "ec44a608-2906-4ff8-a681-0936da8a9d4a",
+          "description": "https://class.cs260.click/#/l"
         }
       ]
     },
@@ -1033,6 +1040,7 @@
           "type": "instruction",
           "path": "instruction/using-public-apis/using-public-apis.md",
           "id": "f29e4994-0db2-4706-bbc0-f4358bb0ddad",
+          "state": "published",
           "description": "Students will learn how to use fetch to access public APIs that are available for free \n"
         },
         {
