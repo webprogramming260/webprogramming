@@ -1,6 +1,9 @@
 # GitHub Pages
 
+
 As you build your web applications, you will quickly reach a point where viewing your work on a local machine is no longer enough. To share your creations with the world, you need a host—a computer that is always on, connected to the internet, and ready to serve your files to any browser that requests them. GitHub Pages is a powerful, streamlined service provided by GitHub that allows you to host static websites directly from your repositories. It is an essential tool in a developer's toolkit, bridging the gap between a local project and a live, public application.
+
+![gitHubAction.jpg](gitHubAction.jpg)
 
 ### Understanding Static Web Hosting
 
