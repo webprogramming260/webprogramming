@@ -1,6 +1,5 @@
-# 📅 Winter 2026 Schedule
-
 [BYU Academic Calendar](https://academiccalendar.byu.edu/)
+[CS Department](https://cs.byu.edu)
 
 | Week | Date | Module | Due | Topics Covered | Slides |
 | :--: | ---- | ------ | --- | -------------- | ------ |
