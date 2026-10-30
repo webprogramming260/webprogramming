@@ -99,6 +99,7 @@
           "type": "embedded",
           "path": "https://class.cs260.click/#/l",
           "id": "ec44a608-2906-4ff8-a681-0936da8a9d4a",
+          "state": "published",
           "description": "https://class.cs260.click/#/l"
         }
       ]
@@ -247,6 +248,13 @@
           "interactions": [
             "eecac632-b04b-49a9-a0b6-3c3961cb3e58"
           ]
+        },
+        {
+          "title": "GitHub Pages",
+          "type": "instruction",
+          "path": "instruction/github-pages/github-pages.md",
+          "id": "1f1d2fc1-e327-4e20-8d93-56b4d3364872",
+          "description": "Introduction to using GitHub Pages to a static frontend deployment. Include GitHub Actions as a simple means to update the pages on commit. Include a full working tutorial"
         }
       ]
     },
