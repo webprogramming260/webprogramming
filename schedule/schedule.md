@@ -1,6 +1,5 @@
 [BYU Academic Calendar](https://academiccalendar.byu.edu/)
 [CS Department](https://cs.byu.edu)
-[Simon Demo](https://simon.cs260.click)
 
 | Week | Date | Module | Due | Topics Covered | Slides |
 | :--: | ---- | ------ | --- | -------------- | ------ |
