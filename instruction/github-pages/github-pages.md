@@ -72,7 +72,7 @@ Copy and paste the following configuration into `deploy.yml`:
 name: Deploy Static Content
 on:
   push:
-    branches: ["main"] # Runs every time you push to the main branch
+    branches: ["main"] # Trigger the workflow on every push to the main branch
 permissions:
   contents: read
   pages: write
@@ -86,19 +86,34 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Upload the entire repository content
+          path: '.' # The directory containing your static files
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 ```
 
-Commit and push this new file. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress. When it finishes (turning green), your site is live! You can find the URL in the "Settings > Pages" section or on the repository's main page under the "Environments" section.
+### Breakdown of the Workflow
 
+This YAML file defines a **workflow**—a collection of automated steps. Here is what each part of the configuration is doing:
+
+*   **permissions**: GitHub Actions requires explicit permission to interact with your repository's settings. `pages: write` allows the action to update your site, while `id-token: write` is required for secure authentication.
+*   **actions/checkout@v4**: This action "checks out" your repository onto the GitHub runner (a temporary virtual machine), allowing the subsequent steps to access your files.
+*   **actions/configure-pages@v5**: This initializes the Pages environment. It automatically detects your site's settings and prepares the runner for deployment.
+*   **actions/upload-pages-artifact@v3**: This packages your files into a compressed "artifact" that GitHub Pages can consume. 
+    *   **Configurable Property**: `path`. If your website files are located in a specific subfolder (like `dist`, `public`, or `build`), change `path: '.'` to `path: './dist'`.
+*   **actions/deploy-pages@v4**: This takes the uploaded artifact and pushes it to the GitHub Pages hosting infrastructure.
+
+### Finalizing the Deployment
+
+Commit and push this new file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress. When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section or on the repository's main page under the **Environments** sidebar.
 ### Common Challenges and Solutions
 
 While GitHub Pages is designed to be user-friendly, you may encounter a few common hurdles:
