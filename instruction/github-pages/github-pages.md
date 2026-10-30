@@ -6,7 +6,24 @@ As you build your web applications, you will quickly reach a point where viewing
 
 Before diving into the technical setup, it is important to understand what "static" means in the context of GitHub Pages. A static website consists of files—HTML, CSS, JavaScript, and images—that are delivered to the user's browser exactly as they are stored on the server. Unlike dynamic websites that use server-side languages like Python, Ruby, or Node.js to build pages on the fly using a database, GitHub Pages simply serves the files you have written.
 
-While this may sound limiting, modern web development often leans into this "Jamstack" architecture. Since JavaScript can run in the browser (the client-side), your "static" site can still fetch data from external APIs, handle user input, and provide a rich, interactive experience. GitHub Pages is perfect for portfolio sites, documentation, and the frontend of your web applications.
+While this may sound limiting, modern web development often leans into a **Jamstack** architectural approach where your "static" site behaves like a dynamic one by shifting the work from the server to the browser.
+
+The name is an acronym for its three core components:
+
+*   **J**avaScript: Handles all dynamic logic on the client-side (e.g., React, Vue, or vanilla JS).
+*   **A**PIs: Instead of your own server, you use external services via JavaScript to handle data (like fetching weather info or user comments).
+*   **M**arkup: Pre-rendered HTML files that are served instantly from a host like GitHub Pages.
+
+```mermaid
+%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
+graph LR
+    A[User Browser] -->|Requests HTML| B[GitHub Pages]
+    B -->|Serves Static Markup| A
+    A -->|JavaScript Fetch| C[External APIs]
+    C -->|Returns Data| A
+```
+
+By serving pre-built files and using APIs for data, your site becomes incredibly fast and secure because there is no database or server-side language (like Python or Ruby) for hackers to attack directly. GitHub Pages is perfect for portfolio sites, documentation, and the frontend of your web applications.
 
 ### The Power of Automation with GitHub Actions
 
