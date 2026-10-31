@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7f3" />
+    <meta name="description" content="Fieldwork is an independent landscape architecture studio creating thoughtful places for people and nature." />
+    <title>Fieldwork Studio | Landscape architecture for living well</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f6f7f3;
+        --ink: #202a25;
+        --green: #284638;
+        --lime: #d7ed74;
+        --muted: #68716b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.5 'DM Sans',
+          sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        width: min(1320px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+      header {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font:
+          700 19px/1 'Manrope',
+          sans-serif;
+        letter-spacing: 0;
+      }
+      .brand-mark {
+        width: 25px;
+        height: 25px;
+        display: grid;
+        place-items: center;
+        background: var(--green);
+        color: var(--lime);
+        font-size: 15px;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        font-size: 13px;
+      }
+      nav a:not(.nav-cta):hover {
+        color: #688d42;
+      }
+      .nav-cta,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        min-height: 44px;
+        padding: 0 18px;
+        background: var(--green);
+        color: white;
+        font-size: 13px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .nav-cta:hover,
+      .button:hover {
+        background: #3c634d;
+      }
+      .hero {
+        position: relative;
+        min-height: min(700px, 76vh);
+        min-height: min(700px, 76svh);
+        display: flex;
+        align-items: end;
+        overflow: hidden;
+        color: white;
+        background: #34433b;
+      }
+      .hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 54%;
+        animation: settle 1.2s ease-out both;
+      }
+      .hero::after {
+        position: absolute;
+        inset: 0;
+        content: '';
+        background: linear-gradient(90deg, #101a16bf 0%, #101a1640 58%, transparent 100%), linear-gradient(0deg, #101a1670, transparent 56%);
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        width: min(760px, 78%);
+        padding: 100px 0 76px;
+        animation: rise 0.75s 0.12s both;
+      }
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        color: var(--lime);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 26px;
+        height: 1px;
+        content: '';
+        background: currentColor;
+      }
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+      h1,
+      h2 {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 500;
+        letter-spacing: 0;
+      }
+      h1 {
+        max-width: 760px;
+        margin-bottom: 20px;
+        font-size: clamp(44px, 6.5vw, 82px);
+        line-height: 1.02;
+      }
+      .hero-copy > p:not(.eyebrow) {
+        max-width: 460px;
+        margin-bottom: 30px;
+        color: #ffffffd9;
+        font-size: 16px;
+      }
+      .button {
+        min-height: 48px;
+        background: var(--lime);
+        color: var(--ink);
+      }
+      .button:hover {
+        background: white;
+        color: var(--ink);
+      }
+      .button span {
+        font-size: 18px;
+        line-height: 1;
+      }
+      .hero-note {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 30px;
+        color: #ffffffc7;
+        font-size: 11px;
+      }
+      .intro {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 9%;
+        align-items: start;
+        padding-block: 104px;
+      }
+      .intro h2 {
+        max-width: 460px;
+        margin: 0;
+        font-size: clamp(32px, 4vw, 50px);
+        line-height: 1.12;
+      }
+      .intro-copy {
+        max-width: 500px;
+        padding-top: 8px;
+      }
+      .intro-copy p {
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .text-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #9da69f;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .text-link span {
+        color: #688d42;
+        font-size: 18px;
+        transition: transform 0.2s;
+      }
+      .text-link:hover span {
+        transform: translateX(4px);
+      }
+      .project {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        min-height: 440px;
+        background: #e9ece5;
+      }
+      .project img {
+        width: 100%;
+        height: 100%;
+        min-height: 440px;
+        object-fit: cover;
+      }
+      .project-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding: clamp(36px, 7vw, 92px);
+      }
+      .project-copy .eyebrow {
+        color: #648043;
+      }
+      .project h2 {
+        margin-bottom: 14px;
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.1;
+      }
+      .project-copy p:not(.eyebrow) {
+        margin-bottom: 26px;
+        color: var(--muted);
+      }
+      .services {
+        display: grid;
+        grid-template-columns: 0.8fr 2fr;
+        gap: 8%;
+        padding-block: 100px;
+        border-bottom: 1px solid #dfe3dc;
+      }
+      .services h2 {
+        margin: 0;
+        font-size: 28px;
+      }
+      .service-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 32px;
+      }
+      .service-list p {
+        margin: 0;
+        padding-top: 14px;
+        border-top: 1px solid #cbd1c9;
+        font-size: 14px;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 28px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      footer a {
+        color: var(--ink);
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes settle {
+        from {
+          transform: scale(1.035);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      @media (max-width: 700px) {
+        .wrap {
+          width: min(100% - 40px, 560px);
+        }
+        header {
+          height: 68px;
+        }
+        nav {
+          gap: 18px;
+        }
+        nav a:not(.nav-cta) {
+          display: none;
+        }
+        .nav-cta {
+          min-height: 40px;
+          padding-inline: 13px;
+        }
+        .hero {
+          min-height: 690px;
+          min-height: min(760px, 82svh);
+        }
+        .hero img {
+          object-position: 58% center;
+        }
+        .hero::after {
+          background: linear-gradient(0deg, #101a16cf, #101a1630 76%);
+        }
+        .hero-copy {
+          width: 100%;
+          padding: 110px 0 86px;
+        }
+        h1 {
+          font-size: clamp(44px, 13vw, 66px);
+        }
+        .hero-note {
+          bottom: 20px;
+        }
+        .intro,
+        .project,
+        .services {
+          grid-template-columns: 1fr;
+        }
+        .intro {
+          gap: 26px;
+          padding-block: 72px;
+        }
+        .project img {
+          min-height: 280px;
+          max-height: 390px;
+        }
+        .project-copy {
+          padding: 38px 28px 44px;
+        }
+        .services {
+          gap: 28px;
+          padding-block: 72px;
+        }
+        footer {
+          gap: 16px;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="#home" aria-label="Fieldwork Studio home"><span class="brand-mark" aria-hidden="true">f.</span>fieldwork</a>
+        <nav aria-label="Main navigation">
+          <a href="#studio">Studio</a>
+          <a href="#work">Selected work</a>
+          <a class="nav-cta" href="mailto:hello@fieldwork.studio">Start a project <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+    </div>
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85" alt="A contemporary home framed by mature trees and a carefully planted garden" fetchpriority="high" />
+        <div class="wrap hero-copy">
+          <p class="eyebrow">Independent landscape architecture</p>
+          <h1 id="hero-title">A little more room to breathe.</h1>
+          <p>We shape thoughtful outdoor places that bring people closer to nature, and to one another.</p>
+          <a class="button" href="#work">Explore our work <span aria-hidden="true">↘</span></a>
+        </div>
+        <span class="hero-note">Homes, gardens &amp; places to gather</span>
+      </section>
+      <section class="wrap intro" id="studio">
+        <h2>Good spaces make everyday life feel different.</h2>
+        <div class="intro-copy">
+          <p>Fieldwork is a small, independent studio working at the intersection of landscape, architecture and ecology. We listen closely, work with the land, and make places that grow more meaningful over time.</p>
+          <a class="text-link" href="mailto:hello@fieldwork.studio">Meet the studio <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="project" id="work" aria-labelledby="project-title">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85" alt="Sunlit modern home opening onto a garden terrace" loading="lazy" />
+        <div class="project-copy">
+          <p class="eyebrow">Selected work · 2025</p>
+          <h2 id="project-title">The Courtyard House</h2>
+          <p>A quiet garden that turns a city home toward light, shade and the changing seasons.</p>
+          <a class="text-link" href="mailto:hello@fieldwork.studio?subject=The%20Courtyard%20House">Discover the project <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="wrap services" aria-labelledby="services-title">
+        <h2 id="services-title">What we do</h2>
+        <div class="service-list">
+          <p>Landscape architecture</p>
+          <p>Garden and site design</p>
+          <p>Planting and ecology</p>
+          <p>Planning and project care</p>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">f.</span>fieldwork</a>
+      <span>Independent by nature. Based in Portland, Oregon.</span>
+      <a href="mailto:hello@fieldwork.studio">hello@fieldwork.studio ↗</a>
+    </footer>
+  </body>
+</html>
