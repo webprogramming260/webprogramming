@@ -151,7 +151,7 @@ The final step is to create the GitHub Actions pipeline that will copy your webs
 name: Deploy Static Content
 on:
   push:
-    branches: ["main"] # Trigger the workflow on every push to the main branch
+    branches: ['main'] # Trigger the workflow on every push to the main branch
 permissions:
   contents: read
   pages: write
@@ -164,19 +164,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/checkout@v7
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: '.' # The directory containing your static files
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 ```
 
 #### Breakdown of the Workflow
@@ -184,11 +181,10 @@ jobs:
 This YAML file defines a **workflow**—a collection of automated steps. Here is what each part of the configuration is doing:
 
 *   **permissions**: GitHub Actions requires explicit permission to interact with your repository's settings. `pages: write` allows the action to update your site, while `id-token: write` is required for secure authentication.
-*   **actions/checkout@v4**: This action "checks out" your repository onto the GitHub runner (a temporary virtual machine), allowing the subsequent steps to access your files.
-*   **actions/configure-pages@v5**: This initializes the Pages environment. It automatically detects your site's settings and prepares the runner for deployment.
-*   **actions/upload-pages-artifact@v3**: This packages your files into a compressed "artifact" that GitHub Pages can consume. 
+*   **actions/checkout**: This action "checks out" your repository onto the GitHub runner (a temporary virtual machine), allowing the subsequent steps to access your files.
+*   **actions/upload-pages-artifact**: This packages your files into a compressed "artifact" that GitHub Pages can consume. 
     *   **Configurable Property**: `path`. If your website files are located in a specific subfolder (like `dist`, `public`, or `build`), change `path: '.'` to `path: './dist'`.
-*   **actions/deploy-pages@v4**: This takes the uploaded artifact and pushes it to the GitHub Pages hosting infrastructure.
+*   **actions/deploy-pages**: This takes the uploaded artifact and pushes it to the GitHub Pages hosting infrastructure.
 
 ### Finalizing the Deployment
 
