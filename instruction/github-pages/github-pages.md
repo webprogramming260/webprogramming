@@ -200,6 +200,20 @@ Commit and push the deploy.yml file to your repository. Once you push, navigate 
 
 ![githubPages.png](githubPages.png)
 
+If you navigate to the the provided URL you should see your simple website in all of its glory.
+
+![simpleWebsite.png](simpleWebsite.png)
+
+## Deploying an Upgrade
+
+With your website repository, GitHub Actions pipeline, and GitHub Pages all setup you are now ready to deploy a professional looking website. You can use AI to generate a starting page with a prompt such as:
+
+```txt
+Create a polished, professional homepage titled “My website” as one self-contained HTML file. Give it a clean, modern visual style with a strong layout, readable typography, and a cohesive color palette. Include a prominent, relevant hero image and subtle animation that adds energy without distracting from the content. Make the page responsive, accessible, and respectful of reduced-motion preferences. Put all CSS and JavaScript in the HTML file, and briefly comment any non-obvious code.
+```
+
+Or you can just use the code demonstrated by this example [index.html](index.html) file.
+
 ## Common Challenges and Solutions
 
 While GitHub Pages is designed to be user-friendly, you may encounter a few common hurdles:
