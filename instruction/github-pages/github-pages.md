@@ -214,6 +214,8 @@ Create a polished, professional homepage titled “My website” as one self-con
 
 Or you can just use the code demonstrated by this example [index.html](index.html) file.
 
+Once you have your enhanced file, commit it, push, and watch the magic happen.
+
 ## Common Challenges and Solutions
 
 While GitHub Pages is designed to be user-friendly, you may encounter a few common hurdles:
