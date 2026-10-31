@@ -102,7 +102,7 @@ After logginin into your GitHub Account take the following steps:
 
 ### Configure GitHub Pages Settings
 
-Navigate to your repository on GitHub.com and follow these steps:
+Now we need to configure your website to use GitHub Pages. Navigate to your repository on GitHub.com and follow these steps:
 1. Click on the **Settings** tab.
 2. On the left-hand sidebar, click on **Pages**.
 3. Under the **Build and deployment** section, look for **Source**.
@@ -112,7 +112,7 @@ By selecting GitHub Actions, you are telling GitHub that you will provide a spec
 
 ### Create the Deployment Workflow
 
-Now, we need to provide those instructions. In your local project, create a directory structure at the root level: `.github/workflows/`. Inside that folder, create a file named `deploy.yml`. 
+The final step is to create the GitHub Actions pipeline that will copy your website to GitHub Pages everytime you push your code. In your local project, create a directory structure at the root level: `.github/workflows/`. Inside that folder, create a file named `deploy.yml`. 
 
 Copy and paste the following configuration into `deploy.yml`:
 
