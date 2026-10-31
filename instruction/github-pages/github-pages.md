@@ -69,23 +69,36 @@ To get started, we will create a simple project and set up an automated deployme
 
 ### Prepare Your Repository
 
-First, create a new public repository on GitHub named `my-web-project`. Clone this repository to your local machine. Inside the folder, create a file named `index.html` and add some basic content:
+After logginin into your GitHub Account take the following steps:
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My GitHub Pages Site</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>This site was deployed automatically using GitHub Actions.</p>
-</body>
-</html>
-```
+1. Create a new public repository on GitHub named `my-web-project`.
+1. Copy the repository URL. This should be something like `https://github.com/youraccount/my-web-project.git`
+1. Clone this repository to your local machine and change your directory to the project directory.
+    ```sh
+    git clone https://github.com/youraccount/my-web-project.git
+    cd my-web-project
+    ```
+1. Inside the repository directory, create a file named `index.html` and add some basic content:
 
-Commit this file and push it to your GitHub repository.
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My GitHub Pages Site</title>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <p>This site was deployed automatically using GitHub Actions.</p>
+    </body>
+    </html>
+    ```
+1. Commit this file and push it to your GitHub repository.
+    ```sh
+    git add .
+    git commit -am "add(website) initial placeholder"
+    git push
+    ```
 
 ### Configure GitHub Pages Settings
 
