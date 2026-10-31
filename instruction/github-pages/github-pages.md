@@ -72,7 +72,7 @@ To get started, we will create a simple project and set up an automated deployme
 ```mermaid
 %%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
 graph TD
-    A[GitHub Repository] -->|clone| B(Locally)
+    A[GitHub Repository] -->|clone| B(Your computer)
     B --> |create website| B
     B -->|Push| A
 ```
@@ -110,15 +110,6 @@ After logging into your GitHub Account take the following steps:
 
 ### Configure GitHub Pages Settings
 
-```mermaid
-%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
-graph TD
-    L[locally] --> |push| A[GitHub Repository]
-    A -->|trigger| B(GitHub Actions)
-    B --> |publish| C(GitHub Pages)
-```
-
-
 Now we need to configure your website to use GitHub Pages. Navigate to your repository on GitHub.com and follow these steps:
 1. Click on the **Settings** tab.
 2. On the left-hand sidebar, click on **Pages**.
@@ -129,9 +120,19 @@ By selecting GitHub Actions, you are telling GitHub that you will provide a spec
 
 ### Create the Deployment Workflow
 
-The final step is to create the GitHub Actions pipeline that will copy your website to GitHub Pages everytime you push your code. In your local project, create a directory structure at the root level: `.github/workflows/`. Inside that folder, create a file named `deploy.yml`. 
+```mermaid
+%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
+graph LR
+    L[Your computer] --> |push| A[GitHub Repository]
+    A -->|trigger| B(GitHub Actions)
+    B --> |publish| C(GitHub Pages)
+```
 
-Copy and paste the following configuration into `deploy.yml`:
+The final step is to create the GitHub Actions pipeline that will copy your website to GitHub Pages everytime you push your code.
+
+1. In your local project, create a directory structure at the root level: `.github/workflows/`.
+1. Inside that folder, create a file named `deploy.yml`. 
+1. Copy and paste the following configuration into `deploy.yml`:
 
 ```yaml
 name: Deploy Static Content
@@ -165,7 +166,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-### Breakdown of the Workflow
+#### Breakdown of the Workflow
 
 This YAML file defines a **workflow**—a collection of automated steps. Here is what each part of the configuration is doing:
 
@@ -178,7 +179,7 @@ This YAML file defines a **workflow**—a collection of automated steps. Here is
 
 ### Finalizing the Deployment
 
-Commit and push this new file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress. When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section or on the repository's main page under the **Environments** sidebar.
+Commit and push the deploy.yml file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress. When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section or on the repository's main page under the **Environments** sidebar.
 
 ## Common Challenges and Solutions
 
