@@ -62,18 +62,6 @@ This is where GitHub Actions comes in. GitHub Actions is a continuous integratio
 
 ![gitHubAction.jpg](gitHubAction.jpg)
 
-### Deployment Workflow
-
-The following diagram illustrates the lifecycle of a deployment using GitHub Pages and GitHub Actions:
-
-```mermaid
-%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
-graph TD
-    A[Local Code Change] -->|git push| B(GitHub Repository)
-    B --> C(GitHub Actions Trigger)
-    C -->|Build & Verify| E[GitHub Pages Servers]
-    E -->|Live URL| F[User's Browser]
-```
 
 ## Tutorial: Deploying Your First Site
 
