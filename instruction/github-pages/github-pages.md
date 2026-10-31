@@ -110,6 +110,15 @@ After logging into your GitHub Account take the following steps:
 
 ### Configure GitHub Pages Settings
 
+```mermaid
+%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
+graph TD
+    L[locally] --> |push| A[GitHub Repository]
+    A -->|trigger| B(GitHub Actions)
+    B --> |publish| C(GitHub Pages)
+```
+
+
 Now we need to configure your website to use GitHub Pages. Navigate to your repository on GitHub.com and follow these steps:
 1. Click on the **Settings** tab.
 2. On the left-hand sidebar, click on **Pages**.
