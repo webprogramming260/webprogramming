@@ -89,17 +89,30 @@ After logging into your GitHub Account take the following steps:
 1. Inside the repository directory, create a file named `index.html` and add some basic content:
 
     ```html
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>My GitHub Pages Site</title>
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-        <p>This site was deployed automatically using GitHub Actions.</p>
-    </body>
-    </html>
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #fefefe;
+        font: 1rem sans-serif;
+      }
+      main {
+        width: min(720px, calc(100% - 48px));
+        padding: clamp(2.5rem, 8vw, 5rem) 1rem;
+        text-align: center;
+        color: #f5f5f5;
+        background: linear-gradient(145deg, #303030, #191919);
+        border-radius: 20px;
+        box-shadow: 0 24px 70px #0009;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 7vw, 4rem);
+      }
+    </style>
+    <main><h1>My Website</h1></main>
     ```
 1. Commit this file and push it to your GitHub repository.
     ```sh
@@ -179,7 +192,13 @@ This YAML file defines a **workflow**—a collection of automated steps. Here is
 
 ### Finalizing the Deployment
 
-Commit and push the deploy.yml file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress. When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section or on the repository's main page under the **Environments** sidebar.
+Commit and push the deploy.yml file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress.
+
+![workflowExecution.png](workflowExecution.png)
+
+ When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section.
+
+![githubPages.png](githubPages.png)
 
 ## Common Challenges and Solutions
 
