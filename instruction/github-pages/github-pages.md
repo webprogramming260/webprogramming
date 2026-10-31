@@ -69,7 +69,15 @@ To get started, we will create a simple project and set up an automated deployme
 
 ### Prepare Your Repository
 
-After logginin into your GitHub Account take the following steps:
+```mermaid
+%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
+graph TD
+    A[GitHub Repository] -->|clone| B(Locally)
+    B --> |create website| B
+    B -->|Push| A
+```
+
+After logging into your GitHub Account take the following steps:
 
 1. Create a new public repository on GitHub named `my-web-project`.
 1. Copy the repository URL. This should be something like `https://github.com/youraccount/my-web-project.git`
