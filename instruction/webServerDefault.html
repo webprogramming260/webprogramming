@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -103,14 +103,22 @@
           <div class="courseNum">260</div>
         </div>
         <p id="serviceName">
-          <a href="https://github.com/webprogramming260">Learn</a>
-          <a href="https://simon.cs260.click">Simon</a>
-          <a href="https://startup.cs260.click">Startup</a>
+          <a href="https://masteryls.com/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e">Learn</a>
+          <a href="/" onclick="return navigate('simon');">Simon</a>
+          <a href="/" onclick="return navigate('startup');">Startup</a>
         </p>
       </div>
       <div class="small">
-        <a href="https://github.com/webprogramming260">260</a>
+        <a href="/" onclick="return navigate('startup');">Startup</a>
       </div>
     </main>
+    <script>
+      function navigate(subdomain) {
+        const url = new URL('/', window.location.href);
+        url.hostname = subdomain + '.' + url.hostname;
+        window.location.href = url.href;
+        return false;
+      }
+    </script>
   </body>
 </html>

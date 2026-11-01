@@ -27,10 +27,11 @@ Now we can install Caddy, NVM, Node, and PM2
 - Install Caddy
 
   ```sh
-  sudo apt update
-  sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+  sudo apt install --yes debian-keyring debian-archive-keyring apt-transport-https curl
   curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
   curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+  sudo chmod o+r /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+  sudo chmod o+r /etc/apt/sources.list.d/caddy-stable.list
   sudo apt update
   sudo apt install caddy
   ```
@@ -38,50 +39,80 @@ Now we can install Caddy, NVM, Node, and PM2
   - Test. `curl localhost` should display caddy HTML. You should also be able to hit if from your development environment in your browser using the instance's IP address
 
   - Allow the ubuntu user to modify the public_html static files and Caddyfile
-    - `sudo chown -R ubuntu /usr/share/caddy`
-    - `sudo chown -R ubuntu /etc/caddy/Caddyfile`
+    ```sh
+    sudo chown -R ubuntu /usr/share/caddy
+    sudo chown -R ubuntu /etc/caddy/Caddyfile
+    ```
   - Create symlink for Caddyfile and Caddy static content directory
-    - `ln -s /etc/caddy/Caddyfile Caddyfile`
-    - `ln -s /usr/share/caddy public_html`
+    ```sh
+    ln -s /etc/caddy/Caddyfile Caddyfile
+    ln -s /usr/share/caddy public_html
+    ```
 
 - Replace default Caddy static files with file found in the webprogramming260 repo
-  - `scp -i ~/keys/cs260/cs260.pem webServerDefault.html ubuntu@0.0.0.0:public_html/index.html`
+
+  ```sh
+  scp -i ~/keys/cs260/cs260.pem webServerDefault.html ubuntu@0.0.0.0:public_html/index.html
+  ```
+
   - Hitting the server from the browser should now display the course default page.
+
 - Install node.js
-  - `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
-  - `. ~/.nvm/nvm.sh`
-  - `nvm install --lts` (this installed version 22.12.2)
+
+  ```sh
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
+  \. "$HOME/.nvm/nvm.sh"
+  nvm install --lts
+  ```
+
   - Verify installed `node --version`
+
 - Set up PM2
-  - npm install pm2 -g
+  ```sh
+  npm install pm2 -g
+  ```
 - Add services for Simon and Startup
   - Create the services directories `mkdir -p ~/services/simon ~/services/startup`
-  - On your development environment clone the `website-express` repo
-    `https://github.com/webprogramming260/website-express.git`
-  - Copy the repo files to a `~/services/simon` and `~/services/startup` directory on the production environment.
-    - `scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/simon`
-    - `scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/startup`
+  - On your development environment clone the `website-express` repo and copy the files to the `~/services/simon` and `~/services/startup` directory on the production environment.
+    ```sh
+    git clone https://github.com/webprogramming260/website-express.git
+    scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/simon
+    scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/startup
+    scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/simon-html
+    scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/simon-css
+    scp -i ~/keys/cs260/cs260.pem -r public index.js package.json ubuntu@0.0.0.0:services/simon-react
+    ```
   - On your production environment install the dependent packages for each service.
-    - `cd ~/services/simon && npm install && cd ~/services/startup && npm install && cd ~`
+    ```sh
+    cd ~/services/simon && npm install && cd ~/services/startup && npm install  && cd ~/services/simon-html && npm install && cd ~/services/simon-css && npm install && cd ~/services/simon-react && npm install && cd ~
+    ```
   - Test that they work with `node` and `curl`
-    - `cd ~/services/startup`
-    - `node index.js 4000 startup`
-    - `curl -v http://localhost:4000/config`
-    - Stop the server
+    ```sh
+    cd ~/services/startup
+    node index.js 4000 startup
+    curl -v http://localhost:4000/config
+    ```
   - Register each service with PM2
-    - `cd ~/services/simon && pm2 start index.js -n simon -- 3000 simon`
-    - `cd ~/services/startup && pm2 start index.js -n startup -- 4000 startup`
-    - `pm2 save`
-    - `pm2 startup` will show you the command daemonize PM2. Run that command.
+    ```sh
+    cd ~/services/simon && pm2 start index.js -n simon -- 3000 simon
+    cd ~/services/startup && pm2 start index.js -n startup -- 4000 startup
+    cd ~
+    pm2 save
+    pm2 startup
+    ```
   - Test that they work
-    - `curl http://localhost:3000/config`
-    - `curl http://localhost:4000/config`
+    ```sh
+    curl http://localhost:3000/config
+    curl http://localhost:4000/config
+    ```
 - Configure Caddy to run services
   - edit Caddyfile `sudo vi ~/Caddyfile`
   - replace the contents of the Caddyfile with `Caddyfile-base` found in webprogramming260 repo.
   - save and restart Caddy `sudo service caddy restart`
 
-At this point you have a fully functioning web server. Now build an AMI.
+At this point you have a fully functioning web server.
+
+## Create AMI
 
 > [!NOTE]
 >
@@ -96,13 +127,21 @@ At this point you have a fully functioning web server. Now build an AMI.
 If you want to install all of the class examples then run the following:
 
 - Run `./deployall.sh` from the webprogramming260 repo. Also deploy websocket-chat.
-- `cd ~/services/simon-html && pm2 start index.js -n simon-html -- 3001 simon-html`
-- `cd ~/services/simon-css && pm2 start index.js -n simon-css -- 3002 simon-css`
-- `cd ~/services/simon-react && pm2 start index.js -n simon-react -- 3007 simon-react`
-- `cd ~/services/simon-db && pm2 start index.js -n simon-db -- 3004 simon-db`
-- `cd ~/services/simon-websocket && pm2 start index.js -n simon-websocket -- 3006 simon-websocket`
-- `cd ~/services/simon-pwa && pm2 start index.js -n simon-pwa -- 3008 simon-pwa`
-- `cd ~/services/chat && pm2 start index.js -n chat -- 5000 chat`
+
+Register the services with PM2
+
+```sh
+cd ~/services/simon-html && pm2 start index.js -n simon-html -- 3001 simon-html && cd ~
+cd ~/services/simon-css && pm2 start index.js -n simon-css -- 3002 simon-css && cd ~
+cd ~/services/simon-react && pm2 start index.js -n simon-react -- 3003 simon-react && cd ~
+cd ~/services/simon-service && pm2 start index.js -n simon-service -- 3004 simon-service && cd ~
+cd ~/services/simon-db && pm2 start index.js -n simon-db -- 3005 simon-db && cd ~
+cd ~/services/simon-websocket && pm2 start index.js -n simon-websocket -- 3006 simon-websocket && cd ~
+cd ~/services/simon-pwa && pm2 start index.js -n simon-pwa -- 3007 simon-pwa && cd ~
+cd ~/services/chat && pm2 start index.js -n chat -- 5000 chat && cd ~
+cd ~/services/quotes && pm2 start index.js -n quotes -- 6000 quotes && cd ~
+```
+
 - Configure Caddy to run services
   - edit Caddyfile `sudo vi ~/Caddyfile`
   - replace the contents of the Caddyfile with `Caddyfile-webserver` found in webprogramming260 repo.

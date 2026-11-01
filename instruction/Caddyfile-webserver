@@ -7,9 +7,8 @@ cs260.click {
 }
 
 learn.cs260.click {
-  redir https://github.com/webprogramming260
+  redir https://masteryls.com/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e
 }
-
 
 class.cs260.click {
   root * /usr/share/caddy/utilities
@@ -39,6 +38,11 @@ chat.cs260.click {
   header Cache-Control none
 }
 
+quote.cs260.click {
+  reverse_proxy * localhost:6000
+  header Cache-Control none
+}
+
 simon-html.cs260.click {
   reverse_proxy * localhost:3001
   header Cache-Control none
@@ -46,6 +50,11 @@ simon-html.cs260.click {
 
 simon-css.cs260.click {
   reverse_proxy * localhost:3002
+  header Cache-Control none
+}
+
+simon-react.cs260.click {
+  reverse_proxy * localhost:3003
   header Cache-Control none
 }
 
@@ -59,22 +68,12 @@ simon-db.cs260.click {
   header Cache-Control none
 }
 
-simon-db.cs260.click {
+simon-websocket.cs260.click {
   reverse_proxy * localhost:3006
   header Cache-Control none
 }
 
-simon-websocket.cs260.click {
-  reverse_proxy * localhost:3007
-  header Cache-Control none
-}
-
-simon-react.cs260.click {
-  reverse_proxy * localhost:3008
-  header Cache-Control none
-}
-
 simon-pwa.cs260.click {
-  reverse_proxy * localhost:3009
+  reverse_proxy * localhost:3007
   header Cache-Control none
 }
