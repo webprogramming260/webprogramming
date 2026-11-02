@@ -136,7 +136,7 @@ By selecting GitHub Actions, you are telling GitHub that you will provide a spec
 ```mermaid
 %%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
 graph LR
-    L[Your computer] --> |push| A[GitHub Repository]
+    L(Your computer) --> |push| A(GitHub Repository)
     A -->|trigger| B(GitHub Actions)
     B --> |publish| C(GitHub Pages)
 ```
