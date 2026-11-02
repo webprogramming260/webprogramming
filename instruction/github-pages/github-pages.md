@@ -73,8 +73,8 @@ To get started, we will create a simple project and set up an automated deployme
 %%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
 graph TD
     A[GitHub Repository] -->|clone| B(Your computer)
-    B --> |create website| B
     B -->|Push| A
+    A --> |update website| C(GitHub Pages)
 ```
 
 After logging into your GitHub Account take the following steps:
