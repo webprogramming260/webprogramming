@@ -1,19 +1,20 @@
 # GitHub Pages
 
-## CDNs and Static Hosting
+### CDNs and Static Hosting
 
 As you build your web applications, you will quickly reach a point where viewing your work on a local machine is no longer enough. To share your creations with the world, you need a host—a computer that is always on and connected to the internet. Modern web hosting often utilizes **Content Delivery Networks (CDNs)**. A CDN is a network of servers distributed globally that stores copies of your files. When a user requests your site, the CDN serves the files from the location geographically closest to them. This provides a high-performance solution for static hosting, ensuring low latency, high availability, and improved security.
 
-![cdn.jpg](cdn.jpg)
+### GitHub Pages and Modern Hosting Solutions
 
+There are many platforms designed to host static content and leverage CDN technology, including **Cloudflare Pages**, Netlify, and Vercel. However, for developers already using Git, **GitHub Pages** is a powerful and streamlined service that allows you to host websites directly from your repositories. It is an essential tool that bridges the gap between a local project and a live, public application.
 
-### Understanding Static Web Hosting and the Jamstack
+#### Understanding Static Web Hosting and the Jamstack
 
-A _static_ website consists of files such as HTML, CSS, JavaScript, and images that are delivered to the user's browser exactly as they are stored on the server. Unlike dynamic websites that use server-side languages like Python, Ruby, or Next.js to build pages on the fly, static hosts simply serve the files you have written.
+A "static" website consists of files—HTML, CSS, JavaScript, and images—that are delivered to the user's browser exactly as they are stored on the server. Unlike dynamic websites that use server-side languages like Python, Ruby, or Node.js to build pages on the fly using a database, static hosts simply serve the files you have written.
 
 While this may sound limiting, modern web development often leans into a **Jamstack** architectural approach where your "static" site behaves like a dynamic one by shifting the work from the server to the browser.
 
-The name jamstack is an acronym for its three core components:
+The name is an acronym for its three core components:
 
 *   **J**avaScript: Handles all dynamic logic on the client-side (e.g., React, Vue, or vanilla JS).
 *   **A**PIs: Instead of your own server, you use external services via JavaScript to handle data (like fetching weather info or user comments).
@@ -28,102 +29,55 @@ graph LR
     C -->|Returns Data| A
 ```
 
-By serving pre-built files and using APIs for data, your site becomes incredibly fast and secure because there is no database or server-side language for hackers to attack directly. GitHub Pages is perfect for portfolio sites, documentation, and the frontend of your web applications.
-
-
-## GitHub Pages
-
-While several platforms offer static hosting, such as Cloudflare Pages, Netlify, and Vercel, **GitHub Pages** remains a favorite for developers due to its deep integration with the Git ecosystem. It is a hosting service that turns a GitHub repository into a live website, mapping your file structure directly to a public URL (typically `username.github.io/repo-name`).
-
-### How It Works
-GitHub Pages functions as a specialized web server optimized for static content. When you enable the service, GitHub monitors a designated branch, or receives instructions from a GitHub Action, to deploy your static website. Every time you push new code, the system automatically builds the site and distributes the files across its global CDN. This ensures that your site remains fast and accessible without you ever having to configure a server, manage SSL certificates, or handle manual deployments.
-
-### Strengths and Weaknesses
-Understanding the trade-offs of GitHub Pages is crucial for choosing the right tool for your project:
-
-*   **Strengths:**
-    *   **Zero Cost:** Free hosting for public repositories, making it ideal for portfolios and open-source projects.
-    *   **Seamless Integration:** Deployment is a natural part of the Git workflow (`git push`).
-    *   **Automated Security:** Provides free HTTPS/SSL by default, ensuring your site is secure.
-    *   **Custom Domains:** Supports mapping your site to a personal domain name (e.g., `www.yourname.com`).
-
-*   **Weaknesses:**
-    *   **Static Content Only:** You cannot run server-side code (like PHP, Ruby, or Node.js) or host a database. All logic must happen in the browser via JavaScript.
-    *   **Usage Limits:** Sites are subject to a soft limit of 1GB in size and a 100GB monthly bandwidth limit.
-    *   **Privacy Restrictions:** On free accounts, GitHub Pages is only available for public repositories; hosting a private repository's site requires a paid GitHub plan.
-
-GitHub Pages can be an essential tool that bridges the gap between a local project and a live, public application, providing a professional environment for testing and showcasing web development work.
-
-## Using GitHub Actions To Deploy on GitHub Pages
-
-In the early days of web development, deploying a site often involved manually uploading files to the CDN. GitHub Pages originally simplified this by automatically serving files from a specific branch (usually `main` or `gh-pages`). However, modern workflows often require a "build step" which requires a preprocessor for your CSS or a framework that needs to bundle your JavaScript.
-
-This is where GitHub Actions comes in. GitHub Actions is a continuous integration and continuous deployment (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. By using a "workflow" file, you can tell GitHub: "Every time I push code to my repository, build my code, and then deploy the updated version to GitHub Pages." This ensures that your live site is always in sync with your codebase without any manual intervention.
+By serving pre-built files and using APIs for data, your site becomes incredibly fast and secure because there is no database or server-side language for hackers to attack directly. GitHub Pages is perfect for portfolio sites, documentation, and the frontend of your web applications.### The Power of Automation with GitHub Actions
 
 ![gitHubAction.jpg](gitHubAction.jpg)
 
+In the early days of web development, deploying a site often involved manually uploading files via FTP. GitHub Pages originally simplified this by automatically serving files from a specific branch (usually `main` or `gh-pages`). However, modern workflows often require a "build step"—perhaps you are using a preprocessor for your CSS or a framework that needs to bundle your JavaScript.
 
-## Tutorial: Deploying Your First Site
+This is where GitHub Actions comes in. GitHub Actions is a continuous integration and continuous deployment (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. By using a "workflow" file, you can tell GitHub: "Every time I push code to my repository, automatically check for errors and then deploy the updated version to GitHub Pages." This ensures that your live site is always in sync with your codebase without any manual intervention.
 
-To get started, we will create a simple project and set up an automated deployment pipeline. This tutorial assumes you have a basic understanding of Git and a GitHub account.
+### Deployment Workflow
 
-### Prepare Your Repository
+The following diagram illustrates the lifecycle of a deployment using GitHub Pages and GitHub Actions:
 
 ```mermaid
 %%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
 graph TD
-    A[GitHub Repository] -->|clone| B(Your computer)
-    B -->|Push| A
-    A --> |update website| C(GitHub Pages)
+    A[Local Code Change] -->|git push| B(GitHub Repository)
+    B --> C{GitHub Actions Trigger}
+    C -->|Build & Verify| D[Production Build]
+    D -->|Deploy| E[GitHub Pages Servers]
+    E -->|Live URL| F[User's Browser]
 ```
 
-After logging into your GitHub Account take the following steps:
+### Tutorial: Deploying Your First Site
 
-1. Create a new public repository on GitHub named `my-web-project`.
-1. Copy the repository URL. This should be something like `https://github.com/youraccount/my-web-project.git`
-1. Clone this repository to your local machine and change your directory to the project directory.
-    ```sh
-    git clone https://github.com/youraccount/my-web-project.git
-    cd my-web-project
-    ```
-1. Inside the repository directory, create a file named `index.html` and add some basic content:
+To get started, we will create a simple project and set up an automated deployment pipeline. This tutorial assumes you have a basic understanding of Git and a GitHub account.
 
-    ```html
-    <style>
-      body {
-        min-height: 100vh;
-        margin: 0;
-        display: grid;
-        place-items: center;
-        background: #fefefe;
-        font: 1rem sans-serif;
-      }
-      main {
-        width: min(720px, calc(100% - 48px));
-        padding: clamp(2.5rem, 8vw, 5rem) 1rem;
-        text-align: center;
-        color: #f5f5f5;
-        background: linear-gradient(145deg, #303030, #191919);
-        border-radius: 20px;
-        box-shadow: 0 24px 70px #0009;
-      }
-      h1 {
-        margin: 0;
-        font-size: clamp(2rem, 7vw, 4rem);
-      }
-    </style>
-    <main><h1>My Website</h1></main>
-    ```
-1. Commit this file and push it to your GitHub repository.
-    ```sh
-    git add .
-    git commit -am "add(website) initial placeholder"
-    git push
-    ```
+#### Prepare Your Repository
 
-### Configure GitHub Pages Settings
+First, create a new public repository on GitHub named `my-web-project`. Clone this repository to your local machine. Inside the folder, create a file named `index.html` and add some basic content:
 
-Now we need to configure your website to use GitHub Pages. Navigate to your repository on GitHub.com and follow these steps:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My GitHub Pages Site</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This site was deployed automatically using GitHub Actions.</p>
+</body>
+</html>
+```
+
+Commit this file and push it to your GitHub repository.
+
+#### Configure GitHub Pages Settings
+
+Navigate to your repository on GitHub.com and follow these steps:
 1. Click on the **Settings** tab.
 2. On the left-hand sidebar, click on **Pages**.
 3. Under the **Build and deployment** section, look for **Source**.
@@ -131,27 +85,17 @@ Now we need to configure your website to use GitHub Pages. Navigate to your repo
 
 By selecting GitHub Actions, you are telling GitHub that you will provide a specific set of instructions for how the site should be deployed, rather than just pointing at a folder.
 
-### Create the Deployment Workflow
+#### Create the Deployment Workflow
 
-```mermaid
-%%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
-graph LR
-    L(Your computer) --> |push| A(GitHub Repository)
-    A -->|trigger| B(GitHub Actions)
-    B --> |publish| C(GitHub Pages)
-```
+Now, we need to provide those instructions. In your local project, create a directory structure at the root level: `.github/workflows/`. Inside that folder, create a file named `deploy.yml`. 
 
-The final step is to create the GitHub Actions pipeline that will copy your website to GitHub Pages everytime you push your code.
-
-1. In your local project, create a directory structure at the root level: `.github/workflows/`.
-1. Inside that folder, create a file named `deploy.yml`. 
-1. Copy and paste the following configuration into `deploy.yml`:
+Copy and paste the following configuration into `deploy.yml`:
 
 ```yaml
 name: Deploy Static Content
 on:
   push:
-    branches: ['main'] # Trigger the workflow on every push to the main branch
+    branches: ["main"] # Trigger the workflow on every push to the main branch
 permissions:
   contents: read
   pages: write
@@ -164,53 +108,74 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '.' # The directory containing your static files
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
 ```
 
-#### Breakdown of the Workflow
+### Breakdown of the Workflow
 
 This YAML file defines a **workflow**—a collection of automated steps. Here is what each part of the configuration is doing:
 
 *   **permissions**: GitHub Actions requires explicit permission to interact with your repository's settings. `pages: write` allows the action to update your site, while `id-token: write` is required for secure authentication.
-*   **actions/checkout**: This action "checks out" your repository onto the GitHub runner (a temporary virtual machine), allowing the subsequent steps to access your files.
-*   **actions/upload-pages-artifact**: This packages your files into a compressed "artifact" that GitHub Pages can consume. 
+*   **actions/checkout@v4**: This action "checks out" your repository onto the GitHub runner (a temporary virtual machine), allowing the subsequent steps to access your files.
+*   **actions/configure-pages@v5**: This initializes the Pages environment. It automatically detects your site's settings and prepares the runner for deployment.
+*   **actions/upload-pages-artifact@v3**: This packages your files into a compressed "artifact" that GitHub Pages can consume. 
     *   **Configurable Property**: `path`. If your website files are located in a specific subfolder (like `dist`, `public`, or `build`), change `path: '.'` to `path: './dist'`.
-*   **actions/deploy-pages**: This takes the uploaded artifact and pushes it to the GitHub Pages hosting infrastructure.
+*   **actions/deploy-pages@v4**: This takes the uploaded artifact and pushes it to the GitHub Pages hosting infrastructure.
 
 ### Finalizing the Deployment
 
-Commit and push the deploy.yml file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress.
+Commit and push this new file to your repository. Once you push, navigate to the **Actions** tab in your GitHub repository. You will see a workflow run in progress. When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section or on the repository's main page under the **Environments** sidebar.
 
-![workflowExecution.png](workflowExecution.png)
+## BONUS: Assigning a custom domain
 
- When it finishes (turning green), your site is live! You can find the live URL in the **Settings > Pages** section.
+> [!NOTE]
+>
+> If you do not already leased a DNS hostname, you will need to do this before you continue. You can lease a domain from AWS using Route 53 or use a different provider if you are familiar with an alternative.
 
-![githubPages.png](githubPages.png)
+Using your domain name take the following steps in order to associate it to your GitHub Pages.
 
-If you navigate to the the provided URL you should see your simple website in all of its glory.
+1. Add a `CNAME` record to your domain name DNS records that points to the GitHub Pages hostname. For example, if your GitHub account name was `byucsstudent`, you owned a domain named `byucsstudent.click`, and you wanted to associate the static deployment of your website with the subdomain of `www.byucsstudent.click` you would create the following DNS record.
 
-![simpleWebsite.png](simpleWebsite.png)
+   ```txt
+   record name: www.byucsstudent.click
+   record type: CNAME
+   record value: byucsstudent.github.io
+   ```
 
-## Deploying an Upgrade
+   If you are using Route 53 then you would open the Hosted zone for your domain name and add a `CNAME` record by pressing on the **Create record** button. Then provide `www` as the subdomain, change the **Record type** to `CNAME`, and put your GitHub URL as the record value.
 
-With your website repository, GitHub Actions pipeline, and GitHub Pages all setup you are now ready to deploy a professional looking website. You can use AI to generate a starting page with a prompt such as:
+1. Wait for the newly created record to propagate and for caching layers to update. You can use `nslookup` or `dig` to verify that it is available. Once dig shows the correct record your browser might still be caching old information. You can verify this by using a different browser or flushing your browser's cache.
 
-```txt
-Create a polished, professional homepage titled “My website” as one self-contained HTML file. Give it a clean, modern visual style with a strong layout, readable typography, and a cohesive color palette. Include a prominent, relevant hero image and subtle animation that adds energy without distracting from the content. Make the page responsive, accessible, and respectful of reduced-motion preferences. Put all CSS and JavaScript in the HTML file, and briefly comment any non-obvious code.
-```
+   ```sh
+   nslookup www.byucsstudent.click
 
-Or you can just use the code demonstrated by this example [index.html](index.html) file.
+   Name:    byucsstudent.github.io
+   Addresses: 185.199.111.153
+   Aliases:  www.byucsstudent.click
+   ```
 
-Once you have your enhanced file, commit it, push, and watch the magic happen.
+1. Open the GitHub Pages settings for the fork of your jwt-pizza repository.
+1. Put your subdomain name in the `Custom domain` edit box and press `Save`. This will initiate the verification process.
+1. Check the box to `Enforce HTTPS`. If the option is unavailable because your domain certificate hasn’t been issued, wait a few minutes and try again.
+1. After the check completes you can navigate your browser to your custom domain and verify that your website is rendered.
+
+   ```sh
+   curl https://www.youdomainhere
+
+   My website
+   ```
 
 ## Common Challenges and Solutions
 
