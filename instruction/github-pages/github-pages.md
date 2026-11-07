@@ -131,6 +131,8 @@ By selecting GitHub Actions, you are telling GitHub that you will provide a spec
 
 ### Create the Deployment Workflow
 
+The final step is to create the GitHub Actions pipeline that will copy your website to GitHub Pages everytime you push your code.
+
 ```mermaid
 %%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
 graph LR
@@ -139,7 +141,6 @@ graph LR
     B --> |publish| C(GitHub Pages)
 ```
 
-The final step is to create the GitHub Actions pipeline that will copy your website to GitHub Pages everytime you push your code.
 
 1. In your local project, create a directory structure at the root level: `.github/workflows/`.
 1. Inside that folder, create a file named `deploy.yml`. 
