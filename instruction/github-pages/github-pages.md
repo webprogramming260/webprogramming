@@ -22,10 +22,8 @@ The name jamstack is an acronym for its three core components:
 ```mermaid
 %%{init: { 'theme': 'neutral', 'themeVariables': { 'mainBkg': '#ffffff', 'lineColor': '#000000', 'primaryTextColor': '#000000', 'actorBorder': '#000000', 'participantBorder': '#000000', 'noteBorderColor': '#000000' } }}%%
 graph LR
-    A[User Browser] -->|Requests HTML| B[GitHub Pages]
-    B -->|Serves Static Markup| A
+    A[User Browser] -->|Requests static HTML| B[GitHub Pages]
     A -->|JavaScript Fetch| C[External APIs]
-    C -->|Returns Data| A
 ```
 
 By serving pre-built files and using APIs for data, your site becomes incredibly fast and secure because there is no database or server-side language for hackers to attack directly. GitHub Pages is perfect for portfolio sites, documentation, and the frontend of your web applications.
