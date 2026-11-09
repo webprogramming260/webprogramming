@@ -32,7 +32,7 @@
 | 11 | Mon Nov 9, 2026 |  |  | [Backend testing](../instruction/webServices/backendTesting/backendTesting.md)</br>[Frontend testing](../instruction/webServices/frontendTesting/frontendTesting.md) | [Backend testing](../instruction/webServices/backendTesting/backendTesting.md) |
 |  | Wed Nov 11, 2026 | `WebSocket` |  | [WebSocket](../instruction/webServices/webSocket/webSocket/webSocket.md)</br>[Debugging WebSocket](../instruction/webServices/webSocket/debugging/debugging.md)</br>[WebSocket chat](../instruction/webServices/webSocket/chat/chat.md)</br>[Simon WebSocket](../instruction/simon/simonWebSocket/simonWebSocket.md)</br>[🚀 Startup WebSocket](../instruction/webServices/startupWebSocket/startupWebSocket.md) | [WebSocket](../instruction/webServices/webSocket/webSocket/webSocket.md) |
 | 12 | Mon Nov 16, 2026 |  |  | **In class DB/WebSocket help session** |  |
-|  | Tue Nov 17, 2026 | `Holiday` | [🚀 Startup DB](../instruction/webServices/startupDb/startupDb.md) |  |  |
+|  | Tue Nov 17, 2026 |  | [🚀 Startup DB](../instruction/webServices/startupDb/startupDb.md) |  |  |
 |  | Wed Nov 18, 2026 |  |  | [TypeScript](../instruction/webFrameworks/typeScript/typeScript.md)</br>[Performance monitoring](../instruction/webFrameworks/performanceMonitoring/performanceMonditoring.md) | [TypeScript](../instruction/webFrameworks/typeScript/typeScript.md) |
 | 13 | Mon Nov 30, 2026 | `Security` |  | [Security](../instruction/security/overview/overview.md)</br>[OWASP top 10](../instruction/security/owasp/owasp.md) | [Security](../instruction/security/overview/overview.md) |
 |  | Wed Dec 2, 2026 |  |  | [Security practice](../instruction/security/practice/practice.md) | [Security practice](../instruction/security/practice/practice.md) |
